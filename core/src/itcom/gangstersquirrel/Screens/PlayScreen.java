@@ -10,8 +10,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
+import com.badlogic.gdx.utils.viewport.*;
 import itcom.gangstersquirrel.MainGameClass;
 
 public class PlayScreen implements Screen {
@@ -34,12 +33,16 @@ public class PlayScreen implements Screen {
     private Sound dropSoundReplaceLater;
     private Music rainMusicReplaceLater;
 
+    /**
+     * Set up all important things, can be considered as the create() method like in the MainGameClass
+     * @param game
+     */
     public PlayScreen(MainGameClass game) {
         this.game = game;
 
         // Create a new game camera and set the viewport, divide by the pixels per meter constant for scaling
         camera = new OrthographicCamera();
-        //unnecessary -> camera.setToOrtho(false, MainGameClass.WIDTH, MainGameClass.HEIGHT);
+        // unnecessary -> camera.setToOrtho(false, MainGameClass.WIDTH, MainGameClass.HEIGHT);
         viewport = new FitViewport(MainGameClass.WIDTH / MainGameClass.PPM, MainGameClass.HEIGHT / MainGameClass.PPM, camera);
 
         // Load the first map from Tiles
@@ -56,7 +59,7 @@ public class PlayScreen implements Screen {
     }
 
     public void update(float deltaTime) {
-        handleInput(deltaTime);
+        this.handleInput(deltaTime);
 
         camera.update();
         renderer.setView(camera);
@@ -86,7 +89,7 @@ public class PlayScreen implements Screen {
      */
     @Override
     public void render(float delta) {
-        update(delta);
+        this.update(delta);
 
         Gdx.gl.glClearColor(1, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);

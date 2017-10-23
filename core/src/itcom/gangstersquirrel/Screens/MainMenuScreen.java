@@ -28,6 +28,10 @@ public class MainMenuScreen implements Screen {
     Texture exitButtonActive;
     Texture exitButtonInactive;
 
+    /**
+     * Set up all important things, can be considered as the create() method like in the MainGameClass
+     * @param game
+     */
     public MainMenuScreen(MainGameClass game) {
         this.game = game;
 

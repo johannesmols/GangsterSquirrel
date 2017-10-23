@@ -1,14 +1,15 @@
 package itcom.gangstersquirrel;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import itcom.gangstersquirrel.Screens.MainMenuScreen;
 
 public class MainGameClass extends Game {
 
-	public static final int WIDTH = 1280; //Game width
-	public static final int HEIGHT = 720; //Game height
+	public static int WIDTH; //Game width
+	public static int HEIGHT; //Game height
 	public static final float PPM = 1;  //Pixels per meter
 
 	public SpriteBatch batch; //Contains every sprite in the game
@@ -16,6 +17,9 @@ public class MainGameClass extends Game {
 
 	@Override
 	public void create () {
+		WIDTH = Gdx.graphics.getWidth();
+		HEIGHT = Gdx.graphics.getHeight();
+
 		batch = new SpriteBatch();
 		// No parameters = use libGDX's default Arial font
 		default_font = new BitmapFont();
