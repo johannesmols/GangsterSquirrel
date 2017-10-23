@@ -44,7 +44,7 @@ public class PlayScreen implements Screen {
 
         // Load the first map from Tiles
         mapLoader = new TmxMapLoader();
-        map = mapLoader.load("level_1.tmx");
+        map = mapLoader.load("maps/level_1.tmx");
         renderer = new OrthogonalTiledMapRenderer(map, 1 / MainGameClass.PPM);
         camera.position.set(viewport.getWorldWidth() / 2, viewport.getWorldHeight() / 2, 0);
 

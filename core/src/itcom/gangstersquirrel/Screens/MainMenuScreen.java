@@ -35,10 +35,10 @@ public class MainMenuScreen implements Screen {
         //unnecessary -> camera.setToOrtho(false, MainGameClass.WIDTH, MainGameClass.HEIGHT);
         viewport = new FitViewport(MainGameClass.WIDTH / MainGameClass.PPM, MainGameClass.HEIGHT / MainGameClass.PPM, camera);
 
-        playButtonActive = new Texture("play_button_active.png");
-        playButtonInactive = new Texture("play_button_inactive.png");
-        exitButtonActive = new Texture("exit_button_active.png");
-        exitButtonInactive = new Texture("exit_button_inactive.png");
+        playButtonActive = new Texture("sprites/play_button_active.png");
+        playButtonInactive = new Texture("sprites/play_button_inactive.png");
+        exitButtonActive = new Texture("sprites/exit_button_active.png");
+        exitButtonInactive = new Texture("sprites/exit_button_inactive.png");
     }
 
     @Override
