@@ -17,13 +17,16 @@ public class MainGameClass extends Game {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
+		// No parameters = use libGDX's default Arial font
 		default_font = new BitmapFont();
 
-		setScreen(new MainMenuScreen(this));
+		// Load main menu screen
+		this.setScreen(new MainMenuScreen(this));
 	}
 
 	@Override
 	public void render () {
+		// Very important!
 		super.render();
 	}
 

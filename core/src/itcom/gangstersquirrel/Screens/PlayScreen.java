@@ -17,7 +17,7 @@ import itcom.gangstersquirrel.MainGameClass;
 public class PlayScreen implements Screen {
 
     // Main class of the project
-    MainGameClass game;
+    final MainGameClass game;
 
     // Camera variables
     private OrthographicCamera camera;
@@ -63,6 +63,10 @@ public class PlayScreen implements Screen {
     }
 
     public void handleInput(float deltaTime) {
+        if (Gdx.input.justTouched()) {
+            // Play template sound effect
+            dropSoundReplaceLater.play();
+        }
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
             camera.position.x -= 100 / MainGameClass.PPM * deltaTime;
         }
