@@ -40,6 +40,7 @@ public class PlayScreen implements Screen {
     public PlayScreen(MainGameClass game) {
         this.game = game;
 
+        // Set up camera and viewport
         camera = new OrthographicCamera();
         viewport = new FitViewport(MainGameClass.GAME_WORLD_WIDTH, MainGameClass.GAME_WORLD_HEIGHT, camera);
         camera.position.set(viewport.getWorldWidth() / 2, viewport.getWorldHeight() / 2, 0);
@@ -125,6 +126,8 @@ public class PlayScreen implements Screen {
 
     @Override
     public void dispose() {
+        map.dispose();
+        renderer.dispose();
         rainMusicReplaceLater.dispose();
         dropSoundReplaceLater.dispose();
     }
