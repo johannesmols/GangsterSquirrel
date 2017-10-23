@@ -7,8 +7,8 @@ import itcom.gangstersquirrel.Screens.MainMenuScreen;
 
 public class MainGameClass extends Game {
 
-	public static final int WIDTH = 800; //Game width
-	public static final int HEIGHT = 480; //Game height
+	public static final int WIDTH = 1280; //Game width
+	public static final int HEIGHT = 720; //Game height
 	public static final float PPM = 1;  //Pixels per meter
 
 	public SpriteBatch batch; //Contains every sprite in the game
