@@ -12,9 +12,13 @@ public class MainGameClass extends Game {
 	public static final boolean RESIZABLE = false;
 	public static final int FPS = 60;
 	public static final String NAME = "Gangster Squirrel";
-	public static int WIDTH; //Game width
-	public static int HEIGHT; //Game height
-	public static final float PPM = 1;  //Pixels per meter
+	public static int WIDTH; // Game width
+	public static int HEIGHT; // Game height
+	public static float ASPECT_RATIO; // Aspect ratio
+	public static final float PPM = 1; // Pixels per meter
+
+	public static float GAME_WORLD_WIDTH = 512; // Game world size (map dimension in pixels)
+	public static float GAME_WORLD_HEIGHT = 512;
 
 	public SpriteBatch batch; //Contains every sprite in the game
 	public BitmapFont default_font;
@@ -23,6 +27,7 @@ public class MainGameClass extends Game {
 	public void create () {
 		WIDTH = Gdx.graphics.getWidth();
 		HEIGHT = Gdx.graphics.getHeight();
+		ASPECT_RATIO = (float) WIDTH / (float) HEIGHT;
 
 		batch = new SpriteBatch();
 		// No parameters = use libGDX's default Arial font

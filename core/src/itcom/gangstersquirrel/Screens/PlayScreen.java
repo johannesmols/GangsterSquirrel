@@ -40,16 +40,14 @@ public class PlayScreen implements Screen {
     public PlayScreen(MainGameClass game) {
         this.game = game;
 
-        // Create a new game camera and set the viewport, divide by the pixels per meter constant for scaling
         camera = new OrthographicCamera();
-        // unnecessary -> camera.setToOrtho(false, MainGameClass.WIDTH, MainGameClass.HEIGHT);
-        viewport = new FitViewport(MainGameClass.WIDTH / MainGameClass.PPM, MainGameClass.HEIGHT / MainGameClass.PPM, camera);
+        viewport = new FitViewport(MainGameClass.GAME_WORLD_WIDTH, MainGameClass.GAME_WORLD_HEIGHT, camera);
+        camera.position.set(viewport.getWorldWidth() / 2, viewport.getWorldHeight() / 2, 0);
 
         // Load the first map from Tiles
         mapLoader = new TmxMapLoader();
         map = mapLoader.load("maps/level_1.tmx");
-        renderer = new OrthogonalTiledMapRenderer(map, 1 / MainGameClass.PPM);
-        camera.position.set(viewport.getWorldWidth() / 2, viewport.getWorldHeight() / 2, 0);
+        renderer = new OrthogonalTiledMapRenderer(map, 1);
 
         //Load the template sound effect and the template background music and play immediately
         dropSoundReplaceLater = Gdx.audio.newSound(Gdx.files.internal("audio/waterdrop_replace_later.wav"));
@@ -71,16 +69,11 @@ public class PlayScreen implements Screen {
             dropSoundReplaceLater.play();
         }
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-            camera.position.x -= 100 / MainGameClass.PPM * deltaTime;
+            camera.position.x += 100 * deltaTime;
         }
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-            camera.position.x += 100 / MainGameClass.PPM * deltaTime;
+            camera.position.x -= 100 * deltaTime;
         }
-    }
-
-    @Override
-    public void show() {
-
     }
 
     /**
@@ -91,6 +84,7 @@ public class PlayScreen implements Screen {
     public void render(float delta) {
         this.update(delta);
 
+        // Clear the previous frame
         Gdx.gl.glClearColor(1, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
@@ -102,6 +96,11 @@ public class PlayScreen implements Screen {
         game.batch.begin();
         // Draw specific textures in here with the help of OpenGL
         game.batch.end();
+    }
+
+    @Override
+    public void show() {
+
     }
 
     @Override

@@ -36,8 +36,7 @@ public class MainMenuScreen implements Screen {
         this.game = game;
 
         camera = new OrthographicCamera();
-        //unnecessary -> camera.setToOrtho(false, MainGameClass.WIDTH, MainGameClass.HEIGHT);
-        viewport = new FitViewport(MainGameClass.WIDTH / MainGameClass.PPM, MainGameClass.HEIGHT / MainGameClass.PPM, camera);
+        viewport = new FitViewport(MainGameClass.WIDTH, MainGameClass.HEIGHT, camera);
 
         playButtonActive = new Texture("sprites/play_button_active.png");
         playButtonInactive = new Texture("sprites/play_button_inactive.png");
@@ -52,6 +51,8 @@ public class MainMenuScreen implements Screen {
 
     @Override
     public void render(float delta) {
+
+        // Clear the previous frame
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
