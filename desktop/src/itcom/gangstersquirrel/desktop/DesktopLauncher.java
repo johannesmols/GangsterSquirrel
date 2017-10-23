@@ -8,10 +8,11 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 
+		config.title = "Gangster Squirrel";
 		config.foregroundFPS = 60;
 		config.width = MainGameClass.WIDTH;
 		config.height = MainGameClass.HEIGHT;
-		config.resizable = false;
+		config.resizable = true;
 
 		new LwjglApplication(new MainGameClass(), config);
 	}
