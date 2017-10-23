@@ -1,6 +1,7 @@
 package itcom.gangstersquirrel.Screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
@@ -15,15 +16,21 @@ import itcom.gangstersquirrel.MainGameClass;
 
 public class PlayScreen implements Screen {
 
+    // Main class of the project
     MainGameClass game;
 
+    // Camera variables
     private OrthographicCamera camera;
     private Viewport viewport;
 
+    // Map variables
     private TmxMapLoader mapLoader;
     private TiledMap map;
     private OrthogonalTiledMapRenderer renderer;
 
+    // Audio variables
+    // Sounds = kept in memory (shouldn't be longer than 10 seconds)
+    // Music = streamed from file (can be memory intensive to keep in memory)
     private Sound dropSoundReplaceLater;
     private Music rainMusicReplaceLater;
 
@@ -32,6 +39,7 @@ public class PlayScreen implements Screen {
 
         // Create a new game camera and set the viewport, divide by the pixels per meter constant for scaling
         camera = new OrthographicCamera();
+        //unnecessary -> camera.setToOrtho(false, MainGameClass.WIDTH, MainGameClass.HEIGHT);
         viewport = new FitViewport(MainGameClass.WIDTH / MainGameClass.PPM, MainGameClass.HEIGHT / MainGameClass.PPM, camera);
 
         // Load the first map from Tiles
@@ -47,11 +55,6 @@ public class PlayScreen implements Screen {
         rainMusicReplaceLater.play();
     }
 
-    @Override
-    public void show() {
-
-    }
-
     public void update(float deltaTime) {
         handleInput(deltaTime);
 
@@ -60,11 +63,23 @@ public class PlayScreen implements Screen {
     }
 
     public void handleInput(float deltaTime) {
-        if (Gdx.input.isTouched()) {
+        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+            camera.position.x -= 100 / MainGameClass.PPM * deltaTime;
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
             camera.position.x += 100 / MainGameClass.PPM * deltaTime;
         }
     }
 
+    @Override
+    public void show() {
+
+    }
+
+    /**
+     * Will be executed once every frame
+     * @param delta deltaTime is the time passed between the last and the current frame in seconds. VERY IMPORTANT!
+     */
     @Override
     public void render(float delta) {
         update(delta);
@@ -74,9 +89,11 @@ public class PlayScreen implements Screen {
 
         renderer.render();
 
+        // Sets the coordinate system for rendering
         game.batch.setProjectionMatrix(camera.combined);
 
         game.batch.begin();
+        // Draw specific textures in here with the help of OpenGL
         game.batch.end();
     }
 
