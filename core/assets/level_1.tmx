@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="32" height="32" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" source="mario_bros_tileset.tsx"/>
+ <layer name="Kachelebene 1" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztzqENAAAIA7Bl/3+M4QqCqahvk0x/1cHBwcHBwcHBwcHBwcHB4fSwfbLUzg==
+  </data>
+ </layer>
+</map>
