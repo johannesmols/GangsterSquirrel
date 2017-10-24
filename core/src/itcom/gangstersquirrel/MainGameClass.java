@@ -10,7 +10,9 @@ public class MainGameClass extends Game {
 
 	// Enables certain debugging features like collision box rendering
 	public static final boolean DEBUG = true;
+	public static final boolean DEBUG_PLAY_SOUNDS = false;
 
+	// Configuration
 	public static final boolean FULLSCREEN = true;
 	public static final boolean RESIZABLE = false;
 	public static final int FPS = 60;
@@ -18,11 +20,14 @@ public class MainGameClass extends Game {
 	public static int WIDTH; // Game width
 	public static int HEIGHT; // Game height
 	public static float ASPECT_RATIO; // Aspect ratio
-	public static final float PPM = 1; // Pixels per meter
+	public static final float PPM = 100; // Pixels per meter
 
+	// Internal units
 	public static float GAME_WORLD_WIDTH = 1024; // Game world size (map dimension in pixels)
 	public static float GAME_WORLD_HEIGHT = 512;
+	public static float GRAVITY = 9.81f;
 
+	// Internal objects
 	public SpriteBatch batch; //Contains every sprite in the game
 	public BitmapFont default_font;
 
