@@ -83,7 +83,7 @@ public class PlayScreen implements Screen {
         box2DDebugRenderer = new Box2DDebugRenderer();
 
         // Set up the collision boxes for the ground and obstacle layers
-        new Box2DWorldCreator(world, map, new int[] { 2, 3});
+        new Box2DWorldCreator(world, map, new int[] { 2, 3, 4});
 
         // Player set-up
         player = new Player(world);
@@ -162,6 +162,8 @@ public class PlayScreen implements Screen {
     public void dispose() {
         map.dispose();
         renderer.dispose();
+        world.dispose();
+        box2DDebugRenderer.dispose();
         rainMusicReplaceLater.dispose();
         dropSoundReplaceLater.dispose();
     }

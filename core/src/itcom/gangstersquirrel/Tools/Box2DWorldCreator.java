@@ -6,6 +6,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.*;
 import itcom.gangstersquirrel.MainGameClass;
+import itcom.gangstersquirrel.Sprites.TestCoin;
 
 public class Box2DWorldCreator {
 
@@ -24,6 +25,12 @@ public class Box2DWorldCreator {
         for (int layer : layers) {
             for (MapObject object : map.getLayers().get(layer).getObjects().getByType(RectangleMapObject.class)) {
                 Rectangle rectangle = ((RectangleMapObject) object).getRectangle();
+
+                // Test coin
+                if (layer == 4) {
+                    new TestCoin(world, map, rectangle);
+                    continue;
+                }
 
                 bodyDefinition.type = BodyDef.BodyType.StaticBody;
                 bodyDefinition.position.set((rectangle.getX() + rectangle.getWidth() / 2) / MainGameClass.PPM, (rectangle.getY() + rectangle.getHeight() / 2) / MainGameClass.PPM);
