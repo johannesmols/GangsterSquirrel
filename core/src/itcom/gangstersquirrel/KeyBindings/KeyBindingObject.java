@@ -1,11 +1,11 @@
-package itcom.gangstersquirrel.KeyMap;
+package itcom.gangstersquirrel.KeyBindings;
 
-public class KeyAllocation {
+public class KeyBindingObject {
 
     String action;
     int[] keys;
 
-    public KeyAllocation(String action, int[] keys) {
+    public KeyBindingObject(String action, int[] keys) {
         this.action = action;
         this.keys = keys;
 

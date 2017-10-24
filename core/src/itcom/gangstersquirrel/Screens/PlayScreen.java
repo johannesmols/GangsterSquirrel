@@ -16,7 +16,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.viewport.*;
-import itcom.gangstersquirrel.KeyMap.KeyMap;
+import itcom.gangstersquirrel.KeyBindings.KeyBindings;
 import itcom.gangstersquirrel.MainGameClass;
 import itcom.gangstersquirrel.Sprites.Player;
 
@@ -45,7 +45,7 @@ public class PlayScreen implements Screen, InputProcessor {
     private boolean isJumping;
 
     // Keymap variables
-    private KeyMap keyMap;
+    private KeyBindings keyBindings;
 
     // Audio variables
     // Sounds = kept in memory (shouldn't be longer than 10 seconds)
@@ -86,8 +86,8 @@ public class PlayScreen implements Screen, InputProcessor {
         // Player set-up
         player = new Player(world);
 
-        // Keymap setup
-        keyMap = new KeyMap();
+        // Keybinding setup
+        keyBindings = new KeyBindings();
 
         // Register input processor
         Gdx.input.setInputProcessor(this);
@@ -221,15 +221,15 @@ public class PlayScreen implements Screen, InputProcessor {
     @Override
     public boolean keyDown(int keycode) {
 
-        if (keyMap.MOVE_LEFT.contains(keycode)) {
+        if (keyBindings.MOVE_LEFT.contains(keycode)) {
             isMovingLeft = true;
         }
 
-        if (keyMap.MOVE_RIGHT.contains(keycode)) {
+        if (keyBindings.MOVE_RIGHT.contains(keycode)) {
             isMovingRight = true;
         }
 
-        if (keyMap.JUMP.contains(keycode)) {
+        if (keyBindings.JUMP.contains(keycode)) {
             isJumping = true;
         }
 
@@ -239,15 +239,15 @@ public class PlayScreen implements Screen, InputProcessor {
     @Override
     public boolean keyUp(int keycode) {
 
-        if (keyMap.MOVE_LEFT.contains(keycode)) {
+        if (keyBindings.MOVE_LEFT.contains(keycode)) {
             isMovingLeft = false;
         }
 
-        if (keyMap.MOVE_RIGHT.contains(keycode)) {
+        if (keyBindings.MOVE_RIGHT.contains(keycode)) {
             isMovingRight = false;
         }
 
-        if (keyMap.JUMP.contains(keycode)) {
+        if (keyBindings.JUMP.contains(keycode)) {
             isJumping = false;
         }
 
