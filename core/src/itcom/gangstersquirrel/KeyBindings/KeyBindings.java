@@ -35,7 +35,7 @@ public class KeyBindings {
             if (!json.trim().isEmpty()) {
                 deserializeKeyBindings(fileHandle.readString());
             } else {
-                System.err.println("JSON keymap string is empty, creating default keymap");
+                System.err.println("JSON key bindings string is empty, creating default key bindings");
                 serializeKeyBindings(defaultKeyBindings);
                 // Assign those values to the key map lists afterwards
                 deserializeKeyBindings(fileHandle.readString());
@@ -43,12 +43,12 @@ public class KeyBindings {
         } else {
             // File does not exist, create default file
             serializeKeyBindings(defaultKeyBindings);
-            // Assign those values to the key map lists afterwards
+            // Assign those values to the key bindings lists afterwards
             deserializeKeyBindings(fileHandle.readString());
         }
     }
 
-    // Serialize key binding objects into JSON and write to the keymap JSON file
+    // Serialize key binding objects into JSON and write to the key bindings JSON file
     public void serializeKeyBindings(KeyBindingObject[] keyBindings) {
         Gson gson = new Gson();
         String json = gson.toJson(keyBindings);
@@ -60,12 +60,12 @@ public class KeyBindings {
         fileHandle.writeString(json, false); // false = overwrite instead of append
     }
 
-    // Deserialize JSON keymap file and write key bindings to the lists, which are used by the application to process input
+    // Deserialize JSON keybinding file and write key bindings to the lists, which are used by the application to process input
     private void deserializeKeyBindings(String json) {
         Gson gson = new Gson();
         KeyBindingObject[] keyBindings = gson.fromJson(json, KeyBindingObject[].class);
 
-        // Assign deserialized keymap to keymap lists
+        // Assign deserialized key bindings to key bindings lists
         for (KeyBindingObject key : keyBindings) {
             if (key.action.equals(actions[0])) {
                 JUMP.clear();

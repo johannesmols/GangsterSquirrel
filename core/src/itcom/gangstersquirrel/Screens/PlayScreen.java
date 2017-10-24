@@ -1,8 +1,6 @@
 package itcom.gangstersquirrel.Screens;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.*;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
@@ -16,11 +14,12 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.viewport.*;
+import itcom.gangstersquirrel.Input.GameplayInputProcessor;
 import itcom.gangstersquirrel.KeyBindings.KeyBindings;
 import itcom.gangstersquirrel.MainGameClass;
 import itcom.gangstersquirrel.Sprites.Player;
 
-public class PlayScreen implements Screen, InputProcessor {
+public class PlayScreen implements Screen {
 
     // Main class of the project
     final MainGameClass game;
@@ -40,12 +39,15 @@ public class PlayScreen implements Screen, InputProcessor {
 
     // Player variables
     private Player player;
-    private boolean isMovingLeft;
-    private boolean isMovingRight;
-    private boolean isJumping;
+    public static boolean isMovingLeft;
+    public static boolean isMovingRight;
+    public static boolean isJumping;
 
     // Keymap variables
-    private KeyBindings keyBindings;
+    public static KeyBindings keyBindings;
+
+    // Input processors
+    private InputProcessor gamePlayInputProcessor;
 
     // Audio variables
     // Sounds = kept in memory (shouldn't be longer than 10 seconds)
@@ -89,8 +91,11 @@ public class PlayScreen implements Screen, InputProcessor {
         // Keybinding setup
         keyBindings = new KeyBindings();
 
-        // Register input processor
-        Gdx.input.setInputProcessor(this);
+        // Register input processors
+        gamePlayInputProcessor = new GameplayInputProcessor();
+        InputMultiplexer inputMultiplexer = new InputMultiplexer();
+        inputMultiplexer.addProcessor(gamePlayInputProcessor);
+        Gdx.input.setInputProcessor(inputMultiplexer);
 
         //Load the template sound effect and the template background music and play immediately
         dropSoundReplaceLater = Gdx.audio.newSound(Gdx.files.internal("audio/waterdrop_replace_later.wav"));
@@ -216,71 +221,5 @@ public class PlayScreen implements Screen, InputProcessor {
         if (isMovingLeft && player.body.getLinearVelocity().x >= -MAXIMAL_X_VELOCITY) {
             player.body.applyLinearImpulse(new Vector2(-WALK_IMPULSE_VELOCITY, 0), player.body.getWorldCenter(), true);
         }
-    }
-
-    @Override
-    public boolean keyDown(int keycode) {
-
-        if (keyBindings.MOVE_LEFT.contains(keycode)) {
-            isMovingLeft = true;
-        }
-
-        if (keyBindings.MOVE_RIGHT.contains(keycode)) {
-            isMovingRight = true;
-        }
-
-        if (keyBindings.JUMP.contains(keycode)) {
-            isJumping = true;
-        }
-
-        return false;
-    }
-
-    @Override
-    public boolean keyUp(int keycode) {
-
-        if (keyBindings.MOVE_LEFT.contains(keycode)) {
-            isMovingLeft = false;
-        }
-
-        if (keyBindings.MOVE_RIGHT.contains(keycode)) {
-            isMovingRight = false;
-        }
-
-        if (keyBindings.JUMP.contains(keycode)) {
-            isJumping = false;
-        }
-
-        return false;
-    }
-
-    @Override
-    public boolean keyTyped(char character) {
-        return false;
-    }
-
-    @Override
-    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        return false;
-    }
-
-    @Override
-    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-        return false;
-    }
-
-    @Override
-    public boolean touchDragged(int screenX, int screenY, int pointer) {
-        return false;
-    }
-
-    @Override
-    public boolean mouseMoved(int screenX, int screenY) {
-        return false;
-    }
-
-    @Override
-    public boolean scrolled(int amount) {
-        return false;
     }
 }
