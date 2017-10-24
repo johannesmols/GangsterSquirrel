@@ -21,10 +21,11 @@ public class MainGameClass extends Game {
 	public static int HEIGHT; // Game height
 	public static float ASPECT_RATIO; // Aspect ratio
 	public static final float PPM = 100; // Pixels per meter
+    public static int ZOOM = 64;
 
 	// Internal units
-	public static float GAME_WORLD_WIDTH = 1024; // Game world size (map dimension in pixels)
-	public static float GAME_WORLD_HEIGHT = 512;
+	public static float GAME_WORLD_WIDTH = 16 * ZOOM; // Game world size (map dimension in pixels)
+	public static float GAME_WORLD_HEIGHT = 9 * ZOOM;
 	public static float GRAVITY = 9.81f;
 
 	// Internal objects
