@@ -177,7 +177,7 @@ public class PlayScreen implements Screen {
 
         // timeStep = amount of time the world simulates (https://github.com/libgdx/libgdx/wiki/Box2d)
         // velocity and position iterations = defines the precision of the calculations. Needs more calculation power, if higher
-        world.step(1/(float)MainGameClass.FPS, 6, 2);
+        world.step(1 / (float)MainGameClass.FPS, 6, 2);
 
         // Follow player with camera
         camera.position.x = player.body.getPosition().x;
@@ -189,16 +189,13 @@ public class PlayScreen implements Screen {
     }
 
     private void handleInput(float deltaTime) {
-        if (MainGameClass.DEBUG_PLAY_SOUNDS) {
-            if (Gdx.input.justTouched()) {
-                // Play template sound effect
-                dropSoundReplaceLater.play();
-            }
-        }
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
+        // Jumping
+        if (player.body.getLinearVelocity().y == 0 && (Gdx.input.isKeyJustPressed(Input.Keys.UP))) {
             player.body.applyLinearImpulse(new Vector2(0, JUMP_IMPULSE_VELOCITY), player.body.getWorldCenter(), true);
         }
+
+        // Horizontal movement
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) && player.body.getLinearVelocity().x <= MAXIMAL_X_VELOCITY) {
             player.body.applyLinearImpulse(new Vector2(WALK_IMPULSE_VELOCITY, 0), player.body.getWorldCenter(), true);
         }
