@@ -181,6 +181,7 @@ public class PlayScreen implements Screen {
 
         // Follow player with camera
         camera.position.x = player.body.getPosition().x;
+        camera.position.y = player.body.getPosition().y;
 
         // Update the camera's position
         camera.update();
