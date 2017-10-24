@@ -18,11 +18,12 @@ import itcom.gangstersquirrel.Input.GameplayInputProcessor;
 import itcom.gangstersquirrel.KeyBindings.KeyBindings;
 import itcom.gangstersquirrel.MainGameClass;
 import itcom.gangstersquirrel.Sprites.Player;
+import itcom.gangstersquirrel.Tools.Box2DWorldCreator;
 
 public class PlayScreen implements Screen {
 
     // Main class of the project
-    final MainGameClass game;
+    private final MainGameClass game;
 
     // Camera variables
     private OrthographicCamera camera;
@@ -82,8 +83,7 @@ public class PlayScreen implements Screen {
         box2DDebugRenderer = new Box2DDebugRenderer();
 
         // Set up the collision boxes for the ground and obstacle layers
-        setupBox2DRectangular(2);
-        setupBox2DRectangular(3);
+        new Box2DWorldCreator(world, map, new int[] { 2, 3});
 
         // Player set-up
         player = new Player(world);
@@ -166,35 +166,11 @@ public class PlayScreen implements Screen {
         dropSoundReplaceLater.dispose();
     }
 
-    /**
-     * Sets up the collision boxes for rectangle object layers in maps
-     * @param layer the object layer of the objects in Tiled
-     */
-    private void setupBox2DRectangular(int layer) {
-        BodyDef bodyDefinition = new BodyDef();
-        PolygonShape shape = new PolygonShape();
-        FixtureDef fixtureDefinition = new FixtureDef();
-        Body body;
-
-        for (MapObject object : map.getLayers().get(layer).getObjects().getByType(RectangleMapObject.class)) {
-            Rectangle rectangle = ((RectangleMapObject) object).getRectangle();
-
-            bodyDefinition.type = BodyDef.BodyType.StaticBody;
-            bodyDefinition.position.set((rectangle.getX() + rectangle.getWidth() / 2) / MainGameClass.PPM, (rectangle.getY() + rectangle.getHeight() / 2) / MainGameClass.PPM);
-
-            body = world.createBody(bodyDefinition);
-
-            shape.setAsBox(rectangle.getWidth() / 2 / MainGameClass.PPM, rectangle.getHeight() / 2 / MainGameClass.PPM);
-            fixtureDefinition.shape = shape;
-            body.createFixture(fixtureDefinition);
-        }
-    }
-
     private void update(float deltaTime) {
         this.handleInput(deltaTime);
 
         // timeStep = amount of time the world simulates (https://github.com/libgdx/libgdx/wiki/Box2d)
-        // velocity and position iterations = defines the precision of the calculations. Needs more calculation power, if higher
+        // velocity and position iterations = defines the precision of the calculations. Needs more calculation power, if higher. 6 and 2 are the recommended values
         world.step(1 / (float)MainGameClass.FPS, 6, 2);
 
         // Follow player with camera

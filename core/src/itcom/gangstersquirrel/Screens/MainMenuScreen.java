@@ -12,7 +12,7 @@ import itcom.gangstersquirrel.MainGameClass;
 public class MainMenuScreen implements Screen {
 
     // Main class of the project
-    final MainGameClass game;
+    private final MainGameClass game;
 
     // Camera variables
     OrthographicCamera camera;
