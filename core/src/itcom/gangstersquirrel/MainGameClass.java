@@ -17,7 +17,7 @@ public class MainGameClass extends Game {
 	public static float ASPECT_RATIO; // Aspect ratio
 	public static final float PPM = 1; // Pixels per meter
 
-	public static float GAME_WORLD_WIDTH = 512; // Game world size (map dimension in pixels)
+	public static float GAME_WORLD_WIDTH = 1024; // Game world size (map dimension in pixels)
 	public static float GAME_WORLD_HEIGHT = 512;
 
 	public SpriteBatch batch; //Contains every sprite in the game

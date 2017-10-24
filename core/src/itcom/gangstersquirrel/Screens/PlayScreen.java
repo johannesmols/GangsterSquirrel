@@ -47,7 +47,7 @@ public class PlayScreen implements Screen {
 
         // Load the first map from Tiles
         mapLoader = new TmxMapLoader();
-        map = mapLoader.load("maps/level_1.tmx");
+        map = mapLoader.load("maps/test_level/test_level.tmx");
         renderer = new OrthogonalTiledMapRenderer(map, 1);
 
         //Load the template sound effect and the template background music and play immediately
