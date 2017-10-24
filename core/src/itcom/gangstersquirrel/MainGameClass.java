@@ -8,6 +8,9 @@ import itcom.gangstersquirrel.Screens.MainMenuScreen;
 
 public class MainGameClass extends Game {
 
+	// Enables certain debugging features like collision box rendering
+	public static final boolean DEBUG = true;
+
 	public static final boolean FULLSCREEN = true;
 	public static final boolean RESIZABLE = false;
 	public static final int FPS = 60;

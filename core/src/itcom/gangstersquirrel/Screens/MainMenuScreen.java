@@ -30,7 +30,7 @@ public class MainMenuScreen implements Screen {
 
     /**
      * Set up all important things, can be considered as the create() method like in the MainGameClass
-     * @param game
+     * @param game The main game class
      */
     public MainMenuScreen(MainGameClass game) {
         this.game = game;
