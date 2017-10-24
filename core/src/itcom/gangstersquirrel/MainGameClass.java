@@ -4,7 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import itcom.gangstersquirrel.Screens.MainMenuScreen;
+import itcom.gangstersquirrel.Screens.PlayScreen;
 
 public class MainGameClass extends Game {
 
@@ -21,7 +21,7 @@ public class MainGameClass extends Game {
 	public static int HEIGHT; // Game height
 	public static float ASPECT_RATIO; // Aspect ratio
 	public static final float PPM = 100; // Pixels per meter
-    public static int ZOOM = 64;
+    public static int ZOOM = 32;
 
 	// Internal units
 	public static float GAME_WORLD_WIDTH = 16 * ZOOM; // Game world size (map dimension in pixels)
@@ -42,8 +42,8 @@ public class MainGameClass extends Game {
 		// No parameters = use libGDX's default Arial font
 		default_font = new BitmapFont();
 
-		// Load main menu screen
-		this.setScreen(new MainMenuScreen(this));
+		// Load first screen
+		this.setScreen(new PlayScreen(this));
 	}
 
 	@Override

@@ -1,7 +1,7 @@
 package itcom.gangstersquirrel.Screens;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
@@ -16,10 +16,11 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.viewport.*;
+import itcom.gangstersquirrel.KeyMap.KeyMap;
 import itcom.gangstersquirrel.MainGameClass;
 import itcom.gangstersquirrel.Sprites.Player;
 
-public class PlayScreen implements Screen {
+public class PlayScreen implements Screen, InputProcessor {
 
     // Main class of the project
     final MainGameClass game;
@@ -39,6 +40,12 @@ public class PlayScreen implements Screen {
 
     // Player variables
     private Player player;
+    private boolean isMovingLeft;
+    private boolean isMovingRight;
+    private boolean isJumping;
+
+    // Keymap variables
+    private KeyMap keyMap;
 
     // Audio variables
     // Sounds = kept in memory (shouldn't be longer than 10 seconds)
@@ -79,6 +86,12 @@ public class PlayScreen implements Screen {
         // Player set-up
         player = new Player(world);
 
+        // Keymap setup
+        keyMap = new KeyMap();
+
+        // Register input processor
+        Gdx.input.setInputProcessor(this);
+
         //Load the template sound effect and the template background music and play immediately
         dropSoundReplaceLater = Gdx.audio.newSound(Gdx.files.internal("audio/waterdrop_replace_later.wav"));
         rainMusicReplaceLater = Gdx.audio.newMusic(Gdx.files.internal("audio/rain_replace_later.mp3"));
@@ -97,7 +110,7 @@ public class PlayScreen implements Screen {
         this.update(delta);
 
         // Clear the previous frame
-        Gdx.gl.glClearColor(1, 0, 0, 1);
+        Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         renderer.render();
@@ -192,16 +205,82 @@ public class PlayScreen implements Screen {
     private void handleInput(float deltaTime) {
 
         // Jumping
-        if (player.body.getLinearVelocity().y == 0 && (Gdx.input.isKeyJustPressed(Input.Keys.UP))) {
+        if (isJumping && player.body.getLinearVelocity().y == 0) {
             player.body.applyLinearImpulse(new Vector2(0, JUMP_IMPULSE_VELOCITY), player.body.getWorldCenter(), true);
         }
 
         // Horizontal movement
-        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) && player.body.getLinearVelocity().x <= MAXIMAL_X_VELOCITY) {
+        if (isMovingRight && player.body.getLinearVelocity().x <= MAXIMAL_X_VELOCITY) {
             player.body.applyLinearImpulse(new Vector2(WALK_IMPULSE_VELOCITY, 0), player.body.getWorldCenter(), true);
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.LEFT) && player.body.getLinearVelocity().x >= -MAXIMAL_X_VELOCITY) {
+        if (isMovingLeft && player.body.getLinearVelocity().x >= -MAXIMAL_X_VELOCITY) {
             player.body.applyLinearImpulse(new Vector2(-WALK_IMPULSE_VELOCITY, 0), player.body.getWorldCenter(), true);
         }
+    }
+
+    @Override
+    public boolean keyDown(int keycode) {
+
+        if (keyMap.MOVE_LEFT.contains(keycode)) {
+            isMovingLeft = true;
+        }
+
+        if (keyMap.MOVE_RIGHT.contains(keycode)) {
+            isMovingRight = true;
+        }
+
+        if (keyMap.JUMP.contains(keycode)) {
+            isJumping = true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public boolean keyUp(int keycode) {
+
+        if (keyMap.MOVE_LEFT.contains(keycode)) {
+            isMovingLeft = false;
+        }
+
+        if (keyMap.MOVE_RIGHT.contains(keycode)) {
+            isMovingRight = false;
+        }
+
+        if (keyMap.JUMP.contains(keycode)) {
+            isJumping = false;
+        }
+
+        return false;
+    }
+
+    @Override
+    public boolean keyTyped(char character) {
+        return false;
+    }
+
+    @Override
+    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        return false;
+    }
+
+    @Override
+    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+        return false;
+    }
+
+    @Override
+    public boolean touchDragged(int screenX, int screenY, int pointer) {
+        return false;
+    }
+
+    @Override
+    public boolean mouseMoved(int screenX, int screenY) {
+        return false;
+    }
+
+    @Override
+    public boolean scrolled(int amount) {
+        return false;
     }
 }
