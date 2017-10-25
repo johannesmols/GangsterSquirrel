@@ -33,7 +33,7 @@ public class KeyBindings {
             // File already exists, no need to create new
             String json = fileHandle.readString();
             if (!json.trim().isEmpty()) {
-                deserializeKeyBindings(fileHandle.readString());
+                deserializeKeyBindings(json);
             } else {
                 System.err.println("JSON key bindings string is empty, creating default key bindings");
                 serializeKeyBindings(defaultKeyBindings);
@@ -49,14 +49,20 @@ public class KeyBindings {
     }
 
     // Serialize key binding objects into JSON and write to the key bindings JSON file
+    // Does not automatically assign the key bindings to the key bindings list, call deserializeKeyBindings() after this method to achieve this
     public void serializeKeyBindings(KeyBindingObject[] keyBindings) {
         Gson gson = new Gson();
         String json = gson.toJson(keyBindings);
-        try {
-            fileHandle.file().createNewFile();
-        } catch (IOException e) {
-            e.printStackTrace();
+
+        // Create new JSON file, if it doesn't exist already
+        if (!fileHandle.exists()) {
+            try {
+                boolean successfull = fileHandle.file().createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+
         fileHandle.writeString(json, false); // false = overwrite instead of append
     }
 
