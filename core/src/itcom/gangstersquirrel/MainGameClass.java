@@ -4,7 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import itcom.gangstersquirrel.Screens.PlayScreen;
+import itcom.gangstersquirrel.Screens.SplashScreen;
 
 public class MainGameClass extends Game {
 
@@ -43,7 +43,7 @@ public class MainGameClass extends Game {
 		default_font = new BitmapFont();
 
 		// Load first screen
-		this.setScreen(new PlayScreen(this));
+		this.setScreen(new SplashScreen(this));
 	}
 
 	@Override
