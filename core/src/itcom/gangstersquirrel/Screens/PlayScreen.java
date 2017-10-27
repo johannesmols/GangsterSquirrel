@@ -72,7 +72,7 @@ public class PlayScreen implements Screen {
 
         // Load the first map from Tiles
         mapLoader = new TmxMapLoader();
-        map = mapLoader.load("maps/test_level/test_level.tmx");
+        map = mapLoader.load("maps/level_1/level_1.tmx");
         renderer = new OrthogonalTiledMapRenderer(map, 1 / MainGameClass.PPM);
 
         // Box2D physics setup
@@ -80,7 +80,7 @@ public class PlayScreen implements Screen {
         box2DDebugRenderer = new Box2DDebugRenderer();
 
         // Set up the collision boxes for the ground and obstacle layers
-        new Box2DWorldCreator(world, map, new int[] { 2, 3, 4}); // int array = object layers of the map that need collision boxes
+        new Box2DWorldCreator(world, map, new int[] { 2, 3, 4, 5}); // int array = object layers of the map that need collision boxes
 
         // Player set-up
         player = new Player(world);
