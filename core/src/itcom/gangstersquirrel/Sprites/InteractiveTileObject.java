@@ -6,6 +6,9 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.*;
 import itcom.gangstersquirrel.MainGameClass;
 
+/**
+ * Abstract class for interactive tile objects in the game world
+ */
 public abstract class InteractiveTileObject {
 
     protected World world;

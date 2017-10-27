@@ -7,8 +7,16 @@ import static itcom.gangstersquirrel.Screens.PlayScreen.isJumping;
 import static itcom.gangstersquirrel.Screens.PlayScreen.isMovingLeft;
 import static itcom.gangstersquirrel.Screens.PlayScreen.isMovingRight;
 
+/**
+ * Handles all gameplay related input for the PlayScreen class
+ */
 public class GameplayInputProcessor implements InputProcessor {
 
+    /**
+     * Gets called every time a key is pressed down
+     * @param keycode an integer, which contains the keycode of the pressed key
+     * @return whether the input was processed
+     */
     @Override
     public boolean keyDown(int keycode) {
 
@@ -27,6 +35,11 @@ public class GameplayInputProcessor implements InputProcessor {
         return false;
     }
 
+    /**
+     * Gets called every time a key is released
+     * @param keycode an integer, which contains the keycode of the pressed key
+     * @return whether the input was processed
+     */
     @Override
     public boolean keyUp(int keycode) {
 
@@ -45,6 +58,11 @@ public class GameplayInputProcessor implements InputProcessor {
         return false;
     }
 
+    /**
+     * Gets called every time a key is pressed down and released again
+     * @param character the character of the typed key
+     * @return whether the input was processed
+     */
     @Override
     public boolean keyTyped(char character) {
         return false;

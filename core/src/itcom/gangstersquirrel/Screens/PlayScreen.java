@@ -18,6 +18,9 @@ import itcom.gangstersquirrel.MainGameClass;
 import itcom.gangstersquirrel.Sprites.Player;
 import itcom.gangstersquirrel.Tools.Box2DWorldCreator;
 
+/**
+ * The most important screen of the game, the game itself
+ */
 public class PlayScreen implements Screen {
 
     // Main class of the project
@@ -151,31 +154,49 @@ public class PlayScreen implements Screen {
         game.batch.end();
     }
 
+    /**
+     * Gets called when the application is shown for the first time
+     */
     @Override
     public void show() {
 
     }
 
+    /**
+     * Gets called when the application is resized
+     */
     @Override
     public void resize(int width, int height) {
         viewport.update(width, height);
     }
 
+    /**
+     * Gets called when the application is paused, only available on Android
+     */
     @Override
     public void pause() {
 
     }
 
+    /**
+     * Gets called when the application is resumed, only available on Android
+     */
     @Override
     public void resume() {
 
     }
 
+    /**
+     * Gets called when the application is hidden
+     */
     @Override
     public void hide() {
 
     }
 
+    /**
+     * Disposes of unused resources correctly when closing the application
+     */
     @Override
     public void dispose() {
         map.dispose();
@@ -186,6 +207,10 @@ public class PlayScreen implements Screen {
         dropSoundReplaceLater.dispose();
     }
 
+    /**
+     * Extends the render method, updates the world and the camera
+     * @param deltaTime the time between the last and current frame in seconds
+     */
     private void update(float deltaTime) {
         this.handleInput(deltaTime);
 
@@ -203,6 +228,10 @@ public class PlayScreen implements Screen {
         renderer.setView(camera);
     }
 
+    /**
+     * Extends the update method, handles the input and updates the game world accordingly
+     * @param deltaTime the time between the last and current frame in seconds
+     */
     private void handleInput(float deltaTime) {
 
         // Jumping
@@ -219,6 +248,10 @@ public class PlayScreen implements Screen {
         }
     }
 
+    /**
+     * Returns the texture atlas for the player sprite
+     * @return the player texture atlas
+     */
     public TextureAtlas getPlayerTextureAtlas() {
         return playerTextureAtlas;
     }

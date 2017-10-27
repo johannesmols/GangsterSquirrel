@@ -6,6 +6,9 @@ import com.badlogic.gdx.physics.box2d.*;
 import itcom.gangstersquirrel.MainGameClass;
 import itcom.gangstersquirrel.Screens.PlayScreen;
 
+/**
+ * The class of the player, extending the Sprite class and handling the textures, animations, positions and more of the player
+ */
 public class Player extends Sprite {
 
     private final int PLAYER_PIXEL_WIDTH = 32;
@@ -30,10 +33,17 @@ public class Player extends Sprite {
         setRegion(playerStanding);
     }
 
+    /**
+     * Update the position of the sprite
+     * @param deltaTime the time between the last and current frame in seconds
+     */
     public void update(float deltaTime) {
         setPosition(body.getPosition().x - getWidth() / 2, body.getPosition().y - getHeight() / 2);
     }
 
+    /**
+     * Defines the Box2D physics properties of the player, including collision box, body and fixture definition
+     */
     public void definePlayer() {
         BodyDef bodyDef = new BodyDef();
         bodyDef.position.set(32 / MainGameClass.PPM, 64 / MainGameClass.PPM);

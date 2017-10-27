@@ -9,6 +9,9 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import itcom.gangstersquirrel.MainGameClass;
 
+/**
+ * Shows a splashscreen at the start of the application for a defined amount of time
+ */
 public class SplashScreen implements Screen {
 
     private MainGameClass game;
@@ -20,6 +23,9 @@ public class SplashScreen implements Screen {
         this.game = game;
     }
 
+    /**
+     * Gets called when the application is shown for the first time
+     */
     @Override
     public void show() {
         splashImage.setSize(stage.getWidth(), stage.getHeight());
@@ -32,6 +38,9 @@ public class SplashScreen implements Screen {
         })));
     }
 
+    /**
+     * Gets called once every frame and updates all visual components of the application
+     */
     @Override
     public void render(float delta) {
         Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -40,26 +49,41 @@ public class SplashScreen implements Screen {
         stage.draw();
     }
 
+    /**
+     * Gets called when the application is resized
+     */
     @Override
     public void resize(int width, int height) {
 
     }
 
+    /**
+     * Gets called when the application is paused, only available on Android
+     */
     @Override
     public void pause() {
 
     }
 
+    /**
+     * Gets called when the application is resumed, only available on Android
+     */
     @Override
     public void resume() {
 
     }
 
+    /**
+     * Gets called when the application is hidden
+     */
     @Override
     public void hide() {
 
     }
 
+    /**
+     * Disposes of unused resources correctly when closing the application
+     */
     @Override
     public void dispose() {
         texture.dispose();

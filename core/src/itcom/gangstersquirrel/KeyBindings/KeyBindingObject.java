@@ -1,5 +1,8 @@
 package itcom.gangstersquirrel.KeyBindings;
 
+/**
+ * An object which stores a certain action as String and it's corresponding key codes as Integers
+ */
 public class KeyBindingObject {
 
     String action;

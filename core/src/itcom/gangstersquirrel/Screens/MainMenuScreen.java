@@ -13,6 +13,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import itcom.gangstersquirrel.MainGameClass;
 
+/**
+ * The main screen of the application after start. It is possible to load levels, change options or exit the game
+ */
 public class MainMenuScreen implements Screen {
 
     private MainGameClass game;
@@ -62,11 +65,17 @@ public class MainMenuScreen implements Screen {
         Gdx.input.setInputProcessor(stage);
     }
 
+    /**
+     * Gets called when the application is shown for the first time
+     */
     @Override
     public void show() {
 
     }
 
+    /**
+     * Gets called once every frame and updates all visual components of the application
+     */
     @Override
     public void render(float delta) {
         Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -77,26 +86,41 @@ public class MainMenuScreen implements Screen {
         game.batch.end();
     }
 
+    /**
+     * Gets called when the application is resized
+     */
     @Override
     public void resize(int width, int height) {
 
     }
 
+    /**
+     * Gets called when the application is paused, only available on Android
+     */
     @Override
     public void pause() {
 
     }
 
+    /**
+     * Gets called when the application is resumed, only available on Android
+     */
     @Override
     public void resume() {
 
     }
 
+    /**
+     * Gets called when the application is hidden
+     */
     @Override
     public void hide() {
 
     }
 
+    /**
+     * Disposes of unused resources correctly when closing the application
+     */
     @Override
     public void dispose() {
 

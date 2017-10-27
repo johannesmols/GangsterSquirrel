@@ -8,6 +8,9 @@ import com.badlogic.gdx.physics.box2d.*;
 import itcom.gangstersquirrel.MainGameClass;
 import itcom.gangstersquirrel.Sprites.TestCoin;
 
+/**
+ * Creates the Box2D world of a map
+ */
 public class Box2DWorldCreator {
 
     /**
