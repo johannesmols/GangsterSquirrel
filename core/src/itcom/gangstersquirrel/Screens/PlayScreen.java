@@ -80,6 +80,7 @@ public class PlayScreen implements Screen {
             default:
                 System.err.println("Couldn't find level, exiting application");
                 Gdx.app.exit();
+                System.exit(0);
                 break;
         }
 
