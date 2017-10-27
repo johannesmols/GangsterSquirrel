@@ -5,6 +5,7 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
@@ -34,6 +35,9 @@ public class PlayScreen implements Screen {
     // Box2D variables
     private World world;
     private Box2DDebugRenderer box2DDebugRenderer;
+
+    // Texture variables
+    private TextureAtlas playerTextureAtlas;
 
     // Player variables
     private Player player;
@@ -65,6 +69,8 @@ public class PlayScreen implements Screen {
     public PlayScreen(MainGameClass game) {
         this.game = game;
 
+        playerTextureAtlas = new TextureAtlas("sprites/player/squirrel.txt");
+
         // Set up camera and viewport
         camera = new OrthographicCamera();
         viewport = new FitViewport(MainGameClass.GAME_WORLD_WIDTH / MainGameClass.PPM, MainGameClass.GAME_WORLD_HEIGHT / MainGameClass.PPM, camera);
@@ -91,10 +97,10 @@ public class PlayScreen implements Screen {
         box2DDebugRenderer = new Box2DDebugRenderer();
 
         // Set up the collision boxes for the ground and obstacle layers
-        new Box2DWorldCreator(world, map, new int[] { 2, 3, 4, 5}); // int array = object layers of the map that need collision boxes
+        new Box2DWorldCreator(world, map, new int[] { 2, 3, 4, 5 }); // int array = object layers of the map that need collision boxes
 
         // Player set-up
-        player = new Player(world);
+        player = new Player(world, this);
 
         // Keybinding setup
         keyBindings = new KeyBindings();
@@ -133,11 +139,15 @@ public class PlayScreen implements Screen {
             box2DDebugRenderer.render(world, camera.combined);
         }
 
+        // Update the player sprite
+        player.update(delta);
+
         // Sets the coordinate system for rendering
         game.batch.setProjectionMatrix(camera.combined);
 
         game.batch.begin();
         // Draw specific textures in here with the help of OpenGL
+        player.draw(game.batch);
         game.batch.end();
     }
 
@@ -207,5 +217,9 @@ public class PlayScreen implements Screen {
         if (isMovingLeft && player.body.getLinearVelocity().x >= -MAXIMAL_X_VELOCITY) {
             player.body.applyLinearImpulse(new Vector2(-WALK_IMPULSE_VELOCITY, 0), player.body.getWorldCenter(), true);
         }
+    }
+
+    public TextureAtlas getPlayerTextureAtlas() {
+        return playerTextureAtlas;
     }
 }
