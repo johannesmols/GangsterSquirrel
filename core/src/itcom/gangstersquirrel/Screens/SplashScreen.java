@@ -1,6 +1,5 @@
 package itcom.gangstersquirrel.Screens;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -28,7 +27,7 @@ public class SplashScreen implements Screen {
         splashImage.addAction(Actions.sequence(Actions.alpha(0), Actions.fadeIn(3.0f), Actions.delay(1), Actions.run(new Runnable() {
             @Override
             public void run() {
-                ((Game) Gdx.app.getApplicationListener()).setScreen(new PlayScreen(game));
+                game.setScreen(new PlayScreen(game));
             }
         })));
     }
