@@ -72,7 +72,17 @@ public class PlayScreen implements Screen {
 
         // Load the first map from Tiles
         mapLoader = new TmxMapLoader();
-        map = mapLoader.load("maps/level_1/level_1.tmx");
+
+        switch (MainGameClass.CURRENT_LEVEL) {
+            case 1:
+                map = mapLoader.load("maps/level_1/level_1.tmx");
+                break;
+            default:
+                System.err.println("Couldn't find level, exiting application");
+                Gdx.app.exit();
+                break;
+        }
+
         renderer = new OrthogonalTiledMapRenderer(map, 1 / MainGameClass.PPM);
 
         // Box2D physics setup

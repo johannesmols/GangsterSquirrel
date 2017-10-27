@@ -28,6 +28,9 @@ public class MainGameClass extends Game {
 	public static float GAME_WORLD_HEIGHT = 9 * ZOOM;
 	public static float GRAVITY = 9.81f;
 
+	// Internal level counter
+	public static int CURRENT_LEVEL = 1;
+
 	// Internal objects
 	public SpriteBatch batch; //Contains every sprite in the game
 	public BitmapFont default_font;
