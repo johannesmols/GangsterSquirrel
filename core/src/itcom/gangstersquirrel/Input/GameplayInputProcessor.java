@@ -3,9 +3,9 @@ package itcom.gangstersquirrel.Input;
 import com.badlogic.gdx.InputProcessor;
 
 import static itcom.gangstersquirrel.Screens.PlayScreen.keyBindings;
-import static itcom.gangstersquirrel.Screens.PlayScreen.isJumping;
-import static itcom.gangstersquirrel.Screens.PlayScreen.isMovingLeft;
-import static itcom.gangstersquirrel.Screens.PlayScreen.isMovingRight;
+import static itcom.gangstersquirrel.Screens.PlayScreen.isPressingJump;
+import static itcom.gangstersquirrel.Screens.PlayScreen.isPressingMoveLeft;
+import static itcom.gangstersquirrel.Screens.PlayScreen.isPressingMoveRight;
 
 /**
  * Handles all gameplay related input for the PlayScreen class
@@ -21,15 +21,15 @@ public class GameplayInputProcessor implements InputProcessor {
     public boolean keyDown(int keycode) {
 
         if (keyBindings.MOVE_LEFT.contains(keycode)) {
-            isMovingLeft = true;
+            isPressingMoveLeft = true;
         }
 
         if (keyBindings.MOVE_RIGHT.contains(keycode)) {
-            isMovingRight = true;
+            isPressingMoveRight = true;
         }
 
         if (keyBindings.JUMP.contains(keycode)) {
-            isJumping = true;
+            isPressingJump = true;
         }
 
         return false;
@@ -44,15 +44,15 @@ public class GameplayInputProcessor implements InputProcessor {
     public boolean keyUp(int keycode) {
 
         if (keyBindings.MOVE_LEFT.contains(keycode)) {
-            isMovingLeft = false;
+            isPressingMoveLeft = false;
         }
 
         if (keyBindings.MOVE_RIGHT.contains(keycode)) {
-            isMovingRight = false;
+            isPressingMoveRight = false;
         }
 
         if (keyBindings.JUMP.contains(keycode)) {
-            isJumping = false;
+            isPressingJump = false;
         }
 
         return false;

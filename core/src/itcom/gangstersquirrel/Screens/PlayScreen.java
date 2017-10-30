@@ -44,9 +44,9 @@ public class PlayScreen implements Screen {
 
     // Player variables
     private Player player;
-    public static boolean isMovingLeft;
-    public static boolean isMovingRight;
-    public static boolean isJumping;
+    public static boolean isPressingMoveLeft;
+    public static boolean isPressingMoveRight;
+    public static boolean isPressingJump;
 
     // Keymap variables
     public static KeyBindings keyBindings;
@@ -223,9 +223,10 @@ public class PlayScreen implements Screen {
         camera.position.y = player.body.getPosition().y;
 
         // Flip texture depending on the moving direction of the player
-        if (player.body.getLinearVelocity().x >= 0) {
+        // Don't do anything when the velocity is zero
+        if (player.body.getLinearVelocity().x > 0) {
             player.setFlip(true, false);
-        } else {
+        } else if (player.body.getLinearVelocity().x < 0) {
             player.setFlip(false, false);
         }
 
@@ -242,15 +243,15 @@ public class PlayScreen implements Screen {
     private void handleInput(float deltaTime) {
 
         // Jumping
-        if (isJumping && player.body.getLinearVelocity().y == 0) {
+        if (isPressingJump && player.body.getLinearVelocity().y == 0) {
             player.body.applyLinearImpulse(new Vector2(0, JUMP_IMPULSE_VELOCITY), player.body.getWorldCenter(), true);
         }
 
         // Horizontal movement
-        if (isMovingRight && player.body.getLinearVelocity().x <= MAXIMAL_X_VELOCITY) {
+        if (isPressingMoveRight && player.body.getLinearVelocity().x <= MAXIMAL_X_VELOCITY) {
             player.body.applyLinearImpulse(new Vector2(WALK_IMPULSE_VELOCITY, 0), player.body.getWorldCenter(), true);
         }
-        if (isMovingLeft && player.body.getLinearVelocity().x >= -MAXIMAL_X_VELOCITY) {
+        if (isPressingMoveLeft && player.body.getLinearVelocity().x >= -MAXIMAL_X_VELOCITY) {
             player.body.applyLinearImpulse(new Vector2(-WALK_IMPULSE_VELOCITY, 0), player.body.getWorldCenter(), true);
         }
     }
