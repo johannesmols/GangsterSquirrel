@@ -222,6 +222,13 @@ public class PlayScreen implements Screen {
         camera.position.x = player.body.getPosition().x;
         camera.position.y = player.body.getPosition().y;
 
+        // Flip texture depending on the moving direction of the player
+        if (player.body.getLinearVelocity().x >= 0) {
+            player.setFlip(true, false);
+        } else {
+            player.setFlip(false, false);
+        }
+
         // Update the camera's position
         camera.update();
         // Renderer will draw only what the camera can see
