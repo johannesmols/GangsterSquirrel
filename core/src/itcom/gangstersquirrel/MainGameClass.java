@@ -1,3 +1,12 @@
+/**
+ * A simple 2D game created with the libGDX framework
+ * This game was created during the P1 project in IT, Communication and New Media (1. Semester, 2017) at Aalborg University Copenhagen
+ *
+ * @author Johannes Mols, Alexander Ludvig Brüchmann, Boris Yordanov, Agata Surmacz, Muheb Khan, Rehan Mir, Martin Sander
+ * @version 1.0
+ * @since 2017-10-23
+ */
+
 package itcom.gangstersquirrel;
 
 import com.badlogic.gdx.Game;
@@ -6,6 +15,9 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import itcom.gangstersquirrel.Screens.SplashScreen;
 
+/**
+ * The main class of the game and entrance point
+ */
 public class MainGameClass extends Game {
 
 	// Enables certain debugging features like collision box rendering
@@ -28,10 +40,16 @@ public class MainGameClass extends Game {
 	public static float GAME_WORLD_HEIGHT = 9 * ZOOM;
 	public static float GRAVITY = 9.81f;
 
+	// Internal level counter
+	public static int CURRENT_LEVEL = 1;
+
 	// Internal objects
 	public SpriteBatch batch; //Contains every sprite in the game
 	public BitmapFont default_font;
 
+	/**
+	 * The first method that is called in the entire application, sets up basic variables and loads the first screen
+	 */
 	@Override
 	public void create () {
 		WIDTH = Gdx.graphics.getWidth();
@@ -46,12 +64,18 @@ public class MainGameClass extends Game {
 		this.setScreen(new SplashScreen(this));
 	}
 
+	/**
+	 * Gets called once every frame and updates all visual components of the application
+	 */
 	@Override
 	public void render () {
 		// Very important!
 		super.render();
 	}
 
+	/**
+	 * Disposes of unused resources correctly when closing the application
+	 */
 	@Override
 	public void dispose () {
 		batch.dispose();
