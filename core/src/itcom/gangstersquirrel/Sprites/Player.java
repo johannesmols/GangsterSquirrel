@@ -11,10 +11,11 @@ import itcom.gangstersquirrel.Screens.PlayScreen;
  */
 public class Player extends Sprite {
 
+    // Only for testing until we decided if we want to use a circle or box as collision box
+    private final boolean USE_CIRCLE_COLLISION_BOX = true;
+
     private final int PLAYER_PIXEL_WIDTH = 32;
     private final int PLAYER_PIXEL_HEIGHT = 32;
-    private final int PLAYER_BOX_WIDTH = 5;
-    private final int PLAYER_BOX_HEIGHT = 10;
 
     public World world;
     public Body body;
@@ -51,10 +52,17 @@ public class Player extends Sprite {
         body = world.createBody(bodyDef);
 
         FixtureDef fixtureDef = new FixtureDef();
-        PolygonShape shape = new PolygonShape();
-        shape.setAsBox(PLAYER_BOX_WIDTH / MainGameClass.PPM, PLAYER_BOX_HEIGHT / MainGameClass.PPM);
+        if (USE_CIRCLE_COLLISION_BOX) {
+            CircleShape shape = new CircleShape();
+            shape.setRadius(PLAYER_PIXEL_WIDTH / 2 / MainGameClass.PPM);
+            fixtureDef.shape = shape;
+        } else {
+            PolygonShape shape = new PolygonShape();
+            shape.setAsBox(PLAYER_PIXEL_WIDTH / 2 / MainGameClass.PPM, PLAYER_PIXEL_HEIGHT / 2 / MainGameClass.PPM);
+            fixtureDef.shape = shape;
+        }
 
-        fixtureDef.shape = shape;
+        //fixtureDef.shape = shape;
         body.createFixture(fixtureDef);
     }
 
