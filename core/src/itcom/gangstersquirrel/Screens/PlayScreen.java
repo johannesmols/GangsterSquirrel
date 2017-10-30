@@ -2,7 +2,6 @@ package itcom.gangstersquirrel.Screens;
 
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -59,8 +58,7 @@ public class PlayScreen implements Screen {
     // Audio variables
     // Sounds = kept in memory (shouldn't be longer than 10 seconds)
     // Music = streamed from file (can be memory intensive to keep in memory)
-    private Sound dropSoundReplaceLater;
-    private Music rainMusicReplaceLater;
+    private Music level1BackgroundMusic;
 
     // Gameplay variables
     private final float JUMP_IMPULSE_VELOCITY = 4f;
@@ -119,11 +117,10 @@ public class PlayScreen implements Screen {
         Gdx.input.setInputProcessor(inputMultiplexer);
 
         //Load the template sound effect and the template background music and play immediately
-        dropSoundReplaceLater = Gdx.audio.newSound(Gdx.files.internal("audio/waterdrop_replace_later.wav"));
-        rainMusicReplaceLater = Gdx.audio.newMusic(Gdx.files.internal("audio/rain_replace_later.mp3"));
-        rainMusicReplaceLater.setLooping(true);
+        level1BackgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("audio/level_1_music.mp3"));
+        level1BackgroundMusic.setLooping(true);
         if (MainGameClass.DEBUG_PLAY_SOUNDS) {
-            rainMusicReplaceLater.play();
+            level1BackgroundMusic.play();
         }
     }
 
@@ -207,8 +204,8 @@ public class PlayScreen implements Screen {
         renderer.dispose();
         world.dispose();
         box2DDebugRenderer.dispose();
-        rainMusicReplaceLater.dispose();
-        dropSoundReplaceLater.dispose();
+        level1BackgroundMusic.dispose();
+        level1BackgroundMusic.dispose();
     }
 
     /**
