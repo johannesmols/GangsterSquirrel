@@ -14,6 +14,7 @@ public class Player extends Sprite {
     // Only for testing until we decided if we want to use a circle or box as collision box
     private final boolean USE_CIRCLE_COLLISION_BOX = true;
 
+    // Texture resolution
     private final int PLAYER_PIXEL_WIDTH = 32;
     private final int PLAYER_PIXEL_HEIGHT = 32;
 
@@ -62,8 +63,10 @@ public class Player extends Sprite {
             fixtureDef.shape = shape;
         }
 
-        //fixtureDef.shape = shape;
         body.createFixture(fixtureDef);
+
+        // Notice collisions on the top of the collision box
+        EdgeShape head = new EdgeShape();
     }
 
 }

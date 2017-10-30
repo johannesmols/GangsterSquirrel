@@ -17,6 +17,7 @@ import itcom.gangstersquirrel.KeyBindings.KeyBindings;
 import itcom.gangstersquirrel.MainGameClass;
 import itcom.gangstersquirrel.Sprites.Player;
 import itcom.gangstersquirrel.Tools.Box2DWorldCreator;
+import itcom.gangstersquirrel.Tools.WorldContactListener;
 
 /**
  * The most important screen of the game, the game itself
@@ -38,6 +39,7 @@ public class PlayScreen implements Screen {
     // Box2D variables
     private World world;
     private Box2DDebugRenderer box2DDebugRenderer;
+    private WorldContactListener worldContactListener;
 
     // Texture variables
     private TextureAtlas playerTextureAtlas;
@@ -98,6 +100,8 @@ public class PlayScreen implements Screen {
         // Box2D physics setup
         world = new World(new Vector2(0, - MainGameClass.GRAVITY), true); // gravity, doSleep
         box2DDebugRenderer = new Box2DDebugRenderer();
+        worldContactListener = new WorldContactListener();
+        world.setContactListener(worldContactListener);
 
         // Set up the collision boxes for the ground and obstacle layers
         new Box2DWorldCreator(world, map, new int[] { 2, 3, 4, 5 }); // int array = object layers of the map that need collision boxes
@@ -241,6 +245,13 @@ public class PlayScreen implements Screen {
      * @param deltaTime the time between the last and current frame in seconds
      */
     private void handleInput(float deltaTime) {
+
+        // Toggle debug
+        for (Integer keyBinding : keyBindings.DEBUG) {
+            if (Gdx.input.isKeyJustPressed(keyBinding)) {
+                MainGameClass.DEBUG = !MainGameClass.DEBUG;
+            }
+        }
 
         // Jumping
         if (isPressingJump && player.body.getLinearVelocity().y == 0) {

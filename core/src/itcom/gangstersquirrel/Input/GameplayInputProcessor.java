@@ -2,10 +2,7 @@ package itcom.gangstersquirrel.Input;
 
 import com.badlogic.gdx.InputProcessor;
 
-import static itcom.gangstersquirrel.Screens.PlayScreen.keyBindings;
-import static itcom.gangstersquirrel.Screens.PlayScreen.isPressingJump;
-import static itcom.gangstersquirrel.Screens.PlayScreen.isPressingMoveLeft;
-import static itcom.gangstersquirrel.Screens.PlayScreen.isPressingMoveRight;
+import static itcom.gangstersquirrel.Screens.PlayScreen.*;
 
 /**
  * Handles all gameplay related input for the PlayScreen class

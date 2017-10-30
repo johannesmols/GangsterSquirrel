@@ -21,7 +21,7 @@ import itcom.gangstersquirrel.Screens.SplashScreen;
 public class MainGameClass extends Game {
 
 	// Enables certain debugging features like collision box rendering
-	public static final boolean DEBUG = true;
+	public static boolean DEBUG = true;
 	public static final boolean DEBUG_PLAY_SOUNDS = false;
 
 	// Configuration

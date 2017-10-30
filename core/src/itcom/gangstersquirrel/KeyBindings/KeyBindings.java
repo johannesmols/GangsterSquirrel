@@ -10,8 +10,9 @@ import java.util.ArrayList;
 
 public class KeyBindings {
 
-    private final String[] actions = new String[] { "jump", "move_left", "move_right" };
+    private final String[] actions = new String[] { "debug", "jump", "move_left", "move_right" };
 
+    public ArrayList<Integer> DEBUG = new ArrayList<>();
     public ArrayList<Integer> JUMP = new ArrayList<>();
     public ArrayList<Integer> MOVE_LEFT = new ArrayList<>();
     public ArrayList<Integer> MOVE_RIGHT = new ArrayList<>();
@@ -23,10 +24,11 @@ public class KeyBindings {
         fileHandle = Gdx.files.local("json/keybindings.json");
 
         // Default key bindings
-        KeyBindingObject[] defaultKeyBindings = new KeyBindingObject[]{
-                new KeyBindingObject(actions[0], new int[]{Input.Keys.UP, Input.Keys.SPACE, Input.Keys.W }),
-                new KeyBindingObject(actions[1], new int[]{Input.Keys.LEFT, Input.Keys.A }),
-                new KeyBindingObject(actions[2], new int[]{Input.Keys.RIGHT, Input.Keys.D })
+        KeyBindingObject[] defaultKeyBindings = new KeyBindingObject[] {
+                new KeyBindingObject(actions[0], new int[]{Input.Keys.F3}),
+                new KeyBindingObject(actions[1], new int[]{Input.Keys.UP, Input.Keys.SPACE, Input.Keys.W }),
+                new KeyBindingObject(actions[2], new int[]{Input.Keys.LEFT, Input.Keys.A }),
+                new KeyBindingObject(actions[3], new int[]{Input.Keys.RIGHT, Input.Keys.D })
         };
 
         if (fileHandle.exists()) {
@@ -74,16 +76,22 @@ public class KeyBindings {
         // Assign deserialized key bindings to key bindings lists
         for (KeyBindingObject key : keyBindings) {
             if (key.action.equals(actions[0])) {
+                DEBUG.clear();
+                for (int keycode : key.keys) {
+                    DEBUG.add(keycode);
+                }
+            }
+            else if (key.action.equals(actions[1])) {
                 JUMP.clear();
                 for (int keycode : key.keys) {
                     JUMP.add(keycode);
                 }
-            } else if (key.action.equals(actions[1])) {
+            } else if (key.action.equals(actions[2])) {
                 MOVE_LEFT.clear();
                 for (int keycode : key.keys) {
                     MOVE_LEFT.add(keycode);
                 }
-            } else if (key.action.equals(actions[2])) {
+            } else if (key.action.equals(actions[3])) {
                 MOVE_RIGHT.clear();
                 for (int keycode : key.keys) {
                     MOVE_RIGHT.add(keycode);
