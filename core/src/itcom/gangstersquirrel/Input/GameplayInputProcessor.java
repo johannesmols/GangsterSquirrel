@@ -5,7 +5,7 @@ import com.badlogic.gdx.InputProcessor;
 import static itcom.gangstersquirrel.Screens.PlayScreen.*;
 
 /**
- * Handles all gameplay related input for the PlayScreen class
+ * Handles most gameplay related input for the PlayScreen class
  */
 public class GameplayInputProcessor implements InputProcessor {
 

@@ -5,8 +5,8 @@ package itcom.gangstersquirrel.KeyBindings;
  */
 public class KeyBindingObject {
 
-    String action;
-    int[] keys;
+    private String action;
+    private int[] keys;
 
     public KeyBindingObject(String action, int[] keys) {
         this.action = action;

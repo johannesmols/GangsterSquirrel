@@ -12,6 +12,9 @@ import itcom.gangstersquirrel.Screens.PlayScreen;
  */
 public class Player extends Sprite {
 
+    private int spawnTileX = 0;
+    private int spawnTileY = 0;
+
     // Only for testing until we decided if we want to use a circle or box as collision box
     private final boolean USE_CIRCLE_COLLISION_BOX = false;
 
@@ -24,16 +27,23 @@ public class Player extends Sprite {
 
     private TextureRegion playerStanding;
 
-    public Player(World world, PlayScreen screen) {
+    public Player(World world, PlayScreen screen, int spawnPosition_X, int spawnPosition_Y) {
         // Get texture region out of the texture atlas for the squirrel
         super(screen.getPlayerTextureAtlas().findRegion("squirrel"));
 
         this.world = world;
+        this.spawnTileX = spawnPosition_X;
+        this.spawnTileY = spawnPosition_Y;
         definePlayer();
 
         playerStanding = new TextureRegion(getTexture(), 0, 0, PLAYER_PIXEL_WIDTH, PLAYER_PIXEL_HEIGHT);
         setBounds(0, 0, PLAYER_PIXEL_WIDTH / MainGameClass.PPM, PLAYER_PIXEL_HEIGHT / MainGameClass.PPM);
         setRegion(playerStanding);
+    }
+
+    public void setSpawnPosition(int x, int y) {
+        spawnTileX = x;
+        spawnTileY = y;
     }
 
     /**
@@ -49,7 +59,7 @@ public class Player extends Sprite {
      */
     public void definePlayer() {
         BodyDef bodyDef = new BodyDef();
-        bodyDef.position.set(32 / MainGameClass.PPM, 64 / MainGameClass.PPM);
+        bodyDef.position.set(spawnTileX * MainGameClass.TILE_PIXEL_SIZE / MainGameClass.PPM, spawnTileY * MainGameClass.TILE_PIXEL_SIZE / MainGameClass.PPM);
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         body = world.createBody(bodyDef);
 

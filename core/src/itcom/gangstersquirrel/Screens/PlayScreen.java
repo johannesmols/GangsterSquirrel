@@ -35,6 +35,11 @@ public class PlayScreen implements Screen {
     private TiledMap map;
     private OrthogonalTiledMapRenderer renderer;
 
+    // Level 1 Configuration
+    private int[] level_1_collisionLayers = new int[] { 2, 3 , 4, 5 };
+    private int level_1_spawnPositionX = 2;
+    private int level_1_spawnPositionY = 3;
+
     // Box2D variables
     private World world;
     private Box2DDebugRenderer box2DDebugRenderer;
@@ -58,12 +63,12 @@ public class PlayScreen implements Screen {
     // Audio variables
     // Sounds = kept in memory (shouldn't be longer than 10 seconds)
     // Music = streamed from file (can be memory intensive to keep in memory)
-    private Music level1BackgroundMusic;
+    private Music level_1_backgroundMusic;
 
     // Gameplay variables
-    private final float JUMP_IMPULSE_VELOCITY = 4f;
-    private final float WALK_IMPULSE_VELOCITY = 0.1f;
-    private final float MAXIMAL_X_VELOCITY = 2f;
+    private float JUMP_IMPULSE_VELOCITY = 4f;
+    private float WALK_IMPULSE_VELOCITY = 0.1f;
+    private float MAXIMAL_X_VELOCITY = 2f;
 
     /**
      * Set up all important things, can be considered as the create() method like in the MainGameClass
@@ -72,6 +77,7 @@ public class PlayScreen implements Screen {
     public PlayScreen(MainGameClass game) {
         this.game = game;
 
+        // Set up player texture atlas
         playerTextureAtlas = new TextureAtlas("sprites/player/squirrel.txt");
 
         // Set up camera and viewport
@@ -102,10 +108,10 @@ public class PlayScreen implements Screen {
         world.setContactListener(worldContactListener);
 
         // Set up the collision boxes for the ground and obstacle layers
-        new Box2DWorldCreator(world, map, new int[] { 2, 3, 4, 5 }); // int array = object layers of the map that need collision boxes
+        new Box2DWorldCreator(world, map, level_1_collisionLayers); // int array = object layers of the map that need collision boxes
 
         // Player set-up
-        player = new Player(world, this);
+        player = new Player(world, this, level_1_spawnPositionX, level_1_spawnPositionY);
 
         // Keybinding setup
         keyBindings = new KeyBindings();
@@ -116,11 +122,11 @@ public class PlayScreen implements Screen {
         inputMultiplexer.addProcessor(gamePlayInputProcessor);
         Gdx.input.setInputProcessor(inputMultiplexer);
 
-        //Load the template sound effect and the template background music and play immediately
-        level1BackgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("audio/level_1_music.mp3"));
-        level1BackgroundMusic.setLooping(true);
+        //Load the background music, set looping to true and play immediately
+        level_1_backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("audio/level_1_music.mp3"));
+        level_1_backgroundMusic.setLooping(true);
         if (MainGameClass.DEBUG_PLAY_SOUNDS) {
-            level1BackgroundMusic.play();
+            level_1_backgroundMusic.play();
         }
     }
 
@@ -204,8 +210,7 @@ public class PlayScreen implements Screen {
         renderer.dispose();
         world.dispose();
         box2DDebugRenderer.dispose();
-        level1BackgroundMusic.dispose();
-        level1BackgroundMusic.dispose();
+        level_1_backgroundMusic.dispose();
     }
 
     /**
@@ -217,14 +222,14 @@ public class PlayScreen implements Screen {
 
         // timeStep = amount of time the world simulates (https://github.com/libgdx/libgdx/wiki/Box2d)
         // velocity and position iterations = defines the precision of the calculations. Needs more calculation power, if higher. 6 and 2 are the recommended values
-        world.step(1 / (float)MainGameClass.FPS, 6, 2);
+        world.step(1 / (float) MainGameClass.FPS, 6, 2);
 
         // Follow player with camera
         camera.position.x = player.body.getPosition().x;
         camera.position.y = player.body.getPosition().y;
 
         // Flip texture depending on the moving direction of the player
-        // Don't do anything when the velocity is zero
+        // Don't do anything when the velocity is zero, leave it flipped or unflipped
         if (player.body.getLinearVelocity().x > 0) {
             player.setFlip(true, false);
         } else if (player.body.getLinearVelocity().x < 0) {
@@ -243,7 +248,7 @@ public class PlayScreen implements Screen {
      */
     private void handleInput(float deltaTime) {
 
-        // Toggle debug
+        // Toggle debug camera
         for (Integer keyBinding : keyBindings.DEBUG) {
             if (Gdx.input.isKeyJustPressed(keyBinding)) {
                 MainGameClass.DEBUG = !MainGameClass.DEBUG;

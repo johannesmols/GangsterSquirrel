@@ -22,7 +22,7 @@ public class MainGameClass extends Game {
 
 	// Enables certain debugging features like collision box rendering
 	public static boolean DEBUG = true;
-	public static final boolean DEBUG_PLAY_SOUNDS = true;
+	public static final boolean DEBUG_PLAY_SOUNDS = false;
 
 	// Configuration
 	public static final boolean FULLSCREEN = true;
@@ -36,6 +36,7 @@ public class MainGameClass extends Game {
     public static int ZOOM = 32;
 
 	// Internal units
+	public static int TILE_PIXEL_SIZE = 16;
 	public static float GAME_WORLD_WIDTH = 16 * ZOOM; // Game world size (map dimension in pixels)
 	public static float GAME_WORLD_HEIGHT = 9 * ZOOM;
 	public static float GRAVITY = 9.81f;
