@@ -14,7 +14,7 @@ public class Player extends Sprite {
     private final int PLAYER_PIXEL_WIDTH = 32;
     private final int PLAYER_PIXEL_HEIGHT = 32;
     private final int PLAYER_BOX_WIDTH = 5;
-    private final int PLAYER_BOX_HEIGHT = 5;
+    private final int PLAYER_BOX_HEIGHT = 10;
 
     public World world;
     public Body body;

@@ -15,7 +15,7 @@ import itcom.gangstersquirrel.MainGameClass;
 public class SplashScreen implements Screen {
 
     private MainGameClass game;
-    private Texture texture = new Texture(Gdx.files.internal("sprites/splashscreen/placeholder_splashscreen.png"));
+    private Texture texture = new Texture(Gdx.files.internal("sprites/splashscreen/splashscreen.png"));
     private Image splashImage = new Image(texture);
     private Stage stage = new Stage();
 
