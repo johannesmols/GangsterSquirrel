@@ -7,15 +7,15 @@ import itcom.gangstersquirrel.Screens.PlayScreen;
 /**
  * A subclass of the InteractiveTileObject class
  */
-public class Ground extends InteractiveTileObject {
+public class Item extends InteractiveTileObject {
 
-    public Ground(PlayScreen screen, Rectangle bounds) {
-        super(screen, bounds, false);
+    public Item(PlayScreen screen, Rectangle bounds) {
+        super(screen, bounds, true);
         fixture.setUserData(this);
     }
 
     @Override
     public void onPlayerHit() {
-        Gdx.app.log("Ground", "Collision");
+        Gdx.app.log("Item", "Collision");
     }
 }

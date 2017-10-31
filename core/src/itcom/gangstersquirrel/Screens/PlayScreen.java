@@ -12,6 +12,7 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.viewport.*;
+import itcom.gangstersquirrel.GameProgress.GameProgress;
 import itcom.gangstersquirrel.Input.GameplayInputProcessor;
 import itcom.gangstersquirrel.Items.WeaponObject;
 import itcom.gangstersquirrel.Items.WeaponList;
@@ -41,7 +42,7 @@ public class PlayScreen implements Screen {
     private OrthogonalTiledMapRenderer renderer;
 
     // Level 1 Configuration
-    private int[] level_1_collisionLayers = new int[] { 2, 3 , 4, 5 };
+    private int[] level_1_collisionLayers = new int[] { 2, 3 , 4, 5, 6 };
     private int level_1_spawnPositionX = 2;
     private int level_1_spawnPositionY = 3;
 
@@ -60,6 +61,13 @@ public class PlayScreen implements Screen {
     public static boolean isPressingMoveLeft;
     public static boolean isPressingMoveRight;
     public static boolean isPressingJump;
+
+    // Game Progress
+    private GameProgress gameProgress = new GameProgress();
+
+    // Timer
+    private float deltaTimeCount = 0f;
+    private long timer;
 
     // Item variables
     private List<WeaponObject> allWeapons = new WeaponList().getAllWeapons();
@@ -89,6 +97,7 @@ public class PlayScreen implements Screen {
      * Sets up the screen
      */
     private void setupScreen() {
+
         // Set up player texture atlas
         playerTextureAtlas = new TextureAtlas("sprites/player/squirrel.txt");
         enemyFrogTextureAtlas = new TextureAtlas("sprites/enemies/frog.txt");
@@ -101,7 +110,7 @@ public class PlayScreen implements Screen {
         // Load the first map from Tiles
         mapLoader = new TmxMapLoader();
 
-        switch (MainGameClass.CURRENT_LEVEL) {
+        switch (gameProgress.getCurrentLevel()) {
             case 1:
                 map = mapLoader.load("maps/level_1/level_1.tmx");
                 break;
@@ -122,7 +131,7 @@ public class PlayScreen implements Screen {
         new Box2DWorldCreator(this, level_1_collisionLayers); // int array = object layers of the map that need collision boxes
 
         // Player set-up
-        switch (MainGameClass.CURRENT_LEVEL) {
+        switch (gameProgress.getCurrentLevel()) {
             case 1:
                 player = new Player(this, level_1_spawnPositionX, level_1_spawnPositionY);
                 break;
@@ -131,17 +140,20 @@ public class PlayScreen implements Screen {
                 break;
         }
 
-        if (allWeapons != null && allWeapons.size() > 0) {
-            // Replace this with whatever weapon the player should have at the start of the level later
-            player.getWeapons().add(allWeapons.get(0));
+        // Equip player with his weapons
+        for (WeaponObject weapon : gameProgress.getPlayerWeaponList()) {
+            player.getWeapons().add(weapon);
         }
 
-        player.setHealth(100);
-        player.setJumpImpulseVelocity(4f);
-        player.setWalkImpulseVelocity(0.1f);
-        player.setClimbImpulseVelocity(1f);
-        player.setMaxWalkVelocity(2f);
-        player.setMaxClimbVelocity(1f);
+        player.setHealth(gameProgress.getPlayerMaxHealth());
+        player.setJumpImpulseVelocity(gameProgress.getPlayerJumpImpulseVelocity());
+        player.setWalkImpulseVelocity(gameProgress.getPlayerWalkImpulseVelocity());
+        player.setClimbImpulseVelocity(gameProgress.getPlayerClimbImpulseVelocity());
+        player.setMaxWalkVelocity(gameProgress.getPlayerMaxWalkVelocity());
+        player.setMaxClimbVelocity(gameProgress.getPlayerMaxClimbVelocity());
+
+        // Player texture looks in left direction by default, levels go to the right, flip at the start
+        player.setFlip(true, false);
 
         // Keybinding setup
         keyBindings = new KeyBindings();
@@ -155,9 +167,12 @@ public class PlayScreen implements Screen {
         //Load the background music, set looping to true and play immediately
         level_1_backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("audio/level_1_music.mp3"));
         level_1_backgroundMusic.setLooping(true);
-        if (MainGameClass.DEBUG_PLAY_SOUNDS) {
+        if (MainGameClass.PLAY_SOUNDS) {
             level_1_backgroundMusic.play();
         }
+
+        // Set up timer with previous time or new time for the level
+        timer = gameProgress.getCurrentTime();
     }
 
     /**
@@ -197,6 +212,15 @@ public class PlayScreen implements Screen {
      */
     private void update(float deltaTime) {
         this.handleInput(deltaTime);
+
+        // increase timer
+        deltaTimeCount += deltaTime;
+        if (deltaTimeCount >= 1) {
+            timer++;
+            deltaTimeCount = 0f;
+
+            Gdx.app.log("Timer", String.valueOf(timer));
+        }
 
         // timeStep = amount of time the world simulates (https://github.com/libgdx/libgdx/wiki/Box2d)
         // velocity and position iterations = defines the precision of the calculations. Needs more calculation power, if higher. 6 and 2 are the recommended values
@@ -294,7 +318,7 @@ public class PlayScreen implements Screen {
         if (isPressingJump && player.body.getLinearVelocity().y == 0) {
             player.body.applyLinearImpulse(new Vector2(0, player.getJumpImpulseVelocity()), player.body.getWorldCenter(), true);
 
-            if (MainGameClass.DEBUG_PLAY_SOUNDS) {
+            if (MainGameClass.PLAY_SOUNDS) {
                 jumpSound.play();
             }
 
@@ -310,6 +334,40 @@ public class PlayScreen implements Screen {
     }
 
     /**
+     * Resets the player to the start of the level and resets all attributes
+     */
+    public void respawnPlayer() {
+        Gdx.app.log("Game over", "Player died, respawning now...");
+        gameProgress.setCurrentTime(timer);
+        game.setScreen(new PlayScreen(game));
+    }
+
+    /**
+     * Current level finished, save time, increase level and load the next level
+     */
+    public void levelFinished() {
+        Gdx.app.log("Level finished", "Saving and loading next level...");
+
+        if (gameProgress.getPlayerHighscoreTimes().size() >= gameProgress.getCurrentLevel() && gameProgress.getPlayerHighscoreTimes().get(gameProgress.getCurrentLevel() - 1) > timer) {
+            // if there is already an entry for this level and the new one is better, override it
+            gameProgress.getPlayerHighscoreTimes().set(gameProgress.getCurrentLevel() - 1, timer); // replace with actual time
+        } else {
+            // if there is no entry for this level, create one
+            gameProgress.getPlayerHighscoreTimes().add(timer); // replace with actual time
+        }
+
+        if (gameProgress.getCurrentLevel() < MainGameClass.NUMBER_OF_LEVELS) {
+            gameProgress.setCurrentLevel(gameProgress.getCurrentLevel() + 1);
+        } else {
+            Gdx.app.log("Game finished", "No more levels to play");
+        }
+
+        gameProgress.setCurrentTime(0);
+
+        respawnPlayer();
+    }
+
+    /**
      * Returns the texture atlas for the player sprite
      * @return the player texture atlas
      */
@@ -317,15 +375,23 @@ public class PlayScreen implements Screen {
         return playerTextureAtlas;
     }
 
-    //returns the texture atlast for the Frog Enemy sprite
+    /**
+     * Returns the texture atlas for the frog enemy sprite
+     */
     public TextureAtlas getEnemyFrogTextureAtlas() {
         return enemyFrogTextureAtlas;
     }
 
+    /**
+     * @return the map
+     */
     public TiledMap getMap() {
         return map;
     }
 
+    /**
+     * @return the world
+     */
     public World getWorld() {
         return world;
     }

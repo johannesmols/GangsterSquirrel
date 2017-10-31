@@ -4,13 +4,8 @@ import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.physics.box2d.*;
-import itcom.gangstersquirrel.MainGameClass;
 import itcom.gangstersquirrel.Screens.PlayScreen;
-import itcom.gangstersquirrel.Sprites.DeathTile;
-import itcom.gangstersquirrel.Sprites.Ground;
-import itcom.gangstersquirrel.Sprites.Platform;
-import itcom.gangstersquirrel.Sprites.TestCoin;
+import itcom.gangstersquirrel.Sprites.*;
 
 /**
  * Creates the Box2D world of a map
@@ -48,9 +43,12 @@ public class Box2DWorldCreator {
                         new DeathTile(screen, rectangle);
                         break;
                     case 5:
-                        // Test coin
-                        new TestCoin(screen, rectangle);
+                        // Item
+                        new Item(screen, rectangle);
                         break;
+                    case 6:
+                        // Finish / Goal
+                        new Finish(screen, rectangle);
                     default:
                         break;
                 }
