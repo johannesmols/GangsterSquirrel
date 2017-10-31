@@ -67,7 +67,7 @@ public class PlayScreen implements Screen {
 
     // Timer
     private float deltaTimeCount = 0f;
-    private long timer;
+    private long timer = 0;
 
     // Item variables
     private List<WeaponObject> allWeapons = new WeaponList().getAllWeapons();
@@ -350,10 +350,10 @@ public class PlayScreen implements Screen {
 
         if (gameProgress.getPlayerHighscoreTimes().size() >= gameProgress.getCurrentLevel() && gameProgress.getPlayerHighscoreTimes().get(gameProgress.getCurrentLevel() - 1) > timer) {
             // if there is already an entry for this level and the new one is better, override it
-            gameProgress.getPlayerHighscoreTimes().set(gameProgress.getCurrentLevel() - 1, timer); // replace with actual time
+            gameProgress.getPlayerHighscoreTimes().set(gameProgress.getCurrentLevel() - 1, timer);
         } else {
             // if there is no entry for this level, create one
-            gameProgress.getPlayerHighscoreTimes().add(timer); // replace with actual time
+            gameProgress.getPlayerHighscoreTimes().add(timer);
         }
 
         if (gameProgress.getCurrentLevel() < MainGameClass.NUMBER_OF_LEVELS) {
