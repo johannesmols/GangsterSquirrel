@@ -1,12 +1,1 @@
-[
-  {
-    "id": 0,
-    "meleeOrRanged": true,
-    "strength": 5
-  },
-  {
-    "id": 1,
-    "meleeOrRanged": true,
-    "strength": 10
-  }
-]
+[{"id":0,"name":"Stick","meleeOrRanged":true,"strength":5}]

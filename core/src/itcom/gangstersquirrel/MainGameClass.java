@@ -82,4 +82,12 @@ public class MainGameClass extends Game {
 		batch.dispose();
 		default_font.dispose();
 	}
+
+	public void exitApplication(String errorMessage) {
+		if (errorMessage != null && !errorMessage.isEmpty()) {
+			System.err.println(errorMessage);
+		}
+		Gdx.app.exit();
+		System.exit(0);
+	}
 }

@@ -79,7 +79,13 @@ public class PlayScreen implements Screen {
      */
     public PlayScreen(MainGameClass game) {
         this.game = game;
+        setupScreen();
+    }
 
+    /**
+     * Sets up the screen
+     */
+    private void setupScreen() {
         // Set up player texture atlas
         playerTextureAtlas = new TextureAtlas("sprites/player/squirrel.txt");
         enemyFrogTextureAtlas = new TextureAtlas("sprites/enemies/frog.txt");
@@ -97,9 +103,7 @@ public class PlayScreen implements Screen {
                 map = mapLoader.load("maps/level_1/level_1.tmx");
                 break;
             default:
-                System.err.println("Couldn't find level, exiting application");
-                Gdx.app.exit();
-                System.exit(0);
+                game.exitApplication("Couldn't find level, exiting application");
                 break;
         }
 
@@ -115,11 +119,20 @@ public class PlayScreen implements Screen {
         new Box2DWorldCreator(this, level_1_collisionLayers); // int array = object layers of the map that need collision boxes
 
         // Player set-up
-        player = new Player(this, level_1_spawnPositionX, level_1_spawnPositionY);
+        switch (MainGameClass.CURRENT_LEVEL) {
+            case 1:
+                player = new Player(this, level_1_spawnPositionX, level_1_spawnPositionY);
+                break;
+            default:
+                game.exitApplication("No current level defined, exiting application");
+                break;
+        }
+
         if (allWeapons != null && allWeapons.size() > 0) {
             // Replace this with whatever weapon the player should have at the start of the level later
             player.getWeapons().add(allWeapons.get(0));
         }
+
         player.setHealth(100);
         player.setJumpImpulseVelocity(4f);
         player.setWalkImpulseVelocity(0.1f);

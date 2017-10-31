@@ -20,7 +20,7 @@ public class Player extends Sprite {
     public Body body;
 
     // Player parameters
-    private int health = 100;
+    private int health;
     private List<WeaponObject> weapons = new ArrayList<>();
     private float jumpImpulseVelocity;
     private float walkImpulseVelocity;
@@ -93,11 +93,6 @@ public class Player extends Sprite {
         fixtureDef.shape = head;
         fixtureDef.isSensor = true;
         body.createFixture(fixtureDef).setUserData("head");
-    }
-
-    public void setSpawnPosition(int x, int y) {
-        spawnTileX = x;
-        spawnTileY = y;
     }
 
     /* ----- GETTER AND SETTER -------------------------------------------------------------------------------------- */
