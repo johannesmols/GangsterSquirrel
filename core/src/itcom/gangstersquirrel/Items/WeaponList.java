@@ -24,7 +24,7 @@ public class WeaponList {
 
         // Default weapons list
         WeaponObject[] defaultWeaponList = new WeaponObject[] {
-                new WeaponObject(0, true, 5)
+                new WeaponObject(0, "Stick", true, 5)
         };
 
         if (fileHandle.exists()) {
