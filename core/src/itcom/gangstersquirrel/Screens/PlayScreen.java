@@ -285,7 +285,7 @@ public class PlayScreen implements Screen {
 
         // Exit application
         if(isPressingExit) {
-            game.exitApplication("");
+            game.exitApplication();
         }
 
         // Jumping
