@@ -2,30 +2,54 @@ package itcom.gangstersquirrel.Sprites;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
+import itcom.gangstersquirrel.Items.WeaponObject;
 import itcom.gangstersquirrel.MainGameClass;
 import itcom.gangstersquirrel.Screens.PlayScreen;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The class of the player, extending the Sprite class and handling the textures, animations, positions and more of the player
  */
 public class Player extends Sprite {
 
-    private final int PLAYER_PIXEL_WIDTH = 32;
-    private final int PLAYER_PIXEL_HEIGHT = 32;
-    private final int PLAYER_BOX_WIDTH = 5;
-    private final int PLAYER_BOX_HEIGHT = 5;
-
-    public World world;
+    private World world;
     public Body body;
 
+    // Player parameters
+    private int health = 100;
+    private List<WeaponObject> weapons = new ArrayList<>();
+    private float jumpImpulseVelocity;
+    private float walkImpulseVelocity;
+    private float climbImpulseVelocity;
+    private float maxWalkVelocity;
+    private float maxClimbVelocity;
+
+    // Spawn parameters
+    private int spawnTileX = 0;
+    private int spawnTileY = 0;
+
+    // Texture resolution
+    private final int PLAYER_PIXEL_WIDTH = 32;
+    private final int PLAYER_PIXEL_HEIGHT = 32;
+
+    // Only for testing until we decided if we want to use a circle or box as collision box
+    private final boolean USE_CIRCLE_COLLISION_BOX = false;
+
+    // Texture regions
     private TextureRegion playerStanding;
 
-    public Player(World world, PlayScreen screen) {
+    public Player(World world, PlayScreen screen, int spawnPosition_X, int spawnPosition_Y) {
         // Get texture region out of the texture atlas for the squirrel
         super(screen.getPlayerTextureAtlas().findRegion("squirrel"));
 
         this.world = world;
+        this.spawnTileX = spawnPosition_X;
+        this.spawnTileY = spawnPosition_Y;
+
         definePlayer();
 
         playerStanding = new TextureRegion(getTexture(), 0, 0, PLAYER_PIXEL_WIDTH, PLAYER_PIXEL_HEIGHT);
@@ -44,18 +68,95 @@ public class Player extends Sprite {
     /**
      * Defines the Box2D physics properties of the player, including collision box, body and fixture definition
      */
-    public void definePlayer() {
+    private void definePlayer() {
         BodyDef bodyDef = new BodyDef();
-        bodyDef.position.set(32 / MainGameClass.PPM, 64 / MainGameClass.PPM);
+        bodyDef.position.set(spawnTileX * MainGameClass.TILE_PIXEL_SIZE / MainGameClass.PPM, spawnTileY * MainGameClass.TILE_PIXEL_SIZE / MainGameClass.PPM);
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         body = world.createBody(bodyDef);
 
         FixtureDef fixtureDef = new FixtureDef();
-        PolygonShape shape = new PolygonShape();
-        shape.setAsBox(PLAYER_BOX_WIDTH / MainGameClass.PPM, PLAYER_BOX_HEIGHT / MainGameClass.PPM);
+        if (USE_CIRCLE_COLLISION_BOX) {
+            CircleShape shape = new CircleShape();
+            shape.setRadius(PLAYER_PIXEL_WIDTH / 2 / MainGameClass.PPM);
+            fixtureDef.shape = shape;
+        } else {
+            PolygonShape shape = new PolygonShape();
+            shape.setAsBox(PLAYER_PIXEL_WIDTH / 4 / MainGameClass.PPM, PLAYER_PIXEL_HEIGHT / 2 / MainGameClass.PPM); // divided by 4 to make width of collision box half as wide as the texture
+            fixtureDef.shape = shape;
+        }
 
-        fixtureDef.shape = shape;
         body.createFixture(fixtureDef);
+
+        // Notice collisions on the top of the collision box
+        EdgeShape head = new EdgeShape();
+        head.set(new Vector2(-PLAYER_PIXEL_WIDTH / 4 / MainGameClass.PPM, PLAYER_PIXEL_HEIGHT / 4 / MainGameClass.PPM), new Vector2(PLAYER_PIXEL_WIDTH / 4 / MainGameClass.PPM, PLAYER_PIXEL_HEIGHT / 4 / MainGameClass.PPM));
+        fixtureDef.shape = head;
+        fixtureDef.isSensor = true;
+        body.createFixture(fixtureDef).setUserData("head");
     }
 
+    public void setSpawnPosition(int x, int y) {
+        spawnTileX = x;
+        spawnTileY = y;
+    }
+
+    /* ----- GETTER AND SETTER -------------------------------------------------------------------------------------- */
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public List<WeaponObject> getWeapons() {
+        return weapons;
+    }
+
+    public void setWeapons(List<WeaponObject> weapons) {
+        this.weapons = weapons;
+    }
+
+    public float getJumpImpulseVelocity() {
+        return jumpImpulseVelocity;
+    }
+
+    public void setJumpImpulseVelocity(float jumpImpulseVelocity) {
+        this.jumpImpulseVelocity = jumpImpulseVelocity;
+    }
+
+    public float getWalkImpulseVelocity() {
+        return walkImpulseVelocity;
+    }
+
+    public void setWalkImpulseVelocity(float walkImpulseVelocity) {
+        this.walkImpulseVelocity = walkImpulseVelocity;
+    }
+
+    public float getClimbImpulseVelocity() {
+        return climbImpulseVelocity;
+    }
+
+    public void setClimbImpulseVelocity(float climbImpulseVelocity) {
+        this.climbImpulseVelocity = climbImpulseVelocity;
+    }
+
+    public float getMaxWalkVelocity() {
+        return maxWalkVelocity;
+    }
+
+    public void setMaxWalkVelocity(float maxWalkVelocity) {
+        this.maxWalkVelocity = maxWalkVelocity;
+    }
+
+    public float getMaxClimbVelocity() {
+        return maxClimbVelocity;
+    }
+
+    public void setMaxClimbVelocity(float maxClimbVelocity) {
+        this.maxClimbVelocity = maxClimbVelocity;
+    }
+
+    /* ---------------------------------------------------------------------------------------------------------------*/
 }

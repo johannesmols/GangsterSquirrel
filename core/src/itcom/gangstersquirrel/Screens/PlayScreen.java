@@ -2,7 +2,6 @@ package itcom.gangstersquirrel.Screens;
 
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -13,10 +12,15 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.viewport.*;
 import itcom.gangstersquirrel.Input.GameplayInputProcessor;
+import itcom.gangstersquirrel.Items.WeaponObject;
+import itcom.gangstersquirrel.Items.WeaponList;
 import itcom.gangstersquirrel.KeyBindings.KeyBindings;
 import itcom.gangstersquirrel.MainGameClass;
 import itcom.gangstersquirrel.Sprites.Player;
 import itcom.gangstersquirrel.Tools.Box2DWorldCreator;
+import itcom.gangstersquirrel.Tools.WorldContactListener;
+
+import java.util.List;
 
 /**
  * The most important screen of the game, the game itself
@@ -35,9 +39,15 @@ public class PlayScreen implements Screen {
     private TiledMap map;
     private OrthogonalTiledMapRenderer renderer;
 
+    // Level 1 Configuration
+    private int[] level_1_collisionLayers = new int[] { 2, 3 , 4, 5 };
+    private int level_1_spawnPositionX = 2;
+    private int level_1_spawnPositionY = 3;
+
     // Box2D variables
     private World world;
     private Box2DDebugRenderer box2DDebugRenderer;
+    private WorldContactListener worldContactListener;
 
     // Texture variables
     private TextureAtlas playerTextureAtlas;
@@ -45,9 +55,12 @@ public class PlayScreen implements Screen {
 
     // Player variables
     private Player player;
-    public static boolean isMovingLeft;
-    public static boolean isMovingRight;
-    public static boolean isJumping;
+    public static boolean isPressingMoveLeft;
+    public static boolean isPressingMoveRight;
+    public static boolean isPressingJump;
+
+    // Item variables
+    private List<WeaponObject> allWeapons = new WeaponList().getAllWeapons();
 
     // Keymap variables
     public static KeyBindings keyBindings;
@@ -58,13 +71,7 @@ public class PlayScreen implements Screen {
     // Audio variables
     // Sounds = kept in memory (shouldn't be longer than 10 seconds)
     // Music = streamed from file (can be memory intensive to keep in memory)
-    private Sound dropSoundReplaceLater;
-    private Music rainMusicReplaceLater;
-
-    // Gameplay variables
-    private final float JUMP_IMPULSE_VELOCITY = 4f;
-    private final float WALK_IMPULSE_VELOCITY = 0.1f;
-    private final float MAXIMAL_X_VELOCITY = 2f;
+    private Music level_1_backgroundMusic;
 
     /**
      * Set up all important things, can be considered as the create() method like in the MainGameClass
@@ -73,6 +80,7 @@ public class PlayScreen implements Screen {
     public PlayScreen(MainGameClass game) {
         this.game = game;
 
+        // Set up player texture atlas
         playerTextureAtlas = new TextureAtlas("sprites/player/squirrel.txt");
         enemyFrogTextureAtlas = new TextureAtlas("sprites/enemies/frog.txt");
 
@@ -100,12 +108,24 @@ public class PlayScreen implements Screen {
         // Box2D physics setup
         world = new World(new Vector2(0, - MainGameClass.GRAVITY), true); // gravity, doSleep
         box2DDebugRenderer = new Box2DDebugRenderer();
+        worldContactListener = new WorldContactListener();
+        world.setContactListener(worldContactListener);
 
         // Set up the collision boxes for the ground and obstacle layers
-        new Box2DWorldCreator(world, map, new int[] { 2, 3, 4, 5 }); // int array = object layers of the map that need collision boxes
+        new Box2DWorldCreator(world, map, level_1_collisionLayers); // int array = object layers of the map that need collision boxes
 
         // Player set-up
-        player = new Player(world, this);
+        player = new Player(world, this, level_1_spawnPositionX, level_1_spawnPositionY);
+        if (allWeapons != null && allWeapons.size() > 0) {
+            // Replace this with whatever weapon the player should have at the start of the level later
+            player.getWeapons().add(allWeapons.get(0));
+        }
+        player.setHealth(100);
+        player.setJumpImpulseVelocity(4f);
+        player.setWalkImpulseVelocity(0.1f);
+        player.setClimbImpulseVelocity(1f);
+        player.setMaxWalkVelocity(2f);
+        player.setMaxClimbVelocity(1f);
 
         // Keybinding setup
         keyBindings = new KeyBindings();
@@ -116,12 +136,11 @@ public class PlayScreen implements Screen {
         inputMultiplexer.addProcessor(gamePlayInputProcessor);
         Gdx.input.setInputProcessor(inputMultiplexer);
 
-        //Load the template sound effect and the template background music and play immediately
-        dropSoundReplaceLater = Gdx.audio.newSound(Gdx.files.internal("audio/waterdrop_replace_later.wav"));
-        rainMusicReplaceLater = Gdx.audio.newMusic(Gdx.files.internal("audio/rain_replace_later.mp3"));
-        rainMusicReplaceLater.setLooping(true);
+        //Load the background music, set looping to true and play immediately
+        level_1_backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("audio/level_1_music.mp3"));
+        level_1_backgroundMusic.setLooping(true);
         if (MainGameClass.DEBUG_PLAY_SOUNDS) {
-            rainMusicReplaceLater.play();
+            level_1_backgroundMusic.play();
         }
     }
 
@@ -205,8 +224,7 @@ public class PlayScreen implements Screen {
         renderer.dispose();
         world.dispose();
         box2DDebugRenderer.dispose();
-        rainMusicReplaceLater.dispose();
-        dropSoundReplaceLater.dispose();
+        level_1_backgroundMusic.dispose();
     }
 
     /**
@@ -218,11 +236,19 @@ public class PlayScreen implements Screen {
 
         // timeStep = amount of time the world simulates (https://github.com/libgdx/libgdx/wiki/Box2d)
         // velocity and position iterations = defines the precision of the calculations. Needs more calculation power, if higher. 6 and 2 are the recommended values
-        world.step(1 / (float)MainGameClass.FPS, 6, 2);
+        world.step(1 / (float) MainGameClass.FPS, 6, 2);
 
         // Follow player with camera
         camera.position.x = player.body.getPosition().x;
         camera.position.y = player.body.getPosition().y;
+
+        // Flip texture depending on the moving direction of the player
+        // Don't do anything when the velocity is zero, leave it flipped or unflipped
+        if (player.body.getLinearVelocity().x > 0) {
+            player.setFlip(true, false);
+        } else if (player.body.getLinearVelocity().x < 0) {
+            player.setFlip(false, false);
+        }
 
         // Update the camera's position
         camera.update();
@@ -236,17 +262,24 @@ public class PlayScreen implements Screen {
      */
     private void handleInput(float deltaTime) {
 
+        // Toggle debug camera
+        for (Integer keyBinding : keyBindings.DEBUG) {
+            if (Gdx.input.isKeyJustPressed(keyBinding)) {
+                MainGameClass.DEBUG = !MainGameClass.DEBUG;
+            }
+        }
+
         // Jumping
-        if (isJumping && player.body.getLinearVelocity().y == 0) {
-            player.body.applyLinearImpulse(new Vector2(0, JUMP_IMPULSE_VELOCITY), player.body.getWorldCenter(), true);
+        if (isPressingJump && player.body.getLinearVelocity().y == 0) {
+            player.body.applyLinearImpulse(new Vector2(0, player.getJumpImpulseVelocity()), player.body.getWorldCenter(), true);
         }
 
         // Horizontal movement
-        if (isMovingRight && player.body.getLinearVelocity().x <= MAXIMAL_X_VELOCITY) {
-            player.body.applyLinearImpulse(new Vector2(WALK_IMPULSE_VELOCITY, 0), player.body.getWorldCenter(), true);
+        if (isPressingMoveRight && player.body.getLinearVelocity().x <= player.getMaxWalkVelocity()) {
+            player.body.applyLinearImpulse(new Vector2(player.getWalkImpulseVelocity(), 0), player.body.getWorldCenter(), true);
         }
-        if (isMovingLeft && player.body.getLinearVelocity().x >= -MAXIMAL_X_VELOCITY) {
-            player.body.applyLinearImpulse(new Vector2(-WALK_IMPULSE_VELOCITY, 0), player.body.getWorldCenter(), true);
+        if (isPressingMoveLeft && player.body.getLinearVelocity().x >= -player.getMaxWalkVelocity()) {
+            player.body.applyLinearImpulse(new Vector2(-player.getWalkImpulseVelocity(), 0), player.body.getWorldCenter(), true);
         }
     }
 
