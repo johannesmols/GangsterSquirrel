@@ -42,11 +42,11 @@ public class Player extends Sprite {
     // Texture regions
     private TextureRegion playerStanding;
 
-    public Player(World world, PlayScreen screen, int spawnPosition_X, int spawnPosition_Y) {
+    public Player(PlayScreen screen, int spawnPosition_X, int spawnPosition_Y) {
         // Get texture region out of the texture atlas for the squirrel
         super(screen.getPlayerTextureAtlas().findRegion("squirrel"));
 
-        this.world = world;
+        this.world = screen.getWorld();
         this.spawnTileX = spawnPosition_X;
         this.spawnTileY = spawnPosition_Y;
 

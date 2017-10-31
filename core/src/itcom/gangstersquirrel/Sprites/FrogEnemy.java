@@ -1,3 +1,4 @@
+/*
 package itcom.gangstersquirrel.Sprites;
 
 import itcom.gangstersquirrel.MainGameClass;
@@ -36,3 +37,4 @@ public class FrogEnemy extends Enemy{
 
     }
 }
+*/

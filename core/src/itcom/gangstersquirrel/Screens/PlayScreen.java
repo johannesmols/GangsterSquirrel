@@ -112,10 +112,10 @@ public class PlayScreen implements Screen {
         world.setContactListener(worldContactListener);
 
         // Set up the collision boxes for the ground and obstacle layers
-        new Box2DWorldCreator(world, map, level_1_collisionLayers); // int array = object layers of the map that need collision boxes
+        new Box2DWorldCreator(this, level_1_collisionLayers); // int array = object layers of the map that need collision boxes
 
         // Player set-up
-        player = new Player(world, this, level_1_spawnPositionX, level_1_spawnPositionY);
+        player = new Player(this, level_1_spawnPositionX, level_1_spawnPositionY);
         if (allWeapons != null && allWeapons.size() > 0) {
             // Replace this with whatever weapon the player should have at the start of the level later
             player.getWeapons().add(allWeapons.get(0));
@@ -189,6 +189,14 @@ public class PlayScreen implements Screen {
     @Override
     public void resize(int width, int height) {
         viewport.update(width, height);
+    }
+
+    public TiledMap getMap() {
+        return map;
+    }
+
+    public World getWorld() {
+        return world;
     }
 
     /**

@@ -6,6 +6,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.*;
 import itcom.gangstersquirrel.MainGameClass;
+import itcom.gangstersquirrel.Screens.PlayScreen;
 import itcom.gangstersquirrel.Sprites.TestCoin;
 
 /**
@@ -19,7 +20,9 @@ public class Box2DWorldCreator {
      * @param map the tiled map
      * @param layers all the layers in the map that should get collision boxes
      */
-    public Box2DWorldCreator(World world, TiledMap map, int[] layers) {
+    public Box2DWorldCreator(PlayScreen screen, int[] layers) {
+        World world = screen.getWorld();
+        TiledMap map = screen.getMap();
         BodyDef bodyDefinition = new BodyDef();
         PolygonShape shape = new PolygonShape();
         FixtureDef fixtureDefinition = new FixtureDef();
@@ -31,7 +34,7 @@ public class Box2DWorldCreator {
 
                 // Test coin
                 if (layer == 4) {
-                    new TestCoin(world, map, rectangle);
+                    new TestCoin(screen, rectangle);
                     continue;
                 }
 

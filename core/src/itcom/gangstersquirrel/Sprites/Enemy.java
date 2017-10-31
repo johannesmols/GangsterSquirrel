@@ -1,7 +1,9 @@
+/*
 package itcom.gangstersquirrel.Sprites;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
 import itcom.gangstersquirrel.MainGameClass;
@@ -16,7 +18,7 @@ public abstract class Enemy extends Sprite {
     public Body b2body;
     public Vector2 velocity;
 
-    public Enemy(PlayScreen screen, float x, float y){
+    public Enemy(World world, TiledMap map, float x, float y){
         this.world = screen.getWorld();
         this.screen = screen;
         setPosition(x, y);
@@ -28,3 +30,4 @@ public abstract class Enemy extends Sprite {
     protected abstract void defineEnemy();
     public abstract void update(float dt);
 }
+*/
