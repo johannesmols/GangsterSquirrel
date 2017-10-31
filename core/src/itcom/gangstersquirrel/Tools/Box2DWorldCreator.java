@@ -16,8 +16,6 @@ public class Box2DWorldCreator {
 
     /**
      * Sets up the collision boxes of the map objects
-     * @param world the game world
-     * @param map the tiled map
      * @param layers all the layers in the map that should get collision boxes
      */
     public Box2DWorldCreator(PlayScreen screen, int[] layers) {

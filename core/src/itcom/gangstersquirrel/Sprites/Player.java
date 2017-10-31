@@ -89,7 +89,7 @@ public class Player extends Sprite {
 
         // Notice collisions on the top of the collision box
         EdgeShape head = new EdgeShape();
-        head.set(new Vector2(-PLAYER_PIXEL_WIDTH / 4 / MainGameClass.PPM, PLAYER_PIXEL_HEIGHT / 4 / MainGameClass.PPM), new Vector2(PLAYER_PIXEL_WIDTH / 4 / MainGameClass.PPM, PLAYER_PIXEL_HEIGHT / 4 / MainGameClass.PPM));
+        head.set(new Vector2(-PLAYER_PIXEL_WIDTH / 4 / MainGameClass.PPM, PLAYER_PIXEL_HEIGHT / 2 / MainGameClass.PPM), new Vector2(PLAYER_PIXEL_WIDTH / 4 / MainGameClass.PPM, PLAYER_PIXEL_HEIGHT / 2 / MainGameClass.PPM));
         fixtureDef.shape = head;
         fixtureDef.isSensor = true;
         body.createFixture(fixtureDef).setUserData("head");

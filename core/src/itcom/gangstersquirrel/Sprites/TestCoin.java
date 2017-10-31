@@ -1,5 +1,6 @@
 package itcom.gangstersquirrel.Sprites;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.World;
@@ -11,5 +12,11 @@ import itcom.gangstersquirrel.Screens.PlayScreen;
 public class TestCoin extends InteractiveTileObject {
     public TestCoin(PlayScreen screen, Rectangle bounds) {
         super(screen, bounds);
+        fixture.setUserData(this);
+    }
+
+    @Override
+    public void onHeadHit() {
+        Gdx.app.log("Coin", "Collision");
     }
 }
