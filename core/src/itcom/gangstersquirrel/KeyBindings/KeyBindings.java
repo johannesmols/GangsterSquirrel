@@ -10,9 +10,10 @@ import java.util.ArrayList;
 
 public class KeyBindings {
 
-    private final String[] actions = new String[] { "debug", "jump", "move_left", "move_right" };
+    private final String[] actions = new String[] { "debug", "exit", "jump", "move_left", "move_right" };
 
     public ArrayList<Integer> DEBUG = new ArrayList<>();
+    public ArrayList<Integer> EXIT = new ArrayList<>();
     public ArrayList<Integer> JUMP = new ArrayList<>();
     public ArrayList<Integer> MOVE_LEFT = new ArrayList<>();
     public ArrayList<Integer> MOVE_RIGHT = new ArrayList<>();
@@ -30,9 +31,10 @@ public class KeyBindings {
         // Default key bindings
         KeyBindingObject[] defaultKeyBindings = new KeyBindingObject[] {
                 new KeyBindingObject(actions[0], new int[]{Input.Keys.F3}),
-                new KeyBindingObject(actions[1], new int[]{Input.Keys.UP, Input.Keys.SPACE, Input.Keys.W }),
-                new KeyBindingObject(actions[2], new int[]{Input.Keys.LEFT, Input.Keys.A }),
-                new KeyBindingObject(actions[3], new int[]{Input.Keys.RIGHT, Input.Keys.D })
+                new KeyBindingObject(actions[1], new int[]{Input.Keys.ESCAPE}),
+                new KeyBindingObject(actions[2], new int[]{Input.Keys.UP, Input.Keys.SPACE, Input.Keys.W }),
+                new KeyBindingObject(actions[3], new int[]{Input.Keys.LEFT, Input.Keys.A }),
+                new KeyBindingObject(actions[4], new int[]{Input.Keys.RIGHT, Input.Keys.D })
         };
 
         if (fileHandle.exists()) {
@@ -94,16 +96,22 @@ public class KeyBindings {
                 }
             }
             else if (key.getAction().equals(actions[1])) {
+                EXIT.clear();
+                for (int keycode : key.getKeys()) {
+                    EXIT.add(keycode);
+                }
+            }
+            else if (key.getAction().equals(actions[2])) {
                 JUMP.clear();
                 for (int keycode : key.getKeys()) {
                     JUMP.add(keycode);
                 }
-            } else if (key.getAction().equals(actions[2])) {
+            } else if (key.getAction().equals(actions[3])) {
                 MOVE_LEFT.clear();
                 for (int keycode : key.getKeys()) {
                     MOVE_LEFT.add(keycode);
                 }
-            } else if (key.getAction().equals(actions[3])) {
+            } else if (key.getAction().equals(actions[4])) {
                 MOVE_RIGHT.clear();
                 for (int keycode : key.getKeys()) {
                     MOVE_RIGHT.add(keycode);

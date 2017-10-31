@@ -55,6 +55,7 @@ public class PlayScreen implements Screen {
 
     // Player variables
     private Player player;
+    public static boolean isPressingExit;
     public static boolean isPressingMoveLeft;
     public static boolean isPressingMoveRight;
     public static boolean isPressingJump;
@@ -282,6 +283,11 @@ public class PlayScreen implements Screen {
             }
         }
 
+        // Exit application
+        if(isPressingExit) {
+            game.exitApplication("");
+        }
+
         // Jumping
         if (isPressingJump && player.body.getLinearVelocity().y == 0) {
             player.body.applyLinearImpulse(new Vector2(0, player.getJumpImpulseVelocity()), player.body.getWorldCenter(), true);
@@ -293,11 +299,6 @@ public class PlayScreen implements Screen {
         }
         if (isPressingMoveLeft && player.body.getLinearVelocity().x >= -player.getMaxWalkVelocity()) {
             player.body.applyLinearImpulse(new Vector2(-player.getWalkImpulseVelocity(), 0), player.body.getWorldCenter(), true);
-        }
-        //Escape
-        if(Gdx.input.isKeyPressed(Input.Keys.ESCAPE))
-        {
-            game.exitApplication("");
         }
     }
 

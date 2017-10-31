@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="500" height="30" tilewidth="16" tileheight="16" nextobjectid="383">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="500" height="30" tilewidth="16" tileheight="16" nextobjectid="395">
  <tileset firstgid="1" source="mario.tsx"/>
  <tileset firstgid="925" source="sky.tsx"/>
  <tileset firstgid="926" source="ground.tsx"/>
@@ -24,7 +24,6 @@
   </data>
  </layer>
  <objectgroup name="ground">
-  <object id="131" x="4400" y="416" width="128" height="32"/>
   <object id="263" x="528" y="480" width="48" height="16"/>
   <object id="266" x="576" y="384" width="80" height="96"/>
   <object id="267" x="0" y="432" width="528" height="48"/>
@@ -72,20 +71,26 @@
   <object id="346" x="7152" y="464" width="96" height="16"/>
   <object id="347" x="7280" y="464" width="96" height="16"/>
   <object id="348" x="7408" y="464" width="96" height="16"/>
-  <object id="359" x="736" y="336" width="112" height="48"/>
-  <object id="360" x="944" y="288" width="144" height="32"/>
-  <object id="365" x="1904" y="320" width="64" height="32"/>
   <object id="366" x="1824" y="432" width="256" height="48"/>
   <object id="367" x="2080" y="320" width="96" height="160"/>
   <object id="368" x="3168" y="480" width="48" height="16"/>
-  <object id="371" x="3936" y="368" width="96" height="32"/>
-  <object id="373" x="4128" y="304" width="128" height="32"/>
   <object id="376" x="6176" y="480" width="16" height="16"/>
   <object id="377" x="7504" y="432" width="496" height="48"/>
-  <object id="379" x="4352" y="240" width="128" height="32"/>
   <object id="380" x="7984" y="0" width="16" height="432"/>
-  <object id="382" x="768" y="224" width="96" height="32"/>
+  <object id="383" x="736" y="336" width="112" height="48"/>
+  <object id="384" x="768" y="224" width="96" height="32"/>
+  <object id="385" x="944" y="288" width="144" height="32"/>
+  <object id="386" x="1904" y="320" width="64" height="32"/>
+  <object id="387" x="3936" y="368" width="96" height="32"/>
+  <object id="388" x="4128" y="304" width="128" height="32"/>
+  <object id="389" x="4352" y="240" width="128" height="32"/>
+  <object id="390" x="4400" y="416" width="128" height="32"/>
+  <object id="391" x="5168" y="368" width="48" height="64"/>
+  <object id="392" x="5296" y="304" width="112" height="16"/>
+  <object id="393" x="5504" y="320" width="112" height="16"/>
+  <object id="394" x="6912" y="304" width="112" height="16"/>
  </objectgroup>
+ <objectgroup name="obstacles"/>
  <objectgroup name="spikes">
   <object id="296" x="4624" y="432" width="128" height="48"/>
   <object id="339" x="4848" y="448" width="848" height="32"/>
@@ -144,11 +149,5 @@
   <object id="209" x="7344" y="256" width="16" height="16"/>
   <object id="369" x="3984" y="320" width="16" height="16"/>
   <object id="370" x="4176" y="256" width="16" height="16"/>
- </objectgroup>
- <objectgroup name="stone">
-  <object id="248" x="5504" y="320" width="112" height="16"/>
-  <object id="301" x="5168" y="368" width="48" height="64"/>
-  <object id="335" x="6912" y="304" width="112" height="16"/>
-  <object id="375" x="5296" y="304" width="112" height="16"/>
  </objectgroup>
 </map>
