@@ -189,6 +189,35 @@ public class PlayScreen implements Screen {
     }
 
     /**
+     * Extends the render method, updates the world and the camera
+     * @param deltaTime the time between the last and current frame in seconds
+     */
+    private void update(float deltaTime) {
+        this.handleInput(deltaTime);
+
+        // timeStep = amount of time the world simulates (https://github.com/libgdx/libgdx/wiki/Box2d)
+        // velocity and position iterations = defines the precision of the calculations. Needs more calculation power, if higher. 6 and 2 are the recommended values
+        world.step(1 / (float) MainGameClass.FPS, 6, 2);
+
+        // Follow player with camera
+        camera.position.x = player.body.getPosition().x;
+        camera.position.y = player.body.getPosition().y;
+
+        // Flip texture depending on the moving direction of the player
+        // Don't do anything when the velocity is zero, leave it flipped or unflipped
+        if (player.body.getLinearVelocity().x > 0) {
+            player.setFlip(true, false);
+        } else if (player.body.getLinearVelocity().x < 0) {
+            player.setFlip(false, false);
+        }
+
+        // Update the camera's position
+        camera.update();
+        // Renderer will draw only what the camera can see
+        renderer.setView(camera);
+    }
+
+    /**
      * Gets called when the application is shown for the first time
      */
     @Override
@@ -202,14 +231,6 @@ public class PlayScreen implements Screen {
     @Override
     public void resize(int width, int height) {
         viewport.update(width, height);
-    }
-
-    public TiledMap getMap() {
-        return map;
-    }
-
-    public World getWorld() {
-        return world;
     }
 
     /**
@@ -246,35 +267,6 @@ public class PlayScreen implements Screen {
         world.dispose();
         box2DDebugRenderer.dispose();
         level_1_backgroundMusic.dispose();
-    }
-
-    /**
-     * Extends the render method, updates the world and the camera
-     * @param deltaTime the time between the last and current frame in seconds
-     */
-    private void update(float deltaTime) {
-        this.handleInput(deltaTime);
-
-        // timeStep = amount of time the world simulates (https://github.com/libgdx/libgdx/wiki/Box2d)
-        // velocity and position iterations = defines the precision of the calculations. Needs more calculation power, if higher. 6 and 2 are the recommended values
-        world.step(1 / (float) MainGameClass.FPS, 6, 2);
-
-        // Follow player with camera
-        camera.position.x = player.body.getPosition().x;
-        camera.position.y = player.body.getPosition().y;
-
-        // Flip texture depending on the moving direction of the player
-        // Don't do anything when the velocity is zero, leave it flipped or unflipped
-        if (player.body.getLinearVelocity().x > 0) {
-            player.setFlip(true, false);
-        } else if (player.body.getLinearVelocity().x < 0) {
-            player.setFlip(false, false);
-        }
-
-        // Update the camera's position
-        camera.update();
-        // Renderer will draw only what the camera can see
-        renderer.setView(camera);
     }
 
     /**
@@ -315,5 +307,13 @@ public class PlayScreen implements Screen {
     //returns the texture atlast for the Frog Enemy sprite
     public TextureAtlas getEnemyFrogTextureAtlas() {
         return enemyFrogTextureAtlas;
+    }
+
+    public TiledMap getMap() {
+        return map;
+    }
+
+    public World getWorld() {
+        return world;
     }
 }
