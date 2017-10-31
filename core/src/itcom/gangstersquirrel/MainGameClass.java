@@ -29,8 +29,8 @@ public class MainGameClass extends Game {
 	public static final boolean DEBUG_PLAY_SOUNDS = false;
 
 	// Configuration
-	public static final boolean FULLSCREEN = true;
-	public static final boolean RESIZABLE = false;
+	public static final boolean FULLSCREEN = false;
+	public static final boolean RESIZABLE = true;
 	public static final int FPS = 60;
 	public static final String NAME = "Gangster Squirrel";
 	public static int WIDTH; // Game width

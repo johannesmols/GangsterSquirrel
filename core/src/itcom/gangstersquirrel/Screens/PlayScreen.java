@@ -293,7 +293,10 @@ public class PlayScreen implements Screen {
         // Jumping
         if (isPressingJump && player.body.getLinearVelocity().y == 0) {
             player.body.applyLinearImpulse(new Vector2(0, player.getJumpImpulseVelocity()), player.body.getWorldCenter(), true);
-            jumpSound.play();
+
+            if (MainGameClass.DEBUG_PLAY_SOUNDS) {
+                jumpSound.play();
+            }
 
         }
 

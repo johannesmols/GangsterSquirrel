@@ -11,19 +11,21 @@ public class WorldContactListener implements ContactListener {
         Fixture fixtureA = contact.getFixtureA();
         Fixture fixtureB = contact.getFixtureB();
 
-        if (fixtureA.getUserData() == "head" || fixtureB.getUserData() == "head") {
-            // Get either fixture A or B, depending on which of them is the head fixture
-            Fixture head = fixtureA.getUserData() == "head" ? fixtureA : fixtureB;
-            Fixture object = head == fixtureA ? fixtureB : fixtureA;
+        if (fixtureA.getUserData() == "player" || fixtureB.getUserData() == "player") {
+            // Get either fixture A or B, depending on which of them is the player fixture
+            Fixture player = fixtureA.getUserData() == "player" ? fixtureA : fixtureB;
+            // Get the colliding object, depending on which of them is the player fixture
+            Fixture collidedObject = player == fixtureA ? fixtureB : fixtureA;
 
-            if (object.getUserData() instanceof InteractiveTileObject) {
-                ((InteractiveTileObject) object.getUserData()).onHeadHit();
+            if (collidedObject.getUserData() instanceof InteractiveTileObject) {
+                ((InteractiveTileObject) collidedObject.getUserData()).onPlayerHit();
             }
         }
     }
 
     @Override
     public void endContact(Contact contact) {
+
     }
 
     @Override

@@ -7,6 +7,9 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.*;
 import itcom.gangstersquirrel.MainGameClass;
 import itcom.gangstersquirrel.Screens.PlayScreen;
+import itcom.gangstersquirrel.Sprites.DeathTile;
+import itcom.gangstersquirrel.Sprites.Ground;
+import itcom.gangstersquirrel.Sprites.Platform;
 import itcom.gangstersquirrel.Sprites.TestCoin;
 
 /**
@@ -19,12 +22,7 @@ public class Box2DWorldCreator {
      * @param layers all the layers in the map that should get collision boxes
      */
     public Box2DWorldCreator(PlayScreen screen, int[] layers) {
-        World world = screen.getWorld();
         TiledMap map = screen.getMap();
-        BodyDef bodyDefinition = new BodyDef();
-        PolygonShape shape = new PolygonShape();
-        FixtureDef fixtureDefinition = new FixtureDef();
-        Body body;
 
         for (int layer : layers) {
             for (MapObject object : map.getLayers().get(layer).getObjects().getByType(RectangleMapObject.class)) {
@@ -32,30 +30,30 @@ public class Box2DWorldCreator {
 
                 switch (layer) {
                     case 0:
+                        // only graphics
                         break;
                     case 1:
+                        // only graphics
                         break;
                     case 2:
+                        // Ground
+                        new Ground(screen, rectangle);
                         break;
                     case 3:
+                        // Platform
+                        new Platform(screen, rectangle);
                         break;
                     case 4:
+                        // Death tile (spikes or fell out of map)
+                        new DeathTile(screen, rectangle);
                         break;
                     case 5:
+                        // Test coin
                         new TestCoin(screen, rectangle);
                         break;
                     default:
                         break;
                 }
-
-                bodyDefinition.type = BodyDef.BodyType.StaticBody;
-                bodyDefinition.position.set((rectangle.getX() + rectangle.getWidth() / 2) / MainGameClass.PPM, (rectangle.getY() + rectangle.getHeight() / 2) / MainGameClass.PPM);
-
-                body = world.createBody(bodyDefinition);
-
-                shape.setAsBox(rectangle.getWidth() / 2 / MainGameClass.PPM, rectangle.getHeight() / 2 / MainGameClass.PPM);
-                fixtureDefinition.shape = shape;
-                body.createFixture(fixtureDefinition);
             }
         }
     }

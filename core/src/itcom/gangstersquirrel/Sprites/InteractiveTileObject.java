@@ -19,7 +19,7 @@ public abstract class InteractiveTileObject {
     protected Body body;
     protected Fixture fixture;
 
-    public InteractiveTileObject(PlayScreen screen, Rectangle bounds) {
+    public InteractiveTileObject(PlayScreen screen, Rectangle bounds, boolean isSensor) {
         this.world = screen.getWorld();
         this.map = screen.getMap();
         this.bounds = bounds;
@@ -30,13 +30,13 @@ public abstract class InteractiveTileObject {
 
         bodyDef.type = BodyDef.BodyType.StaticBody;
         bodyDef.position.set((bounds.getX() + bounds.getWidth() / 2) / MainGameClass.PPM, (bounds.getY() + bounds.getHeight() / 2) / MainGameClass.PPM);
-
         body = world.createBody(bodyDef);
 
         shape.setAsBox(bounds.getWidth() / 2 / MainGameClass.PPM, bounds.getHeight() / 2 / MainGameClass.PPM);
         fixtureDef.shape = shape;
+        fixtureDef.isSensor = isSensor;
         fixture = body.createFixture(fixtureDef);
     }
 
-    public abstract void onHeadHit();
+    public abstract void onPlayerHit();
 }

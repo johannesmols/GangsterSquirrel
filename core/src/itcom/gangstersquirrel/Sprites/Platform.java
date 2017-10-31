@@ -5,17 +5,17 @@ import com.badlogic.gdx.math.Rectangle;
 import itcom.gangstersquirrel.Screens.PlayScreen;
 
 /**
- * A subclass of the InteractiveTileObject class to test one specific case of interactive tile objects
+ * A subclass of the InteractiveTileObject class
  */
-public class TestCoin extends InteractiveTileObject {
+public class Platform extends InteractiveTileObject {
 
-    public TestCoin(PlayScreen screen, Rectangle bounds) {
+    public Platform(PlayScreen screen, Rectangle bounds) {
         super(screen, bounds, false);
         fixture.setUserData(this);
     }
 
     @Override
     public void onPlayerHit() {
-        Gdx.app.log("Coin", "Collision");
+        Gdx.app.log("Platform", "Collision");
     }
 }
