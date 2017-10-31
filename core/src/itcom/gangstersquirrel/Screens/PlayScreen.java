@@ -78,7 +78,13 @@ public class PlayScreen implements Screen {
      */
     public PlayScreen(MainGameClass game) {
         this.game = game;
+        setupScreen();
+    }
 
+    /**
+     * Sets up the screen
+     */
+    private void setupScreen() {
         // Set up player texture atlas
         playerTextureAtlas = new TextureAtlas("sprites/player/squirrel.txt");
 
@@ -119,10 +125,12 @@ public class PlayScreen implements Screen {
                 game.exitApplication("No current level defined, exiting application");
                 break;
         }
+
         if (allWeapons != null && allWeapons.size() > 0) {
             // Replace this with whatever weapon the player should have at the start of the level later
             player.getWeapons().add(allWeapons.get(0));
         }
+
         player.setHealth(100);
         player.setJumpImpulseVelocity(4f);
         player.setWalkImpulseVelocity(0.1f);
