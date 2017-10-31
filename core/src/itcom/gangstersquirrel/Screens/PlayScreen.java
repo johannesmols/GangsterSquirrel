@@ -338,6 +338,7 @@ public class PlayScreen implements Screen {
      */
     public void respawnPlayer() {
         Gdx.app.log("Game over", "Player died, respawning now...");
+        level_1_backgroundMusic.stop();
         gameProgress.setCurrentTime(timer);
         game.setScreen(new PlayScreen(game));
     }
