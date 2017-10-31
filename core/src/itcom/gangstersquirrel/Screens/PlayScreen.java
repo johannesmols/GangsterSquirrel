@@ -2,6 +2,7 @@ package itcom.gangstersquirrel.Screens;
 
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -68,8 +69,10 @@ public class PlayScreen implements Screen {
     // Input processors
     private InputProcessor gamePlayInputProcessor;
 
+
     // Audio variables
     // Sounds = kept in memory (shouldn't be longer than 10 seconds)
+    Sound jumpSound = Gdx.audio.newSound(Gdx.files.internal("audio/jump.mp3"));
     // Music = streamed from file (can be memory intensive to keep in memory)
     private Music level_1_backgroundMusic;
 
@@ -285,6 +288,8 @@ public class PlayScreen implements Screen {
         // Jumping
         if (isPressingJump && player.body.getLinearVelocity().y == 0) {
             player.body.applyLinearImpulse(new Vector2(0, player.getJumpImpulseVelocity()), player.body.getWorldCenter(), true);
+            jumpSound.play();
+
         }
 
         // Horizontal movement
@@ -297,7 +302,7 @@ public class PlayScreen implements Screen {
         //Escape
         if(Gdx.input.isKeyPressed(Input.Keys.ESCAPE))
         {
-            game.exitApplication("");
+            game.exitApplication("Fuck You");
         }
     }
 
