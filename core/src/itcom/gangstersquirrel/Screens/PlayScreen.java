@@ -294,6 +294,11 @@ public class PlayScreen implements Screen {
         if (isPressingMoveLeft && player.body.getLinearVelocity().x >= -player.getMaxWalkVelocity()) {
             player.body.applyLinearImpulse(new Vector2(-player.getWalkImpulseVelocity(), 0), player.body.getWorldCenter(), true);
         }
+        //Escape
+        if(Gdx.input.isKeyPressed(Input.Keys.ESCAPE))
+        {
+            game.exitApplication("");
+        }
     }
 
     /**
