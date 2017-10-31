@@ -17,6 +17,10 @@ public class GameplayInputProcessor implements InputProcessor {
     @Override
     public boolean keyDown(int keycode) {
 
+        if (keyBindings.EXIT.contains(keycode)) {
+            isPressingExit = true;
+        }
+
         if (keyBindings.MOVE_LEFT.contains(keycode)) {
             isPressingMoveLeft = true;
         }
@@ -39,6 +43,10 @@ public class GameplayInputProcessor implements InputProcessor {
      */
     @Override
     public boolean keyUp(int keycode) {
+
+        if (keyBindings.EXIT.contains(keycode)) {
+            isPressingExit = false;
+        }
 
         if (keyBindings.MOVE_LEFT.contains(keycode)) {
             isPressingMoveLeft = false;

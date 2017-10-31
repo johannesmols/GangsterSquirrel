@@ -11,8 +11,12 @@ package itcom.gangstersquirrel;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.PixmapIO;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.BufferUtils;
+import com.badlogic.gdx.utils.ScreenUtils;
 import itcom.gangstersquirrel.Screens.SplashScreen;
 
 /**
@@ -83,6 +87,27 @@ public class MainGameClass extends Game {
 		default_font.dispose();
 	}
 
+	public void takeScreenshot() {
+		byte[] pixels = ScreenUtils.getFrameBufferPixels(0, 0, Gdx.graphics.getBackBufferWidth(), Gdx.graphics.getBackBufferHeight(), true);
+
+		Pixmap pixmap = new Pixmap(Gdx.graphics.getBackBufferWidth(), Gdx.graphics.getBackBufferHeight(), Pixmap.Format.RGBA8888);
+		BufferUtils.copy(pixels, 0, pixmap.getPixels(), pixels.length);
+		PixmapIO.writePNG(Gdx.files.local("screenshot.png"), pixmap);
+		pixmap.dispose();
+	}
+
+	/**
+	 * Exits the application properly
+	 */
+	public void exitApplication() {
+		Gdx.app.exit();
+		System.exit(0);
+	}
+
+	/**
+	 * Exits the application properly
+	 * @param errorMessage optional error message
+	 */
 	public void exitApplication(String errorMessage) {
 		if (errorMessage != null && !errorMessage.isEmpty()) {
 			System.err.println(errorMessage);

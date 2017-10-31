@@ -30,10 +30,22 @@ public class Box2DWorldCreator {
             for (MapObject object : map.getLayers().get(layer).getObjects().getByType(RectangleMapObject.class)) {
                 Rectangle rectangle = ((RectangleMapObject) object).getRectangle();
 
-                // Test coin
-                if (layer == 4) {
-                    new TestCoin(screen, rectangle);
-                    continue;
+                switch (layer) {
+                    case 0:
+                        break;
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        new TestCoin(screen, rectangle);
+                        break;
+                    default:
+                        break;
                 }
 
                 bodyDefinition.type = BodyDef.BodyType.StaticBody;
