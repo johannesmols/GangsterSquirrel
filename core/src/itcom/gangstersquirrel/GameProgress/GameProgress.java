@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.google.gson.Gson;
 import itcom.gangstersquirrel.Items.WeaponObject;
+import itcom.gangstersquirrel.MainGameClass;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class GameProgress {
                 2f,
                 1f,
                 new ArrayList<WeaponObject>(),
-                new ArrayList<Long>()
+                new long[MainGameClass.NUMBER_OF_LEVELS]
         );
 
         if (fileHandle.exists()) {
@@ -171,11 +172,11 @@ public class GameProgress {
         serializeGameProgress(gameProgress);
     }
 
-    public ArrayList<Long> getPlayerHighscoreTimes() {
+    public long[] getPlayerHighscoreTimes() {
         return gameProgress.getPlayerHighscoreTimes();
     }
 
-    public void setPlayerHighscoreTimes(ArrayList<Long> playerHighscoreTimes) {
+    public void setPlayerHighscoreTimes(long[] playerHighscoreTimes) {
         gameProgress.setPlayerHighscoreTimes(playerHighscoreTimes);
         serializeGameProgress(gameProgress);
     }

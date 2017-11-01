@@ -17,6 +17,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.BufferUtils;
 import com.badlogic.gdx.utils.ScreenUtils;
+import itcom.gangstersquirrel.GameProgress.GameProgress;
 import itcom.gangstersquirrel.Screens.SplashScreen;
 
 /**
@@ -100,6 +101,7 @@ public class MainGameClass extends Game {
 	 * Exits the application properly
 	 */
 	public void exitApplication() {
+		resetTimer();
 		Gdx.app.exit();
 		System.exit(0);
 	}
@@ -112,7 +114,15 @@ public class MainGameClass extends Game {
 		if (errorMessage != null && !errorMessage.isEmpty()) {
 			System.err.println(errorMessage);
 		}
+
+		resetTimer();
+
 		Gdx.app.exit();
 		System.exit(0);
+	}
+
+	private void resetTimer() {
+		// Reset the game timer to zero, or when the game starts the next time, the timer will continue from the last saved point
+		new GameProgress().setCurrentTime(0);
 	}
 }

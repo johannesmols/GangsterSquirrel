@@ -20,6 +20,6 @@ public class DeathTile extends InteractiveTileObject {
     @Override
     public void onPlayerHit() {
         Gdx.app.log("Death Tile", "Collision");
-        playScreen.respawnPlayer();
+        playScreen.respawnPlayer(false); // false = level not finished, don't reset timer
     }
 }

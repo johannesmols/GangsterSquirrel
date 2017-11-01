@@ -18,7 +18,7 @@ public class GameProgressObject {
     private float playerMaxWalkVelocity;
     private float playerMaxClimbVelocity;
     private ArrayList<WeaponObject> playerWeaponList;
-    private ArrayList<Long> playerHighscoreTimes;
+    private long[] playerHighscoreTimes;
 
     /**
      * This object stores the overall game progress
@@ -35,7 +35,7 @@ public class GameProgressObject {
      */
     public GameProgressObject(int currentLevel, long currentTime, int playerMaxHealth, float
             playerJumpImpulseVelocity, float playerWalkImpulseVelocity, float playerClimbImpulseVelocity, float
-            playerMaxWalkVelocity, float playerMaxClimbVelocity, ArrayList<WeaponObject> playerWeaponList, ArrayList<Long>
+            playerMaxWalkVelocity, float playerMaxClimbVelocity, ArrayList<WeaponObject> playerWeaponList, long[]
             playerHighscoreTimes) {
 
         this.currentLevel = currentLevel;
@@ -130,11 +130,11 @@ public class GameProgressObject {
         }
     }
 
-    public ArrayList<Long> getPlayerHighscoreTimes() {
+    public long[] getPlayerHighscoreTimes() {
         return playerHighscoreTimes;
     }
 
-    public void setPlayerHighscoreTimes(ArrayList<Long> playerHighscoreTimes) {
+    public void setPlayerHighscoreTimes(long[] playerHighscoreTimes) {
         if (playerHighscoreTimes != null) {
             this.playerHighscoreTimes = playerHighscoreTimes;
         }

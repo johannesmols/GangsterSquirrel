@@ -336,10 +336,17 @@ public class PlayScreen implements Screen {
     /**
      * Resets the player to the start of the level and resets all attributes
      */
-    public void respawnPlayer() {
+    public void respawnPlayer(boolean levelFinished) {
         Gdx.app.log("Game over", "Player died, respawning now...");
         level_1_backgroundMusic.stop();
-        gameProgress.setCurrentTime(timer);
+
+        // Only when the player died, when the level is finished, it should reset the timer
+        if (levelFinished) {
+            gameProgress.setCurrentTime(0);
+        } else {
+            gameProgress.setCurrentTime(timer);
+        }
+
         game.setScreen(new PlayScreen(game));
     }
 
@@ -349,12 +356,18 @@ public class PlayScreen implements Screen {
     public void levelFinished() {
         Gdx.app.log("Level finished", "Saving and loading next level...");
 
-        if (gameProgress.getPlayerHighscoreTimes().size() >= gameProgress.getCurrentLevel() && gameProgress.getPlayerHighscoreTimes().get(gameProgress.getCurrentLevel() - 1) > timer) {
-            // if there is already an entry for this level and the new one is better, override it
-            gameProgress.getPlayerHighscoreTimes().set(gameProgress.getCurrentLevel() - 1, timer);
+        // If the old highscores is above zero, proceed. If not, this means there was no highscore set yet and there is no need to compare old time with new time
+        if (gameProgress.getPlayerHighscoreTimes()[gameProgress.getCurrentLevel() - 1] > 0) {
+            // If the new time for this level is faster, replace the old time with the new one
+            if (timer < gameProgress.getPlayerHighscoreTimes()[gameProgress.getCurrentLevel() - 1]) {
+                long[] tmp = gameProgress.getPlayerHighscoreTimes();
+                tmp[gameProgress.getCurrentLevel() - 1] = timer;
+                gameProgress.setPlayerHighscoreTimes(tmp);
+            }
         } else {
-            // if there is no entry for this level, create one
-            gameProgress.getPlayerHighscoreTimes().add(timer);
+            long[] tmp = gameProgress.getPlayerHighscoreTimes();
+            tmp[gameProgress.getCurrentLevel() - 1] = timer;
+            gameProgress.setPlayerHighscoreTimes(tmp);
         }
 
         if (gameProgress.getCurrentLevel() < MainGameClass.NUMBER_OF_LEVELS) {
@@ -363,9 +376,7 @@ public class PlayScreen implements Screen {
             Gdx.app.log("Game finished", "No more levels to play");
         }
 
-        gameProgress.setCurrentTime(0);
-
-        respawnPlayer();
+        respawnPlayer(true);
     }
 
     /**
