@@ -11,8 +11,13 @@ package itcom.gangstersquirrel;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.PixmapIO;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.BufferUtils;
+import com.badlogic.gdx.utils.ScreenUtils;
+import itcom.gangstersquirrel.GameProgress.GameProgress;
 import itcom.gangstersquirrel.Screens.SplashScreen;
 
 /**
@@ -22,7 +27,7 @@ public class MainGameClass extends Game {
 
 	// Enables certain debugging features like collision box rendering
 	public static boolean DEBUG = true;
-	public static final boolean DEBUG_PLAY_SOUNDS = false;
+	public static final boolean PLAY_SOUNDS = false;
 
 	// Configuration
 	public static final boolean FULLSCREEN = true;
@@ -35,14 +40,14 @@ public class MainGameClass extends Game {
 	public static final float PPM = 100; // Pixels per meter
     public static int ZOOM = 32;
 
+    // Number of levels
+	public static final int NUMBER_OF_LEVELS = 1;
+
 	// Internal units
 	public static int TILE_PIXEL_SIZE = 16;
 	public static float GAME_WORLD_WIDTH = 16 * ZOOM; // Game world size (map dimension in pixels)
 	public static float GAME_WORLD_HEIGHT = 9 * ZOOM;
 	public static float GRAVITY = 9.81f;
-
-	// Internal level counter
-	public static int CURRENT_LEVEL = 1;
 
 	// Internal objects
 	public SpriteBatch batch; //Contains every sprite in the game
@@ -83,11 +88,41 @@ public class MainGameClass extends Game {
 		default_font.dispose();
 	}
 
+	public void takeScreenshot() {
+		byte[] pixels = ScreenUtils.getFrameBufferPixels(0, 0, Gdx.graphics.getBackBufferWidth(), Gdx.graphics.getBackBufferHeight(), true);
+
+		Pixmap pixmap = new Pixmap(Gdx.graphics.getBackBufferWidth(), Gdx.graphics.getBackBufferHeight(), Pixmap.Format.RGBA8888);
+		BufferUtils.copy(pixels, 0, pixmap.getPixels(), pixels.length);
+		PixmapIO.writePNG(Gdx.files.local("screenshot.png"), pixmap);
+		pixmap.dispose();
+	}
+
+	/**
+	 * Exits the application properly
+	 */
+	public void exitApplication() {
+		resetTimer();
+		Gdx.app.exit();
+		System.exit(0);
+	}
+
+	/**
+	 * Exits the application properly
+	 * @param errorMessage optional error message
+	 */
 	public void exitApplication(String errorMessage) {
 		if (errorMessage != null && !errorMessage.isEmpty()) {
 			System.err.println(errorMessage);
 		}
+
+		resetTimer();
+
 		Gdx.app.exit();
 		System.exit(0);
+	}
+
+	private void resetTimer() {
+		// Reset the game timer to zero, or when the game starts the next time, the timer will continue from the last saved point
+		new GameProgress().setCurrentTime(0);
 	}
 }

@@ -2,7 +2,6 @@ package itcom.gangstersquirrel.Sprites;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import itcom.gangstersquirrel.Items.WeaponObject;
 import itcom.gangstersquirrel.MainGameClass;
@@ -84,15 +83,15 @@ public class Player extends Sprite {
             shape.setAsBox(PLAYER_PIXEL_WIDTH / 4 / MainGameClass.PPM, PLAYER_PIXEL_HEIGHT / 2 / MainGameClass.PPM); // divided by 4 to make width of collision box half as wide as the texture
             fixtureDef.shape = shape;
         }
-
         body.createFixture(fixtureDef);
 
-        // Notice collisions on the top of the collision box
-        EdgeShape head = new EdgeShape();
-        head.set(new Vector2(-PLAYER_PIXEL_WIDTH / 4 / MainGameClass.PPM, PLAYER_PIXEL_HEIGHT / 4 / MainGameClass.PPM), new Vector2(PLAYER_PIXEL_WIDTH / 4 / MainGameClass.PPM, PLAYER_PIXEL_HEIGHT / 4 / MainGameClass.PPM));
-        fixtureDef.shape = head;
-        fixtureDef.isSensor = true;
-        body.createFixture(fixtureDef).setUserData("head");
+        // Collision sensor fixture definition
+        FixtureDef collisionFixtureDef = new FixtureDef();
+        PolygonShape collisionShape = new PolygonShape();
+        collisionShape.setAsBox(PLAYER_PIXEL_WIDTH / 4 / MainGameClass.PPM, PLAYER_PIXEL_HEIGHT / 2 / MainGameClass.PPM);
+        collisionFixtureDef.shape = collisionShape;
+        collisionFixtureDef.isSensor = true;
+        body.createFixture(collisionFixtureDef).setUserData("player");
     }
 
     /* ----- GETTER AND SETTER -------------------------------------------------------------------------------------- */

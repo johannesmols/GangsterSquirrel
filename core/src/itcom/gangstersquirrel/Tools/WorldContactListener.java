@@ -1,21 +1,31 @@
 package itcom.gangstersquirrel.Tools;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.physics.box2d.Contact;
-import com.badlogic.gdx.physics.box2d.ContactImpulse;
-import com.badlogic.gdx.physics.box2d.ContactListener;
-import com.badlogic.gdx.physics.box2d.Manifold;
+import com.badlogic.gdx.physics.box2d.*;
+import itcom.gangstersquirrel.Sprites.InteractiveTileObject;
 
 public class WorldContactListener implements ContactListener {
 
     @Override
     public void beginContact(Contact contact) {
-        Gdx.app.log("Begin Contact", "");
+
+        Fixture fixtureA = contact.getFixtureA();
+        Fixture fixtureB = contact.getFixtureB();
+
+        if (fixtureA.getUserData() == "player" || fixtureB.getUserData() == "player") {
+            // Get either fixture A or B, depending on which of them is the player fixture
+            Fixture player = fixtureA.getUserData() == "player" ? fixtureA : fixtureB;
+            // Get the colliding object, depending on which of them is the player fixture
+            Fixture collidedObject = player == fixtureA ? fixtureB : fixtureA;
+
+            if (collidedObject.getUserData() instanceof InteractiveTileObject) {
+                ((InteractiveTileObject) collidedObject.getUserData()).onPlayerHit();
+            }
+        }
     }
 
     @Override
     public void endContact(Contact contact) {
-        Gdx.app.log("End Contact", "");
+
     }
 
     @Override
