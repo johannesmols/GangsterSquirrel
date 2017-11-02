@@ -16,6 +16,7 @@ import itcom.gangstersquirrel.Items.WeaponObject;
 import itcom.gangstersquirrel.Items.WeaponList;
 import itcom.gangstersquirrel.KeyBindings.KeyBindings;
 import itcom.gangstersquirrel.MainGameClass;
+import itcom.gangstersquirrel.Sprites.FrogEnemy;
 import itcom.gangstersquirrel.Sprites.Player;
 import itcom.gangstersquirrel.Tools.Box2DWorldCreator;
 import itcom.gangstersquirrel.Tools.WorldContactListener;
@@ -58,6 +59,9 @@ public class PlayScreen implements Screen {
     public static boolean isPressingMoveLeft;
     public static boolean isPressingMoveRight;
     public static boolean isPressingJump;
+
+    // Enemy variables
+    private FrogEnemy frogEnemy;
 
     // Item variables
     private List<WeaponObject> allWeapons = new WeaponList().getAllWeapons();
@@ -122,6 +126,7 @@ public class PlayScreen implements Screen {
         switch (MainGameClass.CURRENT_LEVEL) {
             case 1:
                 player = new Player(this, level_1_spawnPositionX, level_1_spawnPositionY);
+                frogEnemy = new FrogEnemy(this, 0.5f, .32f);
                 break;
             default:
                 game.exitApplication("No current level defined, exiting application");
@@ -178,6 +183,9 @@ public class PlayScreen implements Screen {
 
         // Update the player sprite
         player.update(delta);
+        // Update the frog enemy sprite
+        frogEnemy.update(delta);
+
 
         // Sets the coordinate system for rendering
         game.batch.setProjectionMatrix(camera.combined);
@@ -185,6 +193,8 @@ public class PlayScreen implements Screen {
         game.batch.begin();
         // Draw specific textures in here with the help of OpenGL
         player.draw(game.batch);
+        frogEnemy.draw(game.batch);
+
         game.batch.end();
     }
 
