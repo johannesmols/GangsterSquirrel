@@ -257,6 +257,43 @@ public class PlayScreen implements Screen {
     }
 
     /**
+     * Extends the update method, handles the input and updates the game world accordingly
+     * @param deltaTime the time between the last and current frame in seconds
+     */
+    private void handleInput(float deltaTime) {
+
+        // Toggle debug camera
+        for (Integer keyBinding : keyBindings.DEBUG) {
+            if (Gdx.input.isKeyJustPressed(keyBinding)) {
+                MainGameClass.DEBUG = !MainGameClass.DEBUG;
+            }
+        }
+
+        // Exit application
+        if(isPressingExit) {
+            game.exitApplication();
+        }
+
+        // Jumping
+        if (isPressingJump && player.body.getLinearVelocity().y == 0) {
+            player.body.applyLinearImpulse(new Vector2(0, player.getJumpImpulseVelocity()), player.body.getWorldCenter(), true);
+
+            if (MainGameClass.PLAY_SOUNDS) {
+                jumpSound.play();
+            }
+
+        }
+
+        // Horizontal movement
+        if (isPressingMoveRight && player.body.getLinearVelocity().x <= player.getMaxWalkVelocity()) {
+            player.body.applyLinearImpulse(new Vector2(player.getWalkImpulseVelocity(), 0), player.body.getWorldCenter(), true);
+        }
+        if (isPressingMoveLeft && player.body.getLinearVelocity().x >= -player.getMaxWalkVelocity()) {
+            player.body.applyLinearImpulse(new Vector2(-player.getWalkImpulseVelocity(), 0), player.body.getWorldCenter(), true);
+        }
+    }
+
+    /**
      * Gets called when the application is shown for the first time
      */
     @Override
@@ -306,43 +343,6 @@ public class PlayScreen implements Screen {
         world.dispose();
         box2DDebugRenderer.dispose();
         level_1_backgroundMusic.dispose();
-    }
-
-    /**
-     * Extends the update method, handles the input and updates the game world accordingly
-     * @param deltaTime the time between the last and current frame in seconds
-     */
-    private void handleInput(float deltaTime) {
-
-        // Toggle debug camera
-        for (Integer keyBinding : keyBindings.DEBUG) {
-            if (Gdx.input.isKeyJustPressed(keyBinding)) {
-                MainGameClass.DEBUG = !MainGameClass.DEBUG;
-            }
-        }
-
-        // Exit application
-        if(isPressingExit) {
-            game.exitApplication();
-        }
-
-        // Jumping
-        if (isPressingJump && player.body.getLinearVelocity().y == 0) {
-            player.body.applyLinearImpulse(new Vector2(0, player.getJumpImpulseVelocity()), player.body.getWorldCenter(), true);
-
-            if (MainGameClass.PLAY_SOUNDS) {
-                jumpSound.play();
-            }
-
-        }
-
-        // Horizontal movement
-        if (isPressingMoveRight && player.body.getLinearVelocity().x <= player.getMaxWalkVelocity()) {
-            player.body.applyLinearImpulse(new Vector2(player.getWalkImpulseVelocity(), 0), player.body.getWorldCenter(), true);
-        }
-        if (isPressingMoveLeft && player.body.getLinearVelocity().x >= -player.getMaxWalkVelocity()) {
-            player.body.applyLinearImpulse(new Vector2(-player.getWalkImpulseVelocity(), 0), player.body.getWorldCenter(), true);
-        }
     }
 
     /**
