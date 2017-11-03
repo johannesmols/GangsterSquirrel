@@ -1,30 +1,30 @@
 package itcom.gangstersquirrel.Sprites;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.World;
-import itcom.gangstersquirrel.MainGameClass;
+import com.badlogic.gdx.physics.box2d.*;
 import itcom.gangstersquirrel.Screens.PlayScreen;
 
 public abstract class Enemy extends Sprite {
-    private final int ENEMY_PIXEL_WIDTH = 32;
-    private final int ENEMY_PIXEL_HEIGHT = 32;
 
-    public World world;
+    World world;
+    Body body;
+
+    final int ENEMY_PIXEL_WIDTH = 32;
+    final int ENEMY_PIXEL_HEIGHT = 32;
+
     protected PlayScreen screen;
-    public Body b2body;
     public Vector2 velocity;
 
-    public Enemy(PlayScreen screen, float x, float y){
+    public Enemy(PlayScreen screen, float spawnPositionX, float spawnPositionY){
         this.world = screen.getWorld();
         this.screen = screen;
-        setPosition(x, y);
+        setPosition(spawnPositionX * ENEMY_PIXEL_WIDTH, spawnPositionY * ENEMY_PIXEL_HEIGHT);
+
         defineEnemy();
+
 //        velocity = new Vector2(-1, -2);
-//        b2body.setActive(false);
+//        body.setActive(false);
     }
 
     protected abstract void defineEnemy();

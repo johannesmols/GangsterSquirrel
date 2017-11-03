@@ -138,7 +138,7 @@ public class PlayScreen implements Screen {
         switch (gameProgress.getCurrentLevel()) {
             case 1:
                 player = new Player(this, level_1_spawnPositionX, level_1_spawnPositionY);
-                frogEnemy = new FrogEnemy(this, 0.5f, .32f);
+                frogEnemy = new FrogEnemy(this, 2, 2);
                 break;
             default:
                 game.exitApplication("No current level defined, exiting application");
@@ -350,7 +350,7 @@ public class PlayScreen implements Screen {
         Gdx.app.log("Game over", "Player died, respawning now...");
         level_1_backgroundMusic.stop();
 
-        // Only when the player died, when the level is finished, it should reset the timer
+        // Only when the level is finished, it should reset the timer
         if (levelFinished) {
             gameProgress.setCurrentTime(0);
         } else {

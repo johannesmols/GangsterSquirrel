@@ -1,34 +1,39 @@
 package itcom.gangstersquirrel.Sprites;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
-import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.utils.Array;
 import itcom.gangstersquirrel.MainGameClass;
 import itcom.gangstersquirrel.Screens.PlayScreen;
 
-public class FrogEnemy extends Enemy{
+public class FrogEnemy extends Enemy {
 
+    // Animation parameters
     private float stateTime;
-    private Animation walkAnimation;
+    private Animation<TextureRegion> walkAnimation;
     private Array<TextureRegion> frames;
     private boolean setToDestroy;
     private boolean destroyed;
     float angle;
 
-    public FrogEnemy(PlayScreen screen, float x, float y) {
-        super(screen, x, y);
-        frames = new Array<TextureRegion>();
+    public FrogEnemy(PlayScreen screen, int spawnPositionX, int spawnPositionY) {
+        super(screen, spawnPositionX, spawnPositionY);
+
+        frames = new Array<>();
+
         for(int i = 0; i < 25; i++) {
-            frames.add(new TextureRegion(screen.getEnemyFrogTextureAtlas().findRegion("frog"), i * 32, 0, 32, 32));
+            frames.add(new TextureRegion(
+                    screen.getEnemyFrogTextureAtlas().findRegion("frog"), i * ENEMY_PIXEL_HEIGHT, 0, ENEMY_PIXEL_WIDTH, ENEMY_PIXEL_HEIGHT)
+            );
         }
-        walkAnimation = new Animation(10f, frames);
+
+        walkAnimation = new Animation<>(10f, frames);
         stateTime = 0;
-        setBounds(getX(), getY(), 32 / MainGameClass.PPM, 32 / MainGameClass.PPM);
+        setBounds(getX(), getY(), ENEMY_PIXEL_WIDTH / MainGameClass.PPM, ENEMY_PIXEL_HEIGHT / MainGameClass.PPM + getHeight() / 2);
         setToDestroy = false;
         destroyed = false;
         angle = 0;
@@ -36,23 +41,23 @@ public class FrogEnemy extends Enemy{
 
     @Override
     protected void defineEnemy() {
-        BodyDef bdef = new BodyDef();
-        bdef.position.set(getX(), getY());
-        bdef.type = BodyDef.BodyType.DynamicBody;
-        b2body = world.createBody(bdef);
+        BodyDef bodyDef = new BodyDef();
+        bodyDef.type = BodyDef.BodyType.DynamicBody;
+        bodyDef.position.set((getX() + getWidth() / 2) / MainGameClass.PPM, (getY() + getHeight() / 2) / MainGameClass.PPM);
+        body = world.createBody(bodyDef);
 
-        FixtureDef fdef = new FixtureDef();
+        FixtureDef fixtureDef = new FixtureDef();
         CircleShape shape = new CircleShape();
-        shape.setRadius(6 / MainGameClass.PPM);
+        shape.setRadius(ENEMY_PIXEL_WIDTH / 4 / MainGameClass.PPM);
+        fixtureDef.shape = shape;
 
-        fdef.shape = shape;
-        b2body.createFixture(fdef).setUserData(this);
+        body.createFixture(fixtureDef).setUserData(this);
     }
 
     @Override
-    public void update(float dt) {
-        stateTime += dt;
-        setPosition(b2body.getPosition().x - getWidth()/2, b2body.getPosition().y - getHeight()/2);
-        setRegion((TextureRegion) walkAnimation.getKeyFrame(stateTime, true));
+    public void update(float deltaTime) {
+        stateTime += deltaTime;
+        setPosition(body.getPosition().x - getWidth() / 2, body.getPosition().y - getHeight() / 2);
+        setRegion(walkAnimation.getKeyFrame(stateTime, true));
     }
 }
