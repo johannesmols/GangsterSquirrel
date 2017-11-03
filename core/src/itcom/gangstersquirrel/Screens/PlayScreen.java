@@ -18,11 +18,13 @@ import itcom.gangstersquirrel.Items.WeaponObject;
 import itcom.gangstersquirrel.Items.WeaponList;
 import itcom.gangstersquirrel.KeyBindings.KeyBindings;
 import itcom.gangstersquirrel.MainGameClass;
+import itcom.gangstersquirrel.Sprites.Enemy;
 import itcom.gangstersquirrel.Sprites.FrogEnemy;
 import itcom.gangstersquirrel.Sprites.Player;
 import itcom.gangstersquirrel.Tools.Box2DWorldCreator;
 import itcom.gangstersquirrel.Tools.WorldContactListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -63,7 +65,7 @@ public class PlayScreen implements Screen {
     public static boolean isPressingJump;
 
     // Enemy variables
-    private FrogEnemy frogEnemy;
+    private ArrayList<Enemy> enemies = new ArrayList<>();
 
     // Game Progress
     private GameProgress gameProgress = new GameProgress();
@@ -140,7 +142,11 @@ public class PlayScreen implements Screen {
         switch (gameProgress.getCurrentLevel()) {
             case 1:
                 player = new Player(this, level_1_spawnPositionX, level_1_spawnPositionY);
-                frogEnemy = new FrogEnemy(this, 2, 2);
+
+                // Add enemies to this level
+                enemies.add(new FrogEnemy(this, 3, 2));
+                enemies.add(new FrogEnemy(this, 5, 2));
+                enemies.add(new FrogEnemy(this, 7, 2));
                 break;
             default:
                 game.exitApplication("No current level defined, exiting application");
@@ -184,11 +190,11 @@ public class PlayScreen implements Screen {
 
     /**
      * Will be executed once every frame
-     * @param delta deltaTime is the time passed between the last and the current frame in seconds. VERY IMPORTANT!
+     * @param deltaTime deltaTime is the time passed between the last and the current frame in seconds. VERY IMPORTANT!
      */
     @Override
-    public void render(float delta) {
-        this.update(delta);
+    public void render(float deltaTime) {
+        this.update(deltaTime);
 
         // Clear the previous frame
         Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -202,10 +208,12 @@ public class PlayScreen implements Screen {
         }
 
         // Update the player sprite
-        player.update(delta);
-        // Update the frog enemy sprite
-        frogEnemy.update(delta);
+        player.update(deltaTime);
 
+        // Update each enemy sprite
+        for (Enemy enemy : enemies) {
+            enemy.update(deltaTime);
+        }
 
         // Sets the coordinate system for rendering
         game.batch.setProjectionMatrix(camera.combined);
@@ -213,7 +221,10 @@ public class PlayScreen implements Screen {
         game.batch.begin();
         // Draw specific textures in here with the help of OpenGL
         player.draw(game.batch);
-        frogEnemy.draw(game.batch);
+
+        for (Enemy enemy : enemies) {
+            enemy.draw(game.batch);
+        }
 
         game.batch.end();
     }
