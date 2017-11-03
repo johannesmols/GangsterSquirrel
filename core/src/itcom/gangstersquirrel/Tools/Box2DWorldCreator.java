@@ -1,5 +1,7 @@
 package itcom.gangstersquirrel.Tools;
 
+import com.badlogic.gdx.maps.MapLayer;
+import com.badlogic.gdx.maps.MapLayers;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -14,43 +16,45 @@ public class Box2DWorldCreator {
 
     /**
      * Sets up the collision boxes of the map objects
-     * @param layers all the layers in the map that should get collision boxes
      */
-    public Box2DWorldCreator(PlayScreen screen, int[] layers) {
+    public Box2DWorldCreator(PlayScreen screen) {
         TiledMap map = screen.getMap();
+        MapLayers mapLayers = map.getLayers();
 
-        for (int layer : layers) {
-            for (MapObject object : map.getLayers().get(layer).getObjects().getByType(RectangleMapObject.class)) {
-                Rectangle rectangle = ((RectangleMapObject) object).getRectangle();
+        // Loop through every layer in the map
+        for (MapLayer mapLayer : mapLayers) {
+            // Loop through every rectangular shape in this layer
+            for (MapObject mapObject : mapLayer.getObjects().getByType(RectangleMapObject.class)) {
 
-                switch (layer) {
-                    case 0:
-                        // only graphics
+                // The rectangular collision box
+                Rectangle rectangle = ((RectangleMapObject) mapObject).getRectangle();
+
+                // Create object depending on the type of the shape
+                switch (mapLayer.getName()) {
+                    case "background":
+                        // Only graphics
                         break;
-                    case 1:
-                        // only graphics
+                    case "graphics":
+                        // Only graphics
                         break;
-                    case 2:
-                        // Ground
+                    case "ground":
                         new Ground(screen, rectangle);
                         break;
-                    case 3:
-                        // Platform
+                    case "obstacles":
                         new Platform(screen, rectangle);
                         break;
-                    case 4:
-                        // Death tile (spikes or fell out of map)
+                    case "death":
                         new DeathTile(screen, rectangle);
                         break;
-                    case 5:
-                        // Item
+                    case "items":
                         new Item(screen, rectangle);
                         break;
-                    case 6:
-                        // Finish / Goal
+                    case "finish":
                         new Finish(screen, rectangle);
+                        break;
                     default:
                         break;
+
                 }
             }
         }

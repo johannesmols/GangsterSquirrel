@@ -43,7 +43,6 @@ public class PlayScreen implements Screen {
     private OrthogonalTiledMapRenderer renderer;
 
     // Level 1 Configuration
-    private int[] level_1_collisionLayers = new int[] { 2, 3 , 4, 5, 6 };
     private int level_1_spawnPositionX = 2;
     private int level_1_spawnPositionY = 3;
 
@@ -135,7 +134,7 @@ public class PlayScreen implements Screen {
         world.setContactListener(worldContactListener);
 
         // Set up the collision boxes for the ground and obstacle layers
-        new Box2DWorldCreator(this, level_1_collisionLayers); // int array = object layers of the map that need collision boxes
+        new Box2DWorldCreator(this); // int array = object layers of the map that need collision boxes
 
         // Player set-up
         switch (gameProgress.getCurrentLevel()) {
