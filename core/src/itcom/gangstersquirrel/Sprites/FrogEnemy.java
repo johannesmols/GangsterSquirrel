@@ -12,9 +12,6 @@ import itcom.gangstersquirrel.Screens.PlayScreen;
 
 public class FrogEnemy extends Enemy {
 
-    // Damage values
-    private final int DAMAGE = 10;
-
     // Animation parameters
     private float stateTime;
     private Animation<TextureRegion> walkAnimation;
@@ -25,6 +22,10 @@ public class FrogEnemy extends Enemy {
 
     public FrogEnemy(PlayScreen screen, int spawnPositionX, int spawnPositionY) {
         super(screen, spawnPositionX, spawnPositionY);
+
+        // Set gameplay variables of super class for this specific type of enemy
+        damage = 10;
+        health = 20;
 
         frames = new Array<>();
 
@@ -67,6 +68,34 @@ public class FrogEnemy extends Enemy {
     @Override
     public void onPlayerHit() {
         Gdx.app.log("Frog Enemy", "Collision");
-        screen.setPlayerCurrentHealth(screen.getPlayerCurrentHealth() - DAMAGE);
+        screen.setPlayerCurrentHealth(screen.getPlayerCurrentHealth() - damage);
     }
+
+    /* ----- GETTERS AND SETTERS ------------------------------------------------------------------------------------ */
+
+    @Override
+    public int getDamage() {
+        return damage;
+    }
+
+    @Override
+    public void setDamage(int newDamage) {
+        damage = newDamage;
+    }
+
+    @Override
+    public int getHealth() {
+        return health;
+    }
+
+    @Override
+    public void setHealth(int newHealth) {
+        health = newHealth;
+
+        if (health <= 0) {
+            //despawn
+        }
+    }
+
+    /* -------------------------------------------------------------------------------------------------------------- */
 }

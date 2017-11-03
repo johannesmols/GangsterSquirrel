@@ -16,6 +16,10 @@ public abstract class Enemy extends Sprite {
     protected PlayScreen screen;
     public Vector2 velocity;
 
+    // Gameplay relevant variables
+    int damage;
+    int health;
+
     public Enemy(PlayScreen screen, float spawnPositionX, float spawnPositionY){
         this.world = screen.getWorld();
         this.screen = screen;
@@ -30,4 +34,10 @@ public abstract class Enemy extends Sprite {
     protected abstract void defineEnemy();
     public abstract void update(float dt);
     public abstract void onPlayerHit();
+
+    // Getter and Setter
+    public abstract int getDamage();
+    public abstract void setDamage(int newDamage);
+    public abstract int getHealth();
+    public abstract void setHealth(int newHealth);
 }
