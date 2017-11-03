@@ -69,6 +69,9 @@ public class PlayScreen implements Screen {
     // Game Progress
     private GameProgress gameProgress = new GameProgress();
 
+    // Gameplay variables
+    private int playerCurrentHealth = gameProgress.getPlayerMaxHealth();
+
     // Timer
     private float deltaTimeCount = 0f;
     private long timer = 0;
@@ -84,8 +87,8 @@ public class PlayScreen implements Screen {
 
     // Audio variables
     // Sounds = kept in memory (shouldn't be longer than 10 seconds)
-    Sound jumpSound = Gdx.audio.newSound(Gdx.files.internal("audio/jump.mp3"));
     // Music = streamed from file (can be memory intensive to keep in memory)
+    private Sound jumpSound = Gdx.audio.newSound(Gdx.files.internal("audio/jump.mp3"));
     private Music level_1_backgroundMusic;
 
     /**
@@ -389,6 +392,8 @@ public class PlayScreen implements Screen {
         respawnPlayer(true);
     }
 
+    /* ----- GETTERS AND SETTERS ------------------------------------------------------------------------------------ */
+
     /**
      * Returns the texture atlas for the player sprite
      * @return the player texture atlas
@@ -417,4 +422,26 @@ public class PlayScreen implements Screen {
     public World getWorld() {
         return world;
     }
+
+    /**
+     * @return the game progress
+     */
+    public GameProgress getGameProgress() {
+        return gameProgress;
+    }
+
+    public int getPlayerCurrentHealth() {
+        return playerCurrentHealth;
+    }
+
+    public void setPlayerCurrentHealth(int newHealth) {
+        Gdx.app.log("Player health change", "New: " + newHealth + ", Old: " + playerCurrentHealth);
+        playerCurrentHealth = newHealth;
+
+        if (playerCurrentHealth <= 0) {
+            respawnPlayer(false);
+        }
+    }
+
+    /* -------------------------------------------------------------------------------------------------------------- */
 }

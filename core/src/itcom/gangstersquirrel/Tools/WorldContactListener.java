@@ -1,6 +1,7 @@
 package itcom.gangstersquirrel.Tools;
 
 import com.badlogic.gdx.physics.box2d.*;
+import itcom.gangstersquirrel.Sprites.Enemy;
 import itcom.gangstersquirrel.Sprites.InteractiveTileObject;
 
 public class WorldContactListener implements ContactListener {
@@ -17,8 +18,11 @@ public class WorldContactListener implements ContactListener {
             // Get the colliding object, depending on which of them is the player fixture
             Fixture collidedObject = player == fixtureA ? fixtureB : fixtureA;
 
+            // Determine what kind of object the player collided with and trigger the respectable method
             if (collidedObject.getUserData() instanceof InteractiveTileObject) {
                 ((InteractiveTileObject) collidedObject.getUserData()).onPlayerHit();
+            } else if (collidedObject.getUserData() instanceof Enemy) {
+                ((Enemy) collidedObject.getUserData()).onPlayerHit();
             }
         }
     }

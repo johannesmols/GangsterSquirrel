@@ -1,7 +1,7 @@
 package itcom.gangstersquirrel.Sprites;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
@@ -11,6 +11,9 @@ import itcom.gangstersquirrel.MainGameClass;
 import itcom.gangstersquirrel.Screens.PlayScreen;
 
 public class FrogEnemy extends Enemy {
+
+    // Damage values
+    private final int DAMAGE = 10;
 
     // Animation parameters
     private float stateTime;
@@ -59,5 +62,11 @@ public class FrogEnemy extends Enemy {
         stateTime += deltaTime;
         setPosition(body.getPosition().x - getWidth() / 2, body.getPosition().y - getHeight() / 2);
         setRegion(walkAnimation.getKeyFrame(stateTime, true));
+    }
+
+    @Override
+    public void onPlayerHit() {
+        Gdx.app.log("Frog Enemy", "Collision");
+        screen.setPlayerCurrentHealth(screen.getPlayerCurrentHealth() - DAMAGE);
     }
 }
