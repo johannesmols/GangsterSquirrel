@@ -5,8 +5,6 @@ package itcom.gangstersquirrel.Items;
  */
 public class WeaponObject {
 
-    // Test commit in the collectibles branch
-
     private int id;
     private String name;
     private boolean meleeOrRanged;
