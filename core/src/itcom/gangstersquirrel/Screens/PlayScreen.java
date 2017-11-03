@@ -21,6 +21,7 @@ import itcom.gangstersquirrel.MainGameClass;
 import itcom.gangstersquirrel.Sprites.Enemy;
 import itcom.gangstersquirrel.Sprites.FrogEnemy;
 import itcom.gangstersquirrel.Sprites.Player;
+import itcom.gangstersquirrel.Statistics.Statistics;
 import itcom.gangstersquirrel.Tools.Box2DWorldCreator;
 import itcom.gangstersquirrel.Tools.WorldContactListener;
 
@@ -67,8 +68,9 @@ public class PlayScreen implements Screen {
     // Enemy variables
     private ArrayList<Enemy> enemies = new ArrayList<>();
 
-    // Game Progress
+    // Game Progress and Statistics
     private GameProgress gameProgress = new GameProgress();
+    private Statistics statistics = new Statistics();
 
     // Gameplay variables
     private int playerCurrentHealth = gameProgress.getPlayerMaxHealth();
@@ -282,6 +284,9 @@ public class PlayScreen implements Screen {
 
         // Exit application
         if(isPressingExit) {
+            // Save current time
+            statistics.setSecondsPlayed(statistics.getSecondsPlayed() + timer);
+
             game.exitApplication();
         }
 
@@ -292,6 +297,9 @@ public class PlayScreen implements Screen {
             if (MainGameClass.PLAY_SOUNDS) {
                 jumpSound.play();
             }
+
+            // Save jump to statistics
+            statistics.setJumpsMade(statistics.getJumpsMade() + 1);
 
         }
 
@@ -363,10 +371,16 @@ public class PlayScreen implements Screen {
         Gdx.app.log("Game over", "Player died, respawning now...");
         level_1_backgroundMusic.stop();
 
+        // Save current timer time to the statistics
+        statistics.setSecondsPlayed(statistics.getSecondsPlayed() + timer);
+
         // Only when the level is finished, it should reset the timer
         if (levelFinished) {
             gameProgress.setCurrentTime(0);
         } else {
+            // If the player died, add one to the death counter in the statistics
+            statistics.setDiedThisManyTimes(statistics.getDiedThisManyTimes() + 1);
+
             gameProgress.setCurrentTime(timer);
         }
 
@@ -380,17 +394,17 @@ public class PlayScreen implements Screen {
         Gdx.app.log("Level finished", "Saving and loading next level...");
 
         // If the old highscores is above zero, proceed. If not, this means there was no highscore set yet and there is no need to compare old time with new time
-        if (gameProgress.getPlayerHighscoreTimes()[gameProgress.getCurrentLevel() - 1] > 0) {
+        if (statistics.getHighscoreTimes()[gameProgress.getCurrentLevel() - 1] > 0) {
             // If the new time for this level is faster, replace the old time with the new one
-            if (timer < gameProgress.getPlayerHighscoreTimes()[gameProgress.getCurrentLevel() - 1]) {
-                long[] tmp = gameProgress.getPlayerHighscoreTimes();
+            if (timer < statistics.getHighscoreTimes()[gameProgress.getCurrentLevel() - 1]) {
+                long[] tmp = statistics.getHighscoreTimes();
                 tmp[gameProgress.getCurrentLevel() - 1] = timer;
-                gameProgress.setPlayerHighscoreTimes(tmp);
+                statistics.setHighscoreTimes(tmp);
             }
         } else {
-            long[] tmp = gameProgress.getPlayerHighscoreTimes();
+            long[] tmp = statistics.getHighscoreTimes();
             tmp[gameProgress.getCurrentLevel() - 1] = timer;
-            gameProgress.setPlayerHighscoreTimes(tmp);
+            statistics.setHighscoreTimes(tmp);
         }
 
         if (gameProgress.getCurrentLevel() < MainGameClass.NUMBER_OF_LEVELS) {
@@ -398,6 +412,9 @@ public class PlayScreen implements Screen {
         } else {
             Gdx.app.log("Game finished", "No more levels to play");
         }
+
+        // Save finished level to statistics
+        statistics.setLevelsFinished(statistics.getLevelsFinished() + 1);
 
         respawnPlayer(true);
     }
@@ -445,6 +462,9 @@ public class PlayScreen implements Screen {
     }
 
     public void setPlayerCurrentHealth(int newHealth) {
+        // Save lost health to statistics
+        statistics.setHealthLost(statistics.getHealthLost() + (playerCurrentHealth - newHealth));
+
         Gdx.app.log("Player health change", "New: " + newHealth + ", Old: " + playerCurrentHealth);
         playerCurrentHealth = newHealth;
 

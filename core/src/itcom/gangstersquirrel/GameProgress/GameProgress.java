@@ -9,17 +9,17 @@ import itcom.gangstersquirrel.MainGameClass;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * This class loads and saves the overall progress of the game, including levels, highscores, equipped weapons, player attributes, ...
+ */
 public class GameProgress {
 
     private FileHandle fileHandle;
     private Gson gson = new Gson();
     private GameProgressObject gameProgress;
 
-    /**
-     * This class loads and saves the overall progress of the game, including levels, highscores, equipped weapons, player attributes, ...
-     */
     public GameProgress() {
-        // JSON file to store all weapons in the game
+        // JSON file to store the game progress
         fileHandle = Gdx.files.local("json/gameprogress.json");
 
         // Default game progress
@@ -32,8 +32,7 @@ public class GameProgress {
                 1f,
                 2f,
                 1f,
-                new ArrayList<WeaponObject>(),
-                new long[MainGameClass.NUMBER_OF_LEVELS]
+                new ArrayList<WeaponObject>()
         );
 
         if (fileHandle.exists()) {
@@ -41,7 +40,7 @@ public class GameProgress {
             if (!json.trim().isEmpty()) {
                 gameProgress = deserializeGameProgress(json);
             } else {
-                System.err.println("JSON game progress list string is empty, creating default game progress");
+                System.err.println("JSON game progress string is empty, creating default game progress");
                 serializeGameProgress(defaultGameProgress);
                 gameProgress = deserializeGameProgress(json);
             }
@@ -169,15 +168,6 @@ public class GameProgress {
 
     public void setPlayerWeaponList(ArrayList<WeaponObject> playerWeaponList) {
         gameProgress.setPlayerWeaponList(playerWeaponList);
-        serializeGameProgress(gameProgress);
-    }
-
-    public long[] getPlayerHighscoreTimes() {
-        return gameProgress.getPlayerHighscoreTimes();
-    }
-
-    public void setPlayerHighscoreTimes(long[] playerHighscoreTimes) {
-        gameProgress.setPlayerHighscoreTimes(playerHighscoreTimes);
         serializeGameProgress(gameProgress);
     }
 }

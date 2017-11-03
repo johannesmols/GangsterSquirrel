@@ -18,10 +18,8 @@ public class GameProgressObject {
     private float playerMaxWalkVelocity;
     private float playerMaxClimbVelocity;
     private ArrayList<WeaponObject> playerWeaponList;
-    private long[] playerHighscoreTimes;
 
     /**
-     * This object stores the overall game progress
      * @param currentLevel the current level which the player is in
      * @param currentTime the current time in seconds, will remain when the player dies and respawns
      * @param playerMaxHealth the maximum health that the player can have
@@ -31,12 +29,10 @@ public class GameProgressObject {
      * @param playerMaxWalkVelocity the maximal walking velocity of the player
      * @param playerMaxClimbVelocity the maximal climbing velocity of the player
      * @param playerWeaponList the equipped weapons of the player
-     * @param playerHighscoreTimes the highscore list of each level containing times in seconds
      */
     public GameProgressObject(int currentLevel, long currentTime, int playerMaxHealth, float
             playerJumpImpulseVelocity, float playerWalkImpulseVelocity, float playerClimbImpulseVelocity, float
-            playerMaxWalkVelocity, float playerMaxClimbVelocity, ArrayList<WeaponObject> playerWeaponList, long[]
-            playerHighscoreTimes) {
+            playerMaxWalkVelocity, float playerMaxClimbVelocity, ArrayList<WeaponObject> playerWeaponList) {
 
         this.currentLevel = currentLevel;
         this.currentTime = currentTime;
@@ -47,7 +43,6 @@ public class GameProgressObject {
         this.playerMaxWalkVelocity = playerMaxWalkVelocity;
         this.playerMaxClimbVelocity = playerMaxClimbVelocity;
         this.playerWeaponList = playerWeaponList;
-        this.playerHighscoreTimes = playerHighscoreTimes;
     }
 
     public int getCurrentLevel() {
@@ -127,16 +122,6 @@ public class GameProgressObject {
     public void setPlayerWeaponList(ArrayList<WeaponObject> playerWeaponList) {
         if (playerWeaponList != null) {
             this.playerWeaponList = playerWeaponList;
-        }
-    }
-
-    public long[] getPlayerHighscoreTimes() {
-        return playerHighscoreTimes;
-    }
-
-    public void setPlayerHighscoreTimes(long[] playerHighscoreTimes) {
-        if (playerHighscoreTimes != null) {
-            this.playerHighscoreTimes = playerHighscoreTimes;
         }
     }
 }

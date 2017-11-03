@@ -9,6 +9,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.utils.Array;
 import itcom.gangstersquirrel.MainGameClass;
 import itcom.gangstersquirrel.Screens.PlayScreen;
+import itcom.gangstersquirrel.Statistics.Statistics;
 
 public class FrogEnemy extends Enemy {
 
@@ -90,9 +91,16 @@ public class FrogEnemy extends Enemy {
 
     @Override
     public void setHealth(int newHealth) {
+        // Save inflicted damage to statistics
+        Statistics statistics = new Statistics();
+        statistics.setDamageInflicted(statistics.getDamageInflicted() + (health - newHealth));
+
         health = newHealth;
 
         if (health <= 0) {
+            // Save death of enemy to statistics
+            statistics.setEnemiesKilled(statistics.getEnemiesKilled() + 1);
+
             //despawn
         }
     }
