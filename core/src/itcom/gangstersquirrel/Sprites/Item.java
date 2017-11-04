@@ -10,9 +10,13 @@ import itcom.gangstersquirrel.Statistics.Statistics;
  */
 public class Item extends InteractiveTileObject {
 
+    private PlayScreen playScreen;
+
     public Item(PlayScreen screen, Rectangle bounds) {
         super(screen, bounds, true);
         fixture.setUserData(this);
+
+        playScreen = screen;
     }
 
     @Override
@@ -20,7 +24,7 @@ public class Item extends InteractiveTileObject {
         Gdx.app.log("Item", "Collision");
 
         // Save collected item to statistics
-        Statistics statistics = new Statistics();
-        statistics.setItemsCollected(statistics.getItemsCollected() + 1);
+        //Statistics statistics = new Statistics();
+        playScreen.statistics.setItemsCollected(playScreen.statistics.getItemsCollected() + 1);
     }
 }

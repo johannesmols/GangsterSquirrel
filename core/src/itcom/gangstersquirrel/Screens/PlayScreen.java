@@ -69,8 +69,8 @@ public class PlayScreen implements Screen {
     private ArrayList<Enemy> enemies = new ArrayList<>();
 
     // Game Progress and Statistics
-    private GameProgress gameProgress = new GameProgress();
-    private Statistics statistics = new Statistics();
+    public GameProgress gameProgress = new GameProgress();
+    public Statistics statistics = new Statistics();
 
     // Gameplay variables
     private int playerCurrentHealth = gameProgress.getPlayerMaxHealth();

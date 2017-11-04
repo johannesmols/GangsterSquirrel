@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.google.gson.Gson;
 import itcom.gangstersquirrel.Items.WeaponObject;
-import itcom.gangstersquirrel.MainGameClass;
 
 import java.io.IOException;
 import java.util.ArrayList;

@@ -13,6 +13,8 @@ import itcom.gangstersquirrel.Statistics.Statistics;
 
 public class FrogEnemy extends Enemy {
 
+    private PlayScreen playScreen;
+
     // Animation parameters
     private float stateTime;
     private Animation<TextureRegion> walkAnimation;
@@ -23,6 +25,8 @@ public class FrogEnemy extends Enemy {
 
     public FrogEnemy(PlayScreen screen, int spawnPositionX, int spawnPositionY) {
         super(screen, spawnPositionX, spawnPositionY);
+
+        playScreen = screen;
 
         // Set gameplay variables of super class for this specific type of enemy
         damageMinMax = new int[] { 5, 15 };
@@ -92,14 +96,13 @@ public class FrogEnemy extends Enemy {
     @Override
     public void setHealth(int newHealth) {
         // Save inflicted damage to statistics
-        Statistics statistics = new Statistics();
-        statistics.setDamageInflicted(statistics.getDamageInflicted() + (health - newHealth));
+        playScreen.statistics.setDamageInflicted(playScreen.statistics.getDamageInflicted() + (health - newHealth));
 
         health = newHealth;
 
         if (health <= 0) {
             // Save death of enemy to statistics
-            statistics.setEnemiesKilled(statistics.getEnemiesKilled() + 1);
+            playScreen.statistics.setEnemiesKilled(playScreen.statistics.getEnemiesKilled() + 1);
 
             //despawn
         }
