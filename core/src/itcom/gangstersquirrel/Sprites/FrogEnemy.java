@@ -25,7 +25,7 @@ public class FrogEnemy extends Enemy {
         super(screen, spawnPositionX, spawnPositionY);
 
         // Set gameplay variables of super class for this specific type of enemy
-        damage = 10;
+        damageMinMax = new int[] { 5, 15 };
         health = 20;
 
         frames = new Array<>();
@@ -69,19 +69,19 @@ public class FrogEnemy extends Enemy {
     @Override
     public void onPlayerHit() {
         Gdx.app.log("Frog Enemy", "Collision");
-        screen.setPlayerCurrentHealth(screen.getPlayerCurrentHealth() - damage);
+        screen.setPlayerCurrentHealth(screen.getPlayerCurrentHealth() - randomDamageValueBetweenMinAndMax());
     }
 
     /* ----- GETTERS AND SETTERS ------------------------------------------------------------------------------------ */
 
     @Override
-    public int getDamage() {
-        return damage;
+    public int[] getDamageMinMax() {
+        return damageMinMax;
     }
 
     @Override
-    public void setDamage(int newDamage) {
-        damage = newDamage;
+    public void setDamageMinMax(int[] newDamageMinMax) {
+        damageMinMax = newDamageMinMax;
     }
 
     @Override

@@ -465,7 +465,7 @@ public class PlayScreen implements Screen {
         // Save lost health to statistics
         statistics.setHealthLost(statistics.getHealthLost() + (playerCurrentHealth - newHealth));
 
-        Gdx.app.log("Player health change", "New: " + newHealth + ", Old: " + playerCurrentHealth);
+        Gdx.app.log("Player health change", "New: " + newHealth + ", Old: " + playerCurrentHealth + ", Damage: " + (playerCurrentHealth - newHealth));
         playerCurrentHealth = newHealth;
 
         if (playerCurrentHealth <= 0) {
