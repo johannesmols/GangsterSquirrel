@@ -32,7 +32,7 @@ public class FrogEnemy extends Enemy {
         damageMinMax = new int[] { 5, 15 };
         health = 20;
 
-        frames = new Array<>();
+        frames = new Array<TextureRegion>();
 
         for(int i = 0; i < 25; i++) {
             frames.add(new TextureRegion(
@@ -40,7 +40,7 @@ public class FrogEnemy extends Enemy {
             );
         }
 
-        walkAnimation = new Animation<>(10f, frames);
+        walkAnimation = new Animation<TextureRegion>(10f, frames);
         stateTime = 0;
         setBounds(getX(), getY(), ENEMY_PIXEL_WIDTH / MainGameClass.PPM, ENEMY_PIXEL_HEIGHT / MainGameClass.PPM + getHeight() / 2);
         setToDestroy = false;

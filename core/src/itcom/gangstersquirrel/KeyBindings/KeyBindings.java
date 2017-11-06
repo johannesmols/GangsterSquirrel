@@ -12,11 +12,11 @@ public class KeyBindings {
 
     private final String[] actions = new String[] { "debug", "exit", "jump", "move_left", "move_right" };
 
-    public ArrayList<Integer> DEBUG = new ArrayList<>();
-    public ArrayList<Integer> EXIT = new ArrayList<>();
-    public ArrayList<Integer> JUMP = new ArrayList<>();
-    public ArrayList<Integer> MOVE_LEFT = new ArrayList<>();
-    public ArrayList<Integer> MOVE_RIGHT = new ArrayList<>();
+    public ArrayList<Integer> DEBUG = new ArrayList<Integer>();
+    public ArrayList<Integer> EXIT = new ArrayList<Integer>();
+    public ArrayList<Integer> JUMP = new ArrayList<Integer>();
+    public ArrayList<Integer> MOVE_LEFT = new ArrayList<Integer>();
+    public ArrayList<Integer> MOVE_RIGHT = new ArrayList<Integer>();
 
     private FileHandle fileHandle;
 
