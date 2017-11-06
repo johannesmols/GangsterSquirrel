@@ -18,6 +18,7 @@ import itcom.gangstersquirrel.Items.WeaponObject;
 import itcom.gangstersquirrel.Items.WeaponList;
 import itcom.gangstersquirrel.KeyBindings.KeyBindings;
 import itcom.gangstersquirrel.MainGameClass;
+import itcom.gangstersquirrel.Scenes.PlayScreenHud;
 import itcom.gangstersquirrel.Sprites.Enemy;
 import itcom.gangstersquirrel.Sprites.FrogEnemy;
 import itcom.gangstersquirrel.Sprites.Player;
@@ -45,9 +46,12 @@ public class PlayScreen implements Screen {
     private TiledMap map;
     private OrthogonalTiledMapRenderer renderer;
 
+    // HUD
+    private PlayScreenHud hud;
+
     // Level 1 Configuration
     private int level_1_spawnPositionX = 2;
-    private int level_1_spawnPositionY = 3;
+    private int level_1_spawnPositionY = 20;
 
     // Level 2 Configuration
     private int level_2_spawnPositionX = 2;
@@ -122,6 +126,9 @@ public class PlayScreen implements Screen {
         viewport = new FitViewport(MainGameClass.GAME_WORLD_WIDTH / MainGameClass.PPM, MainGameClass.GAME_WORLD_HEIGHT / MainGameClass.PPM, camera);
         camera.position.set(viewport.getWorldWidth() / 2, viewport.getWorldHeight() / 2, 0);
 
+        // Set up HUD
+        hud = new PlayScreenHud(this);
+
         // Load the first map from Tiles
         mapLoader = new TmxMapLoader();
 
@@ -154,9 +161,9 @@ public class PlayScreen implements Screen {
                 player = new Player(this, level_1_spawnPositionX, level_1_spawnPositionY);
 
                 // Add enemies to this level
-                enemies.add(new FrogEnemy(this, 3, 2));
-                enemies.add(new FrogEnemy(this, 5, 2));
-                enemies.add(new FrogEnemy(this, 7, 2));
+                enemies.add(new FrogEnemy(this, 3, 10));
+                enemies.add(new FrogEnemy(this, 5, 10));
+                enemies.add(new FrogEnemy(this, 7, 10));
                 break;
             case 2:
                 player = new Player(this, level_2_spawnPositionX, level_2_spawnPositionY);
@@ -240,10 +247,14 @@ public class PlayScreen implements Screen {
             enemy.update(deltaTime);
         }
 
+        hud.stage.draw();
+
         // Sets the coordinate system for rendering
         game.batch.setProjectionMatrix(camera.combined);
+        //game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
 
         game.batch.begin();
+
         // Draw specific textures in here with the help of OpenGL
         player.draw(game.batch);
 
@@ -285,6 +296,9 @@ public class PlayScreen implements Screen {
         } else if (player.body.getLinearVelocity().x < 0) {
             player.setFlip(false, false);
         }
+
+        // Update the HUD
+        hud.update(deltaTime);
 
         // Update the camera's position
         camera.update();
@@ -385,6 +399,7 @@ public class PlayScreen implements Screen {
         world.dispose();
         box2DDebugRenderer.dispose();
         level_1_backgroundMusic.dispose();
+        level_2_backgroundMusic.dispose();
     }
 
     /**
@@ -393,6 +408,7 @@ public class PlayScreen implements Screen {
     public void respawnPlayer(boolean levelFinished) {
         Gdx.app.log("Game over", "Player died, respawning now...");
         level_1_backgroundMusic.stop();
+        level_2_backgroundMusic.stop();
 
         // Save current timer time to the statistics
         statistics.setSecondsPlayed(statistics.getSecondsPlayed() + timer);
@@ -460,6 +476,13 @@ public class PlayScreen implements Screen {
     }
 
     /**
+     * @return the game class
+     */
+    public MainGameClass getGame() {
+        return game;
+    }
+
+    /**
      * @return the map
      */
     public TiledMap getMap() {
@@ -494,6 +517,10 @@ public class PlayScreen implements Screen {
         if (playerCurrentHealth <= 0) {
             respawnPlayer(false);
         }
+    }
+
+    public long getTimer() {
+        return timer;
     }
 
     /* -------------------------------------------------------------------------------------------------------------- */

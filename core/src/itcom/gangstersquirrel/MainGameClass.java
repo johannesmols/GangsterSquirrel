@@ -20,6 +20,8 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import itcom.gangstersquirrel.GameProgress.GameProgress;
 import itcom.gangstersquirrel.Screens.SplashScreen;
 
+import java.util.HashMap;
+
 /**
  * The main class of the game and entrance point
  */
@@ -27,7 +29,7 @@ public class MainGameClass extends Game {
 
 	// Enables certain debugging features like collision box rendering
 	public static boolean DEBUG = true;
-	public static final boolean PLAY_SOUNDS = true;
+	public static final boolean PLAY_SOUNDS = false;
 
 	// Configuration
 	public static final boolean FULLSCREEN = true;
@@ -51,7 +53,7 @@ public class MainGameClass extends Game {
 
 	// Internal objects
 	public SpriteBatch batch; //Contains every sprite in the game
-	public BitmapFont default_font;
+	public HashMap<String, BitmapFont> fonts = new HashMap<String, BitmapFont>();
 
 	/**
 	 * The first method that is called in the entire application, sets up basic variables and loads the first screen
@@ -63,8 +65,9 @@ public class MainGameClass extends Game {
 		ASPECT_RATIO = (float) WIDTH / (float) HEIGHT;
 
 		batch = new SpriteBatch();
-		// No parameters = use libGDX's default Arial font
-		default_font = new BitmapFont();
+
+		// Add fonts
+		fonts.put("default", new BitmapFont());
 
 		// Load first screen
 		this.setScreen(new SplashScreen(this));
@@ -85,7 +88,6 @@ public class MainGameClass extends Game {
 	@Override
 	public void dispose () {
 		batch.dispose();
-		default_font.dispose();
 	}
 
 	public void takeScreenshot() {
