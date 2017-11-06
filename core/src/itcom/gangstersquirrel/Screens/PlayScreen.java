@@ -66,7 +66,7 @@ public class PlayScreen implements Screen {
     public static boolean isPressingJump;
 
     // Enemy variables
-    private ArrayList<Enemy> enemies = new ArrayList<>();
+    private ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 
     // Game Progress and Statistics
     public GameProgress gameProgress = new GameProgress();
