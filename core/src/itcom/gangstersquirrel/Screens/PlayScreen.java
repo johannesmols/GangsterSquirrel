@@ -97,6 +97,7 @@ public class PlayScreen implements Screen {
     // Music = streamed from file (can be memory intensive to keep in memory)
     private Sound jumpSound = Gdx.audio.newSound(Gdx.files.internal("audio/jump.mp3"));
     private Music level_1_backgroundMusic;
+    private Music level_2_backgroundMusic;
 
     /**
      * Set up all important things, can be considered as the create() method like in the MainGameClass
@@ -192,8 +193,20 @@ public class PlayScreen implements Screen {
         //Load the background music, set looping to true and play immediately
         level_1_backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("audio/level_1_music.mp3"));
         level_1_backgroundMusic.setLooping(true);
+        level_2_backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("audio/level_2_music.mp3"));
+        level_2_backgroundMusic.setLooping(true);
+
         if (MainGameClass.PLAY_SOUNDS) {
-            level_1_backgroundMusic.play();
+            switch (gameProgress.getCurrentLevel()) {
+                case 1:
+                    level_1_backgroundMusic.play();
+                    break;
+                case 2:
+                    level_2_backgroundMusic.play();
+                    break;
+                default:
+                    break;
+            }
         }
 
         // Set up timer with previous time or new time for the level

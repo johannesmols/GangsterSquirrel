@@ -27,7 +27,7 @@ public class MainGameClass extends Game {
 
 	// Enables certain debugging features like collision box rendering
 	public static boolean DEBUG = true;
-	public static final boolean PLAY_SOUNDS = false;
+	public static final boolean PLAY_SOUNDS = true;
 
 	// Configuration
 	public static final boolean FULLSCREEN = true;
