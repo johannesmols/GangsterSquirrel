@@ -20,7 +20,7 @@ public class Player extends Sprite {
 
     // Player parameters
     private int health;
-    private List<WeaponObject> weapons = new ArrayList<WeaponObject>();
+    private List<WeaponObject> weapons = new ArrayList<>();
     private float jumpImpulseVelocity;
     private float walkImpulseVelocity;
     private float climbImpulseVelocity;
