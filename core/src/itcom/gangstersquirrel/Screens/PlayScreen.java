@@ -48,6 +48,8 @@ public class PlayScreen implements Screen {
     // Level 1 Configuration
     private int level_1_spawnPositionX = 2;
     private int level_1_spawnPositionY = 3;
+    private int level_2_spawnPositionX = 2;
+    private int level_2_spawnPositionY = 3;
 
     // Box2D variables
     private World world;
@@ -124,6 +126,9 @@ public class PlayScreen implements Screen {
             case 1:
                 map = mapLoader.load("maps/level_1/level_1.tmx");
                 break;
+            case 2:
+                map = mapLoader.load("maps/boss/boss_level.tmx");
+                break;
             default:
                 game.exitApplication("Couldn't find level, exiting application");
                 break;
@@ -149,6 +154,9 @@ public class PlayScreen implements Screen {
                 enemies.add(new FrogEnemy(this, 3, 2));
                 enemies.add(new FrogEnemy(this, 5, 2));
                 enemies.add(new FrogEnemy(this, 7, 2));
+                break;
+            case 2:
+                player = new Player(this, level_2_spawnPositionX, level_2_spawnPositionY);
                 break;
             default:
                 game.exitApplication("No current level defined, exiting application");

@@ -41,7 +41,8 @@ public class MainGameClass extends Game {
     public static int ZOOM = 32;
 
     // Number of levels
-	public static final int NUMBER_OF_LEVELS = 1;
+	public static final int NUMBER_OF_LEVELS = 2;
+
 
 	// Internal units
 	public static int TILE_PIXEL_SIZE = 16;
