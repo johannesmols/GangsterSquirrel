@@ -43,7 +43,6 @@ public class MainGameClass extends Game {
     // Number of levels
 	public static final int NUMBER_OF_LEVELS = 2;
 
-
 	// Internal units
 	public static int TILE_PIXEL_SIZE = 16;
 	public static float GAME_WORLD_WIDTH = 16 * ZOOM; // Game world size (map dimension in pixels)
