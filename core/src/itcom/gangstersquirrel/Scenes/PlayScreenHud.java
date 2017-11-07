@@ -53,7 +53,7 @@ public class PlayScreenHud {
                 new ProgressBar.ProgressBarStyle()
         );
 
-        //layoutTable.add(healthBar).expandX().left().top();
+        layoutTable.add(healthBar).expandX().left().top();
         layoutTable.add(timerLabel).expandX().right().top();
         layoutTable.row();
 

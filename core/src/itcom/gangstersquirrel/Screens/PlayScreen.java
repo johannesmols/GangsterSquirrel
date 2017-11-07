@@ -80,9 +80,6 @@ public class PlayScreen implements Screen {
     public GameProgress gameProgress = new GameProgress();
     public Statistics statistics = new Statistics();
 
-    // Gameplay variables
-    private int playerCurrentHealth = gameProgress.getPlayerMaxHealth();
-
     // Timer
     private float deltaTimeCount = 0f;
     private long timer = 0;
@@ -172,6 +169,9 @@ public class PlayScreen implements Screen {
                 game.exitApplication("No current level defined, exiting application");
                 break;
         }
+
+        // Player health
+        player.setHealth(gameProgress.getPlayerMaxHealth());
 
         // Equip player with his weapons
         for (WeaponObject weapon : gameProgress.getPlayerWeaponList()) {
@@ -503,18 +503,28 @@ public class PlayScreen implements Screen {
         return gameProgress;
     }
 
-    public int getPlayerCurrentHealth() {
-        return playerCurrentHealth;
+    /**
+     * @return the player
+     */
+    public Player getPlayer() {
+        return player;
+    }
+
+    /**
+     * @return the statistics
+     */
+    public Statistics getStatistics() {
+        return statistics;
     }
 
     public void setPlayerCurrentHealth(int newHealth) {
         // Save lost health to statistics
-        statistics.setHealthLost(statistics.getHealthLost() + (playerCurrentHealth - newHealth));
+        statistics.setHealthLost(statistics.getHealthLost() + (player.getHealth() - newHealth));
 
-        Gdx.app.log("Player health change", "New: " + newHealth + ", Old: " + playerCurrentHealth + ", Damage: " + (playerCurrentHealth - newHealth));
-        playerCurrentHealth = newHealth;
+        Gdx.app.log("Player health change", "New: " + newHealth + ", Old: " + player.getHealth() + ", Damage: " + (player.getHealth() - newHealth));
+        player.setHealth(newHealth);
 
-        if (playerCurrentHealth <= 0) {
+        if (player.getHealth() <= 0) {
             respawnPlayer(false);
         }
     }

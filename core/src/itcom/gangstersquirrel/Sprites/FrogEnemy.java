@@ -73,7 +73,7 @@ public class FrogEnemy extends Enemy {
     @Override
     public void onPlayerHit() {
         Gdx.app.log("Frog Enemy", "Collision");
-        screen.setPlayerCurrentHealth(screen.getPlayerCurrentHealth() - randomDamageValueBetweenMinAndMax());
+        screen.setPlayerCurrentHealth(screen.getPlayer().getHealth() - randomDamageValueBetweenMinAndMax());
     }
 
     /* ----- GETTERS AND SETTERS ------------------------------------------------------------------------------------ */
@@ -96,13 +96,13 @@ public class FrogEnemy extends Enemy {
     @Override
     public void setHealth(int newHealth) {
         // Save inflicted damage to statistics
-        playScreen.statistics.setDamageInflicted(playScreen.statistics.getDamageInflicted() + (health - newHealth));
+        playScreen.getStatistics().setDamageInflicted(playScreen.getStatistics().getDamageInflicted() + (health - newHealth));
 
         health = newHealth;
 
         if (health <= 0) {
             // Save death of enemy to statistics
-            playScreen.statistics.setEnemiesKilled(playScreen.statistics.getEnemiesKilled() + 1);
+            playScreen.getStatistics().setEnemiesKilled(playScreen.getStatistics().getEnemiesKilled() + 1);
 
             //despawn
         }

@@ -25,6 +25,6 @@ public class Item extends InteractiveTileObject {
 
         // Save collected item to statistics
         //Statistics statistics = new Statistics();
-        playScreen.statistics.setItemsCollected(playScreen.statistics.getItemsCollected() + 1);
+        playScreen.getStatistics().setItemsCollected(playScreen.statistics.getItemsCollected() + 1);
     }
 }
