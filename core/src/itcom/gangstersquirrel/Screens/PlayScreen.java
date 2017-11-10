@@ -413,6 +413,9 @@ public class PlayScreen implements Screen {
         // Save current timer time to the statistics
         statistics.setSecondsPlayed(statistics.getSecondsPlayed() + timer);
 
+        // Subtract player life
+        gameProgress.setPlayerLifes(gameProgress.getPlayerLifes() - 1);
+
         // Only when the level is finished, it should reset the timer
         if (levelFinished) {
             gameProgress.setCurrentTime(0);
@@ -454,6 +457,9 @@ public class PlayScreen implements Screen {
 
         // Save finished level to statistics
         statistics.setLevelsFinished(statistics.getLevelsFinished() + 1);
+
+        // Reset current lifes to the maximum
+        gameProgress.setPlayerLifes(gameProgress.getPlayerMaximumLifes());
 
         respawnPlayer(true);
     }
@@ -525,7 +531,11 @@ public class PlayScreen implements Screen {
         player.setHealth(newHealth);
 
         if (player.getHealth() <= 0) {
-            respawnPlayer(false);
+            if(gameProgress.getPlayerLifes() > 1) {
+                respawnPlayer(false);
+            } else {
+                game.exitApplication("Out of lifes");
+            }
         }
     }
 

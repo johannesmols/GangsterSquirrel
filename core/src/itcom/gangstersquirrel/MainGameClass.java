@@ -104,6 +104,7 @@ public class MainGameClass extends Game {
 	 */
 	public void exitApplication() {
 		resetTimer();
+		resetPlayerLifes();
 		Gdx.app.exit();
 		System.exit(0);
 	}
@@ -118,6 +119,7 @@ public class MainGameClass extends Game {
 		}
 
 		resetTimer();
+		resetPlayerLifes();
 
 		Gdx.app.exit();
 		System.exit(0);
@@ -126,5 +128,11 @@ public class MainGameClass extends Game {
 	private void resetTimer() {
 		// Reset the game timer to zero, or when the game starts the next time, the timer will continue from the last saved point
 		new GameProgress().setCurrentTime(0);
+	}
+
+	private void resetPlayerLifes() {
+		// Reset current lifes to the maximum
+		GameProgress gameProgress = new GameProgress();
+		gameProgress.setPlayerLifes(gameProgress.getPlayerMaximumLifes());
 	}
 }

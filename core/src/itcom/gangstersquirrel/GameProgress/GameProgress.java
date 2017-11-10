@@ -26,6 +26,8 @@ public class GameProgress {
                 1,
                 0,
                 100,
+                3,
+                3,
                 4f,
                 0.1f,
                 1f,
@@ -113,6 +115,24 @@ public class GameProgress {
 
     public void setPlayerMaxHealth(int playerMaxHealth) {
         gameProgress.setPlayerMaxHealth(playerMaxHealth);
+        serializeGameProgress(gameProgress);
+    }
+
+    public int getPlayerLifes() {
+        return gameProgress.getPlayerLifes();
+    }
+
+    public void setPlayerLifes(int playerLifes) {
+        gameProgress.setPlayerLifes(playerLifes);
+        serializeGameProgress(gameProgress);
+    }
+
+    public int getPlayerMaximumLifes() {
+        return gameProgress.getPlayerMaximumLifes();
+    }
+
+    public void setPlayerMaximumLifes(int playerMaximumLifes) {
+        gameProgress.setPlayerMaximumLifes(playerMaximumLifes);
         serializeGameProgress(gameProgress);
     }
 
