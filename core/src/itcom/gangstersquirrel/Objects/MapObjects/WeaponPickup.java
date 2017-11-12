@@ -36,9 +36,52 @@ public class WeaponPickup extends InteractiveMapTileObject {
 
                 boolean changedWeaponList = false;
                 ArrayList<WeaponObject> playerWeaponList = playScreen.getPlayer().getWeapons();
+                WeaponObject weapon;
                 switch (weaponName) {
+                    case "Fists":
+                        weapon = getWeaponObjectByName("Fists");
+                        if (weapon != null && !weaponAlreadyInList(weapon)) {
+                            playerWeaponList.add(weapon);
+                            changedWeaponList = true;
+                        }
+                        break;
                     case "Branch":
-                        WeaponObject weapon = getWeaponObjectByName("Branch");
+                        weapon = getWeaponObjectByName("Branch");
+                        if (weapon != null && !weaponAlreadyInList(weapon)) {
+                            playerWeaponList.add(weapon);
+                            changedWeaponList = true;
+                        }
+                        break;
+                    case "Swiss Army Knife":
+                        weapon = getWeaponObjectByName("Swiss Army Knife");
+                        if (weapon != null && !weaponAlreadyInList(weapon)) {
+                            playerWeaponList.add(weapon);
+                            changedWeaponList = true;
+                        }
+                        break;
+                    case "Switchblade":
+                        weapon = getWeaponObjectByName("Switchblade");
+                        if (weapon != null && !weaponAlreadyInList(weapon)) {
+                            playerWeaponList.add(weapon);
+                            changedWeaponList = true;
+                        }
+                        break;
+                    case "Katana":
+                        weapon = getWeaponObjectByName("Katana");
+                        if (weapon != null && !weaponAlreadyInList(weapon)) {
+                            playerWeaponList.add(weapon);
+                            changedWeaponList = true;
+                        }
+                        break;
+                    case "Tommy Gun":
+                        weapon = getWeaponObjectByName("Tommy Gun");
+                        if (weapon != null && !weaponAlreadyInList(weapon)) {
+                            playerWeaponList.add(weapon);
+                            changedWeaponList = true;
+                        }
+                        break;
+                    case "Bazooka":
+                        weapon = getWeaponObjectByName("Bazooka");
                         if (weapon != null && !weaponAlreadyInList(weapon)) {
                             playerWeaponList.add(weapon);
                             changedWeaponList = true;

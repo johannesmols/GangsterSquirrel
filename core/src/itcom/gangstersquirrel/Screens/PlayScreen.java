@@ -354,6 +354,67 @@ public class PlayScreen implements Screen {
         if (isPressingMoveLeft && player.body.getLinearVelocity().x >= -player.getMaxWalkVelocity()) {
             player.body.applyLinearImpulse(new Vector2(-player.getWalkImpulseVelocity(), 0), player.body.getWorldCenter(), true);
         }
+
+        // Changing equipped weapon
+        for (Integer keyBinding : keyBindings.EQUIP_WEAPON_SLOT_0) {
+            if (Gdx.input.isKeyJustPressed(keyBinding)) {
+                player.changeWeapon(0);
+            }
+        }
+
+        for (Integer keyBinding : keyBindings.EQUIP_WEAPON_SLOT_1) {
+            if (Gdx.input.isKeyJustPressed(keyBinding)) {
+                player.changeWeapon(1);
+            }
+        }
+
+        for (Integer keyBinding : keyBindings.EQUIP_WEAPON_SLOT_2) {
+            if (Gdx.input.isKeyJustPressed(keyBinding)) {
+                player.changeWeapon(2);
+            }
+        }
+
+        for (Integer keyBinding : keyBindings.EQUIP_WEAPON_SLOT_3) {
+            if (Gdx.input.isKeyJustPressed(keyBinding)) {
+                player.changeWeapon(3);
+            }
+        }
+
+        for (Integer keyBinding : keyBindings.EQUIP_WEAPON_SLOT_4) {
+            if (Gdx.input.isKeyJustPressed(keyBinding)) {
+                player.changeWeapon(4);
+            }
+        }
+
+        for (Integer keyBinding : keyBindings.EQUIP_WEAPON_SLOT_5) {
+            if (Gdx.input.isKeyJustPressed(keyBinding)) {
+                player.changeWeapon(5);
+            }
+        }
+
+        for (Integer keyBinding : keyBindings.EQUIP_WEAPON_SLOT_6) {
+            if (Gdx.input.isKeyJustPressed(keyBinding)) {
+                player.changeWeapon(6);
+            }
+        }
+
+        for (Integer keyBinding : keyBindings.EQUIP_WEAPON_SLOT_7) {
+            if (Gdx.input.isKeyJustPressed(keyBinding)) {
+                player.changeWeapon(7);
+            }
+        }
+
+        for (Integer keyBinding : keyBindings.EQUIP_WEAPON_SLOT_8) {
+            if (Gdx.input.isKeyJustPressed(keyBinding)) {
+                player.changeWeapon(8);
+            }
+        }
+
+        for (Integer keyBinding : keyBindings.EQUIP_WEAPON_SLOT_9) {
+            if (Gdx.input.isKeyJustPressed(keyBinding)) {
+                player.changeWeapon(9);
+            }
+        }
     }
 
     /**

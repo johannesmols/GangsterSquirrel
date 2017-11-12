@@ -10,13 +10,39 @@ import java.util.ArrayList;
 
 public class KeyBindings {
 
-    private final String[] actions = new String[] { "debug", "exit", "jump", "move_left", "move_right" };
+    private final String[] actions = new String[] {
+            "debug",
+            "exit",
+            "jump",
+            "move_left",
+            "move_right",
+            "equip_weapon_slot_0",
+            "equip_weapon_slot_1",
+            "equip_weapon_slot_2",
+            "equip_weapon_slot_3",
+            "equip_weapon_slot_4",
+            "equip_weapon_slot_5",
+            "equip_weapon_slot_6",
+            "equip_weapon_slot_7",
+            "equip_weapon_slot_8",
+            "equip_weapon_slot_9"
+    };
 
     public ArrayList<Integer> DEBUG = new ArrayList<>();
     public ArrayList<Integer> EXIT = new ArrayList<>();
     public ArrayList<Integer> JUMP = new ArrayList<>();
     public ArrayList<Integer> MOVE_LEFT = new ArrayList<>();
     public ArrayList<Integer> MOVE_RIGHT = new ArrayList<>();
+    public ArrayList<Integer> EQUIP_WEAPON_SLOT_0 = new ArrayList<>();
+    public ArrayList<Integer> EQUIP_WEAPON_SLOT_1 = new ArrayList<>();
+    public ArrayList<Integer> EQUIP_WEAPON_SLOT_2 = new ArrayList<>();
+    public ArrayList<Integer> EQUIP_WEAPON_SLOT_3 = new ArrayList<>();
+    public ArrayList<Integer> EQUIP_WEAPON_SLOT_4 = new ArrayList<>();
+    public ArrayList<Integer> EQUIP_WEAPON_SLOT_5 = new ArrayList<>();
+    public ArrayList<Integer> EQUIP_WEAPON_SLOT_6 = new ArrayList<>();
+    public ArrayList<Integer> EQUIP_WEAPON_SLOT_7 = new ArrayList<>();
+    public ArrayList<Integer> EQUIP_WEAPON_SLOT_8 = new ArrayList<>();
+    public ArrayList<Integer> EQUIP_WEAPON_SLOT_9 = new ArrayList<>();
 
     private FileHandle fileHandle;
 
@@ -34,7 +60,17 @@ public class KeyBindings {
                 new KeyBindingObject(actions[1], new int[]{Input.Keys.ESCAPE}),
                 new KeyBindingObject(actions[2], new int[]{Input.Keys.UP, Input.Keys.SPACE, Input.Keys.W }),
                 new KeyBindingObject(actions[3], new int[]{Input.Keys.LEFT, Input.Keys.A }),
-                new KeyBindingObject(actions[4], new int[]{Input.Keys.RIGHT, Input.Keys.D })
+                new KeyBindingObject(actions[4], new int[]{Input.Keys.RIGHT, Input.Keys.D }),
+                new KeyBindingObject(actions[5], new int[]{Input.Keys.NUM_1}),
+                new KeyBindingObject(actions[6], new int[]{Input.Keys.NUM_2}),
+                new KeyBindingObject(actions[7], new int[]{Input.Keys.NUM_3}),
+                new KeyBindingObject(actions[8], new int[]{Input.Keys.NUM_4}),
+                new KeyBindingObject(actions[9], new int[]{Input.Keys.NUM_5}),
+                new KeyBindingObject(actions[10], new int[]{Input.Keys.NUM_6}),
+                new KeyBindingObject(actions[11], new int[]{Input.Keys.NUM_7}),
+                new KeyBindingObject(actions[12], new int[]{Input.Keys.NUM_8}),
+                new KeyBindingObject(actions[13], new int[]{Input.Keys.NUM_9}),
+                new KeyBindingObject(actions[14], new int[]{Input.Keys.NUM_0})
         };
 
         if (fileHandle.exists()) {
@@ -114,6 +150,56 @@ public class KeyBindings {
                 MOVE_RIGHT.clear();
                 for (int keycode : key.getKeys()) {
                     MOVE_RIGHT.add(keycode);
+                }
+            }  else if (key.getAction().equals(actions[5])) {
+                EQUIP_WEAPON_SLOT_0.clear();
+                for (int keycode : key.getKeys()) {
+                    EQUIP_WEAPON_SLOT_0.add(keycode);
+                }
+            }  else if (key.getAction().equals(actions[6])) {
+                EQUIP_WEAPON_SLOT_1.clear();
+                for (int keycode : key.getKeys()) {
+                    EQUIP_WEAPON_SLOT_1.add(keycode);
+                }
+            }  else if (key.getAction().equals(actions[7])) {
+                EQUIP_WEAPON_SLOT_2.clear();
+                for (int keycode : key.getKeys()) {
+                    EQUIP_WEAPON_SLOT_2.add(keycode);
+                }
+            }  else if (key.getAction().equals(actions[8])) {
+                EQUIP_WEAPON_SLOT_3.clear();
+                for (int keycode : key.getKeys()) {
+                    EQUIP_WEAPON_SLOT_3.add(keycode);
+                }
+            }  else if (key.getAction().equals(actions[9])) {
+                EQUIP_WEAPON_SLOT_4.clear();
+                for (int keycode : key.getKeys()) {
+                    EQUIP_WEAPON_SLOT_4.add(keycode);
+                }
+            }  else if (key.getAction().equals(actions[10])) {
+                EQUIP_WEAPON_SLOT_5.clear();
+                for (int keycode : key.getKeys()) {
+                    EQUIP_WEAPON_SLOT_5.add(keycode);
+                }
+            }  else if (key.getAction().equals(actions[11])) {
+                EQUIP_WEAPON_SLOT_6.clear();
+                for (int keycode : key.getKeys()) {
+                    EQUIP_WEAPON_SLOT_6.add(keycode);
+                }
+            }  else if (key.getAction().equals(actions[12])) {
+                EQUIP_WEAPON_SLOT_7.clear();
+                for (int keycode : key.getKeys()) {
+                    EQUIP_WEAPON_SLOT_7.add(keycode);
+                }
+            }  else if (key.getAction().equals(actions[13])) {
+                EQUIP_WEAPON_SLOT_8.clear();
+                for (int keycode : key.getKeys()) {
+                    EQUIP_WEAPON_SLOT_8.add(keycode);
+                }
+            }  else if (key.getAction().equals(actions[14])) {
+                EQUIP_WEAPON_SLOT_9.clear();
+                for (int keycode : key.getKeys()) {
+                    EQUIP_WEAPON_SLOT_9.add(keycode);
                 }
             }
         }
