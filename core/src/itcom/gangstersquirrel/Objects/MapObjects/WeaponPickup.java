@@ -34,20 +34,24 @@ public class WeaponPickup extends InteractiveMapTileObject {
                 String weaponName = object.getProperties().get("weapon_name", String.class);
                 Gdx.app.log("Picked up weapon", weaponName);
 
+                boolean changedWeaponList = false;
                 ArrayList<WeaponObject> playerWeaponList = playScreen.getPlayer().getWeapons();
                 switch (weaponName) {
                     case "Branch":
                         WeaponObject weapon = getWeaponObjectByName("Branch");
                         if (weapon != null && !weaponAlreadyInList(weapon)) {
                             playerWeaponList.add(weapon);
+                            changedWeaponList = true;
                         }
                         break;
                     default:
                         break;
                 }
 
-                playScreen.getPlayer().setWeapons(playerWeaponList);
-                playScreen.getPlayer().changeWeapon(weaponName);
+                if (changedWeaponList) {
+                    playScreen.getPlayer().setWeapons(playerWeaponList);
+                    playScreen.getPlayer().changeWeapon(weaponName);
+                }
             }
         }
     }
