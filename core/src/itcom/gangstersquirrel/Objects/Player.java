@@ -35,7 +35,7 @@ public class Player extends Sprite {
     private boolean isOnJumpableGround;
 
     // Texture resolution
-    private final int PLAYER_PIXEL_WIDTH = 32;
+    private final int PLAYER_PIXEL_WIDTH = 48;
     private final int PLAYER_PIXEL_HEIGHT = 24;
 
     // Texture regions
@@ -43,7 +43,7 @@ public class Player extends Sprite {
 
     public Player(PlayScreen screen, int spawnPosition_X, int spawnPosition_Y) {
         // Get texture region out of the texture atlas for the squirrel
-        super(screen.getPlayerTextureAtlas().findRegion("squirrel_default"));
+        super(screen.getPlayerTextureAtlas().findRegion("squirrel_branch_frame0"));
 
         this.world = screen.getWorld();
         this.spawnTileX = spawnPosition_X;
@@ -87,10 +87,8 @@ public class Player extends Sprite {
         body.createFixture(fixtureDef);
 
         // Collision sensor fixture definition
-        PolygonShape collisionShape = new PolygonShape();
-        collisionShape.setAsBox(PLAYER_PIXEL_WIDTH / 4 / MainGameClass.PPM, PLAYER_PIXEL_HEIGHT / 2 / MainGameClass.PPM);
         FixtureDef collisionFixtureDef = new FixtureDef();
-        collisionFixtureDef.shape = collisionShape;
+        collisionFixtureDef.shape = shape;
         collisionFixtureDef.isSensor = true;
         body.createFixture(collisionFixtureDef).setUserData("player");
     }

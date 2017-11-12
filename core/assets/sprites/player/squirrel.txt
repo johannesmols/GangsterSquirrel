@@ -1,0 +1,82 @@
+squirrel.png
+size: 144, 144
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+squirrel_bazooka_frame0
+  rotate: false
+  xy: 0, 0
+  size: 48, 24
+  orig: 48, 24
+  offset: 0, 0
+  index: -1
+squirrel_branch_frame0
+  rotate: false
+  xy: 48, 0
+  size: 48, 24
+  orig: 48, 24
+  offset: 0, 0
+  index: -1
+squirrel_branch_frame1
+  rotate: false
+  xy: 96, 0
+  size: 48, 24
+  orig: 48, 24
+  offset: 0, 0
+  index: -1
+squirrel_default
+  rotate: false
+  xy: 0, 24
+  size: 48, 24
+  orig: 48, 24
+  offset: 0, 0
+  index: -1
+squirrel_katana_frame0
+  rotate: false
+  xy: 48, 24
+  size: 48, 24
+  orig: 48, 24
+  offset: 0, 0
+  index: -1
+squirrel_katana_frame1
+  rotate: false
+  xy: 96, 24
+  size: 48, 24
+  orig: 48, 24
+  offset: 0, 0
+  index: -1
+squirrel_swiss_army_knife_frame0
+  rotate: false
+  xy: 0, 48
+  size: 48, 24
+  orig: 48, 24
+  offset: 0, 0
+  index: -1
+squirrel_swiss_army_knife_frame1
+  rotate: false
+  xy: 48, 48
+  size: 48, 24
+  orig: 48, 24
+  offset: 0, 0
+  index: -1
+squirrel_switchblade_frame0
+  rotate: false
+  xy: 96, 48
+  size: 48, 24
+  orig: 48, 24
+  offset: 0, 0
+  index: -1
+squirrel_switchblade_frame1
+  rotate: false
+  xy: 0, 72
+  size: 48, 24
+  orig: 48, 24
+  offset: 0, 0
+  index: -1
+squirrel_tommy_gun_frame0
+  rotate: false
+  xy: 48, 72
+  size: 48, 24
+  orig: 48, 24
+  offset: 0, 0
+  index: -1
