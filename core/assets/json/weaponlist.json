@@ -1,1 +1,1 @@
-[{"id":0,"name":"Stick","meleeOrRanged":true,"strength":5}]
+[{"id":0,"name":"Fists","meleeOrRanged":true,"strength":1},{"id":1,"name":"Branch","meleeOrRanged":true,"strength":5},{"id":2,"name":"Swiss Army Knife","meleeOrRanged":true,"strength":10},{"id":3,"name":"Switchblade","meleeOrRanged":true,"strength":15},{"id":4,"name":"Katana","meleeOrRanged":true,"strength":20},{"id":5,"name":"Tommy Gun","meleeOrRanged":false,"strength":40},{"id":6,"name":"Bazooka","meleeOrRanged":false,"strength":100}]

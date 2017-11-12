@@ -171,21 +171,8 @@ public class PlayScreen implements Screen {
                 break;
         }
 
-        // Player health
-        player.setHealth(gameProgress.getPlayerMaxHealth());
-
-        // Equip player with his weapons
-        for (WeaponObject weapon : gameProgress.getPlayerWeaponList()) {
-            player.getWeapons().add(weapon);
-        }
-
-        player.setHealth(gameProgress.getPlayerMaxHealth());
-        player.setJumpImpulseVelocity(gameProgress.getPlayerJumpImpulseVelocity());
-        player.setWalkImpulseVelocity(gameProgress.getPlayerWalkImpulseVelocity());
-        player.setClimbImpulseVelocity(gameProgress.getPlayerClimbImpulseVelocity());
-        player.setMaxWalkVelocity(gameProgress.getPlayerMaxWalkVelocity());
-        player.setMaxClimbVelocity(gameProgress.getPlayerMaxClimbVelocity());
-
+        // Set up remaining player variables
+        setUpPlayer();
 
         // Keybinding setup
         keyBindings = new KeyBindings();
@@ -217,6 +204,26 @@ public class PlayScreen implements Screen {
 
         // Set up timer with previous time or new time for the level
         timer = gameProgress.getCurrentTime();
+    }
+
+    private void setUpPlayer() {
+
+        // Player health
+        player.setHealth(gameProgress.getPlayerMaxHealth());
+
+        // Add default weapon, if the players weapon list is empty
+        if (gameProgress.getPlayerWeaponList().size() == 0) {
+            ArrayList<WeaponObject> playerWeaponList = gameProgress.getPlayerWeaponList();
+            playerWeaponList.add(allWeapons.get(0));
+            gameProgress.setPlayerWeaponList(playerWeaponList);
+        }
+
+        // Movement variables
+        player.setJumpImpulseVelocity(gameProgress.getPlayerJumpImpulseVelocity());
+        player.setWalkImpulseVelocity(gameProgress.getPlayerWalkImpulseVelocity());
+        player.setClimbImpulseVelocity(gameProgress.getPlayerClimbImpulseVelocity());
+        player.setMaxWalkVelocity(gameProgress.getPlayerMaxWalkVelocity());
+        player.setMaxClimbVelocity(gameProgress.getPlayerMaxClimbVelocity());
     }
 
     /**

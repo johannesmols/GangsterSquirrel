@@ -3,11 +3,14 @@ package itcom.gangstersquirrel.Objects;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.physics.box2d.*;
+import itcom.gangstersquirrel.GameProgress.GameProgress;
+import itcom.gangstersquirrel.Items.WeaponList;
 import itcom.gangstersquirrel.Items.WeaponObject;
 import itcom.gangstersquirrel.MainGameClass;
 import itcom.gangstersquirrel.Screens.PlayScreen;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -21,6 +24,7 @@ public class Player extends Sprite {
     // Player parameters
     private int health;
     private List<WeaponObject> weapons = new ArrayList<>();
+    private int currentWeaponIndex;
     private float jumpImpulseVelocity;
     private float walkImpulseVelocity;
     private float climbImpulseVelocity;
@@ -34,26 +38,86 @@ public class Player extends Sprite {
     // Gameplay relevant variables
     private boolean isOnJumpableGround;
 
-    // Texture resolution
+    // Texture variables
     private final int PLAYER_PIXEL_WIDTH = 48;
     private final int PLAYER_PIXEL_HEIGHT = 24;
 
-    // Texture regions
-    private TextureRegion playerStanding;
+    private HashMap<String, String> textureRegionNames = new HashMap<String, String>(); // K = Display Name, V = Texture region name
+    private HashMap<String, TextureRegion> textureRegions = new HashMap<String, TextureRegion>(); // K = Texture region name, V = Texture region
 
     public Player(PlayScreen screen, int spawnPosition_X, int spawnPosition_Y) {
         // Get texture region out of the texture atlas for the squirrel
-        super(screen.getPlayerTextureAtlas().findRegion("squirrel_branch_frame0"));
+        super(screen.getPlayerTextureAtlas().findRegion("squirrel_default"));
 
         this.world = screen.getWorld();
         this.spawnTileX = spawnPosition_X;
         this.spawnTileY = spawnPosition_Y;
+        this.weapons = new GameProgress().getPlayerWeaponList();
+        this.currentWeaponIndex = 0;
 
         definePlayer();
 
-        playerStanding = new TextureRegion(getTexture(), 0, 0, PLAYER_PIXEL_WIDTH, PLAYER_PIXEL_HEIGHT);
+        // Add weapon display names as key and their texture region names as values in the HashMap for texture region names
+        List<WeaponObject> weaponList = new WeaponList().getAllWeapons();
+        for (WeaponObject weapon : weaponList) {
+            switch (weapon.getName()) {
+                case "Fists":
+                    textureRegionNames.put(weapon.getName(), "squirrel_default");
+                    break;
+                case "Branch":
+                    textureRegionNames.put(weapon.getName(), "squirrel_branch_frame0");
+                    break;
+                case "Swiss Army Knife":
+                    textureRegionNames.put(weapon.getName(), "squirrel_swiss_army_knife_frame0");
+                    break;
+                case "Switchblade":
+                    textureRegionNames.put(weapon.getName(), "squirrel_switchblade_frame0");
+                    break;
+                case "Katana":
+                    textureRegionNames.put(weapon.getName(), "squirrel_katana_frame0");
+                    break;
+                case "Tommy Gun":
+                    textureRegionNames.put(weapon.getName(), "squirrel_tommy_gun_frame0");
+                    break;
+                case "Bazooka":
+                    textureRegionNames.put(weapon.getName(), "squirrel_bazooka_frame0");
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        // Add texture regions to the HashMap for texture regions, with the key being the display name of the weapon
+        for (String textureRegionName : textureRegionNames.keySet()) {
+            textureRegions.put(
+                    textureRegionName,
+                    new TextureRegion(
+                            getTexture(),
+                            screen.getPlayerTextureAtlas().findRegion(textureRegionNames.get(textureRegionName)).getRegionX(),
+                            screen.getPlayerTextureAtlas().findRegion(textureRegionNames.get(textureRegionName)).getRegionY(),
+                            PLAYER_PIXEL_WIDTH,
+                            PLAYER_PIXEL_HEIGHT
+                    )
+            );
+        }
+
         setBounds(0, 0, PLAYER_PIXEL_WIDTH / MainGameClass.PPM, PLAYER_PIXEL_HEIGHT / MainGameClass.PPM);
-        setRegion(playerStanding);
+
+        // Set current player texture to the first weapon texture in the list of the player's weapons
+        if (weapons.size() > getCurrentWeaponIndex()) {
+            setRegion(textureRegions.get(weapons.get(getCurrentWeaponIndex()).getName()));
+        } else {
+            setRegion(textureRegions.get("Fists"));
+        }
+    }
+
+    /**
+     * Change the texture of the player depending on the current weapon he is holding
+     * @param indexInWeaponList the index of the new weapon in the weapon list
+     */
+    public void changeWeapon(int indexInWeaponList) {
+        setRegion(textureRegions.get(weapons.get(indexInWeaponList).getName()));
+        currentWeaponIndex = indexInWeaponList;
     }
 
     /**
@@ -109,6 +173,14 @@ public class Player extends Sprite {
 
     public void setWeapons(List<WeaponObject> weapons) {
         this.weapons = weapons;
+    }
+
+    public int getCurrentWeaponIndex() {
+        return currentWeaponIndex;
+    }
+
+    public void setCurrentWeaponIndex(int currentWeaponIndex) {
+        this.currentWeaponIndex = currentWeaponIndex;
     }
 
     public float getJumpImpulseVelocity() {
