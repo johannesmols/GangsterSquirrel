@@ -1,9 +1,10 @@
-package itcom.gangstersquirrel.Objects;
+package itcom.gangstersquirrel.Objects.MapObjects;
 
 import com.badlogic.gdx.math.Rectangle;
+import itcom.gangstersquirrel.Objects.InteractiveMapTileObject;
 import itcom.gangstersquirrel.Screens.PlayScreen;
 
-public class Jumpable extends InteractiveTileObject {
+public class Jumpable extends InteractiveMapTileObject {
 
     private PlayScreen playScreen;
 

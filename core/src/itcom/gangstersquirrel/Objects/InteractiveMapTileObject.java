@@ -10,7 +10,7 @@ import itcom.gangstersquirrel.Screens.PlayScreen;
 /**
  * Abstract class for interactive tile objects in the game world
  */
-public abstract class InteractiveTileObject {
+public abstract class InteractiveMapTileObject {
 
     protected World world;
     protected TiledMap map;
@@ -19,7 +19,7 @@ public abstract class InteractiveTileObject {
     protected Body body;
     protected Fixture fixture;
 
-    public InteractiveTileObject(PlayScreen screen, Rectangle bounds, boolean isSensor) {
+    public InteractiveMapTileObject(PlayScreen screen, Rectangle bounds, boolean isSensor) {
         this.world = screen.getWorld();
         this.map = screen.getMap();
         this.bounds = bounds;

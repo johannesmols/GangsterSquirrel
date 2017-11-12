@@ -1,4 +1,4 @@
-package itcom.gangstersquirrel.Objects;
+package itcom.gangstersquirrel.Objects.EnemyObjects;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -8,6 +8,7 @@ import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.utils.Array;
 import itcom.gangstersquirrel.MainGameClass;
+import itcom.gangstersquirrel.Objects.Enemy;
 import itcom.gangstersquirrel.Screens.PlayScreen;
 
 public class FrogEnemy extends Enemy {

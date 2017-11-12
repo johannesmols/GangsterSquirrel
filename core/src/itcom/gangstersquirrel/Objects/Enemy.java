@@ -9,18 +9,18 @@ import java.util.Random;
 
 public abstract class Enemy extends Sprite {
 
-    World world;
-    Body body;
+    protected World world;
+    protected Body body;
 
-    final int ENEMY_PIXEL_WIDTH = 32;
-    final int ENEMY_PIXEL_HEIGHT = 32;
+    protected final int ENEMY_PIXEL_WIDTH = 32;
+    protected final int ENEMY_PIXEL_HEIGHT = 32;
 
     protected PlayScreen screen;
-    public Vector2 velocity;
+    protected Vector2 velocity;
 
     // Gameplay relevant variables
-    int[] damageMinMax;
-    int health;
+    protected int[] damageMinMax;
+    protected int health;
 
     public Enemy(PlayScreen screen, float spawnPositionX, float spawnPositionY){
         this.world = screen.getWorld();

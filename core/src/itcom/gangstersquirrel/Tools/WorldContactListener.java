@@ -2,7 +2,7 @@ package itcom.gangstersquirrel.Tools;
 
 import com.badlogic.gdx.physics.box2d.*;
 import itcom.gangstersquirrel.Objects.Enemy;
-import itcom.gangstersquirrel.Objects.InteractiveTileObject;
+import itcom.gangstersquirrel.Objects.InteractiveMapTileObject;
 
 public class WorldContactListener implements ContactListener {
 
@@ -19,8 +19,8 @@ public class WorldContactListener implements ContactListener {
             Fixture collidedObject = player == fixtureA ? fixtureB : fixtureA;
 
             // Determine what kind of object the player collided with and trigger the respectable method
-            if (collidedObject.getUserData() instanceof InteractiveTileObject) {
-                ((InteractiveTileObject) collidedObject.getUserData()).onPlayerBeginContact();
+            if (collidedObject.getUserData() instanceof InteractiveMapTileObject) {
+                ((InteractiveMapTileObject) collidedObject.getUserData()).onPlayerBeginContact();
             } else if (collidedObject.getUserData() instanceof Enemy) {
                 ((Enemy) collidedObject.getUserData()).onPlayerBeginContact();
             }
@@ -40,8 +40,8 @@ public class WorldContactListener implements ContactListener {
             Fixture collidedObject = player == fixtureA ? fixtureB : fixtureA;
 
             // Determine what kind of object the player collided with and trigger the respectable method
-            if (collidedObject.getUserData() instanceof  InteractiveTileObject) {
-                ((InteractiveTileObject) collidedObject.getUserData()).onPlayerEndContact();
+            if (collidedObject.getUserData() instanceof InteractiveMapTileObject) {
+                ((InteractiveMapTileObject) collidedObject.getUserData()).onPlayerEndContact();
             } else if (collidedObject.getUserData() instanceof Enemy) {
                 ((Enemy) collidedObject.getUserData()).onPlayerEndContact();
             }
