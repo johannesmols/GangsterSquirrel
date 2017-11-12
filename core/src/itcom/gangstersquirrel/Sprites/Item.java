@@ -20,11 +20,16 @@ public class Item extends InteractiveTileObject {
     }
 
     @Override
-    public void onPlayerHit() {
+    public void onPlayerBeginContact() {
         Gdx.app.log("Item", "Collision");
 
         // Save collected item to statistics
         //Statistics statistics = new Statistics();
         playScreen.getStatistics().setItemsCollected(playScreen.statistics.getItemsCollected() + 1);
+    }
+
+    @Override
+    public void onPlayerEndContact() {
+
     }
 }

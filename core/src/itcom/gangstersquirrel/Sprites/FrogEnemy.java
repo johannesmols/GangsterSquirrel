@@ -71,9 +71,13 @@ public class FrogEnemy extends Enemy {
     }
 
     @Override
-    public void onPlayerHit() {
+    public void onPlayerBeginContact() {
         Gdx.app.log("Frog Enemy", "Collision");
         screen.setPlayerCurrentHealth(screen.getPlayer().getHealth() - randomDamageValueBetweenMinAndMax());
+    }
+
+    @Override
+    public void onPlayerEndContact() {
     }
 
     /* ----- GETTERS AND SETTERS ------------------------------------------------------------------------------------ */

@@ -15,7 +15,12 @@ public class Platform extends InteractiveTileObject {
     }
 
     @Override
-    public void onPlayerHit() {
+    public void onPlayerBeginContact() {
         Gdx.app.log("Platform", "Collision");
+    }
+
+    @Override
+    public void onPlayerEndContact() {
+
     }
 }

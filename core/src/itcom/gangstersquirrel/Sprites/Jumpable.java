@@ -1,30 +1,28 @@
 package itcom.gangstersquirrel.Sprites;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Rectangle;
 import itcom.gangstersquirrel.Screens.PlayScreen;
 
-/**
- * A subclass of the InteractiveTileObject class
- */
-public class Finish extends InteractiveTileObject {
+public class Jumpable extends InteractiveTileObject {
 
     private PlayScreen playScreen;
 
-    public Finish(PlayScreen screen, Rectangle bounds) {
+    public Jumpable(PlayScreen screen, Rectangle bounds) {
         super(screen, bounds, true);
-        this.playScreen = screen;
         fixture.setUserData(this);
+
+        playScreen = screen;
     }
 
     @Override
     public void onPlayerBeginContact() {
-        Gdx.app.log("Finish", "Collision");
-        playScreen.levelFinished();
+        // Player is on jumpable ground
+        playScreen.getPlayer().setIsOnJumpableGround(true);
     }
 
     @Override
     public void onPlayerEndContact() {
-
+        // Player leaves jumpable ground
+        playScreen.getPlayer().setIsOnJumpableGround(false);
     }
 }

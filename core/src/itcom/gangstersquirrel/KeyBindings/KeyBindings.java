@@ -55,8 +55,7 @@ public class KeyBindings {
             deserializeKeyBindings(fileHandle.readString());
         }
     }
-
-
+    
     /**
      * Serialize key binding objects into JSON and write to the key bindings JSON file
      * Does not automatically assign the key bindings to the key bindings list, call deserializeKeyBindings() after this method to achieve this

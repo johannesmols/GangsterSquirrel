@@ -39,7 +39,8 @@ public abstract class Enemy extends Sprite {
 
     protected abstract void defineEnemy();
     public abstract void update(float dt);
-    public abstract void onPlayerHit();
+    public abstract void onPlayerBeginContact();
+    public abstract void onPlayerEndContact();
 
     // Getter and Setter
     public abstract int[] getDamageMinMax();

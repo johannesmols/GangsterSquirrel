@@ -11,7 +11,6 @@ public class KeyBindingObject {
     public KeyBindingObject(String action, int[] keys) {
         this.action = action;
         this.keys = keys;
-
     }
 
     public String getAction() {

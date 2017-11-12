@@ -52,6 +52,9 @@ public class Box2DWorldCreator {
                     case "finish":
                         new Finish(screen, rectangle);
                         break;
+                    case "jumpable":
+                        new Jumpable(screen, rectangle);
+                        break;
                     default:
                         break;
 

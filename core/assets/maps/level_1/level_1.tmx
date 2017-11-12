@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="500" height="64" tilewidth="16" tileheight="16" nextobjectid="531">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="500" height="64" tilewidth="16" tileheight="16" nextobjectid="603">
  <tileset firstgid="1" name="mario" tilewidth="16" tileheight="16" spacing="2" margin="1" tilecount="924" columns="33">
   <image source="mario.png" width="594" height="504"/>
  </tileset>
@@ -151,5 +151,55 @@
  </objectgroup>
  <objectgroup name="finish">
   <object id="442" x="7712" y="656" width="32" height="48"/>
+ </objectgroup>
+ <objectgroup name="jumpable">
+  <object id="553" x="0" y="704" width="528"/>
+  <object id="554" x="576" y="656" width="80"/>
+  <object id="555" x="736" y="608" width="112"/>
+  <object id="556" x="768" y="496" width="96"/>
+  <object id="557" x="656" y="704" width="576"/>
+  <object id="558" x="944" y="560" width="144"/>
+  <object id="559" x="1232" y="576" width="208"/>
+  <object id="560" x="1520" y="704" width="160"/>
+  <object id="561" x="1680" y="656" width="144"/>
+  <object id="562" x="1904" y="592" width="64"/>
+  <object id="563" x="1824" y="704" width="256"/>
+  <object id="564" x="2080" y="592" width="96"/>
+  <object id="565" x="2176" y="528" width="352"/>
+  <object id="566" x="2528" y="704" width="80"/>
+  <object id="567" x="2704" y="704" width="128"/>
+  <object id="568" x="2880" y="704" width="48"/>
+  <object id="569" x="2976" y="704" width="64"/>
+  <object id="570" x="3088" y="704" width="80"/>
+  <object id="571" x="3216" y="704" width="160"/>
+  <object id="572" x="3472" y="704" width="416"/>
+  <object id="573" x="3936" y="640" width="96"/>
+  <object id="574" x="4128" y="576" width="128"/>
+  <object id="575" x="4352" y="512" width="128"/>
+  <object id="576" x="4400" y="688" width="128"/>
+  <object id="577" x="4624" y="704" width="128"/>
+  <object id="578" x="4848" y="704" width="320"/>
+  <object id="579" x="5168" y="640" width="48"/>
+  <object id="581" x="5216" y="704" width="96"/>
+  <object id="582" x="5296" y="576" width="112"/>
+  <object id="584" x="5408" y="704" width="288"/>
+  <object id="585" x="5504" y="592" width="112"/>
+  <object id="586" x="5760" y="704" width="96"/>
+  <object id="587" x="5904" y="704" width="416"/>
+  <object id="588" x="6416" y="704" width="240"/>
+  <object id="589" x="6656" y="656" width="16"/>
+  <object id="590" x="6672" y="640" width="16"/>
+  <object id="591" x="6688" y="624" width="16"/>
+  <object id="592" x="6704" y="608" width="16"/>
+  <object id="593" x="6720" y="592" width="144"/>
+  <object id="594" x="6912" y="576" width="112"/>
+  <object id="595" x="6864" y="704" width="32"/>
+  <object id="596" x="6976" y="704" width="48"/>
+  <object id="597" x="7104" y="704" width="48"/>
+  <object id="598" x="7104" y="608" width="48"/>
+  <object id="599" x="7232" y="576" width="96"/>
+  <object id="600" x="7216" y="704" width="64"/>
+  <object id="601" x="7360" y="704" width="48"/>
+  <object id="602" x="7488" y="704" width="528"/>
  </objectgroup>
 </map>

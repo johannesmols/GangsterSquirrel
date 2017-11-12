@@ -31,6 +31,9 @@ public class Player extends Sprite {
     private int spawnTileX = 0;
     private int spawnTileY = 0;
 
+    // Gameplay relevant variables
+    private boolean isOnJumpableGround;
+
     // Texture resolution
     private final int PLAYER_PIXEL_WIDTH = 32;
     private final int PLAYER_PIXEL_HEIGHT = 32;
@@ -150,6 +153,14 @@ public class Player extends Sprite {
 
     public void setMaxClimbVelocity(float maxClimbVelocity) {
         this.maxClimbVelocity = maxClimbVelocity;
+    }
+
+    public boolean getIsOnJumpableGround() {
+        return isOnJumpableGround;
+    }
+
+    public void setIsOnJumpableGround(boolean onJumpableGround) {
+        isOnJumpableGround = onJumpableGround;
     }
 
     /* ---------------------------------------------------------------------------------------------------------------*/

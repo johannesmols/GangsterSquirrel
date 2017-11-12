@@ -15,7 +15,12 @@ public class Ground extends InteractiveTileObject {
     }
 
     @Override
-    public void onPlayerHit() {
+    public void onPlayerBeginContact() {
         Gdx.app.log("Ground", "Collision");
+    }
+
+    @Override
+    public void onPlayerEndContact() {
+
     }
 }

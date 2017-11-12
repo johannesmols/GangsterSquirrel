@@ -327,8 +327,8 @@ public class PlayScreen implements Screen {
             game.exitApplication();
         }
 
-        // Jumping
-        if (isPressingJump && player.body.getLinearVelocity().y == 0) {
+        // Jumping: user is pressing jump key, player is on jumpable terrain and the vertical velocity is 0
+        if (isPressingJump && player.getIsOnJumpableGround() && player.body.getLinearVelocity().y == 0) {
             player.body.applyLinearImpulse(new Vector2(0, player.getJumpImpulseVelocity()), player.body.getWorldCenter(), true);
 
             if (MainGameClass.PLAY_SOUNDS) {

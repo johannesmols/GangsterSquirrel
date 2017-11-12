@@ -38,5 +38,6 @@ public abstract class InteractiveTileObject {
         fixture = body.createFixture(fixtureDef);
     }
 
-    public abstract void onPlayerHit();
+    public abstract void onPlayerBeginContact();
+    public abstract void onPlayerEndContact();
 }

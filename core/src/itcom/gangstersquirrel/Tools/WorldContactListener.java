@@ -20,9 +20,9 @@ public class WorldContactListener implements ContactListener {
 
             // Determine what kind of object the player collided with and trigger the respectable method
             if (collidedObject.getUserData() instanceof InteractiveTileObject) {
-                ((InteractiveTileObject) collidedObject.getUserData()).onPlayerHit();
+                ((InteractiveTileObject) collidedObject.getUserData()).onPlayerBeginContact();
             } else if (collidedObject.getUserData() instanceof Enemy) {
-                ((Enemy) collidedObject.getUserData()).onPlayerHit();
+                ((Enemy) collidedObject.getUserData()).onPlayerBeginContact();
             }
         }
     }
@@ -30,6 +30,22 @@ public class WorldContactListener implements ContactListener {
     @Override
     public void endContact(Contact contact) {
 
+        Fixture fixtureA = contact.getFixtureA();
+        Fixture fixtureB = contact.getFixtureB();
+
+        if (fixtureA.getUserData() == "player" || fixtureB.getUserData() == "player") {
+            // Get either fixture A or B, depending on which of them is the player fixture
+            Fixture player = fixtureA.getUserData() == "player" ? fixtureA : fixtureB;
+            // Get the colliding object, depending on which of them is the player fixture
+            Fixture collidedObject = player == fixtureA ? fixtureB : fixtureA;
+
+            // Determine what kind of object the player collided with and trigger the respectable method
+            if (collidedObject.getUserData() instanceof  InteractiveTileObject) {
+                ((InteractiveTileObject) collidedObject.getUserData()).onPlayerEndContact();
+            } else if (collidedObject.getUserData() instanceof Enemy) {
+                ((Enemy) collidedObject.getUserData()).onPlayerEndContact();
+            }
+        }
     }
 
     @Override
