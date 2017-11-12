@@ -36,17 +36,14 @@ public class Player extends Sprite {
 
     // Texture resolution
     private final int PLAYER_PIXEL_WIDTH = 32;
-    private final int PLAYER_PIXEL_HEIGHT = 32;
-
-    // Only for testing until we decided if we want to use a circle or box as collision box
-    private final boolean USE_CIRCLE_COLLISION_BOX = false;
+    private final int PLAYER_PIXEL_HEIGHT = 24;
 
     // Texture regions
     private TextureRegion playerStanding;
 
     public Player(PlayScreen screen, int spawnPosition_X, int spawnPosition_Y) {
         // Get texture region out of the texture atlas for the squirrel
-        super(screen.getPlayerTextureAtlas().findRegion("squirrel"));
+        super(screen.getPlayerTextureAtlas().findRegion("squirrel_default"));
 
         this.world = screen.getWorld();
         this.spawnTileX = spawnPosition_X;
@@ -71,27 +68,28 @@ public class Player extends Sprite {
      * Defines the Box2D physics properties of the player, including collision box, body and fixture definition
      */
     private void definePlayer() {
+
+        // Body definition
         BodyDef bodyDef = new BodyDef();
         bodyDef.position.set(spawnTileX * MainGameClass.TILE_PIXEL_SIZE / MainGameClass.PPM, spawnTileY * MainGameClass.TILE_PIXEL_SIZE / MainGameClass.PPM);
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         body = world.createBody(bodyDef);
 
+        // Shape definition
+        PolygonShape shape = new PolygonShape();
+        shape.setAsBox(PLAYER_PIXEL_WIDTH / 4 / MainGameClass.PPM, PLAYER_PIXEL_HEIGHT / 2 / MainGameClass.PPM); // divided by 4 to make width of collision box half as wide as the texture
+
+        // Fixture definition
         FixtureDef fixtureDef = new FixtureDef();
-        if (USE_CIRCLE_COLLISION_BOX) {
-            CircleShape shape = new CircleShape();
-            shape.setRadius(PLAYER_PIXEL_WIDTH / 2 / MainGameClass.PPM);
-            fixtureDef.shape = shape;
-        } else {
-            PolygonShape shape = new PolygonShape();
-            shape.setAsBox(PLAYER_PIXEL_WIDTH / 4 / MainGameClass.PPM, PLAYER_PIXEL_HEIGHT / 2 / MainGameClass.PPM); // divided by 4 to make width of collision box half as wide as the texture
-            fixtureDef.shape = shape;
-        }
+        fixtureDef.shape = shape;
+
+        // Create body
         body.createFixture(fixtureDef);
 
         // Collision sensor fixture definition
-        FixtureDef collisionFixtureDef = new FixtureDef();
         PolygonShape collisionShape = new PolygonShape();
         collisionShape.setAsBox(PLAYER_PIXEL_WIDTH / 4 / MainGameClass.PPM, PLAYER_PIXEL_HEIGHT / 2 / MainGameClass.PPM);
+        FixtureDef collisionFixtureDef = new FixtureDef();
         collisionFixtureDef.shape = collisionShape;
         collisionFixtureDef.isSensor = true;
         body.createFixture(collisionFixtureDef).setUserData("player");

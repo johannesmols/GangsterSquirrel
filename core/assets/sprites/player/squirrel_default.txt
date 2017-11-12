@@ -1,12 +1,12 @@
-frog.png
-size: 32, 928
+squirrel_default.png
+size: 32, 24
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-frog
+squirrel_default
   rotate: false
   xy: 0, 0
-  size: 32, 928
-  orig: 32, 928
+  size: 48, 24
+  orig: 48, 24
   offset: 0, 0
   index: -1

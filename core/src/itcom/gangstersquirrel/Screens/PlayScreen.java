@@ -116,7 +116,7 @@ public class PlayScreen implements Screen {
     private void setupScreen() {
 
         // Set up player texture atlas
-        playerTextureAtlas = new TextureAtlas("sprites/player/squirrel.txt");
+        playerTextureAtlas = new TextureAtlas("sprites/player/squirrel_default.txt");
         enemyFrogTextureAtlas = new TextureAtlas("sprites/enemies/frog.txt");
 
         // Set up camera and viewport
@@ -186,8 +186,6 @@ public class PlayScreen implements Screen {
         player.setMaxWalkVelocity(gameProgress.getPlayerMaxWalkVelocity());
         player.setMaxClimbVelocity(gameProgress.getPlayerMaxClimbVelocity());
 
-        // Player texture looks in left direction by default, levels go to the right, flip at the start
-        player.setFlip(true, false);
 
         // Keybinding setup
         keyBindings = new KeyBindings();
@@ -293,9 +291,9 @@ public class PlayScreen implements Screen {
         // Flip texture depending on the moving direction of the player
         // Don't do anything when the velocity is zero, leave it flipped or unflipped
         if (player.body.getLinearVelocity().x > 0) {
-            player.setFlip(true, false);
-        } else if (player.body.getLinearVelocity().x < 0) {
             player.setFlip(false, false);
+        } else if (player.body.getLinearVelocity().x < 0) {
+            player.setFlip(true, false);
         }
 
         // Update the HUD
