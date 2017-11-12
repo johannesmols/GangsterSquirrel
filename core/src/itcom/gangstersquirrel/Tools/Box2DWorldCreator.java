@@ -46,6 +46,9 @@ public class Box2DWorldCreator {
                     case "death":
                         new DeathTile(screen, rectangle);
                         break;
+                    case "weapon":
+                        new WeaponPickup(screen, rectangle);
+                        break;
                     case "items":
                         new Item(screen, rectangle);
                         break;

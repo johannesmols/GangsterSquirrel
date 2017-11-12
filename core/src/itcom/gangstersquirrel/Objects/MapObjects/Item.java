@@ -24,7 +24,6 @@ public class Item extends InteractiveMapTileObject {
         Gdx.app.log("Item", "Collision");
 
         // Save collected item to statistics
-        //Statistics statistics = new Statistics();
         playScreen.getStatistics().setItemsCollected(playScreen.statistics.getItemsCollected() + 1);
     }
 
