@@ -18,6 +18,7 @@ import java.util.List;
  */
 public class Player extends Sprite {
 
+    private PlayScreen screen;
     private World world;
     public Body body;
 
@@ -49,6 +50,7 @@ public class Player extends Sprite {
         // Get texture region out of the texture atlas for the squirrel
         super(screen.getPlayerTextureAtlas().findRegion("squirrel_default"));
 
+        this.screen = screen;
         this.world = screen.getWorld();
         this.spawnTileX = spawnPosition_X;
         this.spawnTileY = spawnPosition_Y;
@@ -57,6 +59,19 @@ public class Player extends Sprite {
 
         definePlayer();
 
+        setUpTextureRegions();
+
+        setBounds(0, 0, PLAYER_PIXEL_WIDTH / MainGameClass.PPM, PLAYER_PIXEL_HEIGHT / MainGameClass.PPM);
+
+        // Set current player texture to the first weapon texture in the list of the player's weapons
+        if (weapons.size() > getCurrentWeaponIndex()) {
+            setRegion(textureRegions.get(weapons.get(getCurrentWeaponIndex()).getName()));
+        } else {
+            setRegion(textureRegions.get("Fists"));
+        }
+    }
+
+    private void setUpTextureRegions() {
         // Add weapon display names as key and their texture region names as values in the HashMap for texture region names
         List<WeaponObject> weaponList = new WeaponList().getAllWeapons();
         for (WeaponObject weapon : weaponList) {
@@ -99,15 +114,6 @@ public class Player extends Sprite {
                             PLAYER_PIXEL_HEIGHT
                     )
             );
-        }
-
-        setBounds(0, 0, PLAYER_PIXEL_WIDTH / MainGameClass.PPM, PLAYER_PIXEL_HEIGHT / MainGameClass.PPM);
-
-        // Set current player texture to the first weapon texture in the list of the player's weapons
-        if (weapons.size() > getCurrentWeaponIndex()) {
-            setRegion(textureRegions.get(weapons.get(getCurrentWeaponIndex()).getName()));
-        } else {
-            setRegion(textureRegions.get("Fists"));
         }
     }
 
