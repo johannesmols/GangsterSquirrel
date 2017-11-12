@@ -216,6 +216,8 @@ public class PlayScreen implements Screen {
             ArrayList<WeaponObject> playerWeaponList = gameProgress.getPlayerWeaponList();
             playerWeaponList.add(allWeapons.get(0));
             gameProgress.setPlayerWeaponList(playerWeaponList);
+        } else if (gameProgress.getPlayerWeaponList().size() > 0) {
+            player.setWeapons(gameProgress.getPlayerWeaponList());
         }
 
         // Movement variables

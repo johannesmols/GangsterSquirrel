@@ -24,7 +24,7 @@ public class Player extends Sprite {
 
     // Player parameters
     private int health;
-    private List<WeaponObject> weapons = new ArrayList<>();
+    private ArrayList<WeaponObject> weapons = new ArrayList<>();
     private int currentWeaponIndex;
     private float jumpImpulseVelocity;
     private float walkImpulseVelocity;
@@ -129,6 +129,21 @@ public class Player extends Sprite {
     }
 
     /**
+     * Change the texture of the player depending on the current weapon he is holding
+     * @param weaponName the name of the new weapon in the weapon list
+     */
+    public void changeWeapon(String weaponName) {
+        if (weapons.size() > 0) {
+            for (int i = 0; i < weapons.size(); i++) {
+                if (weapons.get(i).getName().equals(weaponName)) {
+                    setRegion(textureRegions.get(weaponName));
+                    currentWeaponIndex = i;
+                }
+            }
+        }
+    }
+
+    /**
      * Update the position of the sprite
      * @param deltaTime the time between the last and current frame in seconds
      */
@@ -175,12 +190,13 @@ public class Player extends Sprite {
         this.health = health;
     }
 
-    public List<WeaponObject> getWeapons() {
+    public ArrayList<WeaponObject> getWeapons() {
         return weapons;
     }
 
-    public void setWeapons(List<WeaponObject> weapons) {
+    public void setWeapons(ArrayList<WeaponObject> weapons) {
         this.weapons = weapons;
+        screen.getGameProgress().setPlayerWeaponList(weapons);
     }
 
     public int getCurrentWeaponIndex() {
