@@ -2,6 +2,7 @@ package itcom.gangstersquirrel.Objects;
 
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTile;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.*;
 import itcom.gangstersquirrel.MainGameClass;
@@ -40,4 +41,12 @@ public abstract class InteractiveMapTileObject {
 
     public abstract void onPlayerBeginContact();
     public abstract void onPlayerEndContact();
+
+    public TiledMapTileLayer.Cell getCell(int layerIndex) {
+        TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get(layerIndex);
+        return layer.getCell(
+                (int)(body.getPosition().x * MainGameClass.PPM / MainGameClass.TILE_PIXEL_SIZE),
+                (int)(body.getPosition().y * MainGameClass.PPM / MainGameClass.TILE_PIXEL_SIZE)
+        );
+    }
 }

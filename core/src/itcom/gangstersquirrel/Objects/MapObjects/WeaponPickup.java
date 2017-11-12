@@ -1,6 +1,7 @@
 package itcom.gangstersquirrel.Objects.MapObjects;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.maps.MapLayers;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.math.Rectangle;
@@ -25,6 +26,9 @@ public class WeaponPickup extends InteractiveMapTileObject {
 
     @Override
     public void onPlayerBeginContact() {
+
+        // Remove texture
+        getCell(map.getLayers().getIndex("graphics")).setTile(null);
 
         // TODO: Identify the collided object, at the moment it just looks if there is any object with a weapon property
 
