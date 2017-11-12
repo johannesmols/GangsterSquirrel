@@ -1,4 +1,4 @@
-package itcom.gangstersquirrel.Sprites;
+package itcom.gangstersquirrel.Objects;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Rectangle;
@@ -7,11 +7,11 @@ import itcom.gangstersquirrel.Screens.PlayScreen;
 /**
  * A subclass of the InteractiveTileObject class
  */
-public class Finish extends InteractiveTileObject {
+public class DeathTile extends InteractiveTileObject {
 
     private PlayScreen playScreen;
 
-    public Finish(PlayScreen screen, Rectangle bounds) {
+    public DeathTile(PlayScreen screen, Rectangle bounds) {
         super(screen, bounds, true);
         this.playScreen = screen;
         fixture.setUserData(this);
@@ -19,8 +19,10 @@ public class Finish extends InteractiveTileObject {
 
     @Override
     public void onPlayerBeginContact() {
-        Gdx.app.log("Finish", "Collision");
-        playScreen.levelFinished();
+        Gdx.app.log("Death Tile", "Collision");
+
+        playScreen.setPlayerCurrentHealth(-1);
+       // playScreen.respawnPlayer(false); // false = level not finished, don't reset timer
     }
 
     @Override

@@ -1,9 +1,8 @@
-package itcom.gangstersquirrel.Sprites;
+package itcom.gangstersquirrel.Objects;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Rectangle;
 import itcom.gangstersquirrel.Screens.PlayScreen;
-import itcom.gangstersquirrel.Statistics.Statistics;
 
 /**
  * A subclass of the InteractiveTileObject class

@@ -1,4 +1,4 @@
-package itcom.gangstersquirrel.Sprites;
+package itcom.gangstersquirrel.Objects;
 
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTile;

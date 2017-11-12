@@ -1,4 +1,4 @@
-package itcom.gangstersquirrel.Sprites;
+package itcom.gangstersquirrel.Objects;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;

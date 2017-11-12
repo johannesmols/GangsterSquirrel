@@ -1,4 +1,4 @@
-package itcom.gangstersquirrel.Sprites;
+package itcom.gangstersquirrel.Objects;
 
 import com.badlogic.gdx.math.Rectangle;
 import itcom.gangstersquirrel.Screens.PlayScreen;

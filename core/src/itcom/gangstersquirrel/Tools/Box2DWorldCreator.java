@@ -7,7 +7,7 @@ import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
 import itcom.gangstersquirrel.Screens.PlayScreen;
-import itcom.gangstersquirrel.Sprites.*;
+import itcom.gangstersquirrel.Objects.*;
 
 /**
  * Creates the Box2D world of a map

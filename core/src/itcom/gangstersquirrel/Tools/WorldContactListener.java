@@ -1,8 +1,8 @@
 package itcom.gangstersquirrel.Tools;
 
 import com.badlogic.gdx.physics.box2d.*;
-import itcom.gangstersquirrel.Sprites.Enemy;
-import itcom.gangstersquirrel.Sprites.InteractiveTileObject;
+import itcom.gangstersquirrel.Objects.Enemy;
+import itcom.gangstersquirrel.Objects.InteractiveTileObject;
 
 public class WorldContactListener implements ContactListener {
 
