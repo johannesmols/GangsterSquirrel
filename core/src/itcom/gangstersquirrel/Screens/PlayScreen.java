@@ -343,7 +343,6 @@ public class PlayScreen implements Screen {
 
             // Save jump to statistics
             statistics.setJumpsMade(statistics.getJumpsMade() + 1);
-
         }
 
         // Horizontal movement

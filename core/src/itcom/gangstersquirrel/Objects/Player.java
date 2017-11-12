@@ -122,8 +122,10 @@ public class Player extends Sprite {
      * @param indexInWeaponList the index of the new weapon in the weapon list
      */
     public void changeWeapon(int indexInWeaponList) {
-        setRegion(textureRegions.get(weapons.get(indexInWeaponList).getName()));
-        currentWeaponIndex = indexInWeaponList;
+        if (weapons.size() - 1 >= indexInWeaponList) {
+            setRegion(textureRegions.get(weapons.get(indexInWeaponList).getName()));
+            currentWeaponIndex = indexInWeaponList;
+        }
     }
 
     /**
