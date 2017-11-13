@@ -1,7 +1,7 @@
 weapons.png
 size: 48, 48
 format: RGBA8888
-filter: Linear,Linear
+filter: Nearest,Nearest
 repeat: none
 bazooka
   rotate: false
