@@ -29,7 +29,7 @@ public class WeaponPickup extends InteractiveMapTileObject {
         getCell(map.getLayers().getIndex("graphics")).setTile(null);
 
         // Add the picked up weapon
-        MapObject pickedUpWeapon = getCellProperties(map.getLayers().getIndex("weapon"));
+        MapObject pickedUpWeapon = getCollidingMapObject(map.getLayers().getIndex("weapon"));
         if (pickedUpWeapon != null && pickedUpWeapon.getProperties().containsKey("weapon_name")) {
             String weaponName = pickedUpWeapon.getProperties().get("weapon_name", String.class);
             Gdx.app.log("Picked up weapon", weaponName);

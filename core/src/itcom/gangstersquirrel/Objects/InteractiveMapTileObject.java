@@ -67,7 +67,7 @@ public abstract class InteractiveMapTileObject {
      * @param layerIndex the index of the layer in which to search for objects
      * @return the collided object
      */
-    protected MapObject getCellProperties(int layerIndex) {
+    protected MapObject getCollidingMapObject(int layerIndex) {
         MapObjects mapObjects = map.getLayers().get(layerIndex).getObjects();
 
         for (MapObject mapObject : mapObjects) {
