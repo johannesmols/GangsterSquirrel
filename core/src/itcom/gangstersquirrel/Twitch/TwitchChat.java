@@ -1,17 +1,62 @@
 package itcom.gangstersquirrel.Twitch;
 
+import java.io.IOException;
 import java.util.*;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
+import com.google.gson.Gson;
 import org.jibble.pircbot.*;
 
 public class TwitchChat extends PircBot {
 
-    /*private static FileHandle fileHandle = Gdx.files.local("json/twitch.json");
-    String json = fileHandle.readString();*/
+    private FileHandle fileHandle;
+    private Gson gson = new Gson();
 
-    // TODO: @JohannesMols help me with this ^
+    public TwitchCredentialsObject getTwitchCredentials() {
+        // JSON file to store the twitch credentials
+        fileHandle = Gdx.files.local("json/twitchcredentials.json");
+
+        TwitchCredentialsObject defaultCredentials = new TwitchCredentialsObject(
+                "irc.chat.twitch.tv",
+                6667,
+                "OAUTH",
+                "#aalborguniversity"
+        );
+
+        if (fileHandle.exists()) {
+            String json = fileHandle.readString();
+            if (!json.trim().isEmpty()) {
+                return deserializeTwitchCredentials(json);
+            } else {
+                System.err.println("JSON twitch credentials is empty, creating default credentials");
+                serializeTwitchCredentials(defaultCredentials);
+                return deserializeTwitchCredentials(json);
+            }
+        } else {
+            serializeTwitchCredentials(defaultCredentials);
+            return deserializeTwitchCredentials(fileHandle.readString());
+        }
+    }
+
+    private void serializeTwitchCredentials(TwitchCredentialsObject twitchCredentials) {
+        String json = gson.toJson(twitchCredentials);
+
+        // Creates new JSON file, if it doesn't exist already
+        if (!fileHandle.exists()) {
+            try {
+                boolean successfull = fileHandle.file().createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        fileHandle.writeString(json, false); // false = overwrite instead of append
+    }
+
+    private TwitchCredentialsObject deserializeTwitchCredentials(String json) {
+        return gson.fromJson(json, TwitchCredentialsObject.class);
+    }
 
     private List<ChatListener> listeners = new ArrayList<ChatListener>();
 
@@ -21,13 +66,13 @@ public class TwitchChat extends PircBot {
 
     public void onMessage(String channel, String sender,
                           String login, String hostname, String message) {
-        this.messageRecieved(channel, sender, login, hostname, message);
+        this.messageReceived(channel, sender, login, hostname, message);
     }
 
-    public void messageRecieved(String channel, String sender,
+    public void messageReceived(String channel, String sender,
                                 String login, String hostname, String message) {
         for (ChatListener l : listeners) {
-            l.messageRecieved(channel, sender, login, hostname, message);
+            l.messageReceived(channel, sender, login, hostname, message);
         }
     }
 

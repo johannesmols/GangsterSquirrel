@@ -49,7 +49,7 @@ public class MainGameClass extends Game implements ChatListener {
     // Number of levels
 	public static final int NUMBER_OF_LEVELS = 2;
 
-	public static final boolean TWITCH = false;
+	public static final boolean USE_TWITCH = false;
 	TwitchChat twitch = new TwitchChat();
 
 	// Internal units
@@ -63,8 +63,7 @@ public class MainGameClass extends Game implements ChatListener {
 	public HashMap<String, BitmapFont> fonts = new HashMap<String, BitmapFont>();
 
 	@Override
-	public void messageRecieved(String channel, String sender,
-								String login, String hostname, String message) {
+	public void messageReceived(String channel, String sender, String login, String hostname, String message) {
 		System.out.println(sender + ": " + message);
 	}
 
@@ -82,16 +81,18 @@ public class MainGameClass extends Game implements ChatListener {
 		// Add fonts
 		fonts.put("default", new BitmapFont());
 
-		if (TWITCH) {
+		if (USE_TWITCH) {
 			twitch.addListener(this);
 			try {
-				twitch.connect("irc.chat.twitch.tv", 6667, "PUT OAUTH HERE");
-			} catch (IOException e) {
-				e.printStackTrace();
-			} catch (IrcException e) {
+				twitch.connect(
+						twitch.getTwitchCredentials().getUrl(),
+						twitch.getTwitchCredentials().getPort(),
+						twitch.getTwitchCredentials().getOauth()
+				);
+			} catch (IOException | IrcException e) {
 				e.printStackTrace();
 			}
-			twitch.joinChannel("#aalborguniversity");
+			twitch.joinChannel(twitch.getTwitchCredentials().getTag());
 		}
 
 		// Load first screen
