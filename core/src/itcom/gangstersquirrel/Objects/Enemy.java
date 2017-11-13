@@ -3,6 +3,7 @@ package itcom.gangstersquirrel.Objects;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
+import itcom.gangstersquirrel.MainGameClass;
 import itcom.gangstersquirrel.Screens.PlayScreen;
 
 import java.util.Random;
@@ -25,7 +26,7 @@ public abstract class Enemy extends Sprite {
     public Enemy(PlayScreen screen, float spawnPositionX, float spawnPositionY){
         this.world = screen.getWorld();
         this.screen = screen;
-        setPosition(spawnPositionX * ENEMY_PIXEL_WIDTH, spawnPositionY * ENEMY_PIXEL_HEIGHT);
+        setPosition(spawnPositionX * MainGameClass.TILE_PIXEL_SIZE, spawnPositionY * MainGameClass.TILE_PIXEL_SIZE);
 
         defineEnemy();
 

@@ -50,7 +50,7 @@ public class PlayScreen implements Screen {
     private PlayScreenHud hud;
 
     // Level 1 Configuration
-    private int level_1_spawnPositionX = 2;
+    private int level_1_spawnPositionX = 34;
     private int level_1_spawnPositionY = 20;
 
     // Level 2 Configuration
@@ -158,9 +158,9 @@ public class PlayScreen implements Screen {
                 player = new Player(this, level_1_spawnPositionX, level_1_spawnPositionY);
 
                 // Add enemies to this level
-                enemies.add(new FrogEnemy(this, 3, 10));
-                enemies.add(new FrogEnemy(this, 5, 10));
-                enemies.add(new FrogEnemy(this, 7, 10));
+                enemies.add(new FrogEnemy(this, 40, 20));
+                enemies.add(new FrogEnemy(this, 45, 20));
+                enemies.add(new FrogEnemy(this, 50, 20));
                 break;
             case 2:
                 player = new Player(this, level_2_spawnPositionX, level_2_spawnPositionY);

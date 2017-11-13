@@ -1,0 +1,47 @@
+weapons.png
+size: 48, 48
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bazooka
+  rotate: false
+  xy: 0, 0
+  size: 32, 16
+  orig: 32, 16
+  offset: 0, 0
+  index: -1
+branch
+  rotate: false
+  xy: 32, 0
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+katana
+  rotate: false
+  xy: 0, 16
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+swiss_army_knife
+  rotate: false
+  xy: 16, 16
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+switchblade
+  rotate: false
+  xy: 32, 16
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+tommy_gun
+  rotate: false
+  xy: 0, 32
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
