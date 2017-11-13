@@ -25,7 +25,8 @@ public class KeyBindings {
             "equip_weapon_slot_6",
             "equip_weapon_slot_7",
             "equip_weapon_slot_8",
-            "equip_weapon_slot_9"
+            "equip_weapon_slot_9",
+            "take_screenshot"
     };
 
     public ArrayList<Integer> DEBUG = new ArrayList<>();
@@ -43,6 +44,7 @@ public class KeyBindings {
     public ArrayList<Integer> EQUIP_WEAPON_SLOT_7 = new ArrayList<>();
     public ArrayList<Integer> EQUIP_WEAPON_SLOT_8 = new ArrayList<>();
     public ArrayList<Integer> EQUIP_WEAPON_SLOT_9 = new ArrayList<>();
+    public ArrayList<Integer> TAKE_SCREENSHOT = new ArrayList<>();
 
     private FileHandle fileHandle;
 
@@ -70,7 +72,8 @@ public class KeyBindings {
                 new KeyBindingObject(actions[11], new int[]{Input.Keys.NUM_7}),
                 new KeyBindingObject(actions[12], new int[]{Input.Keys.NUM_8}),
                 new KeyBindingObject(actions[13], new int[]{Input.Keys.NUM_9}),
-                new KeyBindingObject(actions[14], new int[]{Input.Keys.NUM_0})
+                new KeyBindingObject(actions[14], new int[]{Input.Keys.NUM_0}),
+                new KeyBindingObject(actions[15], new int[]{Input.Keys.F12})
         };
 
         if (fileHandle.exists()) {
@@ -200,6 +203,11 @@ public class KeyBindings {
                 EQUIP_WEAPON_SLOT_9.clear();
                 for (int keycode : key.getKeys()) {
                     EQUIP_WEAPON_SLOT_9.add(keycode);
+                }
+            }  else if (key.getAction().equals(actions[15])) {
+                TAKE_SCREENSHOT.clear();
+                for (int keycode : key.getKeys()) {
+                    TAKE_SCREENSHOT.add(keycode);
                 }
             }
         }

@@ -3,7 +3,6 @@ package itcom.gangstersquirrel.Screens;
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -413,6 +412,12 @@ public class PlayScreen implements Screen {
         for (Integer keyBinding : keyBindings.EQUIP_WEAPON_SLOT_9) {
             if (Gdx.input.isKeyJustPressed(keyBinding)) {
                 player.changeWeapon(9);
+            }
+        }
+
+        for (Integer keyBinding : keyBindings.TAKE_SCREENSHOT) {
+            if (Gdx.input.isKeyJustPressed(keyBinding)) {
+                game.takeScreenshot();
             }
         }
     }
