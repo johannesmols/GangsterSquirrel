@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="50" height="13" tilewidth="16" tileheight="16" nextobjectid="12">
+ <tileset firstgid="1" source="map_texture.tsx"/>
+ <tileset firstgid="5" source="map_texture2.tsx"/>
+ <tileset firstgid="11" source="wood.tsx"/>
+ <layer name="background" width="50" height="13">
+  <data encoding="base64" compression="zlib">
+   eJztwzENAAAMBKEb3r/m7tUACaumqqrvAbSVCik=
+  </data>
+ </layer>
+ <layer name="graphics" width="50" height="13">
+  <data encoding="base64" compression="zlib">
+   eJztk8EKwDAIxZ7njVL2/x+7Ci0UcTuOhjWQswa0SDJx8d1L18RrscnYQWkx/aODxFMHlbmDzttdHYnnh7uNedHI/o81yDqoxI7sDkl6w9WscL3hBnmaB2k=
+  </data>
+ </layer>
+ <objectgroup name="ground">
+  <object id="2" x="0" y="0" width="16" height="208"/>
+  <object id="3" x="784" y="0" width="16" height="208"/>
+  <object id="4" x="16" y="176" width="768" height="32"/>
+  <object id="5" x="96" y="112" width="96" height="16"/>
+  <object id="6" x="608" y="112" width="96" height="16"/>
+ </objectgroup>
+ <objectgroup name="finish">
+  <object id="8" x="752" y="144" width="32" height="32"/>
+ </objectgroup>
+ <objectgroup name="jumpable">
+  <object id="9" x="16" y="176" width="768"/>
+  <object id="10" x="608" y="112" width="96"/>
+  <object id="11" x="96" y="112" width="96"/>
+ </objectgroup>
+</map>

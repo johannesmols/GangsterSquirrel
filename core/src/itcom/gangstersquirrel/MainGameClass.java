@@ -19,15 +19,13 @@ import com.badlogic.gdx.utils.BufferUtils;
 import com.badlogic.gdx.utils.ScreenUtils;
 import itcom.gangstersquirrel.GameProgress.GameProgress;
 import itcom.gangstersquirrel.Screens.SplashScreen;
-import itcom.gangstersquirrel.Twitch.*;
-import org.jibble.pircbot.IrcException;
 
-import java.io.IOException;
+import java.util.HashMap;
 
 /**
  * The main class of the game and entrance point
  */
-public class MainGameClass extends Game implements testListener {
+public class MainGameClass extends Game {
 
 	// Enables certain debugging features like collision box rendering
 	public static boolean DEBUG = true;
@@ -44,10 +42,8 @@ public class MainGameClass extends Game implements testListener {
 	public static final float PPM = 100; // Pixels per meter
     public static int ZOOM = 32;
 
-    public static final boolean TWITCH = false;
-
     // Number of levels
-	public static final int NUMBER_OF_LEVELS = 1;
+	public static final int NUMBER_OF_LEVELS = 2;
 
 	// Internal units
 	public static int TILE_PIXEL_SIZE = 16;
@@ -57,14 +53,7 @@ public class MainGameClass extends Game implements testListener {
 
 	// Internal objects
 	public SpriteBatch batch; //Contains every sprite in the game
-	public BitmapFont default_font;
-
-	@Override
-	public void someoneSaidSomething(String something) {
-		System.out.println(something);
-	}
-
-	TwitchChat twitch = new TwitchChat();
+	public HashMap<String, BitmapFont> fonts = new HashMap<String, BitmapFont>();
 
 	/**
 	 * The first method that is called in the entire application, sets up basic variables and loads the first screen
@@ -76,20 +65,9 @@ public class MainGameClass extends Game implements testListener {
 		ASPECT_RATIO = (float) WIDTH / (float) HEIGHT;
 
 		batch = new SpriteBatch();
-		// No parameters = use libGDX's default Arial font
-		default_font = new BitmapFont();
 
-		if (TWITCH) {
-			twitch.addListener(this);
-			try {
-				twitch.connect("irc.chat.twitch.tv", 6667, "PUT OAUTH HERE");
-			} catch (IOException e) {
-				e.printStackTrace();
-			} catch (IrcException e) {
-				e.printStackTrace();
-			}
-			twitch.joinChannel("#aalborguniversity");
-		}
+		// Add fonts
+		fonts.put("default", new BitmapFont());
 
 		// Load first screen
 		this.setScreen(new SplashScreen(this));
@@ -110,7 +88,6 @@ public class MainGameClass extends Game implements testListener {
 	@Override
 	public void dispose () {
 		batch.dispose();
-		default_font.dispose();
 	}
 
 	public void takeScreenshot() {
@@ -127,6 +104,7 @@ public class MainGameClass extends Game implements testListener {
 	 */
 	public void exitApplication() {
 		resetTimer();
+		resetPlayerLifes();
 		Gdx.app.exit();
 		System.exit(0);
 	}
@@ -141,6 +119,7 @@ public class MainGameClass extends Game implements testListener {
 		}
 
 		resetTimer();
+		resetPlayerLifes();
 
 		Gdx.app.exit();
 		System.exit(0);
@@ -149,5 +128,11 @@ public class MainGameClass extends Game implements testListener {
 	private void resetTimer() {
 		// Reset the game timer to zero, or when the game starts the next time, the timer will continue from the last saved point
 		new GameProgress().setCurrentTime(0);
+	}
+
+	private void resetPlayerLifes() {
+		// Reset current lifes to the maximum
+		GameProgress gameProgress = new GameProgress();
+		gameProgress.setPlayerLifes(gameProgress.getPlayerMaximumLifes());
 	}
 }

@@ -24,7 +24,13 @@ public class WeaponList {
 
         // Default weapons list
         WeaponObject[] defaultWeaponList = new WeaponObject[] {
-                new WeaponObject(0, "Stick", true, 5)
+                new WeaponObject(0, "Fists", true, 1),
+                new WeaponObject(1, "Branch", true, 5),
+                new WeaponObject(2, "Swiss Army Knife", true, 10),
+                new WeaponObject(3, "Switchblade", true, 15),
+                new WeaponObject(4, "Katana", true, 20),
+                new WeaponObject(5, "Tommy Gun", false, 40),
+                new WeaponObject(6, "Bazooka", false, 100)
         };
 
         if (fileHandle.exists()) {

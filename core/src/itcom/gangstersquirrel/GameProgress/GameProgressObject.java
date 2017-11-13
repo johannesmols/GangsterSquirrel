@@ -12,6 +12,8 @@ public class GameProgressObject {
     private int currentLevel;
     private long currentTime;
     private int playerMaxHealth;
+    private int playerLifes;
+    private int playerMaximumLifes;
     private float playerJumpImpulseVelocity;
     private float playerWalkImpulseVelocity;
     private float playerClimbImpulseVelocity;
@@ -23,6 +25,8 @@ public class GameProgressObject {
      * @param currentLevel the current level which the player is in
      * @param currentTime the current time in seconds, will remain when the player dies and respawns
      * @param playerMaxHealth the maximum health that the player can have
+     * @param playerLifes the current amount of player's lifes left
+     * @param playerMaximumLifes the maximum amount of player's lifes
      * @param playerJumpImpulseVelocity the jumping impulse velocity used in Box2D
      * @param playerWalkImpulseVelocity the walking impulse velocity used in Box2D
      * @param playerClimbImpulseVelocity the climbing impulse velocity used in Box2D
@@ -30,13 +34,15 @@ public class GameProgressObject {
      * @param playerMaxClimbVelocity the maximal climbing velocity of the player
      * @param playerWeaponList the equipped weapons of the player
      */
-    public GameProgressObject(int currentLevel, long currentTime, int playerMaxHealth, float
+    public GameProgressObject(int currentLevel, long currentTime, int playerMaxHealth, int playerLifes, int playerMaximumLifes, float
             playerJumpImpulseVelocity, float playerWalkImpulseVelocity, float playerClimbImpulseVelocity, float
             playerMaxWalkVelocity, float playerMaxClimbVelocity, ArrayList<WeaponObject> playerWeaponList) {
 
         this.currentLevel = currentLevel;
         this.currentTime = currentTime;
         this.playerMaxHealth = playerMaxHealth;
+        this.playerLifes = playerLifes;
+        this.playerMaximumLifes = playerMaximumLifes;
         this.playerJumpImpulseVelocity = playerJumpImpulseVelocity;
         this.playerWalkImpulseVelocity = playerWalkImpulseVelocity;
         this.playerClimbImpulseVelocity = playerClimbImpulseVelocity;
@@ -73,6 +79,22 @@ public class GameProgressObject {
         if (playerMaxHealth >= 1) {
             this.playerMaxHealth = playerMaxHealth;
         }
+    }
+
+    public int getPlayerLifes() {
+        return playerLifes;
+    }
+
+    public void setPlayerLifes(int playerLifes) {
+        this.playerLifes = playerLifes;
+    }
+
+    public int getPlayerMaximumLifes() {
+        return playerMaximumLifes;
+    }
+
+    public void setPlayerMaximumLifes(int playerMaximumLifes) {
+        this.playerMaximumLifes = playerMaximumLifes;
     }
 
     public float getPlayerJumpImpulseVelocity() {

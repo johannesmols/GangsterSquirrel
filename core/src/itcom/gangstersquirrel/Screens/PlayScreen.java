@@ -3,6 +3,7 @@ package itcom.gangstersquirrel.Screens;
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -18,9 +19,10 @@ import itcom.gangstersquirrel.Items.WeaponObject;
 import itcom.gangstersquirrel.Items.WeaponList;
 import itcom.gangstersquirrel.KeyBindings.KeyBindings;
 import itcom.gangstersquirrel.MainGameClass;
-import itcom.gangstersquirrel.Sprites.Enemy;
-import itcom.gangstersquirrel.Sprites.FrogEnemy;
-import itcom.gangstersquirrel.Sprites.Player;
+import itcom.gangstersquirrel.Scenes.PlayScreenHud;
+import itcom.gangstersquirrel.Objects.Enemy;
+import itcom.gangstersquirrel.Objects.EnemyObjects.FrogEnemy;
+import itcom.gangstersquirrel.Objects.Player;
 import itcom.gangstersquirrel.Statistics.Statistics;
 import itcom.gangstersquirrel.Tools.Box2DWorldCreator;
 import itcom.gangstersquirrel.Tools.WorldContactListener;
@@ -45,9 +47,16 @@ public class PlayScreen implements Screen {
     private TiledMap map;
     private OrthogonalTiledMapRenderer renderer;
 
+    // HUD
+    private PlayScreenHud hud;
+
     // Level 1 Configuration
     private int level_1_spawnPositionX = 2;
-    private int level_1_spawnPositionY = 3;
+    private int level_1_spawnPositionY = 20;
+
+    // Level 2 Configuration
+    private int level_2_spawnPositionX = 2;
+    private int level_2_spawnPositionY = 3;
 
     // Box2D variables
     private World world;
@@ -66,14 +75,11 @@ public class PlayScreen implements Screen {
     public static boolean isPressingJump;
 
     // Enemy variables
-    private ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+    private ArrayList<Enemy> enemies = new ArrayList<>();
 
     // Game Progress and Statistics
     public GameProgress gameProgress = new GameProgress();
     public Statistics statistics = new Statistics();
-
-    // Gameplay variables
-    private int playerCurrentHealth = gameProgress.getPlayerMaxHealth();
 
     // Timer
     private float deltaTimeCount = 0f;
@@ -93,6 +99,7 @@ public class PlayScreen implements Screen {
     // Music = streamed from file (can be memory intensive to keep in memory)
     private Sound jumpSound = Gdx.audio.newSound(Gdx.files.internal("audio/jump.mp3"));
     private Music level_1_backgroundMusic;
+    private Music level_2_backgroundMusic;
 
     /**
      * Set up all important things, can be considered as the create() method like in the MainGameClass
@@ -117,12 +124,18 @@ public class PlayScreen implements Screen {
         viewport = new FitViewport(MainGameClass.GAME_WORLD_WIDTH / MainGameClass.PPM, MainGameClass.GAME_WORLD_HEIGHT / MainGameClass.PPM, camera);
         camera.position.set(viewport.getWorldWidth() / 2, viewport.getWorldHeight() / 2, 0);
 
+        // Set up HUD
+        hud = new PlayScreenHud(this);
+
         // Load the first map from Tiles
         mapLoader = new TmxMapLoader();
 
         switch (gameProgress.getCurrentLevel()) {
             case 1:
                 map = mapLoader.load("maps/level_1/level_1.tmx");
+                break;
+            case 2:
+                map = mapLoader.load("maps/boss/boss_level.tmx");
                 break;
             default:
                 game.exitApplication("Couldn't find level, exiting application");
@@ -146,29 +159,20 @@ public class PlayScreen implements Screen {
                 player = new Player(this, level_1_spawnPositionX, level_1_spawnPositionY);
 
                 // Add enemies to this level
-                enemies.add(new FrogEnemy(this, 3, 2));
-                enemies.add(new FrogEnemy(this, 5, 2));
-                enemies.add(new FrogEnemy(this, 7, 2));
+                enemies.add(new FrogEnemy(this, 3, 10));
+                enemies.add(new FrogEnemy(this, 5, 10));
+                enemies.add(new FrogEnemy(this, 7, 10));
+                break;
+            case 2:
+                player = new Player(this, level_2_spawnPositionX, level_2_spawnPositionY);
                 break;
             default:
                 game.exitApplication("No current level defined, exiting application");
                 break;
         }
 
-        // Equip player with his weapons
-        for (WeaponObject weapon : gameProgress.getPlayerWeaponList()) {
-            player.getWeapons().add(weapon);
-        }
-
-        player.setHealth(gameProgress.getPlayerMaxHealth());
-        player.setJumpImpulseVelocity(gameProgress.getPlayerJumpImpulseVelocity());
-        player.setWalkImpulseVelocity(gameProgress.getPlayerWalkImpulseVelocity());
-        player.setClimbImpulseVelocity(gameProgress.getPlayerClimbImpulseVelocity());
-        player.setMaxWalkVelocity(gameProgress.getPlayerMaxWalkVelocity());
-        player.setMaxClimbVelocity(gameProgress.getPlayerMaxClimbVelocity());
-
-        // Player texture looks in left direction by default, levels go to the right, flip at the start
-        player.setFlip(true, false);
+        // Set up remaining player variables
+        setUpPlayer();
 
         // Keybinding setup
         keyBindings = new KeyBindings();
@@ -182,12 +186,46 @@ public class PlayScreen implements Screen {
         //Load the background music, set looping to true and play immediately
         level_1_backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("audio/level_1_music.mp3"));
         level_1_backgroundMusic.setLooping(true);
+        level_2_backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("audio/level_2_music.mp3"));
+        level_2_backgroundMusic.setLooping(true);
+
         if (MainGameClass.PLAY_SOUNDS) {
-            level_1_backgroundMusic.play();
+            switch (gameProgress.getCurrentLevel()) {
+                case 1:
+                    level_1_backgroundMusic.play();
+                    break;
+                case 2:
+                    level_2_backgroundMusic.play();
+                    break;
+                default:
+                    break;
+            }
         }
 
         // Set up timer with previous time or new time for the level
         timer = gameProgress.getCurrentTime();
+    }
+
+    private void setUpPlayer() {
+
+        // Player health
+        player.setHealth(gameProgress.getPlayerMaxHealth());
+
+        // Add default weapon, if the players weapon list is empty
+        if (gameProgress.getPlayerWeaponList().size() == 0) {
+            ArrayList<WeaponObject> playerWeaponList = gameProgress.getPlayerWeaponList();
+            playerWeaponList.add(allWeapons.get(0));
+            gameProgress.setPlayerWeaponList(playerWeaponList);
+        } else if (gameProgress.getPlayerWeaponList().size() > 0) {
+            player.setWeapons(gameProgress.getPlayerWeaponList());
+        }
+
+        // Movement variables
+        player.setJumpImpulseVelocity(gameProgress.getPlayerJumpImpulseVelocity());
+        player.setWalkImpulseVelocity(gameProgress.getPlayerWalkImpulseVelocity());
+        player.setClimbImpulseVelocity(gameProgress.getPlayerClimbImpulseVelocity());
+        player.setMaxWalkVelocity(gameProgress.getPlayerMaxWalkVelocity());
+        player.setMaxClimbVelocity(gameProgress.getPlayerMaxClimbVelocity());
     }
 
     /**
@@ -217,10 +255,14 @@ public class PlayScreen implements Screen {
             enemy.update(deltaTime);
         }
 
+        hud.stage.draw();
+
         // Sets the coordinate system for rendering
         game.batch.setProjectionMatrix(camera.combined);
+        //game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
 
         game.batch.begin();
+
         // Draw specific textures in here with the help of OpenGL
         player.draw(game.batch);
 
@@ -258,10 +300,13 @@ public class PlayScreen implements Screen {
         // Flip texture depending on the moving direction of the player
         // Don't do anything when the velocity is zero, leave it flipped or unflipped
         if (player.body.getLinearVelocity().x > 0) {
-            player.setFlip(true, false);
-        } else if (player.body.getLinearVelocity().x < 0) {
             player.setFlip(false, false);
+        } else if (player.body.getLinearVelocity().x < 0) {
+            player.setFlip(true, false);
         }
+
+        // Update the HUD
+        hud.update(deltaTime);
 
         // Update the camera's position
         camera.update();
@@ -290,8 +335,8 @@ public class PlayScreen implements Screen {
             game.exitApplication();
         }
 
-        // Jumping
-        if (isPressingJump && player.body.getLinearVelocity().y == 0) {
+        // Jumping: user is pressing jump key, player is on jumpable terrain and the vertical velocity is 0
+        if (isPressingJump && player.getIsOnJumpableGround() && player.body.getLinearVelocity().y == 0) {
             player.body.applyLinearImpulse(new Vector2(0, player.getJumpImpulseVelocity()), player.body.getWorldCenter(), true);
 
             if (MainGameClass.PLAY_SOUNDS) {
@@ -300,7 +345,6 @@ public class PlayScreen implements Screen {
 
             // Save jump to statistics
             statistics.setJumpsMade(statistics.getJumpsMade() + 1);
-
         }
 
         // Horizontal movement
@@ -309,6 +353,67 @@ public class PlayScreen implements Screen {
         }
         if (isPressingMoveLeft && player.body.getLinearVelocity().x >= -player.getMaxWalkVelocity()) {
             player.body.applyLinearImpulse(new Vector2(-player.getWalkImpulseVelocity(), 0), player.body.getWorldCenter(), true);
+        }
+
+        // Changing equipped weapon
+        for (Integer keyBinding : keyBindings.EQUIP_WEAPON_SLOT_0) {
+            if (Gdx.input.isKeyJustPressed(keyBinding)) {
+                player.changeWeapon(0);
+            }
+        }
+
+        for (Integer keyBinding : keyBindings.EQUIP_WEAPON_SLOT_1) {
+            if (Gdx.input.isKeyJustPressed(keyBinding)) {
+                player.changeWeapon(1);
+            }
+        }
+
+        for (Integer keyBinding : keyBindings.EQUIP_WEAPON_SLOT_2) {
+            if (Gdx.input.isKeyJustPressed(keyBinding)) {
+                player.changeWeapon(2);
+            }
+        }
+
+        for (Integer keyBinding : keyBindings.EQUIP_WEAPON_SLOT_3) {
+            if (Gdx.input.isKeyJustPressed(keyBinding)) {
+                player.changeWeapon(3);
+            }
+        }
+
+        for (Integer keyBinding : keyBindings.EQUIP_WEAPON_SLOT_4) {
+            if (Gdx.input.isKeyJustPressed(keyBinding)) {
+                player.changeWeapon(4);
+            }
+        }
+
+        for (Integer keyBinding : keyBindings.EQUIP_WEAPON_SLOT_5) {
+            if (Gdx.input.isKeyJustPressed(keyBinding)) {
+                player.changeWeapon(5);
+            }
+        }
+
+        for (Integer keyBinding : keyBindings.EQUIP_WEAPON_SLOT_6) {
+            if (Gdx.input.isKeyJustPressed(keyBinding)) {
+                player.changeWeapon(6);
+            }
+        }
+
+        for (Integer keyBinding : keyBindings.EQUIP_WEAPON_SLOT_7) {
+            if (Gdx.input.isKeyJustPressed(keyBinding)) {
+                player.changeWeapon(7);
+            }
+        }
+
+        for (Integer keyBinding : keyBindings.EQUIP_WEAPON_SLOT_8) {
+            if (Gdx.input.isKeyJustPressed(keyBinding)) {
+                player.changeWeapon(8);
+            }
+        }
+
+        for (Integer keyBinding : keyBindings.EQUIP_WEAPON_SLOT_9) {
+            if (Gdx.input.isKeyJustPressed(keyBinding)) {
+                player.changeWeapon(9);
+            }
         }
     }
 
@@ -362,6 +467,7 @@ public class PlayScreen implements Screen {
         world.dispose();
         box2DDebugRenderer.dispose();
         level_1_backgroundMusic.dispose();
+        level_2_backgroundMusic.dispose();
     }
 
     /**
@@ -370,9 +476,13 @@ public class PlayScreen implements Screen {
     public void respawnPlayer(boolean levelFinished) {
         Gdx.app.log("Game over", "Player died, respawning now...");
         level_1_backgroundMusic.stop();
+        level_2_backgroundMusic.stop();
 
         // Save current timer time to the statistics
         statistics.setSecondsPlayed(statistics.getSecondsPlayed() + timer);
+
+        // Subtract player life
+        gameProgress.setPlayerLifes(gameProgress.getPlayerLifes() - 1);
 
         // Only when the level is finished, it should reset the timer
         if (levelFinished) {
@@ -416,6 +526,9 @@ public class PlayScreen implements Screen {
         // Save finished level to statistics
         statistics.setLevelsFinished(statistics.getLevelsFinished() + 1);
 
+        // Reset current lifes to the maximum
+        gameProgress.setPlayerLifes(gameProgress.getPlayerMaximumLifes());
+
         respawnPlayer(true);
     }
 
@@ -434,6 +547,13 @@ public class PlayScreen implements Screen {
      */
     public TextureAtlas getEnemyFrogTextureAtlas() {
         return enemyFrogTextureAtlas;
+    }
+
+    /**
+     * @return the game class
+     */
+    public MainGameClass getGame() {
+        return game;
     }
 
     /**
@@ -457,20 +577,38 @@ public class PlayScreen implements Screen {
         return gameProgress;
     }
 
-    public int getPlayerCurrentHealth() {
-        return playerCurrentHealth;
+    /**
+     * @return the player
+     */
+    public Player getPlayer() {
+        return player;
+    }
+
+    /**
+     * @return the statistics
+     */
+    public Statistics getStatistics() {
+        return statistics;
     }
 
     public void setPlayerCurrentHealth(int newHealth) {
         // Save lost health to statistics
-        statistics.setHealthLost(statistics.getHealthLost() + (playerCurrentHealth - newHealth));
+        statistics.setHealthLost(statistics.getHealthLost() + (player.getHealth() - newHealth));
 
-        Gdx.app.log("Player health change", "New: " + newHealth + ", Old: " + playerCurrentHealth + ", Damage: " + (playerCurrentHealth - newHealth));
-        playerCurrentHealth = newHealth;
+        Gdx.app.log("Player health change", "New: " + newHealth + ", Old: " + player.getHealth() + ", Damage: " + (player.getHealth() - newHealth));
+        player.setHealth(newHealth);
 
-        if (playerCurrentHealth <= 0) {
-            respawnPlayer(false);
+        if (player.getHealth() <= 0) {
+            if(gameProgress.getPlayerLifes() > 1) {
+                respawnPlayer(false);
+            } else {
+                game.exitApplication("Out of lifes");
+            }
         }
+    }
+
+    public long getTimer() {
+        return timer;
     }
 
     /* -------------------------------------------------------------------------------------------------------------- */

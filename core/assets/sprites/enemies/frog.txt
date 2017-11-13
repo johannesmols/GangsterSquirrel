@@ -1,7 +1,7 @@
 frog.png
 size: 32, 928
 format: RGBA8888
-filter: Linear,Linear
+filter: Nearest,Nearest
 repeat: none
 frog
   rotate: false

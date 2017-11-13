@@ -1,7 +1,7 @@
 monkey.png
 size: 34, 317
 format: RGBA8888
-filter: Linear,Linear
+filter: Nearest,Nearest
 repeat: none
 monkey
   rotate: false
