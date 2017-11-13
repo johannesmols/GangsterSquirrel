@@ -17,7 +17,6 @@ public abstract class Enemy extends Sprite {
     protected final int ENEMY_PIXEL_HEIGHT = 32;
 
     protected PlayScreen screen;
-    protected Vector2 velocity;
 
     // Gameplay relevant variables
     protected int[] damageMinMax;
@@ -28,17 +27,23 @@ public abstract class Enemy extends Sprite {
         this.screen = screen;
         setPosition(spawnPositionX * MainGameClass.TILE_PIXEL_SIZE, spawnPositionY * MainGameClass.TILE_PIXEL_SIZE);
 
-        defineEnemy();
+        BodyDef bodyDef = new BodyDef();
+        bodyDef.type = BodyDef.BodyType.DynamicBody;
+        bodyDef.position.set((getX() + getWidth() / 2) / MainGameClass.PPM, (getY() + getHeight() / 2) / MainGameClass.PPM);
+        body = world.createBody(bodyDef);
 
-//        velocity = new Vector2(-1, -2);
-//        body.setActive(false);
+        FixtureDef fixtureDef = new FixtureDef();
+        CircleShape shape = new CircleShape();
+        shape.setRadius(ENEMY_PIXEL_WIDTH / 4 / MainGameClass.PPM);
+        fixtureDef.shape = shape;
+
+        body.createFixture(fixtureDef).setUserData(this);
     }
 
     protected int randomDamageValueBetweenMinAndMax() {
         return new Random().nextInt((damageMinMax[1] - damageMinMax[0]) + 1) + damageMinMax[0]; // ((max - min) + 1) + min
     }
 
-    protected abstract void defineEnemy();
     public abstract void update(float dt);
     public abstract void onPlayerBeginContact();
     public abstract void onPlayerEndContact();

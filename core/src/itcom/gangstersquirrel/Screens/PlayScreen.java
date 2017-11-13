@@ -116,7 +116,7 @@ public class PlayScreen implements Screen {
 
         // Set up player texture atlas
         playerTextureAtlas = new TextureAtlas("sprites/player/squirrel.txt");
-        enemyFrogTextureAtlas = new TextureAtlas("sprites/enemies/frog.txt");
+        enemyFrogTextureAtlas = new TextureAtlas("sprites/enemies/frog/frog.txt");
 
         // Set up camera and viewport
         camera = new OrthographicCamera();
