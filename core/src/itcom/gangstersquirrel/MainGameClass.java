@@ -118,7 +118,6 @@ public class MainGameClass extends Game implements ChatListener {
 
 	public void takeScreenshot() {
 		byte[] pixels = ScreenUtils.getFrameBufferPixels(0, 0, Gdx.graphics.getBackBufferWidth(), Gdx.graphics.getBackBufferHeight(), true);
-
 		Pixmap pixmap = new Pixmap(Gdx.graphics.getBackBufferWidth(), Gdx.graphics.getBackBufferHeight(), Pixmap.Format.RGBA8888);
 		BufferUtils.copy(pixels, 0, pixmap.getPixels(), pixels.length);
 		PixmapIO.writePNG(Gdx.files.local("screenshots/screenshot.png"), pixmap);

@@ -19,6 +19,7 @@ public class GameProgressObject {
     private float playerClimbImpulseVelocity;
     private float playerMaxWalkVelocity;
     private float playerMaxClimbVelocity;
+    private int currentlyEquippedWeapon;
     private ArrayList<WeaponObject> playerWeaponList;
 
     /**
@@ -32,11 +33,12 @@ public class GameProgressObject {
      * @param playerClimbImpulseVelocity the climbing impulse velocity used in Box2D
      * @param playerMaxWalkVelocity the maximal walking velocity of the player
      * @param playerMaxClimbVelocity the maximal climbing velocity of the player
+     * @param currentlyEquippedWeapon the index of the currently equipped weapon in the weapon list of the player
      * @param playerWeaponList the equipped weapons of the player
      */
     public GameProgressObject(int currentLevel, long currentTime, int playerMaxHealth, int playerLifes, int playerMaximumLifes, float
             playerJumpImpulseVelocity, float playerWalkImpulseVelocity, float playerClimbImpulseVelocity, float
-            playerMaxWalkVelocity, float playerMaxClimbVelocity, ArrayList<WeaponObject> playerWeaponList) {
+            playerMaxWalkVelocity, float playerMaxClimbVelocity, int currentlyEquippedWeapon, ArrayList<WeaponObject> playerWeaponList) {
 
         this.currentLevel = currentLevel;
         this.currentTime = currentTime;
@@ -48,6 +50,7 @@ public class GameProgressObject {
         this.playerClimbImpulseVelocity = playerClimbImpulseVelocity;
         this.playerMaxWalkVelocity = playerMaxWalkVelocity;
         this.playerMaxClimbVelocity = playerMaxClimbVelocity;
+        this.currentlyEquippedWeapon = currentlyEquippedWeapon;
         this.playerWeaponList = playerWeaponList;
     }
 
@@ -135,6 +138,14 @@ public class GameProgressObject {
 
     public void setPlayerMaxClimbVelocity(float playerMaxClimbVelocity) {
         this.playerMaxClimbVelocity = playerMaxClimbVelocity;
+    }
+
+    public int getCurrentlyEquippedWeapon() {
+        return currentlyEquippedWeapon;
+    }
+
+    public void setCurrentlyEquippedWeapon(int currentlyEquippedWeapon) {
+        this.currentlyEquippedWeapon = currentlyEquippedWeapon;
     }
 
     public ArrayList<WeaponObject> getPlayerWeaponList() {

@@ -33,6 +33,7 @@ public class GameProgress {
                 1f,
                 2f,
                 1f,
+                0,
                 new ArrayList<WeaponObject>()
         );
 
@@ -178,6 +179,15 @@ public class GameProgress {
 
     public void setPlayerMaxClimbVelocity(float maxClimbVelocity) {
         gameProgress.setPlayerMaxClimbVelocity(maxClimbVelocity);
+        serializeGameProgress(gameProgress);
+    }
+
+    public int getCurrentlyEquippedWeapon() {
+        return gameProgress.getCurrentlyEquippedWeapon();
+    }
+
+    public void setCurrentlyEquippedWeapon(int currentlyEquippedWeapon) {
+        gameProgress.setCurrentlyEquippedWeapon(currentlyEquippedWeapon);
         serializeGameProgress(gameProgress);
     }
 
