@@ -46,7 +46,8 @@ project(":desktop") {
         compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
         compile "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
         compile "com.badlogicgames.gdx:gdx-tools:$gdxVersion"
-        
+        compile "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
+
     }
 }
 
@@ -74,10 +75,12 @@ project(":core") {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
         compile "com.google.code.gson:gson:2.8.0"
+        compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
         // https://mvnrepository.com/artifact/pircbot/pircbot
         // compile group: 'pircbot', name: 'pircbot', version: '1.5.0'
         compile fileTree(dir: 'lib', include: '*.jar')
         compile "pircbot:pircbot:1.5.0"
+
     }
 }
 
