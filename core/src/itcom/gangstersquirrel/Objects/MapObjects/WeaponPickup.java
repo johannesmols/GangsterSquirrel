@@ -30,7 +30,7 @@ public class WeaponPickup extends InteractiveMapTileObject {
 
         // Add the picked up weapon
         MapObject pickedUpWeapon = getCellProperties(map.getLayers().getIndex("weapon"));
-        if (pickedUpWeapon.getProperties().containsKey("weapon_name")) {
+        if (pickedUpWeapon != null && pickedUpWeapon.getProperties().containsKey("weapon_name")) {
             String weaponName = pickedUpWeapon.getProperties().get("weapon_name", String.class);
             Gdx.app.log("Picked up weapon", weaponName);
 
@@ -96,8 +96,6 @@ public class WeaponPickup extends InteractiveMapTileObject {
                 playScreen.getPlayer().setWeapons(playerWeaponList);
                 playScreen.getPlayer().changeWeapon(weaponName);
             }
-        } else {
-            Gdx.app.log("Not a weapon", "Collided object not a weapon");
         }
     }
 
