@@ -1,7 +1,6 @@
 package itcom.gangstersquirrel.Objects;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import itcom.gangstersquirrel.MainGameClass;
 import itcom.gangstersquirrel.Screens.PlayScreen;
@@ -33,6 +32,8 @@ public abstract class Enemy extends Sprite {
         body = world.createBody(bodyDef);
 
         FixtureDef fixtureDef = new FixtureDef();
+        fixtureDef.filter.categoryBits = MainGameClass.CATEGORY_ENEMY;
+        fixtureDef.filter.maskBits = MainGameClass.MASK_ENEMY;
         CircleShape shape = new CircleShape();
         shape.setRadius(ENEMY_PIXEL_WIDTH / 4 / MainGameClass.PPM);
         fixtureDef.shape = shape;

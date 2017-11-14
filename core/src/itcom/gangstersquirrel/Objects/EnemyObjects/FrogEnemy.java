@@ -14,8 +14,11 @@ public class FrogEnemy extends Enemy {
 
     // Animation parameters
     private float stateTime;
-    private Animation<TextureRegion> walkAnimation;
-    private Array<TextureRegion> frames;
+
+    private Animation<TextureRegion> attackAnimation;
+    private Array<TextureRegion> attackFrames;
+    private Animation<TextureRegion> jumpAnimation;
+    private Array<TextureRegion> jumpFrames;
 
     private boolean setToDestroy;
     private boolean destroyed;
@@ -31,14 +34,23 @@ public class FrogEnemy extends Enemy {
         health = 20;
 
         // Animation set up
-        frames = new Array<>();
+        attackFrames = new Array<>();
         for(int i = 0; i < 4; i++) {
-            frames.add(new TextureRegion(
+            attackFrames.add(new TextureRegion(
+                    screen.getEnemyFrogTextureAtlas().findRegion("frog_attack"), i * ENEMY_PIXEL_WIDTH, 0, ENEMY_PIXEL_WIDTH, ENEMY_PIXEL_HEIGHT)
+            );
+        }
+
+        jumpFrames = new Array<>();
+        for(int i = 0; i < 4; i++) {
+            jumpFrames.add(new TextureRegion(
                     screen.getEnemyFrogTextureAtlas().findRegion("frog_jump"), i * ENEMY_PIXEL_WIDTH, 0, ENEMY_PIXEL_WIDTH, ENEMY_PIXEL_HEIGHT)
             );
         }
 
-        walkAnimation = new Animation<>(0.4f, frames);
+        attackAnimation = new Animation<>(0.4f, attackFrames);
+        jumpAnimation = new Animation<>(0.4f, jumpFrames);
+
         stateTime = 0;
         setBounds(getX(), getY(), ENEMY_PIXEL_WIDTH / MainGameClass.PPM, ENEMY_PIXEL_HEIGHT / MainGameClass.PPM + getHeight() / 2);
 
@@ -51,7 +63,7 @@ public class FrogEnemy extends Enemy {
     public void update(float deltaTime) {
         stateTime += deltaTime;
         setPosition(body.getPosition().x - getWidth() / 2, body.getPosition().y - getHeight() / 2);
-        setRegion(walkAnimation.getKeyFrame(stateTime, true));
+        setRegion(attackAnimation.getKeyFrame(stateTime, true));
     }
 
     @Override

@@ -59,6 +59,7 @@ public class PlayScreen implements Screen {
 
     // Box2D variables
     private World world;
+    private Box2DWorldCreator box2DWorldCreator;
     private Box2DDebugRenderer box2DDebugRenderer;
     private WorldContactListener worldContactListener;
 
@@ -150,7 +151,7 @@ public class PlayScreen implements Screen {
         world.setContactListener(worldContactListener);
 
         // Set up the collision boxes for the ground and obstacle layers
-        new Box2DWorldCreator(this); // int array = object layers of the map that need collision boxes
+        box2DWorldCreator = new Box2DWorldCreator(this); // int array = object layers of the map that need collision boxes
 
         // Player set-up
         switch (gameProgress.getCurrentLevel()) {
@@ -299,9 +300,9 @@ public class PlayScreen implements Screen {
         // Flip texture depending on the moving direction of the player
         // Don't do anything when the velocity is zero, leave it flipped or unflipped
         if (player.body.getLinearVelocity().x > 0) {
-            player.setFlip(false, false);
+            player.flipPlayerDirection(false);
         } else if (player.body.getLinearVelocity().x < 0) {
-            player.setFlip(true, false);
+            player.flipPlayerDirection(true);
         }
 
         // Update the HUD
@@ -614,6 +615,14 @@ public class PlayScreen implements Screen {
 
     public long getTimer() {
         return timer;
+    }
+
+    public Box2DWorldCreator getBox2DWorldCreator() {
+        return box2DWorldCreator;
+    }
+
+    public ArrayList<Enemy> getEnemies() {
+        return enemies;
     }
 
     /* -------------------------------------------------------------------------------------------------------------- */

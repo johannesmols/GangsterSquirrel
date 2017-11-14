@@ -1,6 +1,8 @@
 package itcom.gangstersquirrel.Objects.MapObjects;
 
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.physics.box2d.Filter;
+import itcom.gangstersquirrel.MainGameClass;
 import itcom.gangstersquirrel.Objects.InteractiveMapTileObject;
 import itcom.gangstersquirrel.Screens.PlayScreen;
 
@@ -10,9 +12,10 @@ public class Jumpable extends InteractiveMapTileObject {
 
     public Jumpable(PlayScreen screen, Rectangle bounds) {
         super(screen, bounds, true);
-        fixture.setUserData(this);
-
         playScreen = screen;
+
+        fixture.setUserData(this);
+        createFilterMask();
     }
 
     @Override
@@ -25,5 +28,13 @@ public class Jumpable extends InteractiveMapTileObject {
     public void onPlayerEndContact() {
         // Player leaves jumpable ground
         playScreen.getPlayer().setIsOnJumpableGround(false);
+    }
+
+    @Override
+    public void createFilterMask() {
+        Filter filter = new Filter();
+        filter.categoryBits = MainGameClass.CATEGORY_JUMPABLE;
+        filter.maskBits = MainGameClass.MASK_JUMPABLE;
+        fixture.setFilterData(filter);
     }
 }

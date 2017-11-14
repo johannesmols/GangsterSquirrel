@@ -2,6 +2,8 @@ package itcom.gangstersquirrel.Objects.MapObjects;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.physics.box2d.Filter;
+import itcom.gangstersquirrel.MainGameClass;
 import itcom.gangstersquirrel.Objects.InteractiveMapTileObject;
 import itcom.gangstersquirrel.Screens.PlayScreen;
 
@@ -15,7 +17,9 @@ public class DeathTile extends InteractiveMapTileObject {
     public DeathTile(PlayScreen screen, Rectangle bounds) {
         super(screen, bounds, true);
         this.playScreen = screen;
+
         fixture.setUserData(this);
+        createFilterMask();
     }
 
     @Override
@@ -29,5 +33,13 @@ public class DeathTile extends InteractiveMapTileObject {
     @Override
     public void onPlayerEndContact() {
 
+    }
+
+    @Override
+    public void createFilterMask() {
+        Filter filter = new Filter();
+        filter.categoryBits = MainGameClass.CATEGORY_DEATHTILE;
+        filter.maskBits = MainGameClass.MASK_DEATHTILE;
+        fixture.setFilterData(filter);
     }
 }

@@ -9,10 +9,19 @@ import com.badlogic.gdx.math.Rectangle;
 import itcom.gangstersquirrel.Objects.MapObjects.*;
 import itcom.gangstersquirrel.Screens.PlayScreen;
 
+import java.util.ArrayList;
+
 /**
  * Creates the Box2D world of a map
  */
 public class Box2DWorldCreator {
+
+    private ArrayList<Ground> groundObjects = new ArrayList<>();
+    private ArrayList<Platform> platformObjects = new ArrayList<>();
+    private ArrayList<DeathTile> deathTileObjects = new ArrayList<>();
+    private ArrayList<WeaponPickup> weaponPickupObjects = new ArrayList<>();
+    private ArrayList<Finish> finishObjects = new ArrayList<>();
+    private ArrayList<Jumpable> jumpableObjects = new ArrayList<>();
 
     /**
      * Sets up the collision boxes of the map objects
@@ -38,25 +47,22 @@ public class Box2DWorldCreator {
                         // Only graphics
                         break;
                     case "ground":
-                        new Ground(screen, rectangle);
+                        groundObjects.add(new Ground(screen, rectangle));
                         break;
                     case "obstacles":
-                        new Platform(screen, rectangle);
+                        platformObjects.add(new Platform(screen, rectangle));
                         break;
                     case "death":
-                        new DeathTile(screen, rectangle);
+                        deathTileObjects.add(new DeathTile(screen, rectangle));
                         break;
                     case "weapon":
-                        new WeaponPickup(screen, rectangle);
-                        break;
-                    case "items":
-                        new Item(screen, rectangle);
+                        weaponPickupObjects.add(new WeaponPickup(screen, rectangle));
                         break;
                     case "finish":
-                        new Finish(screen, rectangle);
+                        finishObjects.add(new Finish(screen, rectangle));
                         break;
                     case "jumpable":
-                        new Jumpable(screen, rectangle);
+                        jumpableObjects.add(new Jumpable(screen, rectangle));
                         break;
                     default:
                         break;
@@ -64,5 +70,29 @@ public class Box2DWorldCreator {
                 }
             }
         }
+    }
+
+    public ArrayList<Ground> getGroundObjects() {
+        return groundObjects;
+    }
+
+    public ArrayList<Platform> getPlatformObjects() {
+        return platformObjects;
+    }
+
+    public ArrayList<DeathTile> getDeathTileObjects() {
+        return deathTileObjects;
+    }
+
+    public ArrayList<WeaponPickup> getWeaponPickupObjects() {
+        return weaponPickupObjects;
+    }
+
+    public ArrayList<Finish> getFinishObjects() {
+        return finishObjects;
+    }
+
+    public ArrayList<Jumpable> getJumpableObjects() {
+        return jumpableObjects;
     }
 }

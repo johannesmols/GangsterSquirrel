@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="564" height="64" tilewidth="16" tileheight="16" nextobjectid="634">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="564" height="64" tilewidth="16" tileheight="16" nextobjectid="635">
  <tileset firstgid="1" name="mario" tilewidth="16" tileheight="16" spacing="2" margin="1" tilecount="924" columns="33">
   <image source="mario.png" width="594" height="504"/>
  </tileset>
@@ -136,7 +136,7 @@
   </object>
  </objectgroup>
  <objectgroup name="finish">
-  <object id="442" x="8224" y="656" width="32" height="48"/>
+  <object id="634" x="8240" y="656" height="48"/>
  </objectgroup>
  <objectgroup name="jumpable">
   <object id="553" x="512" y="704" width="528"/>

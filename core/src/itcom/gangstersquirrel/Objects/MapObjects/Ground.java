@@ -2,6 +2,8 @@ package itcom.gangstersquirrel.Objects.MapObjects;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.physics.box2d.Filter;
+import itcom.gangstersquirrel.MainGameClass;
 import itcom.gangstersquirrel.Objects.InteractiveMapTileObject;
 import itcom.gangstersquirrel.Screens.PlayScreen;
 
@@ -12,7 +14,9 @@ public class Ground extends InteractiveMapTileObject {
 
     public Ground(PlayScreen screen, Rectangle bounds) {
         super(screen, bounds, false);
+
         fixture.setUserData(this);
+        createFilterMask();
     }
 
     @Override
@@ -23,5 +27,13 @@ public class Ground extends InteractiveMapTileObject {
     @Override
     public void onPlayerEndContact() {
 
+    }
+
+    @Override
+    public void createFilterMask() {
+        Filter filter = new Filter();
+        filter.categoryBits = MainGameClass.CATEGORY_GROUND;
+        filter.maskBits = MainGameClass.MASK_GROUND;
+        fixture.setFilterData(filter);
     }
 }

@@ -2,6 +2,7 @@ package itcom.gangstersquirrel.Objects;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import itcom.gangstersquirrel.GameProgress.GameProgress;
 import itcom.gangstersquirrel.Items.WeaponList;
@@ -37,6 +38,7 @@ public class Player extends Sprite {
 
     // Gameplay relevant variables
     private boolean isOnJumpableGround;
+    private boolean isMovingLeftOrRight;
 
     // Texture variables
     private final int PLAYER_PIXEL_WIDTH = 48;
@@ -100,7 +102,21 @@ public class Player extends Sprite {
      * @param deltaTime the time between the last and current frame in seconds
      */
     public void update(float deltaTime) {
-        setPosition(body.getPosition().x - getWidth() / 2, body.getPosition().y - getHeight() / 2);
+        // Make the sprite stay in the same position when switching directions
+        if (isMovingLeftOrRight) {
+            setPosition(body.getPosition().x - getWidth(), body.getPosition().y - getHeight() / 2);
+        } else {
+            setPosition(body.getPosition().x - getWidth() / 2, body.getPosition().y - getHeight() / 2);
+        }
+    }
+
+    /**
+     * Flip the player's texture horizontally
+     * @param leftOrRight if true, the player now faces the left side
+     */
+    public void flipPlayerDirection(boolean leftOrRight) {
+        setFlip(leftOrRight, false);
+        isMovingLeftOrRight = leftOrRight;
     }
 
     /**
@@ -114,22 +130,30 @@ public class Player extends Sprite {
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         body = world.createBody(bodyDef);
 
-        // Shape definition
+        // Create fixtures for both the left and right facing way, switch between them later
+        createNewFixtures();
+    }
+
+    private void createNewFixtures() {
+
+        FixtureDef playerFixtureDef = new FixtureDef();
+        playerFixtureDef.shape = getPlayerShape();
+        playerFixtureDef.filter.categoryBits = MainGameClass.CATEGORY_PLAYER;
+        playerFixtureDef.filter.maskBits = MainGameClass.MASK_PLAYER;
+        body.createFixture(playerFixtureDef).setUserData("player");
+    }
+
+    private PolygonShape getPlayerShape() {
+
         PolygonShape shape = new PolygonShape();
-        shape.setAsBox(PLAYER_PIXEL_WIDTH / 4 / MainGameClass.PPM, PLAYER_PIXEL_HEIGHT / 2 / MainGameClass.PPM); // divided by 4 to make width of collision box half as wide as the texture
+        shape.setAsBox(
+                PLAYER_PIXEL_WIDTH / 4 / MainGameClass.PPM, // half the texture width to not include white space of the texture in the collision box
+                PLAYER_PIXEL_HEIGHT / 2 / MainGameClass.PPM, // the full texture height (sizes are half sizes, so divided by two)
+                new Vector2( - PLAYER_PIXEL_WIDTH / 4 / MainGameClass.PPM, 0), // center of the box, needs to be half of the half size of the texture negative to make the flipping work
+                0f // the angle of the box
+        );
 
-        // Fixture definition
-        FixtureDef fixtureDef = new FixtureDef();
-        fixtureDef.shape = shape;
-
-        // Create body
-        body.createFixture(fixtureDef);
-
-        // Collision sensor fixture definition
-        FixtureDef collisionFixtureDef = new FixtureDef();
-        collisionFixtureDef.shape = shape;
-        collisionFixtureDef.isSensor = true;
-        body.createFixture(collisionFixtureDef).setUserData("player");
+        return shape;
     }
 
     private void setUpTextureRegions() {

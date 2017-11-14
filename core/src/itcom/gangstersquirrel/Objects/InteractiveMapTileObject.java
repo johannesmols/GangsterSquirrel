@@ -50,6 +50,11 @@ public abstract class InteractiveMapTileObject {
     public abstract void onPlayerEndContact();
 
     /**
+     * Change the appropriate filter mask
+     */
+    public abstract void createFilterMask();
+
+    /**
      * Gets the cell of a graphical map layer
      * @param layerIndex the index of the map layer
      * @return the cell
