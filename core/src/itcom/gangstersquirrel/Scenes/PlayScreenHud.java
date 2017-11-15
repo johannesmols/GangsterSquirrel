@@ -3,9 +3,11 @@ package itcom.gangstersquirrel.Scenes;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -23,16 +25,22 @@ public class PlayScreenHud {
     public Stage stage;
     private Viewport viewport;
 
-    Label timerLabel;
-    ProgressBar healthBar;
+    private TextureAtlas hudAtlas;
+    private Skin skin;
+
+    private Label timerLabel;
+    private ProgressBar healthBar;
 
     public PlayScreenHud(PlayScreen playScreen) {
         this.playScreen = playScreen;
 
         viewport = new FitViewport(MainGameClass.WIDTH, MainGameClass.HEIGHT, new OrthographicCamera());
         stage = new Stage(viewport, playScreen.getGame().batch);
-
         stage.setDebugAll(MainGameClass.DEBUG);
+
+        hudAtlas = new TextureAtlas("hud/uiskin.atlas");
+        skin = new Skin();
+        skin.addRegions(hudAtlas);
 
         Table layoutTable = new Table();
         layoutTable.top();

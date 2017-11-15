@@ -11,8 +11,12 @@ package itcom.gangstersquirrel;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.PixmapIO;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.BufferUtils;
@@ -63,6 +67,7 @@ public class MainGameClass extends Game implements ChatListener {
 	// Internal objects
 	public SpriteBatch batch; //Contains every sprite in the game
 	public HashMap<String, BitmapFont> fonts = new HashMap<String, BitmapFont>();
+	public AssetManager assetManager;
 
 	// Collision filter bits in binary notation
 	public static final short CATEGORY_PLAYER		= 0x0001;
@@ -101,6 +106,8 @@ public class MainGameClass extends Game implements ChatListener {
 		ASPECT_RATIO = (float) WIDTH / (float) HEIGHT;
 
 		batch = new SpriteBatch();
+		assetManager = new AssetManager();
+		loadAssets();
 
 		// Add fonts
 		fonts.put("default", new BitmapFont());
@@ -130,6 +137,7 @@ public class MainGameClass extends Game implements ChatListener {
 	public void render () {
 		// Very important!
 		super.render();
+		//assetManager.update(); // Doesn't need to be called when calling assetManager.finishLoading()
 	}
 
 	/**
@@ -138,6 +146,7 @@ public class MainGameClass extends Game implements ChatListener {
 	@Override
 	public void dispose () {
 		batch.dispose();
+		assetManager.dispose();
 	}
 
 	public void takeScreenshot() {
@@ -174,14 +183,35 @@ public class MainGameClass extends Game implements ChatListener {
 		System.exit(0);
 	}
 
+	/**
+	 * Resets the current time in the save file to zero
+	 */
 	private void resetTimer() {
 		// Reset the game timer to zero, or when the game starts the next time, the timer will continue from the last saved point
 		new GameProgress().setCurrentTime(0);
 	}
 
+	/**
+	 * Resets the current player lifes in the save file to the maximum
+	 */
 	private void resetPlayerLifes() {
 		// Reset current lifes to the maximum
 		GameProgress gameProgress = new GameProgress();
 		gameProgress.setPlayerLifes(gameProgress.getPlayerMaximumLifes());
+	}
+
+	/**
+	 * Load all assets into the assets folder
+	 */
+	private void loadAssets() {
+		assetManager.load("audio/jump.mp3", Sound.class);
+		assetManager.load("audio/level_1_music.mp3", Music.class);
+		assetManager.load("audio/level_2_music.mp3", Music.class);
+
+		assetManager.load("hud/uiskin.png", Texture.class);
+
+		assetManager.load("sprites/splashscreen/splashscreen.png", Texture.class);
+
+		assetManager.finishLoading();
 	}
 }

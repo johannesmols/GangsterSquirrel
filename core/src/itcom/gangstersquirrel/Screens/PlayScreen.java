@@ -98,7 +98,7 @@ public class PlayScreen implements Screen {
     // Audio variables
     // Sounds = kept in memory (shouldn't be longer than 10 seconds)
     // Music = streamed from file (can be memory intensive to keep in memory)
-    private Sound jumpSound = Gdx.audio.newSound(Gdx.files.internal("audio/jump.mp3"));
+    private Sound jumpSound;
     private Music level_1_backgroundMusic;
     private Music level_2_backgroundMusic;
 
@@ -117,8 +117,8 @@ public class PlayScreen implements Screen {
     private void setupScreen() {
 
         // Set up player texture atlas
-        playerTextureAtlas = new TextureAtlas("sprites/player/squirrel.txt");
-        enemyFrogTextureAtlas = new TextureAtlas("sprites/enemies/frog/frog.txt");
+        playerTextureAtlas = new TextureAtlas("sprites/player/squirrel.atlas");
+        enemyFrogTextureAtlas = new TextureAtlas("sprites/enemies/frog/frog.atlas");
 
         // Set up camera and viewport
         camera = new OrthographicCamera();
@@ -185,9 +185,10 @@ public class PlayScreen implements Screen {
         Gdx.input.setInputProcessor(inputMultiplexer);
 
         //Load the background music, set looping to true and play immediately
-        level_1_backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("audio/level_1_music.mp3"));
+        jumpSound = game.assetManager.get("audio/jump.mp3", Sound.class);
+        level_1_backgroundMusic = game.assetManager.get("audio/level_1_music.mp3", Music.class);
         level_1_backgroundMusic.setLooping(true);
-        level_2_backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("audio/level_2_music.mp3"));
+        level_2_backgroundMusic = game.assetManager.get("audio/level_2_music.mp3", Music.class);
         level_2_backgroundMusic.setLooping(true);
 
         if (MainGameClass.PLAY_SOUNDS) {

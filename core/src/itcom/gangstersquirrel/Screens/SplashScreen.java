@@ -15,12 +15,15 @@ import itcom.gangstersquirrel.MainGameClass;
 public class SplashScreen implements Screen {
 
     private MainGameClass game;
-    private Texture texture = new Texture(Gdx.files.internal("sprites/splashscreen/splashscreen.png"));
-    private Image splashImage = new Image(texture);
-    private Stage stage = new Stage();
+    private Texture texture;
+    private Image splashImage;
+    private Stage stage;
 
     public SplashScreen(MainGameClass game) {
         this.game = game;
+        stage = new Stage();
+        texture = game.assetManager.get("sprites/splashscreen/splashscreen.png", Texture.class);
+        splashImage = new Image(texture);
     }
 
     /**
