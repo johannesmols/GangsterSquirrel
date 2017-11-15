@@ -80,6 +80,8 @@ public class Player extends Sprite {
             setRegion(textureRegions.get(weapons.get(indexInWeaponList).getName()));
             screen.getGameProgress().setCurrentlyEquippedWeapon(indexInWeaponList);
         }
+
+        flipPlayerDirection(isMovingLeftOrRight);
     }
 
     /**
@@ -95,6 +97,8 @@ public class Player extends Sprite {
                 }
             }
         }
+
+        flipPlayerDirection(isMovingLeftOrRight);
     }
 
     /**
