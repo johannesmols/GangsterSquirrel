@@ -10,6 +10,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.viewport.*;
 import itcom.gangstersquirrel.GameProgress.GameProgress;
@@ -293,10 +294,6 @@ public class PlayScreen implements Screen {
         // velocity and position iterations = defines the precision of the calculations. Needs more calculation power, if higher. 6 and 2 are the recommended values
         world.step(1 / (float) MainGameClass.FPS, 6, 2);
 
-        // Follow player with camera
-        camera.position.x = player.body.getPosition().x;
-        camera.position.y = player.body.getPosition().y;
-
         // Flip texture depending on the moving direction of the player
         // Don't do anything when the velocity is zero, leave it flipped or unflipped
         if (player.body.getLinearVelocity().x > 0) {
@@ -308,10 +305,29 @@ public class PlayScreen implements Screen {
         // Update the HUD
         hud.update(deltaTime);
 
+        // Follow player with camera
+        updateCamera(deltaTime);
+
         // Update the camera's position
         camera.update();
         // Renderer will draw only what the camera can see
         renderer.setView(camera);
+    }
+
+    /**
+     * Follows the player with interpolation / lerping
+     * @param deltaTime the time between the last and current frame in seconds
+     */
+    private void updateCamera(float deltaTime) {
+        // current camera position + (target - current camera position) * lerp factor
+        Vector3 position = camera.position;
+        if (MainGameClass.USE_CAMERA_INTERPOLATION) {
+            position.x = camera.position.x + (player.body.getPosition().x - camera.position.x) * MainGameClass.INTERPOLATION_X;
+            position.y = camera.position.y + (player.body.getPosition().y - camera.position.y) * MainGameClass.INTERPOLATION_Y;
+        } else {
+            position = new Vector3(player.body.getPosition().x, player.body.getPosition().y, 0f);
+        }
+        camera.position.set(position);
     }
 
     /**

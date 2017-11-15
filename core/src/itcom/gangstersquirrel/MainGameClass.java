@@ -44,6 +44,7 @@ public class MainGameClass extends Game implements ChatListener {
 	public static float ASPECT_RATIO; // Aspect ratio
 	public static final float PPM = 100; // Pixels per meter
     public static int ZOOM = 32;
+    public static boolean USE_CAMERA_INTERPOLATION = true;
 
     // Number of levels
 	public static final int NUMBER_OF_LEVELS = 2;
@@ -56,6 +57,8 @@ public class MainGameClass extends Game implements ChatListener {
 	public static float GAME_WORLD_WIDTH = 16 * ZOOM; // Game world size (map dimension in pixels)
 	public static float GAME_WORLD_HEIGHT = 9 * ZOOM;
 	public static float GRAVITY = 9.81f;
+	public static float INTERPOLATION_X = 0.3f;
+	public static float INTERPOLATION_Y = 0.5f;
 
 	// Internal objects
 	public SpriteBatch batch; //Contains every sprite in the game
