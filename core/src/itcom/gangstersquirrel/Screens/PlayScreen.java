@@ -366,10 +366,10 @@ public class PlayScreen implements Screen {
 
         // Horizontal movement
         if (isPressingMoveRight && player.body.getLinearVelocity().x <= player.getMaxWalkVelocity()) {
-            player.body.applyLinearImpulse(new Vector2(player.getWalkImpulseVelocity(), 0), player.body.getWorldCenter(), true);
+            player.body.applyLinearImpulse(new Vector2(player.getWalkImpulseVelocity() * deltaTime * 60, 0), player.body.getWorldCenter(), true);
         }
         if (isPressingMoveLeft && player.body.getLinearVelocity().x >= -player.getMaxWalkVelocity()) {
-            player.body.applyLinearImpulse(new Vector2(-player.getWalkImpulseVelocity(), 0), player.body.getWorldCenter(), true);
+            player.body.applyLinearImpulse(new Vector2(-player.getWalkImpulseVelocity() * deltaTime * 60, 0), player.body.getWorldCenter(), true);
         }
 
         // Changing equipped weapon
