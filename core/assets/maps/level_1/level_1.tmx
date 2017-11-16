@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.2" orientation="orthogonal" renderorder="right-down" width="564" height="64" tilewidth="16" tileheight="16" nextobjectid="637">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="564" height="64" tilewidth="16" tileheight="16" nextobjectid="637">
  <tileset firstgid="1" name="mario" tilewidth="16" tileheight="16" spacing="2" margin="1" tilecount="924" columns="33">
   <image source="mario.png" width="594" height="504"/>
  </tileset>
@@ -75,8 +75,6 @@
   <object id="525" x="528" y="0" width="7968" height="16"/>
   <object id="527" x="6416" y="720" width="2096" height="304"/>
   <object id="530" x="4400" y="832" width="736" height="192"/>
- </objectgroup>
- <objectgroup name="obstacles">
   <object id="386" x="2416" y="592" width="64" height="32"/>
   <object id="387" x="4448" y="640" width="96" height="32"/>
   <object id="388" x="4640" y="576" width="128" height="32"/>

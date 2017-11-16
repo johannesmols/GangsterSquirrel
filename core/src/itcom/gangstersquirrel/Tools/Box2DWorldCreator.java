@@ -17,7 +17,6 @@ import java.util.ArrayList;
 public class Box2DWorldCreator {
 
     private ArrayList<Ground> groundObjects = new ArrayList<>();
-    private ArrayList<Platform> platformObjects = new ArrayList<>();
     private ArrayList<DeathTile> deathTileObjects = new ArrayList<>();
     private ArrayList<WeaponPickup> weaponPickupObjects = new ArrayList<>();
     private ArrayList<Finish> finishObjects = new ArrayList<>();
@@ -50,9 +49,6 @@ public class Box2DWorldCreator {
                     case "ground":
                         groundObjects.add(new Ground(screen, rectangle));
                         break;
-                    case "obstacles":
-                        platformObjects.add(new Platform(screen, rectangle));
-                        break;
                     case "death":
                         deathTileObjects.add(new DeathTile(screen, rectangle));
                         break;
@@ -77,10 +73,6 @@ public class Box2DWorldCreator {
 
     public ArrayList<Ground> getGroundObjects() {
         return groundObjects;
-    }
-
-    public ArrayList<Platform> getPlatformObjects() {
-        return platformObjects;
     }
 
     public ArrayList<DeathTile> getDeathTileObjects() {
