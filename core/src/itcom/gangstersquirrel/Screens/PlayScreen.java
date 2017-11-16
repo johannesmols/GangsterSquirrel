@@ -55,8 +55,12 @@ public class PlayScreen implements Screen {
     private int level_1_spawnPositionY = 20;
 
     // Level 2 Configuration
-    private int level_2_spawnPositionX = 2;
-    private int level_2_spawnPositionY = 3;
+    private int level_2_spawnPositionX = 10;
+    private int level_2_spawnPositionY = 20;
+
+    // Level 2 Configuration
+    private int level_3_spawnPositionX = 2;
+    private int level_3_spawnPositionY = 3;
 
     // Box2D variables
     private World world;
@@ -136,6 +140,9 @@ public class PlayScreen implements Screen {
                 map = mapLoader.load("maps/level_1/level_1.tmx");
                 break;
             case 2:
+                map = mapLoader.load("maps/level_2/level_2.tmx");
+                break;
+            case 3:
                 map = mapLoader.load("maps/boss/boss_level.tmx");
                 break;
             default:
@@ -166,6 +173,9 @@ public class PlayScreen implements Screen {
                 break;
             case 2:
                 player = new Player(this, level_2_spawnPositionX, level_2_spawnPositionY);
+                break;
+            case 3:
+                player = new Player(this, level_3_spawnPositionX, level_3_spawnPositionY);
                 break;
             default:
                 game.exitApplication("No current level defined, exiting application");

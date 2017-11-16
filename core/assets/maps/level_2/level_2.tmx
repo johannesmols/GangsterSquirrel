@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="70" height="168" tilewidth="16" tileheight="16" nextobjectid="68">
+ <tileset firstgid="1" source="sun.tsx"/>
+ <tileset firstgid="589" source="ladder.tsx"/>
+ <tileset firstgid="624" source="background1.tsx"/>
+ <tileset firstgid="1648" source="wood.tsx"/>
+ <tileset firstgid="1904" source="../level_1/weapons.tsx"/>
+ <layer name="background" width="70" height="168">
+  <data encoding="base64" compression="zlib">
+   eJztwzEJAAAMA7DC/J/1WxM7E0gvqaqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqj4fy5pIFg==
+  </data>
+ </layer>
+ <layer name="graphics" width="70" height="168">
+  <data encoding="base64" compression="zlib">
+   eJztnWlvm0AQhkn7wcq/Sq/0vu/7Ts+0H6r+lP7fDrIs2XiAZVmYGfI80ivF2EN238zsLhhIVQEAAAAAAAAATMPhwa5gDb7o4IsOvqz5d35XTV+a75dQBI5WVXVBdFF0SXRZdEV0LLoquia6Lrohuim6JbotuiO6u8qLjwC+6NyTdt4XPRA9FD0SPRY9ET0VPRM9F70QvRS9Er0WvRG9XeXFR+CdtPO96IPoo+iT6LPoRPRF9FX0TfRd9EP0U3Qq+iX6vRoe34eX8WfOOkph25emR32vl8xSx6ux4AsAAJRmyPoiZy0yVczU6yKLY69S8fgyvy8AAACpaGuYlPNBfWuflP16Zu41QhTwBQDgbNA2Z0ef38fCPKaDLwAAEIXU612GrHmiroXmPr4/OVdVp1uqXx85XBfgiw80X2DfB3xZQ77okC865IsO+aJDvuiQLzrkiw75okO+6HTlS9fxfNTj8lTa8qX0/UPRaMsXfGF80WA+0iFfdMgXHfJFZ458iXhf75T5EvnahCnzJbovjC/7MB/peM6XlPG51PV4zfe85Yv3e/xqcu6dGIuHexi74q2eEzHmuTpjn8uTEm/lS+5zdcY+lyc13grvdWSF9zqygjrSOSt1lDrXb7YtvY5y/15LryOvdeCljoYyxfNIoz/b1LrPXn2J4A2+tPui+dPmWSkvrfvdJ6tnDVn326Mv1n1OrSMLrPtt7Yt1/7z6EtUrPJnWl7Z9Nbdb93dOX+ZoZ7TzDE1fxrazzZdo5xmajG2ndf2UHl+GYt1vb75Y99erL1G8scK63ym+aP40t5X20LrffbL4ftq6z159ieCNFdb9xhd88eqLdV+8+uLpO/ix+yqZE56+gx+7rxJ+LFEAAGCDNga3jcvN7amxKdu8zAVer287zlhb4cv0eFq7N+MtsVy7e4b/7aZjWUe55MxrQ19HrKM5cjxiHc3R5oh1VFPn/ZRtjlZH2+NA/fNUbY5YR5pXpWVZR5u/fTMH2vJjTn8s6yg11yzyx/Px0SY+F87v7qLVIr7o4Es/+NIOvuTR5U3be9r21G0p742NLUGEeborHl+m84XxBGCflDmg61h1qVhde+sdfFkehwe7gjX4ooMvOhF86TvXnHNeuu9zmi9d644/q/1tbZ/9u+r+XN/vqrE+vvEa77Vd1vGerwuyjPd0Tb+n+P9y2icW
+  </data>
+ </layer>
+ <objectgroup name="weapon">
+  <object id="66" x="672" y="2608" width="16" height="16">
+   <properties>
+    <property name="weapon_name" value="Katana"/>
+   </properties>
+  </object>
+  <object id="67" x="848" y="2608" width="16" height="16">
+   <properties>
+    <property name="weapon_name" value="Switchblade"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="ground">
+  <object id="2" x="0" y="2624" width="1120" height="64"/>
+  <object id="3" x="848" y="2496" width="208" height="32"/>
+  <object id="4" x="0" y="2416" width="768" height="32"/>
+  <object id="6" x="720" y="2192" width="400" height="32"/>
+  <object id="8" x="752" y="2224" width="368" height="16"/>
+  <object id="9" x="768" y="2240" width="352" height="16"/>
+  <object id="10" x="0" y="2288" width="656" height="32"/>
+  <object id="12" x="0" y="2096" width="624" height="48"/>
+  <object id="13" x="0" y="2144" width="496" height="144"/>
+  <object id="14" x="304" y="1952" width="816" height="32"/>
+  <object id="15" x="0" y="1856" width="208" height="32"/>
+  <object id="16" x="320" y="1744" width="256" height="32"/>
+  <object id="17" x="672" y="1728" width="448" height="32"/>
+  <object id="18" x="0" y="1616" width="240" height="32"/>
+  <object id="19" x="256" y="1504" width="224" height="32"/>
+  <object id="20" x="480" y="1360" width="640" height="176"/>
+  <object id="21" x="0" y="1392" width="208" height="32"/>
+  <object id="22" x="272" y="1280" width="192" height="32"/>
+  <object id="23" x="0" y="1152" width="176" height="32"/>
+  <object id="24" x="576" y="912" width="448" height="32"/>
+  <object id="25" x="1104" y="912" width="16" height="32"/>
+  <object id="26" x="480" y="784" width="192" height="32"/>
+  <object id="27" x="0" y="672" width="448" height="32"/>
+  <object id="28" x="368" y="528" width="752" height="32"/>
+  <object id="29" x="576" y="400" width="208" height="32"/>
+  <object id="30" x="0" y="320" width="464" height="48"/>
+  <object id="31" x="0" y="368" width="448" height="16"/>
+  <object id="32" x="0" y="384" width="432" height="16"/>
+ </objectgroup>
+ <objectgroup name="finish">
+  <object id="33" x="64" y="240" width="64" height="80"/>
+ </objectgroup>
+ <objectgroup name="jumpable">
+  <object id="36" x="368" y="528" width="752"/>
+  <object id="37" x="576" y="400" width="208"/>
+  <object id="38" x="0" y="320" width="464"/>
+  <object id="41" x="0" y="672" width="448"/>
+  <object id="42" x="480" y="784" width="192"/>
+  <object id="43" x="576" y="912" width="448"/>
+  <object id="44" x="1104" y="912" width="16"/>
+  <object id="45" x="480" y="1360" width="640"/>
+  <object id="46" x="272" y="1280" width="192"/>
+  <object id="49" x="0" y="1152" width="176"/>
+  <object id="50" x="0" y="1392" width="208"/>
+  <object id="52" x="256" y="1504" width="224"/>
+  <object id="53" x="0" y="1616" width="240"/>
+  <object id="54" x="320" y="1744" width="256"/>
+  <object id="56" x="672" y="1728" width="448"/>
+  <object id="57" x="0" y="1856" width="208"/>
+  <object id="58" x="304" y="1952" width="816"/>
+  <object id="59" x="0" y="2096" width="624"/>
+  <object id="60" x="720" y="2192" width="400"/>
+  <object id="61" x="496" y="2288" width="160"/>
+  <object id="62" x="0" y="2416" width="768"/>
+  <object id="63" x="848" y="2496" width="208"/>
+  <object id="65" x="0" y="2624" width="1120"/>
+ </objectgroup>
+</map>
