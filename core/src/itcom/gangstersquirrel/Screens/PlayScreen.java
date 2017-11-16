@@ -169,9 +169,9 @@ public class PlayScreen implements Screen {
                 player = new Player(this, level_1_spawnPositionX, level_1_spawnPositionY);
 
                 // Add enemies to this level
-                enemies.add(new FrogEnemy(this, 40, 20));
-                enemies.add(new FrogEnemy(this, 45, 20));
-                enemies.add(new FrogEnemy(this, 50, 20));
+                spawnEnemy(FrogEnemy.class, 40, 20);
+                spawnEnemy(FrogEnemy.class, 45, 20);
+                spawnEnemy(FrogEnemy.class, 50, 20);
                 break;
             case 2:
                 player = new Player(this, level_2_spawnPositionX, level_2_spawnPositionY);
@@ -563,6 +563,18 @@ public class PlayScreen implements Screen {
         gameProgress.setPlayerLifes(gameProgress.getPlayerMaximumLifes());
 
         respawnPlayer(true);
+    }
+
+    /**
+     * Spawn an enemy in the current level
+     * @param type the class type of the enemy, has to extend the abstract class Enemy
+     * @param spawnPositionX the tile spawn position on the x axis
+     * @param spawnPositionY the tile spawn position on the y axis
+     */
+    public void spawnEnemy(Class<? extends Enemy> type, int spawnPositionX, int spawnPositionY) {
+        if (type == FrogEnemy.class) {
+            enemies.add(new FrogEnemy(this, spawnPositionX, spawnPositionY));
+        }
     }
 
     public void log(String message) {
