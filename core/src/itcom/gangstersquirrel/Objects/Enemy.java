@@ -1,6 +1,7 @@
 package itcom.gangstersquirrel.Objects;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import itcom.gangstersquirrel.MainGameClass;
 import itcom.gangstersquirrel.Screens.PlayScreen;
@@ -20,6 +21,11 @@ public abstract class Enemy extends Sprite {
     // Gameplay relevant variables
     protected int[] damageMinMax;
     protected int health;
+    protected float horizontalMoveImpulseVelocity;
+    protected float horizontalMaxMovementVelocity;
+
+    // Moving
+    protected boolean isMovingLeftOrRight;
 
     public Enemy(PlayScreen screen, float spawnPositionX, float spawnPositionY){
         this.world = screen.getWorld();
@@ -45,13 +51,33 @@ public abstract class Enemy extends Sprite {
         return new Random().nextInt((damageMinMax[1] - damageMinMax[0]) + 1) + damageMinMax[0]; // ((max - min) + 1) + min
     }
 
+    protected void moveEnemy(float deltaTime) {
+        if (isMovingLeftOrRight) {
+            if (body.getLinearVelocity().x >= - horizontalMaxMovementVelocity) {
+                body.applyLinearImpulse(new Vector2(- horizontalMoveImpulseVelocity, 0f), body.getWorldCenter(), true);
+            }
+        } else {
+            if (body.getLinearVelocity().x <= horizontalMaxMovementVelocity) {
+                body.applyLinearImpulse(new Vector2(horizontalMoveImpulseVelocity, 0f), body.getWorldCenter(), true);
+            }
+        }
+    }
+
     public abstract void update(float dt);
-    public abstract void onPlayerBeginContact();
-    public abstract void onPlayerEndContact();
+    public abstract void onPlayerBeginContact(Player player);
+    public abstract void onPlayerEndContact(Player player);
+    public abstract void onEnemyBeginContact(Enemy enemy);
+    public abstract void onEnemyEndContact(Enemy enemy);
 
     // Getter and Setter
     public abstract int[] getDamageMinMax();
     public abstract void setDamageMinMax(int[] newDamageMinMax);
     public abstract int getHealth();
     public abstract void setHealth(int newHealth);
+    public abstract float getHorizontalMoveImpulseVelocity();
+    public abstract void setHorizontalMoveImpulseVelocity(float horizontalMoveImpulseVelocity);
+    public abstract float getHorizontalMaxMovementVelocity();
+    public abstract void setHorizontalMaxMovementVelocity(float horizontalMaxMovementVelocity);
+    public abstract boolean getIsMovingLeftOrRight();
+    public abstract void setMovingLeftOrRight(boolean movingLeftOrRight);
 }

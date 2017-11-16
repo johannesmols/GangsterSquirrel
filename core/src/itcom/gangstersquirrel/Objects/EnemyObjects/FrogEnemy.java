@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 import itcom.gangstersquirrel.MainGameClass;
 import itcom.gangstersquirrel.Objects.Enemy;
+import itcom.gangstersquirrel.Objects.Player;
 import itcom.gangstersquirrel.Screens.PlayScreen;
 
 public class FrogEnemy extends Enemy {
@@ -14,15 +15,10 @@ public class FrogEnemy extends Enemy {
 
     // Animation parameters
     private float stateTime;
-
     private Animation<TextureRegion> attackAnimation;
     private Array<TextureRegion> attackFrames;
     private Animation<TextureRegion> jumpAnimation;
     private Array<TextureRegion> jumpFrames;
-
-    private boolean setToDestroy;
-    private boolean destroyed;
-    float angle;
 
     public FrogEnemy(PlayScreen screen, int spawnPositionX, int spawnPositionY) {
         super(screen, spawnPositionX, spawnPositionY);
@@ -32,6 +28,8 @@ public class FrogEnemy extends Enemy {
         // Set gameplay variables of super class for this specific type of enemy
         damageMinMax = new int[] { 5, 15 };
         health = 20;
+        horizontalMoveImpulseVelocity = 0.1f;
+        horizontalMaxMovementVelocity = 0.5f;
 
         // Animation set up
         attackFrames = new Array<>();
@@ -53,27 +51,45 @@ public class FrogEnemy extends Enemy {
 
         stateTime = 0;
         setBounds(getX(), getY(), ENEMY_PIXEL_WIDTH / MainGameClass.PPM, ENEMY_PIXEL_HEIGHT / MainGameClass.PPM + getHeight() / 2);
-
-        setToDestroy = false;
-        destroyed = false;
-        angle = 0;
     }
 
     @Override
     public void update(float deltaTime) {
         stateTime += deltaTime;
         setPosition(body.getPosition().x - getWidth() / 2, body.getPosition().y - getHeight() / 2);
-        setRegion(attackAnimation.getKeyFrame(stateTime, true));
+        setRegion(jumpAnimation.getKeyFrame(stateTime, true));
+        setFlip(isMovingLeftOrRight, false);
+
+        // Move enemy around the map
+        moveEnemy(deltaTime);
     }
 
     @Override
-    public void onPlayerBeginContact() {
+    public void onPlayerBeginContact(Player player) {
         Gdx.app.log("Frog Enemy", "Collision");
         screen.setPlayerCurrentHealth(screen.getPlayer().getHealth() - randomDamageValueBetweenMinAndMax());
+
+        // Change movement direction
+        setMovingLeftOrRight(!getIsMovingLeftOrRight());
     }
 
     @Override
-    public void onPlayerEndContact() {
+    public void onPlayerEndContact(Player player) {
+
+    }
+
+    @Override
+    public void onEnemyBeginContact(Enemy enemy) {
+        Gdx.app.log("Frog Enemy", "Collision with other enemy");
+
+        // Change moving direction of both enemies, the collided one and itself
+        this.setMovingLeftOrRight(!isMovingLeftOrRight);
+        enemy.setMovingLeftOrRight(!enemy.getIsMovingLeftOrRight());
+    }
+
+    @Override
+    public void onEnemyEndContact(Enemy enemy) {
+
     }
 
     /* ----- GETTERS AND SETTERS ------------------------------------------------------------------------------------ */
@@ -106,6 +122,36 @@ public class FrogEnemy extends Enemy {
 
             //despawn
         }
+    }
+
+    @Override
+    public float getHorizontalMoveImpulseVelocity() {
+        return this.horizontalMoveImpulseVelocity;
+    }
+
+    @Override
+    public void setHorizontalMoveImpulseVelocity(float horizontalMoveImpulseVelocity) {
+        this.horizontalMoveImpulseVelocity = horizontalMoveImpulseVelocity;
+    }
+
+    @Override
+    public float getHorizontalMaxMovementVelocity() {
+        return this.horizontalMaxMovementVelocity;
+    }
+
+    @Override
+    public void setHorizontalMaxMovementVelocity(float horizontalMaxMovementVelocity) {
+        this.horizontalMaxMovementVelocity = horizontalMaxMovementVelocity;
+    }
+
+    @Override
+    public boolean getIsMovingLeftOrRight() {
+        return isMovingLeftOrRight;
+    }
+
+    @Override
+    public void setMovingLeftOrRight(boolean movingLeftOrRight) {
+        this.isMovingLeftOrRight = movingLeftOrRight;
     }
 
     /* -------------------------------------------------------------------------------------------------------------- */

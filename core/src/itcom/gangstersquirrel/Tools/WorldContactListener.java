@@ -42,15 +42,15 @@ public class WorldContactListener implements ContactListener {
             // Determine what kind of object the player collided with and trigger the respectable method
             if (collidedObject.getUserData() instanceof InteractiveMapTileObject) {
                 if (beginOrEndContact) {
-                    ((InteractiveMapTileObject) collidedObject.getUserData()).onPlayerBeginContact();
+                    ((InteractiveMapTileObject) collidedObject.getUserData()).onPlayerBeginContact((Player) player.getUserData());
                 } else {
-                    ((InteractiveMapTileObject) collidedObject.getUserData()).onPlayerEndContact();
+                    ((InteractiveMapTileObject) collidedObject.getUserData()).onPlayerEndContact((Player) player.getUserData());
                 }
             } else if (collidedObject.getUserData() instanceof Enemy) {
                 if (beginOrEndContact) {
-                    ((Enemy) collidedObject.getUserData()).onPlayerBeginContact();
+                    ((Enemy) collidedObject.getUserData()).onPlayerBeginContact((Player) player.getUserData());
                 } else {
-                    ((Enemy) collidedObject.getUserData()).onPlayerEndContact();
+                    ((Enemy) collidedObject.getUserData()).onPlayerEndContact((Player) player.getUserData());
                 }
             }
         }
@@ -65,9 +65,15 @@ public class WorldContactListener implements ContactListener {
             // Determine what kind of object the player collided with and trigger the respectable method
             if (collidedObject.getUserData() instanceof InteractiveMapTileObject) {
                 if (beginOrEndContact) {
-                    ((InteractiveMapTileObject) collidedObject.getUserData()).onEnemyBeginContact();
+                    ((InteractiveMapTileObject) collidedObject.getUserData()).onEnemyBeginContact((Enemy) enemy.getUserData());
                 } else {
-                    ((InteractiveMapTileObject) collidedObject.getUserData()).onEnemyEndContact();
+                    ((InteractiveMapTileObject) collidedObject.getUserData()).onEnemyEndContact((Enemy) enemy.getUserData());
+                }
+            } else if (collidedObject.getUserData() instanceof  Enemy) {
+                if (beginOrEndContact) {
+                    ((Enemy) collidedObject.getUserData()).onEnemyBeginContact((Enemy) enemy.getUserData());
+                } else {
+                    ((Enemy) collidedObject.getUserData()).onEnemyEndContact((Enemy) enemy.getUserData());
                 }
             }
         }

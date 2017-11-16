@@ -3,7 +3,9 @@ package itcom.gangstersquirrel.Objects.MapObjects;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.Filter;
 import itcom.gangstersquirrel.MainGameClass;
+import itcom.gangstersquirrel.Objects.Enemy;
 import itcom.gangstersquirrel.Objects.InteractiveMapTileObject;
+import itcom.gangstersquirrel.Objects.Player;
 import itcom.gangstersquirrel.Screens.PlayScreen;
 
 public class Jumpable extends InteractiveMapTileObject {
@@ -19,24 +21,24 @@ public class Jumpable extends InteractiveMapTileObject {
     }
 
     @Override
-    public void onPlayerBeginContact() {
+    public void onPlayerBeginContact(Player player) {
         // Player is on jumpable ground
         playScreen.getPlayer().setIsOnJumpableGround(true);
     }
 
     @Override
-    public void onPlayerEndContact() {
+    public void onPlayerEndContact(Player player) {
         // Player leaves jumpable ground
         playScreen.getPlayer().setIsOnJumpableGround(false);
     }
 
     @Override
-    public void onEnemyBeginContact() {
+    public void onEnemyBeginContact(Enemy enemy) {
 
     }
 
     @Override
-    public void onEnemyEndContact() {
+    public void onEnemyEndContact(Enemy enemy) {
 
     }
 

@@ -46,10 +46,10 @@ public abstract class InteractiveMapTileObject {
         fixture = body.createFixture(fixtureDef);
     }
 
-    public abstract void onPlayerBeginContact();
-    public abstract void onPlayerEndContact();
-    public abstract void onEnemyBeginContact();
-    public abstract void onEnemyEndContact();
+    public abstract void onPlayerBeginContact(Player player);
+    public abstract void onPlayerEndContact(Player player);
+    public abstract void onEnemyBeginContact(Enemy enemy);
+    public abstract void onEnemyEndContact(Enemy enemy);
 
     /**
      * Change the appropriate filter mask

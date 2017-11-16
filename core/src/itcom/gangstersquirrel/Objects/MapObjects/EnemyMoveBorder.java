@@ -4,7 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.Filter;
 import itcom.gangstersquirrel.MainGameClass;
+import itcom.gangstersquirrel.Objects.Enemy;
 import itcom.gangstersquirrel.Objects.InteractiveMapTileObject;
+import itcom.gangstersquirrel.Objects.Player;
 import itcom.gangstersquirrel.Screens.PlayScreen;
 
 public class EnemyMoveBorder extends InteractiveMapTileObject {
@@ -20,22 +22,23 @@ public class EnemyMoveBorder extends InteractiveMapTileObject {
     }
 
     @Override
-    public void onPlayerBeginContact() {
+    public void onPlayerBeginContact(Player player) {
 
     }
 
     @Override
-    public void onPlayerEndContact() {
+    public void onPlayerEndContact(Player player) {
 
     }
 
     @Override
-    public void onEnemyBeginContact() {
+    public void onEnemyBeginContact(Enemy enemy) {
         Gdx.app.log("Collision", "Move Border reached by enemy");
+        enemy.setMovingLeftOrRight(!enemy.getIsMovingLeftOrRight());
     }
 
     @Override
-    public void onEnemyEndContact() {
+    public void onEnemyEndContact(Enemy enemy) {
 
     }
 

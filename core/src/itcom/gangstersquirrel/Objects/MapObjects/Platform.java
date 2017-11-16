@@ -4,7 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.Filter;
 import itcom.gangstersquirrel.MainGameClass;
+import itcom.gangstersquirrel.Objects.Enemy;
 import itcom.gangstersquirrel.Objects.InteractiveMapTileObject;
+import itcom.gangstersquirrel.Objects.Player;
 import itcom.gangstersquirrel.Screens.PlayScreen;
 
 /**
@@ -21,22 +23,22 @@ public class Platform extends InteractiveMapTileObject {
     }
 
     @Override
-    public void onPlayerBeginContact() {
+    public void onPlayerBeginContact(Player player) {
         Gdx.app.log("Platform", "Collision");
     }
 
     @Override
-    public void onPlayerEndContact() {
+    public void onPlayerEndContact(Player player) {
 
     }
 
     @Override
-    public void onEnemyBeginContact() {
+    public void onEnemyBeginContact(Enemy enemy) {
 
     }
 
     @Override
-    public void onEnemyEndContact() {
+    public void onEnemyEndContact(Enemy enemy) {
 
     }
 
