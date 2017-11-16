@@ -1,6 +1,7 @@
 package itcom.gangstersquirrel.Screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -45,11 +46,22 @@ public class SplashScreen implements Screen {
      * Gets called once every frame and updates all visual components of the application
      */
     @Override
-    public void render(float delta) {
+    public void render(float deltaTime) {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         stage.act();
         stage.draw();
+        handleInput(deltaTime);
+    }
+
+    private void handleInput(float deltaTime) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE) || Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
+            game.setScreen(new PlayScreen(game));
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
+            game.exitApplication("User exited application from the splash screen");
+        }
     }
 
     /**
