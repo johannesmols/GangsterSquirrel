@@ -22,6 +22,7 @@ public class Box2DWorldCreator {
     private ArrayList<WeaponPickup> weaponPickupObjects = new ArrayList<>();
     private ArrayList<Finish> finishObjects = new ArrayList<>();
     private ArrayList<Jumpable> jumpableObjects = new ArrayList<>();
+    private ArrayList<EnemyMoveBorder> enemyMoveBorderObjects = new ArrayList<>();
 
     /**
      * Sets up the collision boxes of the map objects
@@ -64,6 +65,8 @@ public class Box2DWorldCreator {
                     case "jumpable":
                         jumpableObjects.add(new Jumpable(screen, rectangle));
                         break;
+                    case "enemy_move_border":
+                        enemyMoveBorderObjects.add(new EnemyMoveBorder(screen, rectangle));
                     default:
                         break;
 
@@ -94,5 +97,9 @@ public class Box2DWorldCreator {
 
     public ArrayList<Jumpable> getJumpableObjects() {
         return jumpableObjects;
+    }
+
+    public ArrayList<EnemyMoveBorder> getEnemyMoveBorderObjects() {
+        return enemyMoveBorderObjects;
     }
 }

@@ -70,26 +70,28 @@ public class MainGameClass extends Game implements ChatListener {
 	public AssetManager assetManager;
 
 	// Collision filter bits in binary notation
-	public static final short CATEGORY_PLAYER		= 0x0001;
-	public static final short CATEGORY_ENEMY 		= 0x0002;
-	public static final short CATEGORY_GROUND 		= 0x0004;
-	public static final short CATEGORY_PLATFORM		= 0x0008;
-	public static final short CATEGORY_DEATHTILE 	= 0x0016;
-	public static final short CATEGORY_WEAPON 		= 0x0032;
-	public static final short CATEGORY_FINISH 		= 0x0064;
-	public static final short CATEGORY_JUMPABLE 	= 0x0128;
+	public static final short CATEGORY_PLAYER				= 0x0001;
+	public static final short CATEGORY_ENEMY 				= 0x0002;
+	public static final short CATEGORY_GROUND 				= 0x0004;
+	public static final short CATEGORY_PLATFORM				= 0x0008;
+	public static final short CATEGORY_DEATHTILE 			= 0x0016;
+	public static final short CATEGORY_WEAPON 				= 0x0032;
+	public static final short CATEGORY_FINISH 				= 0x0064;
+	public static final short CATEGORY_JUMPABLE 			= 0x0128;
+	public static final short CATEGORY_ENEMY_MOVE_BORDER 	= 0x0256;
 
 	// Define masks for each object which define, with what objects this item can collide with
 	// This is done with the BITWISE OR operator (see example here: https://www.programiz.com/java-programming/bitwise-operators)
 	// With this method, using the geometric series from above, it is very easy to create one single number to store all mask types
 	public static final short MASK_PLAYER = CATEGORY_ENEMY | CATEGORY_GROUND | CATEGORY_PLATFORM | CATEGORY_DEATHTILE | CATEGORY_WEAPON | CATEGORY_FINISH | CATEGORY_JUMPABLE;
-	public static final short MASK_ENEMY = CATEGORY_PLAYER | CATEGORY_GROUND | CATEGORY_PLATFORM;
+	public static final short MASK_ENEMY = CATEGORY_PLAYER | CATEGORY_GROUND | CATEGORY_PLATFORM | CATEGORY_ENEMY_MOVE_BORDER;
 	public static final short MASK_GROUND = CATEGORY_PLAYER | CATEGORY_ENEMY;
 	public static final short MASK_PLATFORM = CATEGORY_PLAYER | CATEGORY_ENEMY;
 	public static final short MASK_DEATHTILE = CATEGORY_PLAYER;
 	public static final short MASK_WEAPON = CATEGORY_PLAYER;
 	public static final short MASK_FINISH = CATEGORY_PLAYER;
 	public static final short MASK_JUMPABLE = CATEGORY_PLAYER | CATEGORY_ENEMY;
+	public static final short MASK_ENEMY_MOVE_BORDER = CATEGORY_ENEMY;
 
 	@Override
 	public void messageReceived(String channel, String sender, String login, String hostname, String message) {

@@ -34,6 +34,16 @@ public class Finish extends InteractiveMapTileObject {
     }
 
     @Override
+    public void onEnemyBeginContact() {
+
+    }
+
+    @Override
+    public void onEnemyEndContact() {
+
+    }
+
+    @Override
     public void createFilterMask() {
         Filter filter = new Filter();
         filter.categoryBits = MainGameClass.CATEGORY_FINISH;

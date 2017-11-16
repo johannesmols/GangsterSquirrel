@@ -106,6 +106,16 @@ public class WeaponPickup extends InteractiveMapTileObject {
 
     }
 
+    @Override
+    public void onEnemyBeginContact() {
+
+    }
+
+    @Override
+    public void onEnemyEndContact() {
+
+    }
+
     private WeaponObject getWeaponObjectByName(String name) {
         for (WeaponObject weapon : new WeaponList().getAllWeapons()) {
             if (weapon.getName().equals(name)) {

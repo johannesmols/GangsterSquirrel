@@ -144,7 +144,7 @@ public class Player extends Sprite {
         playerFixtureDef.shape = getPlayerShape();
         playerFixtureDef.filter.categoryBits = MainGameClass.CATEGORY_PLAYER;
         playerFixtureDef.filter.maskBits = MainGameClass.MASK_PLAYER;
-        body.createFixture(playerFixtureDef).setUserData("player");
+        body.createFixture(playerFixtureDef).setUserData(this);
     }
 
     private PolygonShape getPlayerShape() {

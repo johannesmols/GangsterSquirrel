@@ -7,13 +7,13 @@ import itcom.gangstersquirrel.MainGameClass;
 import itcom.gangstersquirrel.Objects.InteractiveMapTileObject;
 import itcom.gangstersquirrel.Screens.PlayScreen;
 
-/**
- * A subclass of the InteractiveMapTileObject class
- */
-public class Ground extends InteractiveMapTileObject {
+public class EnemyMoveBorder extends InteractiveMapTileObject {
 
-    public Ground(PlayScreen screen, Rectangle bounds) {
-        super(screen, bounds, false);
+    private PlayScreen playScreen;
+
+    public EnemyMoveBorder(PlayScreen screen, Rectangle bounds) {
+        super(screen, bounds, true);
+        this.playScreen = screen;
 
         fixture.setUserData(this);
         createFilterMask();
@@ -21,7 +21,7 @@ public class Ground extends InteractiveMapTileObject {
 
     @Override
     public void onPlayerBeginContact() {
-        Gdx.app.log("Ground", "Collision");
+
     }
 
     @Override
@@ -31,7 +31,7 @@ public class Ground extends InteractiveMapTileObject {
 
     @Override
     public void onEnemyBeginContact() {
-
+        Gdx.app.log("Collision", "Move Border reached by enemy");
     }
 
     @Override
@@ -42,8 +42,8 @@ public class Ground extends InteractiveMapTileObject {
     @Override
     public void createFilterMask() {
         Filter filter = new Filter();
-        filter.categoryBits = MainGameClass.CATEGORY_GROUND;
-        filter.maskBits = MainGameClass.MASK_GROUND;
+        filter.categoryBits = MainGameClass.CATEGORY_ENEMY_MOVE_BORDER;
+        filter.maskBits = MainGameClass.MASK_ENEMY_MOVE_BORDER;
         fixture.setFilterData(filter);
     }
 }

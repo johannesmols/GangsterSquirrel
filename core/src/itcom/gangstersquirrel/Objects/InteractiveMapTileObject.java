@@ -48,6 +48,8 @@ public abstract class InteractiveMapTileObject {
 
     public abstract void onPlayerBeginContact();
     public abstract void onPlayerEndContact();
+    public abstract void onEnemyBeginContact();
+    public abstract void onEnemyEndContact();
 
     /**
      * Change the appropriate filter mask

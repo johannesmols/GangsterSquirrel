@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="564" height="64" tilewidth="16" tileheight="16" nextobjectid="635">
+<map version="1.0" tiledversion="1.0.2" orientation="orthogonal" renderorder="right-down" width="564" height="64" tilewidth="16" tileheight="16" nextobjectid="637">
  <tileset firstgid="1" name="mario" tilewidth="16" tileheight="16" spacing="2" margin="1" tilecount="924" columns="33">
   <image source="mario.png" width="594" height="504"/>
  </tileset>
@@ -187,5 +187,9 @@
   <object id="600" x="7728" y="704" width="64"/>
   <object id="601" x="7872" y="704" width="48"/>
   <object id="602" x="8000" y="704" width="512"/>
+ </objectgroup>
+ <objectgroup name="enemy_move_border">
+  <object id="635" x="1040" y="640" height="64"/>
+  <object id="636" x="528" y="640" height="64"/>
  </objectgroup>
 </map>
