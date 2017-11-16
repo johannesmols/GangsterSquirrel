@@ -26,7 +26,7 @@ public class Finish extends InteractiveMapTileObject {
 
     @Override
     public void onPlayerBeginContact(Player player) {
-        Gdx.app.log("Finish", "Collision");
+        playScreen.log("Finish : Collision with player");
         playScreen.levelFinished();
     }
 

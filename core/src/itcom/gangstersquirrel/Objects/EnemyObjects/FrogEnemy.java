@@ -66,7 +66,7 @@ public class FrogEnemy extends Enemy {
 
     @Override
     public void onPlayerBeginContact(Player player) {
-        Gdx.app.log("Frog Enemy", "Collision");
+        playScreen.log("Frog Enemy : Collision with player");
         screen.setPlayerCurrentHealth(screen.getPlayer().getHealth() - randomDamageValueBetweenMinAndMax());
 
         // Change movement direction
@@ -80,7 +80,7 @@ public class FrogEnemy extends Enemy {
 
     @Override
     public void onEnemyBeginContact(Enemy enemy) {
-        Gdx.app.log("Frog Enemy", "Collision with other enemy");
+        playScreen.log("Frog Enemy : Collision with other enemy");
 
         // Change moving direction of both enemies, the collided one and itself
         this.setMovingLeftOrRight(!isMovingLeftOrRight);

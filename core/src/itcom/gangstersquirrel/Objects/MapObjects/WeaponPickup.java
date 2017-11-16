@@ -36,7 +36,7 @@ public class WeaponPickup extends InteractiveMapTileObject {
         MapObject pickedUpWeapon = getCollidingMapObject(map.getLayers().getIndex("weapon"));
         if (pickedUpWeapon != null && pickedUpWeapon.getProperties().containsKey("weapon_name")) {
             String weaponName = pickedUpWeapon.getProperties().get("weapon_name", String.class);
-            Gdx.app.log("Picked up weapon", weaponName);
+            playScreen.log("Picked up weapon: " +  weaponName);
 
             boolean changedWeaponList = false;
             ArrayList<WeaponObject> playerWeaponList = playScreen.getPlayer().getWeapons();
@@ -92,7 +92,7 @@ public class WeaponPickup extends InteractiveMapTileObject {
                     }
                     break;
                 default:
-                    Gdx.app.log("Undefined", "Weapon not defined");
+                    playScreen.log("Weapon not defined");
                     break;
             }
 
@@ -130,7 +130,7 @@ public class WeaponPickup extends InteractiveMapTileObject {
     private boolean weaponAlreadyInList(WeaponObject weapon) {
         for (WeaponObject weaponName : playScreen.getPlayer().getWeapons()) {
             if (weaponName.getName().equals(weapon.getName())) {
-                Gdx.app.log("Weapon List", "Picked up weapon already in player's weapon list");
+                playScreen.log("Picked up weapon already in player's weapon list");
                 return true;
             }
         }

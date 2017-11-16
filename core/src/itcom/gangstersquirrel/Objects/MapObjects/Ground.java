@@ -23,7 +23,7 @@ public class Ground extends InteractiveMapTileObject {
 
     @Override
     public void onPlayerBeginContact(Player player) {
-        Gdx.app.log("Ground", "Collision");
+        playScreen.log("Ground : Collision with player");
     }
 
     @Override

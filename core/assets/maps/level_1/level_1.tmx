@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="564" height="64" tilewidth="16" tileheight="16" nextobjectid="637">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="564" height="64" tilewidth="16" tileheight="16" nextobjectid="728">
  <tileset firstgid="1" name="mario" tilewidth="16" tileheight="16" spacing="2" margin="1" tilecount="924" columns="33">
   <image source="mario.png" width="594" height="504"/>
  </tileset>
@@ -187,7 +187,93 @@
   <object id="602" x="8000" y="704" width="512"/>
  </objectgroup>
  <objectgroup name="enemy_move_border">
-  <object id="635" x="1040" y="640" height="64"/>
-  <object id="636" x="528" y="640" height="64"/>
+  <object id="637" x="1040" y="688" height="16"/>
+  <object id="639" x="528" y="688" height="16"/>
+  <object id="640" x="1088" y="640" height="16"/>
+  <object id="641" x="1168" y="640" height="16"/>
+  <object id="642" x="1168" y="688" height="16"/>
+  <object id="643" x="1744" y="688" height="16"/>
+  <object id="644" x="1248" y="592" height="16"/>
+  <object id="645" x="1360" y="592" height="16"/>
+  <object id="646" x="1280" y="480" height="16"/>
+  <object id="647" x="1376" y="480" height="16"/>
+  <object id="648" x="1456" y="544" height="16"/>
+  <object id="649" x="1600" y="544" height="16"/>
+  <object id="650" x="1744" y="560" height="16"/>
+  <object id="651" x="1952" y="560" height="16"/>
+  <object id="652" x="2032" y="688" height="16"/>
+  <object id="653" x="2192" y="688" height="16"/>
+  <object id="654" x="2192" y="640" height="16"/>
+  <object id="655" x="2336" y="640" height="16"/>
+  <object id="656" x="2336" y="688" height="16"/>
+  <object id="657" x="2592" y="688" height="16"/>
+  <object id="658" x="2416" y="576" height="16"/>
+  <object id="659" x="2480" y="576" height="16"/>
+  <object id="660" x="2592" y="576" height="16"/>
+  <object id="661" x="2688" y="576" height="16"/>
+  <object id="662" x="2688" y="512" height="16"/>
+  <object id="663" x="3040" y="512" height="16"/>
+  <object id="664" x="3040" y="688" height="16"/>
+  <object id="665" x="3120" y="688" height="16"/>
+  <object id="666" x="3216" y="688" height="16"/>
+  <object id="667" x="3344" y="688" height="16"/>
+  <object id="668" x="3392" y="688" height="16"/>
+  <object id="669" x="3440" y="688" height="16"/>
+  <object id="670" x="3488" y="688" height="16"/>
+  <object id="671" x="3552" y="688" height="16"/>
+  <object id="672" x="3600" y="688" height="16"/>
+  <object id="673" x="3680" y="688" height="16"/>
+  <object id="674" x="3728" y="688" height="16"/>
+  <object id="675" x="3888" y="688" height="16"/>
+  <object id="676" x="3984" y="688" height="16"/>
+  <object id="677" x="4400" y="688" height="16"/>
+  <object id="678" x="4448" y="624" height="16"/>
+  <object id="679" x="4544" y="624" height="16"/>
+  <object id="680" x="4640" y="560" height="16"/>
+  <object id="681" x="4768" y="560" height="16"/>
+  <object id="682" x="4864" y="496" height="16"/>
+  <object id="683" x="4992" y="496" height="16"/>
+  <object id="684" x="4912" y="672" height="32"/>
+  <object id="685" x="5040" y="672" height="16"/>
+  <object id="686" x="5136" y="688" height="16"/>
+  <object id="687" x="5264" y="688" height="16"/>
+  <object id="688" x="5360" y="688" height="16"/>
+  <object id="689" x="5680" y="688" height="16"/>
+  <object id="690" x="5680" y="624" height="16"/>
+  <object id="691" x="5728" y="624" height="16"/>
+  <object id="692" x="5728" y="688" height="16"/>
+  <object id="693" x="5824" y="688" height="16"/>
+  <object id="694" x="5808" y="560" height="16"/>
+  <object id="695" x="5920" y="560" height="16"/>
+  <object id="696" x="5920" y="688" height="16"/>
+  <object id="697" x="6016" y="576" height="16"/>
+  <object id="698" x="6128" y="576" height="16"/>
+  <object id="699" x="6208" y="688" height="16"/>
+  <object id="700" x="6272" y="688" height="16"/>
+  <object id="701" x="6368" y="688" height="16"/>
+  <object id="702" x="6416" y="688" height="16"/>
+  <object id="703" x="6832" y="688" height="16"/>
+  <object id="704" x="6928" y="688" height="16"/>
+  <object id="705" x="7168" y="688" height="16"/>
+  <object id="708" x="7232" y="576" height="16"/>
+  <object id="709" x="7376" y="576" height="16"/>
+  <object id="710" x="7376" y="688" height="16"/>
+  <object id="711" x="7408" y="688" height="16"/>
+  <object id="712" x="7424" y="560" height="16"/>
+  <object id="713" x="7536" y="560" height="16"/>
+  <object id="714" x="7488" y="688" height="16"/>
+  <object id="715" x="7536" y="688" height="16"/>
+  <object id="716" x="7616" y="592" height="16"/>
+  <object id="717" x="7616" y="688" height="16"/>
+  <object id="718" x="7664" y="592" height="16"/>
+  <object id="719" x="7664" y="688" height="16"/>
+  <object id="720" x="7728" y="688" height="16"/>
+  <object id="721" x="7792" y="688" height="16"/>
+  <object id="722" x="7744" y="560" height="16"/>
+  <object id="723" x="7840" y="560" height="16"/>
+  <object id="724" x="7872" y="688" height="16"/>
+  <object id="725" x="7920" y="688" height="16"/>
+  <object id="726" x="8000" y="688" height="16"/>
+  <object id="727" x="8496" y="688" height="16"/>
  </objectgroup>
 </map>

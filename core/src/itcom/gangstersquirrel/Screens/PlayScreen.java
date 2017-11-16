@@ -27,7 +27,9 @@ import itcom.gangstersquirrel.Statistics.Statistics;
 import itcom.gangstersquirrel.Tools.Box2DWorldCreator;
 import itcom.gangstersquirrel.Tools.WorldContactListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -297,8 +299,6 @@ public class PlayScreen implements Screen {
         if (deltaTimeCount >= 1) {
             timer++;
             deltaTimeCount = 0f;
-
-            Gdx.app.log("Timer", String.valueOf(timer));
         }
 
         // timeStep = amount of time the world simulates (https://github.com/libgdx/libgdx/wiki/Box2d)
@@ -507,7 +507,7 @@ public class PlayScreen implements Screen {
      * Resets the player to the start of the level and resets all attributes
      */
     public void respawnPlayer(boolean levelFinished) {
-        Gdx.app.log("Game over", "Player died, respawning now...");
+        log("Game over, player died, respawning now...");
         level_1_backgroundMusic.stop();
         level_2_backgroundMusic.stop();
 
@@ -534,7 +534,7 @@ public class PlayScreen implements Screen {
      * Current level finished, save time, increase level and load the next level
      */
     public void levelFinished() {
-        Gdx.app.log("Level finished", "Saving and loading next level...");
+        log("Level finished, saving and loading next level...");
 
         // If the old highscores is above zero, proceed. If not, this means there was no highscore set yet and there is no need to compare old time with new time
         if (statistics.getHighscoreTimes()[gameProgress.getCurrentLevel() - 1] > 0) {
@@ -553,7 +553,7 @@ public class PlayScreen implements Screen {
         if (gameProgress.getCurrentLevel() < MainGameClass.NUMBER_OF_LEVELS) {
             gameProgress.setCurrentLevel(gameProgress.getCurrentLevel() + 1);
         } else {
-            Gdx.app.log("Game finished", "No more levels to play");
+            log("Game finished, no more levels to play");
         }
 
         // Save finished level to statistics
@@ -563,6 +563,10 @@ public class PlayScreen implements Screen {
         gameProgress.setPlayerLifes(gameProgress.getPlayerMaximumLifes());
 
         respawnPlayer(true);
+    }
+
+    public void log(String message) {
+        Gdx.app.log(new SimpleDateFormat("HH:mm:ss").format(new Date()) + " @ timer " + String.valueOf(timer), message);
     }
 
     /* ----- GETTERS AND SETTERS ------------------------------------------------------------------------------------ */
@@ -628,7 +632,7 @@ public class PlayScreen implements Screen {
         // Save lost health to statistics
         statistics.setHealthLost(statistics.getHealthLost() + (player.getHealth() - newHealth));
 
-        Gdx.app.log("Player health change", "New: " + newHealth + ", Old: " + player.getHealth() + ", Damage: " + (player.getHealth() - newHealth));
+        log("Player health change : New: " + newHealth + ", Old: " + player.getHealth() + ", Damage: " + (player.getHealth() - newHealth));
         player.setHealth(newHealth);
 
         if (player.getHealth() <= 0) {

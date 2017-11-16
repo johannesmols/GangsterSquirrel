@@ -51,7 +51,7 @@ public class MainGameClass extends Game implements ChatListener {
     public static boolean USE_CAMERA_INTERPOLATION = true;
 
     // Number of levels
-	public static final int NUMBER_OF_LEVELS = 2;
+	public static final int NUMBER_OF_LEVELS = 3;
 
 	public static final boolean USE_TWITCH = false;
 	TwitchChat twitch = new TwitchChat();

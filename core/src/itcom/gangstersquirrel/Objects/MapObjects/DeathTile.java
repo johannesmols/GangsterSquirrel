@@ -26,10 +26,9 @@ public class DeathTile extends InteractiveMapTileObject {
 
     @Override
     public void onPlayerBeginContact(Player player) {
-        Gdx.app.log("Death Tile", "Collision");
+        playScreen.log("Death Tile : Collision with player");
 
         playScreen.setPlayerCurrentHealth(-1);
-       // playScreen.respawnPlayer(false); // false = level not finished, don't reset timer
     }
 
     @Override

@@ -33,7 +33,7 @@ public class EnemyMoveBorder extends InteractiveMapTileObject {
 
     @Override
     public void onEnemyBeginContact(Enemy enemy) {
-        Gdx.app.log("Collision", "Move Border reached by enemy");
+        playScreen.log("Collision : Move border reached by enemy");
         enemy.setMovingLeftOrRight(!enemy.getIsMovingLeftOrRight());
     }
 
