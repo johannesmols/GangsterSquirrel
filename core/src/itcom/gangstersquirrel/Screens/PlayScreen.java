@@ -167,11 +167,6 @@ public class PlayScreen implements Screen {
         switch (gameProgress.getCurrentLevel()) {
             case 1:
                 player = new Player(this, level_1_spawnPositionX, level_1_spawnPositionY);
-
-                // Add enemies to this level
-                spawnEnemy(FrogEnemy.class, 40, 20);
-                spawnEnemy(FrogEnemy.class, 45, 20);
-                spawnEnemy(FrogEnemy.class, 50, 20);
                 break;
             case 2:
                 player = new Player(this, level_2_spawnPositionX, level_2_spawnPositionY);

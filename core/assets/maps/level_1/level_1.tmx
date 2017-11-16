@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="564" height="64" tilewidth="16" tileheight="16" nextobjectid="728">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="564" height="64" tilewidth="16" tileheight="16" nextobjectid="742">
  <tileset firstgid="1" name="mario" tilewidth="16" tileheight="16" spacing="2" margin="1" tilecount="924" columns="33">
   <image source="mario.png" width="594" height="504"/>
  </tileset>
@@ -275,5 +275,67 @@
   <object id="725" x="7920" y="688" height="16"/>
   <object id="726" x="8000" y="688" height="16"/>
   <object id="727" x="8496" y="688" height="16"/>
+ </objectgroup>
+ <objectgroup name="enemies">
+  <object id="730" x="1184" y="688" width="16" height="16">
+   <properties>
+    <property name="enemy_type" value="Frog"/>
+   </properties>
+  </object>
+  <object id="731" x="1568" y="688" width="16" height="16">
+   <properties>
+    <property name="enemy_type" value="Frog"/>
+   </properties>
+  </object>
+  <object id="732" x="1760" y="560" width="16" height="16">
+   <properties>
+    <property name="enemy_type" value="Frog"/>
+   </properties>
+  </object>
+  <object id="733" x="2368" y="688" width="16" height="16">
+   <properties>
+    <property name="enemy_type" value="Frog"/>
+   </properties>
+  </object>
+  <object id="734" x="2512" y="688" width="16" height="16">
+   <properties>
+    <property name="enemy_type" value="Frog"/>
+   </properties>
+  </object>
+  <object id="735" x="2800" y="512" width="16" height="16">
+   <properties>
+    <property name="enemy_type" value="Frog"/>
+   </properties>
+  </object>
+  <object id="736" x="3760" y="688" width="16" height="16">
+   <properties>
+    <property name="enemy_type" value="Frog"/>
+   </properties>
+  </object>
+  <object id="737" x="4944" y="672" width="16" height="16">
+   <properties>
+    <property name="enemy_type" value="Frog"/>
+   </properties>
+  </object>
+  <object id="738" x="5744" y="688" width="16" height="16">
+   <properties>
+    <property name="enemy_type" value="Frog"/>
+   </properties>
+  </object>
+  <object id="739" x="6016" y="688" width="16" height="16">
+   <properties>
+    <property name="enemy_type" value="Frog"/>
+   </properties>
+  </object>
+  <object id="740" x="6592" y="688" width="16" height="16">
+   <properties>
+    <property name="enemy_type" value="Frog"/>
+   </properties>
+  </object>
+  <object id="741" x="8320" y="688" width="16" height="16">
+   <properties>
+    <property name="enemy_type" value="Frog"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

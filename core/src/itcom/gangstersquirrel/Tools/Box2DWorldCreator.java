@@ -3,9 +3,12 @@ package itcom.gangstersquirrel.Tools;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapLayers;
 import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
+import itcom.gangstersquirrel.MainGameClass;
+import itcom.gangstersquirrel.Objects.EnemyObjects.FrogEnemy;
 import itcom.gangstersquirrel.Objects.MapObjects.*;
 import itcom.gangstersquirrel.Screens.PlayScreen;
 
@@ -15,6 +18,8 @@ import java.util.ArrayList;
  * Creates the Box2D world of a map
  */
 public class Box2DWorldCreator {
+
+    private PlayScreen playScreen;
 
     private ArrayList<Ground> groundObjects = new ArrayList<>();
     private ArrayList<DeathTile> deathTileObjects = new ArrayList<>();
@@ -27,6 +32,8 @@ public class Box2DWorldCreator {
      * Sets up the collision boxes of the map objects
      */
     public Box2DWorldCreator(PlayScreen screen) {
+        this.playScreen = screen;
+
         TiledMap map = screen.getMap();
         MapLayers mapLayers = map.getLayers();
 
@@ -63,10 +70,35 @@ public class Box2DWorldCreator {
                         break;
                     case "enemy_move_border":
                         enemyMoveBorderObjects.add(new EnemyMoveBorder(screen, rectangle));
+                        break;
+                    case "enemies":
+                        addEnemy(mapObject, ((RectangleMapObject) mapObject).getRectangle());
+                        break;
                     default:
                         break;
-
                 }
+            }
+        }
+    }
+
+    /**
+     * Reads the enemy type and spawn position out of an enemy object on the map and then spawns it in the current level
+     * @param object the map object that has been read in the map file
+     * @param rectangle the rectangular shape of the object, contains position used for selecting the spawn position
+     */
+    private void addEnemy(MapObject object, Rectangle rectangle) {
+
+        MapProperties properties = object.getProperties();
+
+        if (properties != null && properties.containsKey("enemy_type")) {
+            String enemyType = properties.get("enemy_type", String.class);
+
+            switch (enemyType) {
+                case "Frog":
+                    playScreen.spawnEnemy(FrogEnemy.class, (int) (rectangle.getX() / MainGameClass.TILE_PIXEL_SIZE), (int) (rectangle.getY() / MainGameClass.TILE_PIXEL_SIZE));
+                    break;
+                default:
+                    break;
             }
         }
     }
