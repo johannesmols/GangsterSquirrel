@@ -96,6 +96,20 @@ public class MainGameClass extends Game implements ChatListener {
 		System.out.println(sender + ": " + message);
 	}
 
+	public void twitchConnect() {
+		twitch.addListener(this);
+		try {
+			twitch.connect(
+					twitch.getTwitchCredentials().getUrl(),
+					twitch.getTwitchCredentials().getPort(),
+					twitch.getTwitchCredentials().getOauth()
+			);
+		} catch (IOException | IrcException e) {
+			e.printStackTrace();
+		}
+		twitch.joinChannel(twitch.getTwitchCredentials().getTag());
+	}
+
 	/**
 	 * The first method that is called in the entire application, sets up basic variables and loads the first screen
 	 */
@@ -113,17 +127,7 @@ public class MainGameClass extends Game implements ChatListener {
 		fonts.put("default", new BitmapFont());
 
 		if (USE_TWITCH) {
-			twitch.addListener(this);
-			try {
-				twitch.connect(
-						twitch.getTwitchCredentials().getUrl(),
-						twitch.getTwitchCredentials().getPort(),
-						twitch.getTwitchCredentials().getOauth()
-				);
-			} catch (IOException | IrcException e) {
-				e.printStackTrace();
-			}
-			twitch.joinChannel(twitch.getTwitchCredentials().getTag());
+			twitchConnect();
 		}
 
 		// Load first screen
