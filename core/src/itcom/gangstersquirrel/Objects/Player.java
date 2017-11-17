@@ -188,7 +188,7 @@ public class Player extends Sprite {
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         body = world.createBody(bodyDef);
 
-        // Create fixtures for both the left and right facing way, switch between them later
+        // Create fixtures for the body
         createNewFixtures();
     }
 
@@ -199,6 +199,20 @@ public class Player extends Sprite {
         playerFixtureDef.filter.categoryBits = MainGameClass.CATEGORY_PLAYER;
         playerFixtureDef.filter.maskBits = MainGameClass.MASK_PLAYER;
         body.createFixture(playerFixtureDef).setUserData(this);
+
+        FixtureDef attackRightFixtureDef = new FixtureDef();
+        attackRightFixtureDef.shape = getAttackShape(false);
+        attackRightFixtureDef.isSensor = true;
+        attackRightFixtureDef.filter.categoryBits = MainGameClass.CATEGORY_PLAYER_ATTACK;
+        attackRightFixtureDef.filter.maskBits = MainGameClass.MASK_PLAYER_ATTACK;
+        body.createFixture(attackRightFixtureDef).setUserData("player_attack_right");
+
+        FixtureDef attackLeftFixtureDef = new FixtureDef();
+        attackLeftFixtureDef.shape = getAttackShape(true);
+        attackLeftFixtureDef.isSensor = true;
+        attackLeftFixtureDef.filter.categoryBits = MainGameClass.CATEGORY_PLAYER_ATTACK;
+        attackLeftFixtureDef.filter.maskBits = MainGameClass.MASK_PLAYER_ATTACK;
+        body.createFixture(attackLeftFixtureDef).setUserData("player_attack_left");
     }
 
     private PolygonShape getPlayerShape() {
@@ -209,6 +223,27 @@ public class Player extends Sprite {
                 PLAYER_PIXEL_HEIGHT / 2 / MainGameClass.PPM, // the full texture height (sizes are half sizes, so divided by two)
                 new Vector2( - PLAYER_PIXEL_WIDTH / 4 / MainGameClass.PPM, 0), // center of the box, needs to be half of the half size of the texture negative to make the flipping work
                 0f // the angle of the box
+        );
+
+        return shape;
+    }
+
+    /**
+     * Create a shape that attaches to the right or left side of the player to check collisions with enemies when attacking
+     * @param leftOrRight if the shape should be created on the left or right side of the player (true = left; false = right)
+     * @return the shape
+     */
+    private PolygonShape getAttackShape(boolean leftOrRight) {
+
+        // Center of the shape needs to be shifted three fourths of the player center to the left, if it should be attached on the left side, because the origin of the shape is on the left side of the shape
+        int factor = leftOrRight ? -3 : 1;
+
+        PolygonShape shape = new PolygonShape();
+        shape.setAsBox(
+                PLAYER_PIXEL_WIDTH / 4 / MainGameClass.PPM,
+                0,
+                new Vector2( factor * PLAYER_PIXEL_WIDTH / 4 / MainGameClass.PPM, 0),
+                0f
         );
 
         return shape;
