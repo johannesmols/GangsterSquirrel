@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="564" height="64" tilewidth="16" tileheight="16" nextobjectid="742">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="564" height="64" tilewidth="16" tileheight="16" nextobjectid="790">
  <tileset firstgid="1" name="mario" tilewidth="16" tileheight="16" spacing="2" margin="1" tilecount="924" columns="33">
   <image source="mario.png" width="594" height="504"/>
  </tileset>
@@ -214,8 +214,6 @@
   <object id="662" x="2688" y="512" height="16"/>
   <object id="663" x="3040" y="512" height="16"/>
   <object id="664" x="3040" y="688" height="16"/>
-  <object id="665" x="3120" y="688" height="16"/>
-  <object id="666" x="3216" y="688" height="16"/>
   <object id="667" x="3344" y="688" height="16"/>
   <object id="668" x="3392" y="688" height="16"/>
   <object id="669" x="3440" y="688" height="16"/>
@@ -224,8 +222,6 @@
   <object id="672" x="3600" y="688" height="16"/>
   <object id="673" x="3680" y="688" height="16"/>
   <object id="674" x="3728" y="688" height="16"/>
-  <object id="675" x="3888" y="688" height="16"/>
-  <object id="676" x="3984" y="688" height="16"/>
   <object id="677" x="4400" y="688" height="16"/>
   <object id="678" x="4448" y="624" height="16"/>
   <object id="679" x="4544" y="624" height="16"/>
@@ -236,45 +232,40 @@
   <object id="684" x="4912" y="672" height="32"/>
   <object id="685" x="5040" y="672" height="16"/>
   <object id="686" x="5136" y="688" height="16"/>
-  <object id="687" x="5264" y="688" height="16"/>
-  <object id="688" x="5360" y="688" height="16"/>
   <object id="689" x="5680" y="688" height="16"/>
   <object id="690" x="5680" y="624" height="16"/>
   <object id="691" x="5728" y="624" height="16"/>
   <object id="692" x="5728" y="688" height="16"/>
-  <object id="693" x="5824" y="688" height="16"/>
   <object id="694" x="5808" y="560" height="16"/>
   <object id="695" x="5920" y="560" height="16"/>
-  <object id="696" x="5920" y="688" height="16"/>
   <object id="697" x="6016" y="576" height="16"/>
   <object id="698" x="6128" y="576" height="16"/>
   <object id="699" x="6208" y="688" height="16"/>
   <object id="700" x="6272" y="688" height="16"/>
   <object id="701" x="6368" y="688" height="16"/>
   <object id="702" x="6416" y="688" height="16"/>
-  <object id="703" x="6832" y="688" height="16"/>
-  <object id="704" x="6928" y="688" height="16"/>
   <object id="705" x="7168" y="688" height="16"/>
   <object id="708" x="7232" y="576" height="16"/>
   <object id="709" x="7376" y="576" height="16"/>
   <object id="710" x="7376" y="688" height="16"/>
-  <object id="711" x="7408" y="688" height="16"/>
   <object id="712" x="7424" y="560" height="16"/>
   <object id="713" x="7536" y="560" height="16"/>
-  <object id="714" x="7488" y="688" height="16"/>
-  <object id="715" x="7536" y="688" height="16"/>
   <object id="716" x="7616" y="592" height="16"/>
-  <object id="717" x="7616" y="688" height="16"/>
   <object id="718" x="7664" y="592" height="16"/>
-  <object id="719" x="7664" y="688" height="16"/>
-  <object id="720" x="7728" y="688" height="16"/>
-  <object id="721" x="7792" y="688" height="16"/>
   <object id="722" x="7744" y="560" height="16"/>
   <object id="723" x="7840" y="560" height="16"/>
-  <object id="724" x="7872" y="688" height="16"/>
-  <object id="725" x="7920" y="688" height="16"/>
-  <object id="726" x="8000" y="688" height="16"/>
   <object id="727" x="8496" y="688" height="16"/>
+  <object id="774" x="3104" y="688" height="16"/>
+  <object id="776" x="3232" y="688" height="16"/>
+  <object id="777" x="3872" y="688" height="16"/>
+  <object id="778" x="4000" y="688" height="16"/>
+  <object id="780" x="5248" y="688" height="16"/>
+  <object id="781" x="5376" y="688" height="16"/>
+  <object id="782" x="5808" y="688" height="16"/>
+  <object id="783" x="5936" y="688" height="16"/>
+  <object id="784" x="6816" y="688" height="16"/>
+  <object id="785" x="6944" y="688" height="16"/>
+  <object id="789" x="8016" y="688" height="16"/>
  </objectgroup>
  <objectgroup name="enemies">
   <object id="730" x="1184" y="688" width="16" height="16">
