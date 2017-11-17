@@ -1,6 +1,5 @@
 package itcom.gangstersquirrel.Objects.EnemyObjects;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
@@ -120,7 +119,11 @@ public class FrogEnemy extends Enemy {
             // Save death of enemy to statistics
             playScreen.getStatistics().setEnemiesKilled(playScreen.getStatistics().getEnemiesKilled() + 1);
 
-            //despawn
+            // Destroy Box2D body
+            playScreen.destroyBodiesQueue.add(this.body);
+
+            // Remove from play screen
+            playScreen.getEnemies().remove(this);
         }
     }
 

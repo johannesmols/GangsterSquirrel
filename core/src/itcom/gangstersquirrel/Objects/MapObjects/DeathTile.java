@@ -38,7 +38,9 @@ public class DeathTile extends InteractiveMapTileObject {
 
     @Override
     public void onEnemyBeginContact(Enemy enemy) {
+        playScreen.log("Death Tile : Collision with enemy");
 
+        enemy.setHealth(-1);
     }
 
     @Override

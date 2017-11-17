@@ -83,9 +83,9 @@ public class MainGameClass extends Game implements ChatListener {
 	// This is done with the BITWISE OR operator (see example here: https://www.programiz.com/java-programming/bitwise-operators)
 	// With this method, using the geometric series from above, it is very easy to create one single number to store all mask types
 	public static final short MASK_PLAYER = CATEGORY_ENEMY | CATEGORY_GROUND | CATEGORY_DEATHTILE | CATEGORY_WEAPON | CATEGORY_FINISH | CATEGORY_JUMPABLE;
-	public static final short MASK_ENEMY = CATEGORY_PLAYER | CATEGORY_GROUND | CATEGORY_ENEMY_MOVE_BORDER | CATEGORY_ENEMY;
+	public static final short MASK_ENEMY = CATEGORY_PLAYER | CATEGORY_GROUND | CATEGORY_ENEMY_MOVE_BORDER | CATEGORY_ENEMY | CATEGORY_DEATHTILE;
 	public static final short MASK_GROUND = CATEGORY_PLAYER | CATEGORY_ENEMY;
-	public static final short MASK_DEATHTILE = CATEGORY_PLAYER;
+	public static final short MASK_DEATHTILE = CATEGORY_PLAYER | CATEGORY_ENEMY;
 	public static final short MASK_WEAPON = CATEGORY_PLAYER;
 	public static final short MASK_FINISH = CATEGORY_PLAYER;
 	public static final short MASK_JUMPABLE = CATEGORY_PLAYER | CATEGORY_ENEMY;

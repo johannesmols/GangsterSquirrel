@@ -30,6 +30,7 @@ import itcom.gangstersquirrel.Tools.WorldContactListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -69,6 +70,7 @@ public class PlayScreen implements Screen {
     private Box2DWorldCreator box2DWorldCreator;
     private Box2DDebugRenderer box2DDebugRenderer;
     private WorldContactListener worldContactListener;
+    public ArrayList<Body> destroyBodiesQueue = new ArrayList<>();
 
     // Texture variables
     private TextureAtlas playerTextureAtlas;
@@ -318,6 +320,9 @@ public class PlayScreen implements Screen {
         camera.update();
         // Renderer will draw only what the camera can see
         renderer.setView(camera);
+
+        // Destroy scheduled Box2D bodies
+        destroyQueuedBodies();
     }
 
     /**
@@ -576,6 +581,20 @@ public class PlayScreen implements Screen {
     public void spawnEnemy(Class<? extends Enemy> type, int spawnPositionX, int spawnPositionY) {
         if (type == FrogEnemy.class) {
             enemies.add(new FrogEnemy(this, spawnPositionX, spawnPositionY));
+        }
+    }
+
+    /**
+     * Destroys all Box2D bodies that are in the queue for deleting
+     */
+    private void destroyQueuedBodies() {
+        Iterator<Body> i = destroyBodiesQueue.iterator();
+        if(!world.isLocked()){
+            while(i.hasNext()){
+                Body b = i.next();
+                world.destroyBody(b);
+                i.remove();
+            }
         }
     }
 
