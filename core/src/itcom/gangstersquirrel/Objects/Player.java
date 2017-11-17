@@ -43,9 +43,13 @@ public class Player extends Sprite {
     // Texture variables
     private final int PLAYER_PIXEL_WIDTH = 48;
     private final int PLAYER_PIXEL_HEIGHT = 24;
-
     private HashMap<String, String> textureRegionNames = new HashMap<String, String>(); // K = Display Name, V = Texture region name
     private HashMap<String, TextureRegion> textureRegions = new HashMap<String, TextureRegion>(); // K = Texture region name, V = Texture region
+
+    // Attack texture variables
+    private boolean attackAnimationPlaying;
+    private float attackTime = 0f;
+    private final float ATTACK_DURATION = 1f;
 
     public Player(PlayScreen screen, int spawnPosition_X, int spawnPosition_Y) {
         // Get texture region out of the texture atlas for the squirrel
@@ -112,6 +116,47 @@ public class Player extends Sprite {
         } else {
             setPosition(body.getPosition().x - getWidth() / 2, body.getPosition().y - getHeight() / 2);
         }
+
+        // Attack animation
+        if (attackTime <= ATTACK_DURATION) {
+            if (attackAnimationPlaying) {
+                attackTime += deltaTime;
+
+                switch (screen.getGameProgress().getPlayerWeaponList().get(screen.getGameProgress().getCurrentlyEquippedWeapon()).getName()) {
+                    case "Fists":
+                        // No attack texture yet
+                        break;
+                    case "Branch":
+                        setRegion(textureRegions.get("branch_attack"));
+                        flipPlayerDirection(isMovingLeftOrRight);
+                        break;
+                    case "Swiss Army Knife":
+                        setRegion(textureRegions.get("swiss_army_knife_attack"));
+                        flipPlayerDirection(isMovingLeftOrRight);
+                        break;
+                    case "Switchblade":
+                        setRegion(textureRegions.get("switchblade_attack"));
+                        flipPlayerDirection(isMovingLeftOrRight);
+                        break;
+                    case "Katana":
+                        setRegion(textureRegions.get("katana_attack"));
+                        flipPlayerDirection(isMovingLeftOrRight);
+                        break;
+                    case "Tommy Gun":
+                        // No attack texture yet
+                        break;
+                    case "Bazooka":
+                        // No attack texture yet
+                        break;
+                    default:
+                        break;
+                }
+            }
+        } else {
+            attackTime = 0f;
+            attackAnimationPlaying = false;
+            changeWeapon(screen.getGameProgress().getPlayerWeaponList().get(screen.getGameProgress().getCurrentlyEquippedWeapon()).getName());
+        }
     }
 
     /**
@@ -121,6 +166,15 @@ public class Player extends Sprite {
     public void flipPlayerDirection(boolean leftOrRight) {
         setFlip(leftOrRight, false);
         isMovingLeftOrRight = leftOrRight;
+    }
+
+    /**
+     * Executes an attack by the player with the currently equipped weapon in the direction he is facing
+     */
+    public void attack() {
+        if (!attackAnimationPlaying) {
+            attackAnimationPlaying = true;
+        }
     }
 
     /**
@@ -204,6 +258,29 @@ public class Player extends Sprite {
                     )
             );
         }
+
+        // Manually add the attack textures, naming convention: displayName_attack (for example: branch_attack)
+        addAttackTextureRegions("branch_attack", "squirrel_branch_frame1");
+        addAttackTextureRegions("swiss_army_knife_attack", "squirrel_swiss_army_knife_frame1");
+        addAttackTextureRegions("switchblade_attack", "squirrel_switchblade_frame1");
+        addAttackTextureRegions("katana_attack", "squirrel_katana_frame1");
+    }
+
+    /**
+     * Add texture regions to the HashMap that are used to display attacks, it is not working with the display name like the default player textures
+     * @param name the key of the HashMap, the reference name of the texture region
+     * @param region the actual texture region for the texture
+     */
+    private void addAttackTextureRegions(String name, String region) {
+        textureRegions.put(
+                name,
+                new TextureRegion(
+                        getTexture(),
+                        screen.getPlayerTextureAtlas().findRegion(region).getRegionX(),
+                        screen.getPlayerTextureAtlas().findRegion(region).getRegionY(),
+                        PLAYER_PIXEL_WIDTH, PLAYER_PIXEL_HEIGHT
+                )
+        );
     }
 
     /* ----- GETTER AND SETTER -------------------------------------------------------------------------------------- */

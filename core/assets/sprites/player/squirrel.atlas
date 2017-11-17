@@ -1,5 +1,5 @@
 squirrel.png
-size: 144, 144
+size: 528, 24
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
@@ -26,56 +26,56 @@ squirrel_branch_frame1
   index: -1
 squirrel_default
   rotate: false
-  xy: 0, 24
+  xy: 144, 0
   size: 48, 24
   orig: 48, 24
   offset: 0, 0
   index: -1
 squirrel_katana_frame0
   rotate: false
-  xy: 48, 24
+  xy: 192, 0
   size: 48, 24
   orig: 48, 24
   offset: 0, 0
   index: -1
 squirrel_katana_frame1
   rotate: false
-  xy: 96, 24
+  xy: 240, 0
   size: 48, 24
   orig: 48, 24
   offset: 0, 0
   index: -1
 squirrel_swiss_army_knife_frame0
   rotate: false
-  xy: 0, 48
+  xy: 288, 0
   size: 48, 24
   orig: 48, 24
   offset: 0, 0
   index: -1
 squirrel_swiss_army_knife_frame1
   rotate: false
-  xy: 48, 48
+  xy: 336, 0
   size: 48, 24
   orig: 48, 24
   offset: 0, 0
   index: -1
 squirrel_switchblade_frame0
   rotate: false
-  xy: 96, 48
+  xy: 384, 0
   size: 48, 24
   orig: 48, 24
   offset: 0, 0
   index: -1
 squirrel_switchblade_frame1
   rotate: false
-  xy: 0, 72
+  xy: 432, 0
   size: 48, 24
   orig: 48, 24
   offset: 0, 0
   index: -1
 squirrel_tommy_gun_frame0
   rotate: false
-  xy: 48, 72
+  xy: 480, 0
   size: 48, 24
   orig: 48, 24
   offset: 0, 0

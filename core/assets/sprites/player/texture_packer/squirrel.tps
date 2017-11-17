@@ -110,7 +110,7 @@
             <key>sizeConstraints</key>
             <enum type="AlgorithmSettings::SizeConstraints">AnySize</enum>
             <key>forceSquared</key>
-            <true/>
+            <false/>
             <key>maxRects</key>
             <struct type="AlgorithmMaxRectsSettings">
                 <key>heuristic</key>
@@ -150,7 +150,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../../../maps/level_1/squirrel.txt</filename>
+                <filename>../squirrel.txt</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -228,7 +228,6 @@
             <filename>../squirrel_bazooka_frame0.png</filename>
             <filename>../squirrel_branch_frame0.png</filename>
             <filename>../squirrel_branch_frame1.png</filename>
-            <filename>../squirrel_default.png</filename>
             <filename>../squirrel_katana_frame0.png</filename>
             <filename>../squirrel_katana_frame1.png</filename>
             <filename>../squirrel_swiss_army_knife_frame0.png</filename>
@@ -236,6 +235,7 @@
             <filename>../squirrel_switchblade_frame0.png</filename>
             <filename>../squirrel_switchblade_frame1.png</filename>
             <filename>../squirrel_tommy_gun_frame0.png</filename>
+            <filename>../squirrel_default.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

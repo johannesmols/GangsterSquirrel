@@ -377,6 +377,13 @@ public class PlayScreen implements Screen {
             player.body.applyLinearImpulse(new Vector2(-player.getWalkImpulseVelocity() * deltaTime * 60, 0), player.body.getWorldCenter(), true);
         }
 
+        // Attacking
+        for (Integer keyBinding : keyBindings.ATTACK) {
+            if (Gdx.input.isKeyJustPressed(keyBinding)) {
+                player.attack();
+            }
+        }
+
         // Changing equipped weapon
         for (Integer keyBinding : keyBindings.EQUIP_WEAPON_SLOT_0) {
             if (Gdx.input.isKeyJustPressed(keyBinding)) {
