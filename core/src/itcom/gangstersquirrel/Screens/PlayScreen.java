@@ -75,6 +75,7 @@ public class PlayScreen implements Screen {
     // Texture variables
     private TextureAtlas playerTextureAtlas;
     private TextureAtlas enemyFrogTextureAtlas;
+    private TextureAtlas enemyMonkeyTextureAtlas;
 
     // Player variables
     private Player player;
@@ -127,6 +128,7 @@ public class PlayScreen implements Screen {
         // Set up player texture atlas
         playerTextureAtlas = new TextureAtlas("sprites/player/squirrel.atlas");
         enemyFrogTextureAtlas = new TextureAtlas("sprites/enemies/frog/frog.atlas");
+        enemyMonkeyTextureAtlas = new TextureAtlas("sprites/enemies/monkey/monkey.atlas");
 
         // Set up camera and viewport
         camera = new OrthographicCamera();
@@ -618,6 +620,14 @@ public class PlayScreen implements Screen {
     public TextureAtlas getEnemyFrogTextureAtlas() {
         return enemyFrogTextureAtlas;
     }
+
+    /**
+     * Returns the texture atlas for the monkey enemy sprite
+     */
+    public TextureAtlas getEnemyMonkeyTextureAtlas() {
+        return enemyMonkeyTextureAtlas;
+    }
+
 
     /**
      * @return the game class
