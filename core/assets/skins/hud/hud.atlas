@@ -26,14 +26,14 @@ PressStart2P2
   index: -1
 health-knob-after
   rotate: false
-  xy: 1, 1
+  xy: 515, 545
   size: 3, 42
   orig: 3, 42
   offset: 0, 0
   index: -1
 health-knob-before
   rotate: false
-  xy: 515, 579
+  xy: 1, 1
   size: 3, 42
   orig: 3, 42
   offset: 0, 0
@@ -44,5 +44,12 @@ healthbar
   size: 510, 62
   split: 65, 3, 10, 10
   orig: 510, 62
+  offset: 0, 0
+  index: -1
+heart_icon
+  rotate: false
+  xy: 515, 589
+  size: 48, 32
+  orig: 48, 32
   offset: 0, 0
   index: -1

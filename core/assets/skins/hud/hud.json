@@ -12,6 +12,17 @@ com.badlogic.gdx.graphics.Color: {
 		a: 1
 	}
 }
+com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton$ImageTextButtonStyle: {
+	default: {
+		font: PressStart2P
+		fontColor: white
+	}
+	lifes: {
+		imageUp: heart_icon
+		font: PressStart2P
+		fontColor: white
+	}
+}
 com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
 	default: {
 		font: PressStart2P
