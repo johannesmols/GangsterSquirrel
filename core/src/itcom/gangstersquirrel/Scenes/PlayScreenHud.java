@@ -25,7 +25,7 @@ public class PlayScreenHud {
     public Stage stage;
     private Viewport viewport;
 
-    private TextureAtlas hudAtlas;
+    private TextureAtlas skinAtlas;
     private Skin skin;
 
     private Label timerLabel;
@@ -38,20 +38,17 @@ public class PlayScreenHud {
         stage = new Stage(viewport, playScreen.getGame().batch);
         stage.setDebugAll(MainGameClass.DEBUG);
 
-        hudAtlas = new TextureAtlas("hud/uiskin.atlas");
-        skin = new Skin();
-        skin.addRegions(hudAtlas);
+        skinAtlas = new TextureAtlas("skins/skin.atlas");
+        skin = new Skin(Gdx.files.internal("skins/skin.json"));
+        skin.addRegions(skinAtlas);
 
         Table layoutTable = new Table();
         layoutTable.top();
         layoutTable.setFillParent(true);
         layoutTable.pad(getPixelSizeFromDensityIndependentPixels(32));
 
-        timerLabel = new Label(
-                String.format("%04d", playScreen.getGameProgress().getCurrentTime()),
-                new Label.LabelStyle(BitmapFontGenerator.generateFont("fonts/PressStart2P.ttf", 64),
-                Color.WHITE)
-        );
+        timerLabel = new Label(String.format("%04d", playScreen.getGameProgress().getCurrentTime()), skin, "default");
+        timerLabel.setStyle(changeLabelStyleFont(timerLabel.getStyle(), "fonts/PressStart2P.ttf", 64));
 
         healthBar = new ProgressBar(
                 0f,
@@ -77,5 +74,10 @@ public class PlayScreenHud {
 
     private int getPixelSizeFromDensityIndependentPixels(float dip) {
         return (int) (dip * Gdx.graphics.getDensity());
+    }
+
+    private Label.LabelStyle changeLabelStyleFont(Label.LabelStyle original, String filePath, float densityIndependentPixels) {
+        original.font = BitmapFontGenerator.generateFont(filePath, densityIndependentPixels);
+        return original;
     }
 }
