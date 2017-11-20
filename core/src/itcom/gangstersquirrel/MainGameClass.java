@@ -24,8 +24,6 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import itcom.gangstersquirrel.GameProgress.GameProgress;
 import itcom.gangstersquirrel.Screens.SplashScreen;
 import itcom.gangstersquirrel.Twitch.*;
-import org.jibble.pircbot.IrcException;
-import java.io.IOException;
 
 import java.util.HashMap;
 
@@ -92,7 +90,7 @@ public class MainGameClass extends Game {
 	public static final short MASK_ENEMY_MOVE_BORDER = CATEGORY_ENEMY;
 	public static final short MASK_PLAYER_ATTACK = CATEGORY_ENEMY;
 
-	public static TwitchThread twitchThread = new TwitchThread(0, 3, 300);
+	public static TwitchThread twitchThread = new TwitchThread();
 
 	/**
 	 * The first method that is called in the entire application, sets up basic variables and loads the first screen
