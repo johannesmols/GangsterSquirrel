@@ -32,7 +32,7 @@ import java.util.HashMap;
 /**
  * The main class of the game and entrance point
  */
-public class MainGameClass extends Game implements ChatListener {
+public class MainGameClass extends Game {
 
 	// Enables certain debugging features like collision box rendering
 	public static boolean DEBUG = true;
@@ -54,7 +54,6 @@ public class MainGameClass extends Game implements ChatListener {
 	public static final int NUMBER_OF_LEVELS = 3;
 
 	public static final boolean USE_TWITCH = false;
-	TwitchChat twitch = new TwitchChat();
 
 	// Internal units
 	public static int TILE_PIXEL_SIZE = 16;
@@ -93,24 +92,7 @@ public class MainGameClass extends Game implements ChatListener {
 	public static final short MASK_ENEMY_MOVE_BORDER = CATEGORY_ENEMY;
 	public static final short MASK_PLAYER_ATTACK = CATEGORY_ENEMY;
 
-	@Override
-	public void messageReceived(String channel, String sender, String login, String hostname, String message) {
-		System.out.println(sender + ": " + message);
-	}
-
-	public void twitchConnect() {
-		twitch.addListener(this);
-		try {
-			twitch.connect(
-					twitch.getTwitchCredentials().getUrl(),
-					twitch.getTwitchCredentials().getPort(),
-					twitch.getTwitchCredentials().getOauth()
-			);
-		} catch (IOException | IrcException e) {
-			e.printStackTrace();
-		}
-		twitch.joinChannel(twitch.getTwitchCredentials().getTag());
-	}
+	public static TwitchThread twitchThread = new TwitchThread(0, 3, 300);
 
 	/**
 	 * The first method that is called in the entire application, sets up basic variables and loads the first screen
@@ -129,7 +111,7 @@ public class MainGameClass extends Game implements ChatListener {
 		fonts.put("default", new BitmapFont());
 
 		if (USE_TWITCH) {
-			twitchConnect();
+			twitchThread.start();
 		}
 
 		// Load first screen
