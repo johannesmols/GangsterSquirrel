@@ -55,10 +55,11 @@ public class PlayScreenHud {
                 playScreen.getGameProgress().getPlayerMaxHealth(),
                 1f,
                 false,
-                new ProgressBar.ProgressBarStyle()
+                skin,
+                "default-horizontal"
         );
 
-        layoutTable.add(healthBar).expandX().left().top();
+        layoutTable.add(healthBar).expandX().width(getPixelSizeFromDensityIndependentPixels(750)).left().top();
         layoutTable.add(timerLabel).expandX().right().top();
         layoutTable.row();
 
@@ -67,6 +68,7 @@ public class PlayScreenHud {
 
     public void update(float deltaTime) {
         timerLabel.setText(String.format("%04d", playScreen.getTimer()));
+        healthBar.setValue(playScreen.getPlayer().getHealth());
 
         // Toggle debug
         stage.setDebugAll(MainGameClass.DEBUG);

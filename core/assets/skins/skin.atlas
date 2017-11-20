@@ -1,5 +1,5 @@
 
-PressStart2P1.png
+skin.png
 size: 1024,1024
 format: RGBA8888
 filter: Linear,Linear
@@ -12,15 +12,31 @@ PressStart2P1
   offset: 0, 0
   index: -1
 
-PressStart2P2.png
+skin2.png
 size: 1024,1024
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 PressStart2P2
   rotate: false
-  xy: 1, 1
+  xy: 1, 56
   size: 512, 512
   orig: 512, 512
+  offset: 0, 0
+  index: -1
+progress-bar
+  rotate: false
+  xy: 1, 1
+  size: 300, 53
+  split: 10, 9, 11, 9
+  pad: 10, 8, 0, 0
+  orig: 300, 53
+  offset: 0, 0
+  index: -1
+progress-bar-knob
+  rotate: false
+  xy: 515, 515
+  size: 1, 53
+  orig: 1, 53
   offset: 0, 0
   index: -1

@@ -3,7 +3,7 @@ atlasData: {
 	atlasCurrent: true
 	drawables: [
 		{
-			file: D:/johan/Documents/_Studium/AAU/1_Semester/GangsterSquirrel/core/assets/fonts/PressStart2P1.png
+			file: D:/johan/Documents/_Studium/AAU/1_Semester/GangsterSquirrel/core/assets/skins/fonts/PressStart2P1.png
 			bgColor: {
 				r: 0
 				g: 0
@@ -16,7 +16,7 @@ atlasData: {
 			name: PressStart2P1
 		}
 		{
-			file: D:/johan/Documents/_Studium/AAU/1_Semester/GangsterSquirrel/core/assets/fonts/PressStart2P2.png
+			file: D:/johan/Documents/_Studium/AAU/1_Semester/GangsterSquirrel/core/assets/skins/fonts/PressStart2P2.png
 			bgColor: {
 				r: 0
 				g: 0
@@ -28,20 +28,36 @@ atlasData: {
 			tintName: null
 			name: PressStart2P2
 		}
-	]
-}
-jsonData: {
-	colors: [
 		{
-			class: com.ray3k.skincomposer.data.ColorData
-			color: {
+			file: D:/johan/Documents/_Studium/AAU/1_Semester/GangsterSquirrel/core/assets/skins/sprites/progress-bar-knob.png
+			bgColor: {
 				r: 0
 				g: 0
 				b: 0
 				a: 1
 			}
-			name: black
+			visible: true
+			tint: null
+			tintName: null
+			name: progress-bar-knob
 		}
+		{
+			file: D:/johan/Documents/_Studium/AAU/1_Semester/GangsterSquirrel/core/assets/skins/sprites/progress-bar.9.png
+			bgColor: {
+				r: 1
+				g: 1
+				b: 1
+				a: 1
+			}
+			visible: true
+			tint: null
+			tintName: null
+			name: progress-bar
+		}
+	]
+}
+jsonData: {
+	colors: [
 		{
 			class: com.ray3k.skincomposer.data.ColorData
 			color: {
@@ -57,7 +73,7 @@ jsonData: {
 		{
 			class: com.ray3k.skincomposer.data.FontData
 			name: PressStart2P
-			file: D:/johan/Documents/_Studium/AAU/1_Semester/GangsterSquirrel/core/assets/fonts/PressStart2P.fnt
+			file: D:/johan/Documents/_Studium/AAU/1_Semester/GangsterSquirrel/core/assets/skins/fonts/PressStart2P.fnt
 		}
 	]
 	classStyleMap: {
@@ -741,7 +757,7 @@ jsonData: {
 						type: com.badlogic.gdx.scenes.scene2d.utils.Drawable
 						name: background
 						optional: false
-						value: null
+						value: progress-bar
 					}
 					disabledBackground: {
 						class: com.ray3k.skincomposer.data.StyleProperty
@@ -769,7 +785,7 @@ jsonData: {
 						type: com.badlogic.gdx.scenes.scene2d.utils.Drawable
 						name: knobBefore
 						optional: true
-						value: null
+						value: progress-bar-knob
 					}
 					knobAfter: {
 						class: com.ray3k.skincomposer.data.StyleProperty
@@ -1553,7 +1569,7 @@ preferences: {
 	}
 	id: {
 		class: java.lang.Integer
-		value: 833425144
+		value: 454168210
 	}
 	resources-relative: {
 		class: java.lang.Boolean

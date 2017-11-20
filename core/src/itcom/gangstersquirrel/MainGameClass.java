@@ -194,8 +194,6 @@ public class MainGameClass extends Game {
 		assetManager.load("audio/level_1_music.mp3", Music.class);
 		assetManager.load("audio/level_2_music.mp3", Music.class);
 
-		assetManager.load("hud/uiskin.png", Texture.class);
-
 		assetManager.load("sprites/splashscreen/splashscreen.png", Texture.class);
 
 		assetManager.finishLoading();
