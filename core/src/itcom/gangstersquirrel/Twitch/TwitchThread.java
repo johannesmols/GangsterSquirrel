@@ -10,6 +10,15 @@ public class TwitchThread extends Thread implements ChatListener {
     @Override
     public void run()
     {
+        System.out.println("connecting...");
+        new Thread(new Runnable() {
+            public void run(){
+                twitchConnect();
+            }
+        }).start();
+    }
+
+    public void twitchConnect() {
         twitch.addListener(this);
         try {
             twitch.connect(
@@ -17,10 +26,15 @@ public class TwitchThread extends Thread implements ChatListener {
                     twitch.getTwitchCredentials().getPort(),
                     twitch.getTwitchCredentials().getOauth()
             );
+            System.out.println("connected");
+
+            System.out.println("joining channel " + twitch.getTwitchCredentials().getTag());
+            twitch.joinChannel(twitch.getTwitchCredentials().getTag());
+            System.out.println("joined successfully");
         } catch (IOException | IrcException e) {
             e.printStackTrace();
+            System.out.println("connection failed");
         }
-        twitch.joinChannel(twitch.getTwitchCredentials().getTag());
     }
 
     @Override

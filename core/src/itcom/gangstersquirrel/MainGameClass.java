@@ -51,7 +51,7 @@ public class MainGameClass extends Game {
     // Number of levels
 	public static final int NUMBER_OF_LEVELS = 3;
 
-	public static final boolean USE_TWITCH = false;
+	public static final boolean USE_TWITCH = true;
 
 	// Internal units
 	public static int TILE_PIXEL_SIZE = 16;
