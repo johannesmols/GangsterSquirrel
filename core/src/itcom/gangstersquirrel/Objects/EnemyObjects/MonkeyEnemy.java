@@ -27,16 +27,19 @@ public class MonkeyEnemy extends Enemy {
         // Set gameplay variables of super class for this specific type of enemy
         damageMinMax = new int[] { 5, 15 };
         health = 15;
-        // horizontalMoveImpulseVelocity = 0.1f;
-        // horizontalMaxMovementVelocity = 0.5f;
+        horizontalMoveImpulseVelocity = 0.1f;
+        horizontalMaxMovementVelocity = 0.5f;
 
         // Animation set up
         attackFrames = new Array<>();
         for(int i = 0; i < 4; i++) {
             attackFrames.add(new TextureRegion(
-                    screen.getEnemyFrogTextureAtlas().findRegion("monkey_attack"), i * ENEMY_PIXEL_WIDTH, 0, ENEMY_PIXEL_WIDTH, ENEMY_PIXEL_HEIGHT)
+                    screen.getEnemyMonkeyTextureAtlas().findRegion("monkey_attack"), i * ENEMY_PIXEL_WIDTH, 0, ENEMY_PIXEL_WIDTH, ENEMY_PIXEL_HEIGHT)
             );
+        }
+
         attackAnimation = new Animation<>(0.4f, attackFrames);
+        jumpAnimation = new Animation<>(0.4f, jumpFrames);
 
         stateTime = 0;
         setBounds(getX(), getY(), ENEMY_PIXEL_WIDTH / MainGameClass.PPM, ENEMY_PIXEL_HEIGHT / MainGameClass.PPM + getHeight() / 2);
@@ -46,16 +49,16 @@ public class MonkeyEnemy extends Enemy {
     public void update(float deltaTime) {
         stateTime += deltaTime;
         setPosition(body.getPosition().x - getWidth() / 2, body.getPosition().y - getHeight() / 2);
-        // setRegion(jumpAnimation.getKeyFrame(stateTime, true));
-        // setFlip(isMovingLeftOrRight, false);
+        setRegion(jumpAnimation.getKeyFrame(stateTime, true));
+        setFlip(isMovingLeftOrRight, false);
 
         // Move enemy around the map
-        // moveEnemy(deltaTime);
+        moveEnemy(deltaTime);
     }
 
     @Override
     public void onPlayerBeginContact(Player player) {
-        playScreen.log("Frog Enemy : Collision with player");
+        playScreen.log("Monkey Enemy : Collision with player");
         screen.setPlayerCurrentHealth(screen.getPlayer().getHealth() - randomDamageValueBetweenMinAndMax());
 
         // Change movement direction
@@ -67,19 +70,19 @@ public class MonkeyEnemy extends Enemy {
 
     }
 
-//    @Override
-//    public void onEnemyBeginContact(Enemy enemy) {
-//        playScreen.log("Monkey Enemy : Collision with other enemy");
-//
-//        // Change moving direction of both enemies, the collided one and itself
-//        this.setMovingLeftOrRight(!isMovingLeftOrRight);
-//        enemy.setMovingLeftOrRight(!enemy.getIsMovingLeftOrRight());
-//    }
-//
-//    @Override
-//    public void onEnemyEndContact(Enemy enemy) {
-//
-//    }
+    @Override
+    public void onEnemyBeginContact(Enemy enemy) {
+        playScreen.log("Monkey Enemy : Collision with other enemy");
+
+        // Change moving direction of both enemies, the collided one and itself
+        this.setMovingLeftOrRight(!isMovingLeftOrRight);
+        enemy.setMovingLeftOrRight(!enemy.getIsMovingLeftOrRight());
+    }
+
+    @Override
+    public void onEnemyEndContact(Enemy enemy) {
+
+    }
 
     /* ----- GETTERS AND SETTERS ------------------------------------------------------------------------------------ */
 
@@ -117,7 +120,6 @@ public class MonkeyEnemy extends Enemy {
         }
     }
 
-/*
     @Override
     public float getHorizontalMoveImpulseVelocity() {
         return this.horizontalMoveImpulseVelocity;
@@ -147,7 +149,6 @@ public class MonkeyEnemy extends Enemy {
     public void setMovingLeftOrRight(boolean movingLeftOrRight) {
         this.isMovingLeftOrRight = movingLeftOrRight;
     }
-*/
 
     /* -------------------------------------------------------------------------------------------------------------- */
 }

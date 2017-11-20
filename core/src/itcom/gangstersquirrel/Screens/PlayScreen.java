@@ -19,6 +19,7 @@ import itcom.gangstersquirrel.Items.WeaponObject;
 import itcom.gangstersquirrel.Items.WeaponList;
 import itcom.gangstersquirrel.KeyBindings.KeyBindings;
 import itcom.gangstersquirrel.MainGameClass;
+import itcom.gangstersquirrel.Objects.EnemyObjects.MonkeyEnemy;
 import itcom.gangstersquirrel.Scenes.PlayScreenHud;
 import itcom.gangstersquirrel.Objects.Enemy;
 import itcom.gangstersquirrel.Objects.EnemyObjects.FrogEnemy;
@@ -583,6 +584,8 @@ public class PlayScreen implements Screen {
     public void spawnEnemy(Class<? extends Enemy> type, int spawnPositionX, int spawnPositionY) {
         if (type == FrogEnemy.class) {
             enemies.add(new FrogEnemy(this, spawnPositionX, spawnPositionY));
+        } else if (type == MonkeyEnemy.class) {
+            enemies.add(new MonkeyEnemy(this, spawnPositionX, spawnPositionY));
         }
     }
 
