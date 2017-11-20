@@ -4,8 +4,15 @@ import com.badlogic.gdx.physics.box2d.*;
 import itcom.gangstersquirrel.Objects.Enemy;
 import itcom.gangstersquirrel.Objects.InteractiveMapTileObject;
 import itcom.gangstersquirrel.Objects.Player;
+import itcom.gangstersquirrel.Screens.PlayScreen;
 
 public class WorldContactListener implements ContactListener {
+
+    PlayScreen playScreen;
+
+    public WorldContactListener(PlayScreen playScreen) {
+        this.playScreen = playScreen;
+    }
 
     @Override
     public void beginContact(Contact contact) {
@@ -74,6 +81,30 @@ public class WorldContactListener implements ContactListener {
                     ((Enemy) collidedObject.getUserData()).onEnemyBeginContact((Enemy) enemy.getUserData());
                 } else {
                     ((Enemy) collidedObject.getUserData()).onEnemyEndContact((Enemy) enemy.getUserData());
+                }
+            } else if (collidedObject.getUserData() == "player_attack_right") {
+                if (beginOrEndContact) {
+                    if (!playScreen.getEnemiesCurrentlyInRightAttackRange().contains((Enemy) enemy.getUserData())) {
+                        playScreen.getEnemiesCurrentlyInRightAttackRange().add((Enemy) enemy.getUserData());
+                        playScreen.log("Enemy moved into right attack hitbox");
+                    }
+                } else {
+                    if (playScreen.getEnemiesCurrentlyInRightAttackRange().contains((Enemy) enemy.getUserData())) {
+                        playScreen.getEnemiesCurrentlyInRightAttackRange().remove((Enemy) enemy.getUserData());
+                        playScreen.log("Enemy moved out of right attack hitbox");
+                    }
+                }
+            } else if (collidedObject.getUserData() == "player_attack_left") {
+                if (beginOrEndContact) {
+                    if (!playScreen.getEnemiesCurrentlyInLeftAttackRange().contains((Enemy) enemy.getUserData())) {
+                        playScreen.getEnemiesCurrentlyInLeftAttackRange().add((Enemy) enemy.getUserData());
+                        playScreen.log("Enemy moved into left attack hitbox");
+                    }
+                } else {
+                    if (playScreen.getEnemiesCurrentlyInLeftAttackRange().contains((Enemy) enemy.getUserData())) {
+                        playScreen.getEnemiesCurrentlyInLeftAttackRange().remove((Enemy) enemy.getUserData());
+                        playScreen.log("Enemy moved out of left attack hitbox");
+                    }
                 }
             }
         }

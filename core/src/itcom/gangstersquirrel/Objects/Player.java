@@ -38,7 +38,7 @@ public class Player extends Sprite {
 
     // Gameplay relevant variables
     private boolean isOnJumpableGround;
-    private boolean isMovingLeftOrRight;
+    private boolean isFacingLeftOrRight;
 
     // Texture variables
     private final int PLAYER_PIXEL_WIDTH = 48;
@@ -85,7 +85,7 @@ public class Player extends Sprite {
             screen.getGameProgress().setCurrentlyEquippedWeapon(indexInWeaponList);
         }
 
-        flipPlayerDirection(isMovingLeftOrRight);
+        flipPlayerDirection(isFacingLeftOrRight);
     }
 
     /**
@@ -102,7 +102,7 @@ public class Player extends Sprite {
             }
         }
 
-        flipPlayerDirection(isMovingLeftOrRight);
+        flipPlayerDirection(isFacingLeftOrRight);
     }
 
     /**
@@ -111,7 +111,7 @@ public class Player extends Sprite {
      */
     public void update(float deltaTime) {
         // Make the sprite stay in the same position when switching directions
-        if (isMovingLeftOrRight) {
+        if (isFacingLeftOrRight) {
             setPosition(body.getPosition().x - getWidth(), body.getPosition().y - getHeight() / 2);
         } else {
             setPosition(body.getPosition().x - getWidth() / 2, body.getPosition().y - getHeight() / 2);
@@ -128,19 +128,19 @@ public class Player extends Sprite {
                         break;
                     case "Branch":
                         setRegion(textureRegions.get("branch_attack"));
-                        flipPlayerDirection(isMovingLeftOrRight);
+                        flipPlayerDirection(isFacingLeftOrRight);
                         break;
                     case "Swiss Army Knife":
                         setRegion(textureRegions.get("swiss_army_knife_attack"));
-                        flipPlayerDirection(isMovingLeftOrRight);
+                        flipPlayerDirection(isFacingLeftOrRight);
                         break;
                     case "Switchblade":
                         setRegion(textureRegions.get("switchblade_attack"));
-                        flipPlayerDirection(isMovingLeftOrRight);
+                        flipPlayerDirection(isFacingLeftOrRight);
                         break;
                     case "Katana":
                         setRegion(textureRegions.get("katana_attack"));
-                        flipPlayerDirection(isMovingLeftOrRight);
+                        flipPlayerDirection(isFacingLeftOrRight);
                         break;
                     case "Tommy Gun":
                         // No attack texture yet
@@ -165,7 +165,7 @@ public class Player extends Sprite {
      */
     public void flipPlayerDirection(boolean leftOrRight) {
         setFlip(leftOrRight, false);
-        isMovingLeftOrRight = leftOrRight;
+        isFacingLeftOrRight = leftOrRight;
     }
 
     /**
@@ -174,6 +174,17 @@ public class Player extends Sprite {
     public void attack() {
         if (!attackAnimationPlaying) {
             attackAnimationPlaying = true;
+
+            // Deal damage to all enemies in range
+            if (isFacingLeftOrRight) {
+                for (Enemy enemy : screen.getEnemiesCurrentlyInLeftAttackRange()) {
+                    enemy.setHealth(enemy.getHealth() - screen.getGameProgress().getPlayerWeaponList().get(screen.getGameProgress().getCurrentlyEquippedWeapon()).getStrength());
+                }
+            } else {
+                for (Enemy enemy : screen.getEnemiesCurrentlyInRightAttackRange()) {
+                    enemy.setHealth(enemy.getHealth() - screen.getGameProgress().getPlayerWeaponList().get(screen.getGameProgress().getCurrentlyEquippedWeapon()).getStrength());
+                }
+            }
         }
     }
 
