@@ -3,7 +3,46 @@ atlasData: {
 	atlasCurrent: true
 	drawables: [
 		{
-			file: D:/johan/Documents/_Studium/AAU/1_Semester/GangsterSquirrel/core/assets/skins/fonts/PressStart2P1.png
+			file: D:/johan/Documents/_Studium/AAU/1_Semester/GangsterSquirrel/core/assets/skins/hud/sprites/healthbar.9.png
+			bgColor: {
+				r: 1
+				g: 1
+				b: 1
+				a: 1
+			}
+			visible: true
+			tint: null
+			tintName: null
+			name: healthbar
+		}
+		{
+			file: D:/johan/Documents/_Studium/AAU/1_Semester/GangsterSquirrel/core/assets/skins/hud/sprites/health-knob-before.png
+			bgColor: {
+				r: 0
+				g: 0
+				b: 0
+				a: 1
+			}
+			visible: true
+			tint: null
+			tintName: null
+			name: health-knob-before
+		}
+		{
+			file: D:/johan/Documents/_Studium/AAU/1_Semester/GangsterSquirrel/core/assets/skins/hud/sprites/health-knob-after.png
+			bgColor: {
+				r: 0
+				g: 0
+				b: 0
+				a: 1
+			}
+			visible: true
+			tint: null
+			tintName: null
+			name: health-knob-after
+		}
+		{
+			file: D:/johan/Documents/_Studium/AAU/1_Semester/GangsterSquirrel/core/assets/skins/hud/fonts/PressStart2P1.png
 			bgColor: {
 				r: 0
 				g: 0
@@ -16,7 +55,7 @@ atlasData: {
 			name: PressStart2P1
 		}
 		{
-			file: D:/johan/Documents/_Studium/AAU/1_Semester/GangsterSquirrel/core/assets/skins/fonts/PressStart2P2.png
+			file: D:/johan/Documents/_Studium/AAU/1_Semester/GangsterSquirrel/core/assets/skins/hud/fonts/PressStart2P2.png
 			bgColor: {
 				r: 0
 				g: 0
@@ -27,71 +66,6 @@ atlasData: {
 			tint: null
 			tintName: null
 			name: PressStart2P2
-		}
-		{
-			file: D:/johan/Documents/_Studium/AAU/1_Semester/GangsterSquirrel/core/assets/skins/sprites/progress-bar-knob.png
-			bgColor: {
-				r: 0
-				g: 0
-				b: 0
-				a: 1
-			}
-			visible: true
-			tint: null
-			tintName: null
-			name: progress-bar-knob
-		}
-		{
-			file: D:/johan/Documents/_Studium/AAU/1_Semester/GangsterSquirrel/core/assets/skins/sprites/progress-bar.9.png
-			bgColor: {
-				r: 1
-				g: 1
-				b: 1
-				a: 1
-			}
-			visible: true
-			tint: null
-			tintName: null
-			name: progress-bar
-		}
-		{
-			file: D:/johan/Documents/_Studium/AAU/1_Semester/GangsterSquirrel/core/assets/skins/sprites/progress-bar-health.9.png
-			bgColor: {
-				r: 1
-				g: 1
-				b: 1
-				a: 1
-			}
-			visible: true
-			tint: null
-			tintName: null
-			name: progress-bar-health
-		}
-		{
-			file: D:/johan/Documents/_Studium/AAU/1_Semester/GangsterSquirrel/core/assets/skins/sprites/progress-bar-health-knob.png
-			bgColor: {
-				r: 1
-				g: 1
-				b: 1
-				a: 1
-			}
-			visible: true
-			tint: null
-			tintName: null
-			name: progress-bar-health-knob
-		}
-		{
-			file: D:/johan/Documents/_Studium/AAU/1_Semester/GangsterSquirrel/core/assets/skins/sprites/progress-bar-health-knob-small.png
-			bgColor: {
-				r: 1
-				g: 1
-				b: 1
-				a: 1
-			}
-			visible: true
-			tint: null
-			tintName: null
-			name: progress-bar-health-knob-small
 		}
 	]
 }
@@ -112,7 +86,7 @@ jsonData: {
 		{
 			class: com.ray3k.skincomposer.data.FontData
 			name: PressStart2P
-			file: D:/johan/Documents/_Studium/AAU/1_Semester/GangsterSquirrel/core/assets/skins/fonts/PressStart2P.fnt
+			file: D:/johan/Documents/_Studium/AAU/1_Semester/GangsterSquirrel/core/assets/skins/hud/fonts/PressStart2P.fnt
 		}
 	]
 	classStyleMap: {
@@ -796,7 +770,7 @@ jsonData: {
 						type: com.badlogic.gdx.scenes.scene2d.utils.Drawable
 						name: background
 						optional: false
-						value: progress-bar
+						value: healthbar
 					}
 					disabledBackground: {
 						class: com.ray3k.skincomposer.data.StyleProperty
@@ -824,7 +798,7 @@ jsonData: {
 						type: com.badlogic.gdx.scenes.scene2d.utils.Drawable
 						name: knobBefore
 						optional: true
-						value: progress-bar-knob
+						value: health-knob-before
 					}
 					knobAfter: {
 						class: com.ray3k.skincomposer.data.StyleProperty
@@ -913,70 +887,6 @@ jsonData: {
 					}
 				}
 				deletable: false
-			}
-			{
-				class: com.ray3k.skincomposer.data.StyleData
-				name: health
-				clazz: com.badlogic.gdx.scenes.scene2d.ui.ProgressBar
-				properties: {
-					background: {
-						class: com.ray3k.skincomposer.data.StyleProperty
-						type: com.badlogic.gdx.scenes.scene2d.utils.Drawable
-						name: background
-						optional: false
-						value: progress-bar-health
-					}
-					disabledBackground: {
-						class: com.ray3k.skincomposer.data.StyleProperty
-						type: com.badlogic.gdx.scenes.scene2d.utils.Drawable
-						name: disabledBackground
-						optional: true
-						value: null
-					}
-					knob: {
-						class: com.ray3k.skincomposer.data.StyleProperty
-						type: com.badlogic.gdx.scenes.scene2d.utils.Drawable
-						name: knob
-						optional: true
-						value: null
-					}
-					disabledKnob: {
-						class: com.ray3k.skincomposer.data.StyleProperty
-						type: com.badlogic.gdx.scenes.scene2d.utils.Drawable
-						name: disabledKnob
-						optional: true
-						value: null
-					}
-					knobBefore: {
-						class: com.ray3k.skincomposer.data.StyleProperty
-						type: com.badlogic.gdx.scenes.scene2d.utils.Drawable
-						name: knobBefore
-						optional: true
-						value: progress-bar-health-knob-small
-					}
-					knobAfter: {
-						class: com.ray3k.skincomposer.data.StyleProperty
-						type: com.badlogic.gdx.scenes.scene2d.utils.Drawable
-						name: knobAfter
-						optional: true
-						value: null
-					}
-					disabledKnobBefore: {
-						class: com.ray3k.skincomposer.data.StyleProperty
-						type: com.badlogic.gdx.scenes.scene2d.utils.Drawable
-						name: disabledKnobBefore
-						optional: true
-						value: null
-					}
-					disabledKnobAfter: {
-						class: com.ray3k.skincomposer.data.StyleProperty
-						type: com.badlogic.gdx.scenes.scene2d.utils.Drawable
-						name: disabledKnobAfter
-						optional: true
-						value: null
-					}
-				}
-				deletable: true
 			}
 		]
 		com.badlogic.gdx.scenes.scene2d.ui.ScrollPane: [
@@ -1672,12 +1582,12 @@ preferences: {
 	}
 	id: {
 		class: java.lang.Integer
-		value: 454168210
+		value: 771909615
 	}
 	resources-relative: {
 		class: java.lang.Boolean
 		value: false
 	}
 }
-saveFile: D:/johan/Documents/_Studium/AAU/1_Semester/GangsterSquirrel/core/assets/skins/gangster_squirrel_skin.scmp
+saveFile: D:/johan/Documents/_Studium/AAU/1_Semester/GangsterSquirrel/core/assets/skins/hud/hud.scmp
 }

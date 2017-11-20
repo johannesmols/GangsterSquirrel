@@ -1,9 +1,8 @@
 package itcom.gangstersquirrel.Scenes;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
@@ -25,7 +24,6 @@ public class PlayScreenHud {
     public Stage stage;
     private Viewport viewport;
 
-    private TextureAtlas skinAtlas;
     private Skin skin;
 
     private Label timerLabel;
@@ -38,14 +36,12 @@ public class PlayScreenHud {
         stage = new Stage(viewport, playScreen.getGame().batch);
         stage.setDebugAll(MainGameClass.DEBUG);
 
-        skinAtlas = new TextureAtlas("skins/skin.atlas");
-        skin = new Skin(Gdx.files.internal("skins/skin.json"));
-        skin.addRegions(skinAtlas);
+        skin = new Skin(Gdx.files.internal("skins/hud/hud.json"));
 
         Table layoutTable = new Table();
         layoutTable.top();
         layoutTable.setFillParent(true);
-        layoutTable.pad(getPixelSizeFromDensityIndependentPixels(32));
+        layoutTable.pad(getPixelSizeFromDensityIndependentPixels(50));
 
         timerLabel = new Label(String.format("%04d", playScreen.getGameProgress().getCurrentTime()), skin, "default");
         timerLabel.setStyle(changeLabelStyleFont(timerLabel.getStyle(), "fonts/PressStart2P.ttf", 64));
@@ -59,7 +55,8 @@ public class PlayScreenHud {
                 "default-horizontal"
         );
 
-        layoutTable.add(healthBar).expandX().width(getPixelSizeFromDensityIndependentPixels(750)).left().top();
+        layoutTable.add(healthBar).expandX().growX().left().top();
+        layoutTable.add(new Actor()).expandX().fillX().center().top();
         layoutTable.add(timerLabel).expandX().right().top();
         layoutTable.row();
 

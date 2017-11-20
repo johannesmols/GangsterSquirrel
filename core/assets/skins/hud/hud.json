@@ -20,12 +20,8 @@ com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
 }
 com.badlogic.gdx.scenes.scene2d.ui.ProgressBar$ProgressBarStyle: {
 	default-horizontal: {
-		background: progress-bar
-		knobBefore: progress-bar-knob
-	}
-	health: {
-		background: progress-bar-health
-		knobBefore: progress-bar-health-knob-small
+		background: healthbar
+		knobBefore: health-knob-before
 	}
 }
 com.badlogic.gdx.scenes.scene2d.ui.TextTooltip$TextTooltipStyle: {
