@@ -19,23 +19,46 @@ filter: Linear,Linear
 repeat: none
 PressStart2P2
   rotate: false
-  xy: 1, 56
+  xy: 1, 339
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: -1
 progress-bar
   rotate: false
-  xy: 1, 1
+  xy: 1, 192
   size: 300, 53
   split: 10, 9, 11, 9
   pad: 10, 8, 0, 0
   orig: 300, 53
   offset: 0, 0
   index: -1
+progress-bar-health
+  rotate: false
+  xy: 1, 247
+  size: 498, 90
+  split: 138, 69, 0, 0
+  pad: 117, 45, 18, 18
+  orig: 498, 90
+  offset: 0, 0
+  index: -1
+progress-bar-health-knob
+  rotate: false
+  xy: 515, 797
+  size: 336, 54
+  orig: 336, 54
+  offset: 0, 0
+  index: -1
+progress-bar-health-knob-small
+  rotate: false
+  xy: 515, 741
+  size: 1, 54
+  orig: 1, 54
+  offset: 0, 0
+  index: -1
 progress-bar-knob
   rotate: false
-  xy: 515, 515
+  xy: 501, 284
   size: 1, 53
   orig: 1, 53
   offset: 0, 0

@@ -23,6 +23,10 @@ com.badlogic.gdx.scenes.scene2d.ui.ProgressBar$ProgressBarStyle: {
 		background: progress-bar
 		knobBefore: progress-bar-knob
 	}
+	health: {
+		background: progress-bar-health
+		knobBefore: progress-bar-health-knob-small
+	}
 }
 com.badlogic.gdx.scenes.scene2d.ui.TextTooltip$TextTooltipStyle: {
 	default: {
