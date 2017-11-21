@@ -19,6 +19,7 @@ import itcom.gangstersquirrel.Items.WeaponObject;
 import itcom.gangstersquirrel.Items.WeaponList;
 import itcom.gangstersquirrel.KeyBindings.KeyBindings;
 import itcom.gangstersquirrel.MainGameClass;
+import itcom.gangstersquirrel.Objects.EnemyObjects.MonkeyEnemy;
 import itcom.gangstersquirrel.Scenes.PlayScreenHud;
 import itcom.gangstersquirrel.Objects.Enemy;
 import itcom.gangstersquirrel.Objects.EnemyObjects.FrogEnemy;
@@ -71,10 +72,13 @@ public class PlayScreen implements Screen {
     private Box2DDebugRenderer box2DDebugRenderer;
     private WorldContactListener worldContactListener;
     public ArrayList<Body> destroyBodiesQueue = new ArrayList<>();
+    private ArrayList<Enemy> enemiesCurrentlyInRightAttackRange = new ArrayList<>();
+    private ArrayList<Enemy> enemiesCurrentlyInLeftAttackRange = new ArrayList<>();
 
     // Texture variables
     private TextureAtlas playerTextureAtlas;
     private TextureAtlas enemyFrogTextureAtlas;
+    private TextureAtlas enemyMonkeyTextureAtlas;
 
     // Player variables
     private Player player;
@@ -127,6 +131,7 @@ public class PlayScreen implements Screen {
         // Set up player texture atlas
         playerTextureAtlas = new TextureAtlas("sprites/player/squirrel.atlas");
         enemyFrogTextureAtlas = new TextureAtlas("sprites/enemies/frog/frog.atlas");
+        enemyMonkeyTextureAtlas = new TextureAtlas("sprites/enemies/monkey/monkey.atlas");
 
         // Set up camera and viewport
         camera = new OrthographicCamera();
@@ -159,7 +164,7 @@ public class PlayScreen implements Screen {
         // Box2D physics setup
         world = new World(new Vector2(0, - MainGameClass.GRAVITY), true); // gravity, doSleep
         box2DDebugRenderer = new Box2DDebugRenderer();
-        worldContactListener = new WorldContactListener();
+        worldContactListener = new WorldContactListener(this);
         world.setContactListener(worldContactListener);
 
         // Set up the collision boxes for the ground and obstacle layers
@@ -581,6 +586,8 @@ public class PlayScreen implements Screen {
     public void spawnEnemy(Class<? extends Enemy> type, int spawnPositionX, int spawnPositionY) {
         if (type == FrogEnemy.class) {
             enemies.add(new FrogEnemy(this, spawnPositionX, spawnPositionY));
+        } else if (type == MonkeyEnemy.class) {
+            enemies.add(new MonkeyEnemy(this, spawnPositionX, spawnPositionY));
         }
     }
 
@@ -618,6 +625,14 @@ public class PlayScreen implements Screen {
     public TextureAtlas getEnemyFrogTextureAtlas() {
         return enemyFrogTextureAtlas;
     }
+
+    /**
+     * Returns the texture atlas for the monkey enemy sprite
+     */
+    public TextureAtlas getEnemyMonkeyTextureAtlas() {
+        return enemyMonkeyTextureAtlas;
+    }
+
 
     /**
      * @return the game class
@@ -687,6 +702,14 @@ public class PlayScreen implements Screen {
 
     public ArrayList<Enemy> getEnemies() {
         return enemies;
+    }
+
+    public ArrayList<Enemy> getEnemiesCurrentlyInRightAttackRange() {
+        return enemiesCurrentlyInRightAttackRange;
+    }
+
+    public ArrayList<Enemy> getEnemiesCurrentlyInLeftAttackRange() {
+        return enemiesCurrentlyInLeftAttackRange;
     }
 
     /* -------------------------------------------------------------------------------------------------------------- */

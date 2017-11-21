@@ -99,6 +99,9 @@ public class WeaponPickup extends InteractiveMapTileObject {
             if (changedWeaponList) {
                 playScreen.getPlayer().setWeapons(playerWeaponList);
                 playScreen.getPlayer().changeWeapon(weaponName);
+
+                // Save picked up item to statistics
+                playScreen.getStatistics().setItemsCollected(playScreen.getStatistics().getItemsCollected() + 1);
             }
         }
     }
