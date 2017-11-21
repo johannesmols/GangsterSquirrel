@@ -26,6 +26,7 @@ public class PlayScreenHud {
     private Label timerLabel;
     private ProgressBar healthBar;
     private ImageTextButton lifesImageTextButton;
+    private ImageTextButton weaponStrengthImageTextButton;
 
     public PlayScreenHud(PlayScreen playScreen) {
         this.playScreen = playScreen;
@@ -56,11 +57,16 @@ public class PlayScreenHud {
         lifesImageTextButton = new ImageTextButton(String.valueOf(playScreen.getGameProgress().getPlayerLifes()), skin, "lifes");
         lifesImageTextButton.setStyle(changeImageTextButtonStyle(lifesImageTextButton.getStyle(), "fonts/PressStart2P.ttf", 48));
 
+        weaponStrengthImageTextButton = new ImageTextButton(String.valueOf(playScreen.getGameProgress().getPlayerWeaponList().get(playScreen.getGameProgress().getCurrentlyEquippedWeapon()).getStrength()), skin, "weapon_strength");
+        weaponStrengthImageTextButton.setStyle(changeImageTextButtonStyle(weaponStrengthImageTextButton.getStyle(), "fonts/PressStart2P.ttf", 48));
+
         layoutTable.add(healthBar).expandX().growX().left().top().spaceBottom(25);
         layoutTable.add(new Actor()).expandX().fillX().center().top().spaceBottom(25);
         layoutTable.add(timerLabel).expandX().right().top().spaceBottom(25);
         layoutTable.row();
-        layoutTable.add(lifesImageTextButton).expandX().left().top();
+        layoutTable.add(lifesImageTextButton).expandX().left().top().spaceBottom(10);
+        layoutTable.row();
+        layoutTable.add(weaponStrengthImageTextButton).expandX().left().top().spaceBottom(10);
 
         stage.addActor(layoutTable);
     }
@@ -69,6 +75,7 @@ public class PlayScreenHud {
         timerLabel.setText(String.format("%04d", playScreen.getTimer()));
         healthBar.setValue(playScreen.getPlayer().getHealth());
         lifesImageTextButton.setText(String.valueOf(playScreen.getGameProgress().getPlayerLifes()));
+        weaponStrengthImageTextButton.setText(String.valueOf(playScreen.getGameProgress().getPlayerWeaponList().get(playScreen.getGameProgress().getCurrentlyEquippedWeapon()).getStrength()));
 
         // Toggle debug
         stage.setDebugAll(MainGameClass.DEBUG);
