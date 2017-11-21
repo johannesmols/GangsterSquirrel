@@ -526,15 +526,15 @@ public class PlayScreen implements Screen {
         // Save current timer time to the statistics
         statistics.setSecondsPlayed(statistics.getSecondsPlayed() + timer);
 
-        // Subtract player life
-        gameProgress.setPlayerLifes(gameProgress.getPlayerLifes() - 1);
-
         // Only when the level is finished, it should reset the timer
         if (levelFinished) {
             gameProgress.setCurrentTime(0);
         } else {
             // If the player died, add one to the death counter in the statistics
             statistics.setDiedThisManyTimes(statistics.getDiedThisManyTimes() + 1);
+
+            // Subtract player life
+            gameProgress.setPlayerLifes(gameProgress.getPlayerLifes() - 1);
 
             gameProgress.setCurrentTime(timer);
         }
