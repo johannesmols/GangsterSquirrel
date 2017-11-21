@@ -6,12 +6,13 @@ import java.util.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.jibble.pircbot.*;
 
 public class TwitchChat extends PircBot {
 
     private FileHandle fileHandle;
-    private Gson gson = new Gson();
+    private Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     public TwitchCredentialsObject getTwitchCredentials() {
         // JSON file to store the twitch credentials

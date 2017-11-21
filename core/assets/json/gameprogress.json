@@ -1,1 +1,21 @@
-{"currentLevel":1,"currentTime":0,"playerMaxHealth":100,"playerLifes":5,"playerMaximumLifes":5,"playerJumpImpulseVelocity":4.0,"playerWalkImpulseVelocity":0.1,"playerClimbImpulseVelocity":1.0,"playerMaxWalkVelocity":2.0,"playerMaxClimbVelocity":1.0,"currentlyEquippedWeapon":0,"playerWeaponList":[{"id":0,"name":"Fists","meleeOrRanged":true,"strength":1}]}
+{
+  "currentLevel": 1,
+  "currentTime": 0,
+  "playerMaxHealth": 100,
+  "playerLifes": 5,
+  "playerMaximumLifes": 5,
+  "playerJumpImpulseVelocity": 4.0,
+  "playerWalkImpulseVelocity": 0.1,
+  "playerClimbImpulseVelocity": 1.0,
+  "playerMaxWalkVelocity": 2.0,
+  "playerMaxClimbVelocity": 1.0,
+  "currentlyEquippedWeapon": 0,
+  "playerWeaponList": [
+    {
+      "id": 0,
+      "name": "Fists",
+      "meleeOrRanged": true,
+      "strength": 1
+    }
+  ]
+}

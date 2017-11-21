@@ -4,11 +4,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.files.FileHandle;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class KeyBindings {
+
+    private Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     private final String[] actions = new String[] {
             "debug",
@@ -105,7 +108,6 @@ public class KeyBindings {
      * @param keyBindings an array of key binding objects, containing a certain action and the assigned keys
      */
     public void serializeKeyBindings(KeyBindingObject[] keyBindings) {
-        Gson gson = new Gson();
         String json = gson.toJson(keyBindings);
 
         // Create new JSON file, if it doesn't exist already
@@ -125,7 +127,6 @@ public class KeyBindings {
      * @param json the JSON string that should be deserialized
      */
     private void deserializeKeyBindings(String json) {
-        Gson gson = new Gson();
         KeyBindingObject[] keyBindings = gson.fromJson(json, KeyBindingObject[].class);
 
         // Assign deserialized key bindings to key bindings lists

@@ -3,6 +3,7 @@ package itcom.gangstersquirrel.GameProgress;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import itcom.gangstersquirrel.Items.WeaponObject;
 
 import java.io.IOException;
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 public class GameProgress {
 
     private FileHandle fileHandle;
-    private Gson gson = new Gson();
+    private Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private GameProgressObject gameProgress;
 
     public GameProgress() {
@@ -26,8 +27,8 @@ public class GameProgress {
                 1,
                 0,
                 100,
-                3,
-                3,
+                5,
+                5,
                 4f,
                 0.1f,
                 1f,
