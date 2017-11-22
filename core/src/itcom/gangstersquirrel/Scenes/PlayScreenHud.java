@@ -1,14 +1,10 @@
 package itcom.gangstersquirrel.Scenes;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import itcom.gangstersquirrel.MainGameClass;
@@ -25,11 +21,12 @@ public class PlayScreenHud {
     public Stage stage;
     private Viewport viewport;
 
-    private TextureAtlas hudAtlas;
     private Skin skin;
 
     private Label timerLabel;
     private ProgressBar healthBar;
+    private ImageTextButton lifesImageTextButton;
+    private ImageTextButton weaponStrengthImageTextButton;
 
     public PlayScreenHud(PlayScreen playScreen) {
         this.playScreen = playScreen;
@@ -38,38 +35,47 @@ public class PlayScreenHud {
         stage = new Stage(viewport, playScreen.getGame().batch);
         stage.setDebugAll(MainGameClass.DEBUG);
 
-        hudAtlas = new TextureAtlas("hud/uiskin.atlas");
-        skin = new Skin();
-        skin.addRegions(hudAtlas);
+        skin = new Skin(Gdx.files.internal("skins/hud/hud.json"));
 
         Table layoutTable = new Table();
         layoutTable.top();
         layoutTable.setFillParent(true);
-        layoutTable.pad(getPixelSizeFromDensityIndependentPixels(32));
+        layoutTable.pad(getPixelSizeFromDensityIndependentPixels(50));
 
-        timerLabel = new Label(
-                String.format("%04d", playScreen.getGameProgress().getCurrentTime()),
-                new Label.LabelStyle(BitmapFontGenerator.generateFont("fonts/PressStart2P.ttf", 64),
-                Color.WHITE)
-        );
+        timerLabel = new Label(String.format("%04d", playScreen.getGameProgress().getCurrentTime()), skin, "default");
+        timerLabel.setStyle(changeLabelStyleFont(timerLabel.getStyle(), "fonts/PressStart2P.ttf", 64));
 
         healthBar = new ProgressBar(
                 0f,
                 playScreen.getGameProgress().getPlayerMaxHealth(),
                 1f,
                 false,
-                new ProgressBar.ProgressBarStyle()
+                skin,
+                "default-horizontal"
         );
 
-        layoutTable.add(healthBar).expandX().left().top();
-        layoutTable.add(timerLabel).expandX().right().top();
+        lifesImageTextButton = new ImageTextButton(String.valueOf(playScreen.getGameProgress().getPlayerLifes()), skin, "lifes");
+        lifesImageTextButton.setStyle(changeImageTextButtonStyle(lifesImageTextButton.getStyle(), "fonts/PressStart2P.ttf", 48));
+
+        weaponStrengthImageTextButton = new ImageTextButton(String.valueOf(playScreen.getGameProgress().getPlayerWeaponList().get(playScreen.getGameProgress().getCurrentlyEquippedWeapon()).getStrength()), skin, "weapon_strength");
+        weaponStrengthImageTextButton.setStyle(changeImageTextButtonStyle(weaponStrengthImageTextButton.getStyle(), "fonts/PressStart2P.ttf", 48));
+
+        layoutTable.add(healthBar).expandX().growX().left().top().spaceBottom(25);
+        layoutTable.add(new Actor()).expandX().fillX().center().top().spaceBottom(25);
+        layoutTable.add(timerLabel).expandX().right().top().spaceBottom(25);
         layoutTable.row();
+        layoutTable.add(lifesImageTextButton).expandX().left().top().spaceBottom(10);
+        layoutTable.row();
+        layoutTable.add(weaponStrengthImageTextButton).expandX().left().top().spaceBottom(10);
 
         stage.addActor(layoutTable);
     }
 
     public void update(float deltaTime) {
         timerLabel.setText(String.format("%04d", playScreen.getTimer()));
+        healthBar.setValue(playScreen.getPlayer().getHealth());
+        lifesImageTextButton.setText(String.valueOf(playScreen.getGameProgress().getPlayerLifes()));
+        weaponStrengthImageTextButton.setText(String.valueOf(playScreen.getGameProgress().getPlayerWeaponList().get(playScreen.getGameProgress().getCurrentlyEquippedWeapon()).getStrength()));
 
         // Toggle debug
         stage.setDebugAll(MainGameClass.DEBUG);
@@ -77,5 +83,15 @@ public class PlayScreenHud {
 
     private int getPixelSizeFromDensityIndependentPixels(float dip) {
         return (int) (dip * Gdx.graphics.getDensity());
+    }
+
+    private Label.LabelStyle changeLabelStyleFont(Label.LabelStyle original, String filePath, float densityIndependentPixels) {
+        original.font = BitmapFontGenerator.generateFont(filePath, densityIndependentPixels);
+        return original;
+    }
+
+    private ImageTextButton.ImageTextButtonStyle changeImageTextButtonStyle(ImageTextButton.ImageTextButtonStyle original, String filePath, float densityIndependentPixels) {
+        original.font = BitmapFontGenerator.generateFont(filePath, densityIndependentPixels);
+        return original;
     }
 }

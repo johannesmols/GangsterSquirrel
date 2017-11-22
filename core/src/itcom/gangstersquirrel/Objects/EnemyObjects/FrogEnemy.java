@@ -55,7 +55,7 @@ public class FrogEnemy extends Enemy {
     @Override
     public void update(float deltaTime) {
         stateTime += deltaTime;
-        setPosition(body.getPosition().x - getWidth() / 2, body.getPosition().y - getHeight() / 2);
+        setPosition(body.getPosition().x - getWidth() / 2, body.getPosition().y - getHeight() / 4); // Set Y position to bottom of fixture circle
         setRegion(jumpAnimation.getKeyFrame(stateTime, true));
         setFlip(isMovingLeftOrRight, false);
 

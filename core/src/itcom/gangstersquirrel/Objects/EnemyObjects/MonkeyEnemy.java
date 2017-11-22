@@ -25,16 +25,16 @@ public class MonkeyEnemy extends Enemy {
         playScreen = screen;
 
         // Set gameplay variables of super class for this specific type of enemy
-        damageMinMax = new int[] { 5, 15 };
-        health = 15;
+        damageMinMax = new int[] { 10, 20 };
+        health = 25;
         horizontalMoveImpulseVelocity = 0.1f;
-        horizontalMaxMovementVelocity = 0.5f;
+        horizontalMaxMovementVelocity = 1f;
 
         // Animation set up
         attackFrames = new Array<>();
         for(int i = 0; i < 10; i++) {
             attackFrames.add(new TextureRegion(
-                    screen.getEnemyMonkeyTextureAtlas().findRegion("monkey_attack"), i * ENEMY_PIXEL_WIDTH, 0, ENEMY_PIXEL_WIDTH, ENEMY_PIXEL_HEIGHT)
+                    screen.getEnemyMonkeyTextureAtlas().findRegion("monkey_attack"), 0, i * ENEMY_PIXEL_HEIGHT, ENEMY_PIXEL_WIDTH, ENEMY_PIXEL_HEIGHT)
             );
         }
         attackAnimation = new Animation<>(0.4f, attackFrames);

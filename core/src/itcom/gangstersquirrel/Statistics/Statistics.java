@@ -3,6 +3,7 @@ package itcom.gangstersquirrel.Statistics;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import itcom.gangstersquirrel.MainGameClass;
 
 import java.io.IOException;
@@ -13,7 +14,7 @@ import java.io.IOException;
 public class Statistics {
 
     private FileHandle fileHandle;
-    private Gson gson = new Gson();
+    private Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private StatisticsObject statistics;
 
     public Statistics() {

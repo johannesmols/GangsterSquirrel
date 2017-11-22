@@ -73,6 +73,8 @@ public class PlayScreen implements Screen {
     private Box2DDebugRenderer box2DDebugRenderer;
     private WorldContactListener worldContactListener;
     public ArrayList<Body> destroyBodiesQueue = new ArrayList<>();
+    private ArrayList<Enemy> enemiesCurrentlyInRightAttackRange = new ArrayList<>();
+    private ArrayList<Enemy> enemiesCurrentlyInLeftAttackRange = new ArrayList<>();
 
     // Texture variables
     private TextureAtlas playerTextureAtlas;
@@ -163,7 +165,7 @@ public class PlayScreen implements Screen {
         // Box2D physics setup
         world = new World(new Vector2(0, - MainGameClass.GRAVITY), true); // gravity, doSleep
         box2DDebugRenderer = new Box2DDebugRenderer();
-        worldContactListener = new WorldContactListener();
+        worldContactListener = new WorldContactListener(this);
         world.setContactListener(worldContactListener);
 
         // Set up the collision boxes for the ground and obstacle layers
@@ -525,15 +527,15 @@ public class PlayScreen implements Screen {
         // Save current timer time to the statistics
         statistics.setSecondsPlayed(statistics.getSecondsPlayed() + timer);
 
-        // Subtract player life
-        gameProgress.setPlayerLifes(gameProgress.getPlayerLifes() - 1);
-
         // Only when the level is finished, it should reset the timer
         if (levelFinished) {
             gameProgress.setCurrentTime(0);
         } else {
             // If the player died, add one to the death counter in the statistics
             statistics.setDiedThisManyTimes(statistics.getDiedThisManyTimes() + 1);
+
+            // Subtract player life
+            gameProgress.setPlayerLifes(gameProgress.getPlayerLifes() - 1);
 
             gameProgress.setCurrentTime(timer);
         }
@@ -701,6 +703,14 @@ public class PlayScreen implements Screen {
 
     public ArrayList<Enemy> getEnemies() {
         return enemies;
+    }
+
+    public ArrayList<Enemy> getEnemiesCurrentlyInRightAttackRange() {
+        return enemiesCurrentlyInRightAttackRange;
+    }
+
+    public ArrayList<Enemy> getEnemiesCurrentlyInLeftAttackRange() {
+        return enemiesCurrentlyInLeftAttackRange;
     }
 
     /* -------------------------------------------------------------------------------------------------------------- */

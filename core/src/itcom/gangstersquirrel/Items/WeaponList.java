@@ -3,6 +3,7 @@ package itcom.gangstersquirrel.Items;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -11,7 +12,7 @@ import java.util.List;
 public class WeaponList {
 
     private FileHandle fileHandle;
-    private Gson gson = new Gson();
+    private Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     /**
      * Reads the list of all weapons in the game from a JSON file and returns a list to use in the game.

@@ -1,0 +1,48 @@
+{
+com.badlogic.gdx.graphics.g2d.BitmapFont: {
+	PressStart2P: {
+		file: PressStart2P.fnt
+	}
+}
+com.badlogic.gdx.graphics.Color: {
+	white: {
+		r: 1
+		g: 1
+		b: 1
+		a: 1
+	}
+}
+com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton$ImageTextButtonStyle: {
+	default: {
+		font: PressStart2P
+		fontColor: white
+	}
+	lifes: {
+		imageUp: heart_icon
+		font: PressStart2P
+		fontColor: white
+	}
+	weapon_strength: {
+		imageUp: weapon_strength_icon
+		font: PressStart2P
+		fontColor: white
+	}
+}
+com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
+	default: {
+		font: PressStart2P
+		fontColor: white
+	}
+}
+com.badlogic.gdx.scenes.scene2d.ui.ProgressBar$ProgressBarStyle: {
+	default-horizontal: {
+		background: healthbar
+		knobBefore: health-knob-before
+	}
+}
+com.badlogic.gdx.scenes.scene2d.ui.TextTooltip$TextTooltipStyle: {
+	default: {
+		label: default
+	}
+}
+}
