@@ -16,8 +16,8 @@ public class MonkeyEnemy extends Enemy {
     private float stateTime;
     private Animation<TextureRegion> attackAnimation;
     private Array<TextureRegion> attackFrames;
-    private Animation<TextureRegion> jumpAnimation;
-    private Array<TextureRegion> jumpFrames;
+    private Animation<TextureRegion> walkAnimation;
+    private Array<TextureRegion> walkFrames;
 
     public MonkeyEnemy(PlayScreen screen, int spawnPositionX, int spawnPositionY) {
         super(screen, spawnPositionX, spawnPositionY);
@@ -32,14 +32,22 @@ public class MonkeyEnemy extends Enemy {
 
         // Animation set up
         attackFrames = new Array<>();
-        for(int i = 0; i < 4; i++) {
+        for(int i = 0; i < 10; i++) {
             attackFrames.add(new TextureRegion(
                     screen.getEnemyMonkeyTextureAtlas().findRegion("monkey_attack"), i * ENEMY_PIXEL_WIDTH, 0, ENEMY_PIXEL_WIDTH, ENEMY_PIXEL_HEIGHT)
             );
         }
-
         attackAnimation = new Animation<>(0.4f, attackFrames);
-        jumpAnimation = new Animation<>(0.4f, jumpFrames);
+
+
+        walkFrames = new Array<>();
+        for(int i = 0; i < 1; i++) {
+            walkFrames.add(new TextureRegion(
+                    screen.getEnemyMonkeyTextureAtlas().findRegion("monkey_attack"), i * ENEMY_PIXEL_WIDTH, 0, ENEMY_PIXEL_WIDTH, ENEMY_PIXEL_HEIGHT)
+            );
+        }
+
+        walkAnimation = new Animation<>(0.4f, walkFrames);
 
         stateTime = 0;
         setBounds(getX(), getY(), ENEMY_PIXEL_WIDTH / MainGameClass.PPM, ENEMY_PIXEL_HEIGHT / MainGameClass.PPM + getHeight() / 2);
@@ -49,7 +57,7 @@ public class MonkeyEnemy extends Enemy {
     public void update(float deltaTime) {
         stateTime += deltaTime;
         setPosition(body.getPosition().x - getWidth() / 2, body.getPosition().y - getHeight() / 2);
-        setRegion(jumpAnimation.getKeyFrame(stateTime, true));
+        setRegion(walkAnimation.getKeyFrame(stateTime, true));
         setFlip(isMovingLeftOrRight, false);
 
         // Move enemy around the map

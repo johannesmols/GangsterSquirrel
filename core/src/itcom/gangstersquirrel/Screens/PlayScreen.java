@@ -23,6 +23,7 @@ import itcom.gangstersquirrel.Objects.EnemyObjects.MonkeyEnemy;
 import itcom.gangstersquirrel.Scenes.PlayScreenHud;
 import itcom.gangstersquirrel.Objects.Enemy;
 import itcom.gangstersquirrel.Objects.EnemyObjects.FrogEnemy;
+import itcom.gangstersquirrel.Objects.EnemyObjects.MonkeyEnemy;
 import itcom.gangstersquirrel.Objects.Player;
 import itcom.gangstersquirrel.Statistics.Statistics;
 import itcom.gangstersquirrel.Tools.Box2DWorldCreator;
@@ -585,7 +586,7 @@ public class PlayScreen implements Screen {
         if (type == FrogEnemy.class) {
             enemies.add(new FrogEnemy(this, spawnPositionX, spawnPositionY));
         } else if (type == MonkeyEnemy.class) {
-            enemies.add(new MonkeyEnemy(this, spawnPositionX, spawnPositionY));
+            boolean add = enemies.add(new MonkeyEnemy(this, spawnPositionX, spawnPositionY));
         }
     }
 
