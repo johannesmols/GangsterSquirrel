@@ -7,14 +7,16 @@ import java.io.IOException;
 public class TwitchThread implements ChatListener {
     private TwitchChat twitch = new TwitchChat();
 
-    public TwitchThread()
+    public TwitchThread(boolean enabled)
     {
-        System.out.println("connecting...");
-        new Thread(new Runnable() {
-            public void run(){
-                twitchConnect();
-            }
-        }).start();
+        if (enabled) {
+            System.out.println("connecting...");
+            new Thread(new Runnable() {
+                public void run(){
+                    twitchConnect();
+                }
+            }).start();
+        }
     }
 
     private void twitchConnect() {
