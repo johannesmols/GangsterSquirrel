@@ -1,5 +1,5 @@
 squirrel.png
-size: 528, 24
+size: 48, 328
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
@@ -12,70 +12,84 @@ squirrel_bazooka_frame0
   index: -1
 squirrel_branch_frame0
   rotate: false
-  xy: 48, 0
+  xy: 0, 24
   size: 48, 24
   orig: 48, 24
   offset: 0, 0
   index: -1
 squirrel_branch_frame1
   rotate: false
-  xy: 96, 0
+  xy: 0, 48
   size: 48, 24
   orig: 48, 24
   offset: 0, 0
   index: -1
+squirrel_climbing_left
+  rotate: false
+  xy: 0, 72
+  size: 48, 32
+  orig: 48, 32
+  offset: 0, 0
+  index: -1
+squirrel_climbing_right
+  rotate: false
+  xy: 0, 104
+  size: 48, 32
+  orig: 48, 32
+  offset: 0, 0
+  index: -1
 squirrel_default
   rotate: false
-  xy: 144, 0
+  xy: 0, 136
   size: 48, 24
   orig: 48, 24
   offset: 0, 0
   index: -1
 squirrel_katana_frame0
   rotate: false
-  xy: 192, 0
+  xy: 0, 160
   size: 48, 24
   orig: 48, 24
   offset: 0, 0
   index: -1
 squirrel_katana_frame1
   rotate: false
-  xy: 240, 0
+  xy: 0, 184
   size: 48, 24
   orig: 48, 24
   offset: 0, 0
   index: -1
 squirrel_swiss_army_knife_frame0
   rotate: false
-  xy: 288, 0
+  xy: 0, 208
   size: 48, 24
   orig: 48, 24
   offset: 0, 0
   index: -1
 squirrel_swiss_army_knife_frame1
   rotate: false
-  xy: 336, 0
+  xy: 0, 232
   size: 48, 24
   orig: 48, 24
   offset: 0, 0
   index: -1
 squirrel_switchblade_frame0
   rotate: false
-  xy: 384, 0
+  xy: 0, 256
   size: 48, 24
   orig: 48, 24
   offset: 0, 0
   index: -1
 squirrel_switchblade_frame1
   rotate: false
-  xy: 432, 0
+  xy: 0, 280
   size: 48, 24
   orig: 48, 24
   offset: 0, 0
   index: -1
 squirrel_tommy_gun_frame0
   rotate: false
-  xy: 480, 0
+  xy: 0, 304
   size: 48, 24
   orig: 48, 24
   offset: 0, 0

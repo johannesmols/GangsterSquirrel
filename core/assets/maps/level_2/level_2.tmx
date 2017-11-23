@@ -16,7 +16,7 @@
    eJztnVlP20AURqEvEf+q+77vO13pSnmo+saP740gqhPFxY4nnjPjc6RPsRCDRU7utT2eJMeznZ3jDfLg3I60MH9uNnlOh0Qf7eiDhT5Y6IOFPljog4U+WOiDhT5Y6IOFPljog4U+WOiDBcXH3u5ypoo+WOiDhT5Y6INFLh/n4/FC5GLkUuRy5ErkauRa5HrkRuRm5FbkduRO5G7k3qz/+LH2d9B4rc23u+yrua2P9D4OT1OSj/vzx8jDyKPI48iTyNPIs8jzyIvIy8iryOvIm8jbyP6s//ix9rdaH1321dzO5eNdPL6PfIh8jHyKfJ7/P5Evka+Rb5HvkR+Rn5HDyK/I0az/+LH2t1ofXfbV3KYcz2thtT76oo+0rNZHX/SRFuuDhfXBwvpgYX2wsD5YWB8srI/1jDk3lnK8PvRRc78aij5YlOajS/2XjD5YlOajdvTBopT751NBHyzsVyz0waI0H7X3Nn2wKM1H7eiDhee7LPTBwn7FQh8sSulXQ++JrvvZIiT0kdvAMvYrFvpgoY8Txu6fi3WMB6e9exF9nKCPadP00UQfeVh40AcD64OF9cHC+mBhfbCwPlhYHyysDxbWBwvrg4X1wcL6YGF9sLA+WFgfLKwPFtYHC+uDhfXBglYfqdZprOas8RRo9ZHrM48o0OpjbGjvMaHVRw5oPqZcHzSsj37kOt/Qx3pynW9M3cdY3wfTdfzUfYz1fTBdx0/Nx9D3Dtiv0jK0F9mvNmfda3BoL7JfpfVBpzYf9Hmrs9AHixp8lNiX2qjRR8mU6qP0vtRGTT5qoFQftaIPFrk/b6l5n2w+99Nl/qdm9MEid79qu488VfTBQh8s9MFCHyz08X+mtp4hlY+hz08bU1vPkMrH0OeHQi0+akEfLPTBQh8s9MEi9/xun/WWi8ea0QeL3P1KlinZR9/6KgF9sCjZR41M3Ufqudqhf2vqPlLP1Q79W6X6qPV8WR8sSvVRKyVdn08BfbCwX7HQB4uS+lWqz3Mhow8WuXxsaz1Zl/HbWqtVso9trSfrMp68VsvjOQt9sNBH3mPZ/sz59lVyHsuOZnXMt9eKPlgQrgdX3/Ps9eD4PprHwKaPMY6hZAjXg00fYxxDyRCOH66p/oc+WOiDhT5Y6IOFPljog4U+WOiDhT5Y6IOFPlgQ5tvHXn+VYrw+9DFWv5J/TM3H3u5yaOhjM7b1/hV9bIY+0mC/KtvH746v6zl/evxuG57vssbrgzWesP6K9H3XuccT1l+Rvu869/ghPv4CY2DGvA==
   </data>
  </layer>
- <objectgroup name="weapon" visible="0">
+ <objectgroup name="weapon">
   <object id="66" x="912" y="2608" width="16" height="16">
    <properties>
     <property name="weapon_name" value="Katana"/>
@@ -69,7 +69,7 @@
   <object id="165" x="224" y="0.738234" width="16" height="2687.26"/>
   <object id="166" x="1360" y="0" width="16" height="2688.38"/>
  </objectgroup>
- <objectgroup name="finish" visible="0">
+ <objectgroup name="finish">
   <object id="33" x="304" y="240" width="64" height="80"/>
  </objectgroup>
  <objectgroup name="jumpable">
