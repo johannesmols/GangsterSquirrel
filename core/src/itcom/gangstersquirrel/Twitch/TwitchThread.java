@@ -4,11 +4,10 @@ import org.jibble.pircbot.IrcException;
 
 import java.io.IOException;
 
-public class TwitchThread extends Thread implements ChatListener {
-    public TwitchChat twitch = new TwitchChat();
+public class TwitchThread implements ChatListener {
+    private TwitchChat twitch = new TwitchChat();
 
-    @Override
-    public void run()
+    public TwitchThread()
     {
         System.out.println("connecting...");
         new Thread(new Runnable() {
@@ -18,7 +17,7 @@ public class TwitchThread extends Thread implements ChatListener {
         }).start();
     }
 
-    public void twitchConnect() {
+    private void twitchConnect() {
         twitch.addListener(this);
         try {
             twitch.connect(
@@ -27,13 +26,17 @@ public class TwitchThread extends Thread implements ChatListener {
                     twitch.getTwitchCredentials().getOauth()
             );
             System.out.println("connected");
+            twitch.sendMessage(twitch.getTwitchCredentials().getChannel(), "Connected");
 
-            System.out.println("joining channel " + twitch.getTwitchCredentials().getTag());
-            twitch.joinChannel(twitch.getTwitchCredentials().getTag());
-            System.out.println("joined successfully");
-        } catch (IOException | IrcException e) {
+            System.out.println("joining channel " + twitch.getTwitchCredentials().getChannel());
+            twitch.joinChannel(twitch.getTwitchCredentials().getChannel());
+            if (twitch.getChannels().length > 0) {
+                System.out.println("joined successfully");
+            }
+        } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("connection failed");
+        } catch (IrcException e) {
+            e.printStackTrace();
         }
     }
 

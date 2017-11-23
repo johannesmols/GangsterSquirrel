@@ -5,13 +5,13 @@ public class TwitchCredentialsObject {
     private String url;
     private int port;
     private String oauth;
-    private String tag;
+    private String channel;
 
-    public TwitchCredentialsObject(String url, int port, String oauth, String tag) {
+    public TwitchCredentialsObject(String url, int port, String oauth, String channel) {
         this.url = url;
         this.port = port;
         this.oauth = oauth;
-        this.tag = tag;
+        this.channel = channel;
     }
 
     public String getUrl() {
@@ -38,11 +38,11 @@ public class TwitchCredentialsObject {
         this.oauth = oauth;
     }
 
-    public String getTag() {
-        return tag;
+    public String getChannel() {
+        return channel;
     }
 
-    public void setTag(String tag) {
-        this.tag = tag;
+    public void setChannel(String tag) {
+        this.channel = tag;
     }
 }

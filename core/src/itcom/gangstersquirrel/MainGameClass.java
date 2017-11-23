@@ -90,7 +90,7 @@ public class MainGameClass extends Game {
 	public static final short MASK_ENEMY_MOVE_BORDER = CATEGORY_ENEMY;
 	public static final short MASK_PLAYER_ATTACK = CATEGORY_ENEMY;
 
-	public static TwitchThread twitchThread = new TwitchThread();
+	public static TwitchThread twitchThread;
 
 	/**
 	 * The first method that is called in the entire application, sets up basic variables and loads the first screen
@@ -109,7 +109,7 @@ public class MainGameClass extends Game {
 		fonts.put("default", new BitmapFont());
 
 		if (USE_TWITCH) {
-			twitchThread.start();
+			twitchThread = new TwitchThread();
 		}
 
 		// Load first screen
