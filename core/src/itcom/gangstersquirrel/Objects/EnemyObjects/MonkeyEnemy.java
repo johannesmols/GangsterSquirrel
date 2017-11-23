@@ -41,13 +41,13 @@ public class MonkeyEnemy extends Enemy {
 
 
         walkFrames = new Array<>();
-        for(int i = 0; i < 1; i++) {
+        for(int i = 0; i < 10; i++) {
             walkFrames.add(new TextureRegion(
                     screen.getEnemyMonkeyTextureAtlas().findRegion("monkey_attack"), i * ENEMY_PIXEL_WIDTH, 0, ENEMY_PIXEL_WIDTH, ENEMY_PIXEL_HEIGHT)
             );
         }
 
-        walkAnimation = new Animation<>(0.4f, walkFrames);
+        walkAnimation = new Animation<>(0.1f, walkFrames);
 
         stateTime = 0;
         setBounds(getX(), getY(), ENEMY_PIXEL_WIDTH / MainGameClass.PPM, ENEMY_PIXEL_HEIGHT / MainGameClass.PPM + getHeight() / 2);
@@ -56,7 +56,7 @@ public class MonkeyEnemy extends Enemy {
     @Override
     public void update(float deltaTime) {
         stateTime += deltaTime;
-        setPosition(body.getPosition().x - getWidth() / 2, body.getPosition().y - getHeight() / 2);
+        setPosition(body.getPosition().x - getWidth() / 2, body.getPosition().y - getHeight() / 3.5f);
         setRegion(walkAnimation.getKeyFrame(stateTime, true));
         setFlip(isMovingLeftOrRight, false);
 
