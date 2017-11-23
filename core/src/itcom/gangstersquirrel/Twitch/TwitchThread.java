@@ -7,6 +7,7 @@ import java.io.IOException;
 public class TwitchThread implements ChatListener {
 
     private TwitchChat twitch = new TwitchChat();
+    private TwitchCredentialsObject twitchCredentials = twitch.getTwitchCredentials();
 
     public TwitchThread(boolean enabled)
     {
@@ -24,9 +25,9 @@ public class TwitchThread implements ChatListener {
         twitch.addListener(this);
         try {
             twitch.connect(
-                    twitch.getTwitchCredentials().getUrl(),
-                    twitch.getTwitchCredentials().getPort(),
-                    twitch.getTwitchCredentials().getOauth()
+                    twitchCredentials.getUrl(),
+                    twitchCredentials.getPort(),
+                    twitchCredentials.getOauth()
             );
             System.out.println("Connected to Twitch");
             twitch.sendMessage(twitch.getTwitchCredentials().getChannel(), "Connected");

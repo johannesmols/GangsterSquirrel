@@ -89,14 +89,16 @@ public class MainGameClass extends Game {
 	public static final short MASK_PLAYER_ATTACK = CATEGORY_ENEMY;
 
 	// Twitch
-	public static final boolean USE_TWITCH = false;
-	public static TwitchThread twitchThread = new TwitchThread(USE_TWITCH);
+	public static final boolean USE_TWITCH = true;
+	public static TwitchThread twitchThread;
 
 	/**
 	 * The first method that is called in the entire application, sets up basic variables and loads the first screen
 	 */
 	@Override
 	public void create () {
+	    twitchThread = new TwitchThread(USE_TWITCH);
+
 		WIDTH = Gdx.graphics.getWidth();
 		HEIGHT = Gdx.graphics.getHeight();
 		ASPECT_RATIO = (float) WIDTH / (float) HEIGHT;
