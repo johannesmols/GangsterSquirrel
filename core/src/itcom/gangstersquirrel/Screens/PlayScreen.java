@@ -588,7 +588,7 @@ public class PlayScreen implements Screen {
         if (type == FrogEnemy.class) {
             enemies.add(new FrogEnemy(this, spawnPositionX, spawnPositionY));
         } else if (type == MonkeyEnemy.class) {
-            boolean add = enemies.add(new MonkeyEnemy(this, spawnPositionX, spawnPositionY));
+            enemies.add(new MonkeyEnemy(this, spawnPositionX, spawnPositionY));
         }
     }
 

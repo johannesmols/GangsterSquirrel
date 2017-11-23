@@ -51,8 +51,6 @@ public class MainGameClass extends Game {
     // Number of levels
 	public static final int NUMBER_OF_LEVELS = 3;
 
-	public static final boolean USE_TWITCH = false;
-
 	// Internal units
 	public static int TILE_PIXEL_SIZE = 16;
 	public static float GAME_WORLD_WIDTH = 16 * ZOOM; // Game world size (map dimension in pixels)
@@ -90,6 +88,8 @@ public class MainGameClass extends Game {
 	public static final short MASK_ENEMY_MOVE_BORDER = CATEGORY_ENEMY;
 	public static final short MASK_PLAYER_ATTACK = CATEGORY_ENEMY;
 
+	// Twitch
+	public static final boolean USE_TWITCH = false;
 	public static TwitchThread twitchThread = new TwitchThread(USE_TWITCH);
 
 	/**

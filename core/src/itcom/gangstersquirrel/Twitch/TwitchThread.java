@@ -5,12 +5,13 @@ import org.jibble.pircbot.IrcException;
 import java.io.IOException;
 
 public class TwitchThread implements ChatListener {
+
     private TwitchChat twitch = new TwitchChat();
 
     public TwitchThread(boolean enabled)
     {
         if (enabled) {
-            System.out.println("connecting...");
+            System.out.println("Connecting to Twitch ...");
             new Thread(new Runnable() {
                 public void run(){
                     twitchConnect();
@@ -27,17 +28,15 @@ public class TwitchThread implements ChatListener {
                     twitch.getTwitchCredentials().getPort(),
                     twitch.getTwitchCredentials().getOauth()
             );
-            System.out.println("connected");
+            System.out.println("Connected to Twitch");
             twitch.sendMessage(twitch.getTwitchCredentials().getChannel(), "Connected");
 
-            System.out.println("joining channel " + twitch.getTwitchCredentials().getChannel());
+            System.out.println("Joining Twitch channel " + twitch.getTwitchCredentials().getChannel());
             twitch.joinChannel(twitch.getTwitchCredentials().getChannel());
             if (twitch.getChannels().length > 0) {
-                System.out.println("joined successfully");
+                System.out.println("Joined Twitch channel successfully");
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (IrcException e) {
+        } catch (IOException | IrcException e) {
             e.printStackTrace();
         }
     }
