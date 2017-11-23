@@ -1,12 +1,19 @@
 monkey.png
-size: 34, 317
+size: 320, 32
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
+monkey_walk
+  rotate: false
+  xy: 0, 0
+  size: 128, 32
+  orig: 128, 32
+  offset: 0, 0
+  index: -1
 monkey_attack
   rotate: false
-  xy: 1, 1
-  size: 32, 315
-  orig: 32, 315
+  xy: 128, 0
+  size: 192, 32
+  orig: 192, 32
   offset: 0, 0
   index: -1

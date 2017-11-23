@@ -32,22 +32,21 @@ public class MonkeyEnemy extends Enemy {
 
         // Animation set up
         attackFrames = new Array<>();
-        for(int i = 0; i < 10; i++) {
+        for(int i = 0; i < 6; i++) {
             attackFrames.add(new TextureRegion(
-                    screen.getEnemyMonkeyTextureAtlas().findRegion("monkey_attack"), 0, i * ENEMY_PIXEL_HEIGHT, ENEMY_PIXEL_WIDTH, ENEMY_PIXEL_HEIGHT)
+                    screen.getEnemyMonkeyTextureAtlas().findRegion("monkey_attack"), i * ENEMY_PIXEL_HEIGHT, 0, ENEMY_PIXEL_WIDTH, ENEMY_PIXEL_HEIGHT)
             );
         }
-        attackAnimation = new Animation<>(0.4f, attackFrames);
+        attackAnimation = new Animation<>(0.1f, attackFrames);
 
 
         walkFrames = new Array<>();
-        for(int i = 0; i < 10; i++) {
+        for(int i = 0; i < 4; i++) {
             walkFrames.add(new TextureRegion(
-                    screen.getEnemyMonkeyTextureAtlas().findRegion("monkey_attack"), i * ENEMY_PIXEL_WIDTH, 0, ENEMY_PIXEL_WIDTH, ENEMY_PIXEL_HEIGHT)
+                    screen.getEnemyMonkeyTextureAtlas().findRegion("monkey_walk"), i * ENEMY_PIXEL_WIDTH, 0, ENEMY_PIXEL_WIDTH, ENEMY_PIXEL_HEIGHT)
             );
         }
-
-        walkAnimation = new Animation<>(0.1f, walkFrames);
+        walkAnimation = new Animation<>(0.4f, walkFrames);
 
         stateTime = 0;
         setBounds(getX(), getY(), ENEMY_PIXEL_WIDTH / MainGameClass.PPM, ENEMY_PIXEL_HEIGHT / MainGameClass.PPM + getHeight() / 2);
@@ -56,7 +55,7 @@ public class MonkeyEnemy extends Enemy {
     @Override
     public void update(float deltaTime) {
         stateTime += deltaTime;
-        setPosition(body.getPosition().x - getWidth() / 2, body.getPosition().y - getHeight() / 3.5f);
+        setPosition(body.getPosition().x - getWidth() / 2, body.getPosition().y - getHeight() / 4);
         setRegion(walkAnimation.getKeyFrame(stateTime, true));
         setFlip(isMovingLeftOrRight, false);
 
