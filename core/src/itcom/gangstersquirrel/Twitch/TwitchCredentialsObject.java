@@ -42,7 +42,7 @@ public class TwitchCredentialsObject {
         return channel;
     }
 
-    public void setChannel(String tag) {
-        this.channel = tag;
+    public void setChannel(String channel) {
+        this.channel = channel;
     }
 }
