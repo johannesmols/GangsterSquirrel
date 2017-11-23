@@ -60,8 +60,8 @@ public class PlayScreen implements Screen {
     private int level_1_spawnPositionY = 20;
 
     // Level 2 Configuration
-    private int level_2_spawnPositionX = 10;
-    private int level_2_spawnPositionY = 20;
+    private int level_2_spawnPositionX = 20;
+    private int level_2_spawnPositionY = 10;
 
     // Level 2 Configuration
     private int level_3_spawnPositionX = 2;
