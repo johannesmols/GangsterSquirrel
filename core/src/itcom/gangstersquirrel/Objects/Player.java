@@ -393,6 +393,7 @@ public class Player extends Sprite {
     }
 
     public void setIsOnJumpableGround(boolean onJumpableGround) {
+
         isOnJumpableGround = onJumpableGround;
     }
 

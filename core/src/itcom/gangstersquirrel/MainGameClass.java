@@ -33,7 +33,7 @@ import java.util.HashMap;
 public class MainGameClass extends Game {
 
 	// Enables certain debugging features like collision box rendering
-	public static boolean DEBUG = true;
+	public static boolean DEBUG = false;
 	public static final boolean PLAY_SOUNDS = false;
 
 	// Configuration
@@ -133,6 +133,9 @@ public class MainGameClass extends Game {
 		assetManager.dispose();
 	}
 
+	/**
+	 * Takes a screenshot of the current game state and saves it in the assets directory
+	 */
 	public void takeScreenshot() {
 		byte[] pixels = ScreenUtils.getFrameBufferPixels(0, 0, Gdx.graphics.getBackBufferWidth(), Gdx.graphics.getBackBufferHeight(), true);
 		Pixmap pixmap = new Pixmap(Gdx.graphics.getBackBufferWidth(), Gdx.graphics.getBackBufferHeight(), Pixmap.Format.RGBA8888);

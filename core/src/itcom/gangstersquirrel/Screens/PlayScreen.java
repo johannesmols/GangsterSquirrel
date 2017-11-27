@@ -23,7 +23,6 @@ import itcom.gangstersquirrel.Objects.EnemyObjects.MonkeyEnemy;
 import itcom.gangstersquirrel.Scenes.PlayScreenHud;
 import itcom.gangstersquirrel.Objects.Enemy;
 import itcom.gangstersquirrel.Objects.EnemyObjects.FrogEnemy;
-import itcom.gangstersquirrel.Objects.EnemyObjects.MonkeyEnemy;
 import itcom.gangstersquirrel.Objects.Player;
 import itcom.gangstersquirrel.Statistics.Statistics;
 import itcom.gangstersquirrel.Tools.Box2DWorldCreator;
@@ -63,7 +62,7 @@ public class PlayScreen implements Screen {
     private int level_2_spawnPositionX = 20;
     private int level_2_spawnPositionY = 10;
 
-    // Level 2 Configuration
+    // Level 3 Configuration
     private int level_3_spawnPositionX = 2;
     private int level_3_spawnPositionY = 3;
 
@@ -72,9 +71,9 @@ public class PlayScreen implements Screen {
     private Box2DWorldCreator box2DWorldCreator;
     private Box2DDebugRenderer box2DDebugRenderer;
     private WorldContactListener worldContactListener;
-    public ArrayList<Body> destroyBodiesQueue = new ArrayList<>();
     private ArrayList<Enemy> enemiesCurrentlyInRightAttackRange = new ArrayList<>();
     private ArrayList<Enemy> enemiesCurrentlyInLeftAttackRange = new ArrayList<>();
+    public ArrayList<Body> destroyBodiesQueue = new ArrayList<>();
 
     // Texture variables
     private TextureAtlas playerTextureAtlas;
@@ -92,8 +91,8 @@ public class PlayScreen implements Screen {
     private ArrayList<Enemy> enemies = new ArrayList<>();
 
     // Game Progress and Statistics
-    public GameProgress gameProgress = new GameProgress();
-    public Statistics statistics = new Statistics();
+    private GameProgress gameProgress = new GameProgress();
+    private Statistics statistics = new Statistics();
 
     // Timer
     private float deltaTimeCount = 0f;
@@ -169,7 +168,7 @@ public class PlayScreen implements Screen {
         world.setContactListener(worldContactListener);
 
         // Set up the collision boxes for the ground and obstacle layers
-        box2DWorldCreator = new Box2DWorldCreator(this); // int array = object layers of the map that need collision boxes
+        box2DWorldCreator = new Box2DWorldCreator(this);
 
         // Player set-up
         switch (gameProgress.getCurrentLevel()) {

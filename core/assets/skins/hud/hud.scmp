@@ -3,7 +3,7 @@ atlasData: {
 	atlasCurrent: true
 	drawables: [
 		{
-			file: D:/johan/Documents/_Studium/AAU/1_Semester/GangsterSquirrel/core/assets/skins/hud/sprites/healthbar.9.png
+			file: D:/Documents/IntelliJ IDEA Projects/GangsterSquirrel/core/assets/skins/hud/sprites/healthbar.9.png
 			bgColor: {
 				r: 1
 				g: 1
@@ -16,7 +16,7 @@ atlasData: {
 			name: healthbar
 		}
 		{
-			file: D:/johan/Documents/_Studium/AAU/1_Semester/GangsterSquirrel/core/assets/skins/hud/sprites/health-knob-before.png
+			file: D:/Documents/IntelliJ IDEA Projects/GangsterSquirrel/core/assets/skins/hud/sprites/health-knob-before.png
 			bgColor: {
 				r: 0
 				g: 0
@@ -29,7 +29,7 @@ atlasData: {
 			name: health-knob-before
 		}
 		{
-			file: D:/johan/Documents/_Studium/AAU/1_Semester/GangsterSquirrel/core/assets/skins/hud/sprites/health-knob-after.png
+			file: D:/Documents/IntelliJ IDEA Projects/GangsterSquirrel/core/assets/skins/hud/sprites/health-knob-after.png
 			bgColor: {
 				r: 0
 				g: 0
@@ -42,7 +42,7 @@ atlasData: {
 			name: health-knob-after
 		}
 		{
-			file: D:/johan/Documents/_Studium/AAU/1_Semester/GangsterSquirrel/core/assets/skins/hud/fonts/PressStart2P1.png
+			file: D:/Documents/IntelliJ IDEA Projects/GangsterSquirrel/core/assets/skins/hud/fonts/PressStart2P1.png
 			bgColor: {
 				r: 0
 				g: 0
@@ -55,7 +55,7 @@ atlasData: {
 			name: PressStart2P1
 		}
 		{
-			file: D:/johan/Documents/_Studium/AAU/1_Semester/GangsterSquirrel/core/assets/skins/hud/fonts/PressStart2P2.png
+			file: D:/Documents/IntelliJ IDEA Projects/GangsterSquirrel/core/assets/skins/hud/fonts/PressStart2P2.png
 			bgColor: {
 				r: 0
 				g: 0
@@ -68,7 +68,7 @@ atlasData: {
 			name: PressStart2P2
 		}
 		{
-			file: D:/johan/Documents/_Studium/AAU/1_Semester/GangsterSquirrel/core/assets/skins/hud/sprites/heart_icon.png
+			file: D:/Documents/IntelliJ IDEA Projects/GangsterSquirrel/core/assets/skins/hud/sprites/heart_icon.png
 			bgColor: {
 				r: 1
 				g: 1
@@ -81,7 +81,7 @@ atlasData: {
 			name: heart_icon
 		}
 		{
-			file: D:/johan/Documents/_Studium/AAU/1_Semester/GangsterSquirrel/core/assets/skins/hud/sprites/weapon_strength_icon.png
+			file: D:/Documents/IntelliJ IDEA Projects/GangsterSquirrel/core/assets/skins/hud/sprites/weapon_strength_icon.png
 			bgColor: {
 				r: 1
 				g: 1
@@ -112,7 +112,7 @@ jsonData: {
 		{
 			class: com.ray3k.skincomposer.data.FontData
 			name: PressStart2P
-			file: D:/johan/Documents/_Studium/AAU/1_Semester/GangsterSquirrel/core/assets/skins/hud/fonts/PressStart2P.fnt
+			file: D:/Documents/IntelliJ IDEA Projects/GangsterSquirrel/core/assets/skins/hud/fonts/PressStart2P.fnt
 		}
 	]
 	classStyleMap: {
@@ -1981,5 +1981,5 @@ preferences: {
 		value: false
 	}
 }
-saveFile: D:/johan/Documents/_Studium/AAU/1_Semester/GangsterSquirrel/core/assets/skins/hud/hud.scmp
+saveFile: D:/Documents/IntelliJ IDEA Projects/GangsterSquirrel/core/assets/skins/hud/hud.scmp
 }
