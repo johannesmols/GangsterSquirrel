@@ -160,11 +160,7 @@ public class MainGameClass extends Game {
 			System.err.println(errorMessage);
 		}
 
-		resetTimer();
-		resetPlayerLifes();
-
-		Gdx.app.exit();
-		System.exit(0);
+		exitApplication();
 	}
 
 	/**
