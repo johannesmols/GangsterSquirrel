@@ -85,8 +85,8 @@ public class TwitchChat extends PircBot {
 
     public void onMessage(String channel, String sender,
                           String login, String hostname, String message) {
-        this.messageReceived(channel, sender, login, hostname, message);
         this.logMessage(message);
+        this.messageReceived(channel, sender, login, hostname, message);
     }
 
     public void messageReceived(String channel, String sender,

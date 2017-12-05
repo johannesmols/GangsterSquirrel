@@ -15,7 +15,7 @@ public class TwitchThread implements ChatListener {
     public static int listCount(List<String> list, String message) {
         int amt = 0;
         for (int i = 0; i < list.size(); i++) {
-            if (list.get(i) == message) {
+            if (list.get(i).equalsIgnoreCase(message)) {
                 amt++;
             }
             else {
@@ -62,6 +62,7 @@ public class TwitchThread implements ChatListener {
     @Override
     public void messageReceived(String channel, String sender, String login, String hostname, String message) {
         System.out.println(sender + ": " + message);
+        System.out.println(twitch.getLog().size());
         if (listCount(twitch.getLog(), "Kappa") >= 3) {
             // #TODO: Do something on Kappa
             System.out.println("Kappa kappa kappa chameleon");
