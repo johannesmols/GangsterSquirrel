@@ -18,6 +18,7 @@ public class FrogEnemy extends Enemy {
     private Array<TextureRegion> attackFrames;
     private Animation<TextureRegion> jumpAnimation;
     private Array<TextureRegion> jumpFrames;
+    private String currentAnimation;
 
     public FrogEnemy(PlayScreen screen, int spawnPositionX, int spawnPositionY) {
         super(screen, spawnPositionX, spawnPositionY);
@@ -48,6 +49,8 @@ public class FrogEnemy extends Enemy {
         attackAnimation = new Animation<>(0.4f, attackFrames);
         jumpAnimation = new Animation<>(0.4f, jumpFrames);
 
+        currentAnimation = "frog_jump";
+
         stateTime = 0;
         setBounds(getX(), getY(), ENEMY_PIXEL_WIDTH / MainGameClass.PPM, ENEMY_PIXEL_HEIGHT / MainGameClass.PPM + getHeight() / 2);
     }
@@ -56,7 +59,16 @@ public class FrogEnemy extends Enemy {
     public void update(float deltaTime) {
         stateTime += deltaTime;
         setPosition(body.getPosition().x - getWidth() / 2, body.getPosition().y - getHeight() / 4); // Set Y position to bottom of fixture circle
-        setRegion(jumpAnimation.getKeyFrame(stateTime, true));
+        switch (currentAnimation) {
+            case "frog_jump":
+                setRegion(jumpAnimation.getKeyFrame(stateTime, true));
+                break;
+            case "frog_attack":
+                setRegion(attackAnimation.getKeyFrame(stateTime, true));
+                break;
+            default:
+                break;
+        }
         setFlip(isMovingLeftOrRight, false);
 
         // Move enemy around the map
@@ -70,11 +82,15 @@ public class FrogEnemy extends Enemy {
 
         // Change movement direction
         setMovingLeftOrRight(!getIsMovingLeftOrRight());
+
+        // Change to attack animation
+        changeAnimation("frog_attack");
     }
 
     @Override
     public void onPlayerEndContact(Player player) {
-
+        // Switch back to normal move animation
+        changeAnimation("frog_jump");
     }
 
     @Override
@@ -89,6 +105,21 @@ public class FrogEnemy extends Enemy {
     @Override
     public void onEnemyEndContact(Enemy enemy) {
 
+    }
+
+    private void changeAnimation(String animation) {
+        switch (animation) {
+            case "frog_jump":
+                currentAnimation = "frog_jump";
+                break;
+            case "frog_attack":
+                currentAnimation = "frog_attack";
+                break;
+            default:
+                break;
+        }
+
+        stateTime = 0;
     }
 
     /* ----- GETTERS AND SETTERS ------------------------------------------------------------------------------------ */
