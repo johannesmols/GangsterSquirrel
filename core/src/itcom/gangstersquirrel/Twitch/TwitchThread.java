@@ -1,15 +1,31 @@
 package itcom.gangstersquirrel.Twitch;
 
+import itcom.gangstersquirrel.MainGameClass;
 import org.jibble.pircbot.IrcException;
 
 import java.io.IOException;
+import java.util.List;
 
 public class TwitchThread implements ChatListener {
 
     private TwitchChat twitch = new TwitchChat();
+    private MainGameClass mainGameClass;
     private TwitchCredentialsObject twitchCredentials = twitch.getTwitchCredentials();
 
-    public TwitchThread(boolean enabled)
+    public static int listCount(List<String> list, String message) {
+        int amt = 0;
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i) == message) {
+                amt++;
+            }
+            else {
+                amt = amt;
+            }
+        }
+        return amt;
+    }
+
+    public TwitchThread(boolean enabled, MainGameClass mainGameClass)
     {
         if (enabled) {
             System.out.println("Connecting to Twitch ...");
@@ -19,6 +35,7 @@ public class TwitchThread implements ChatListener {
                 }
             }).start();
         }
+        this.mainGameClass = mainGameClass;
     }
 
     private void twitchConnect() {
@@ -45,5 +62,9 @@ public class TwitchThread implements ChatListener {
     @Override
     public void messageReceived(String channel, String sender, String login, String hostname, String message) {
         System.out.println(sender + ": " + message);
+        if (listCount(twitch.getLog(), "Kappa") >= 3) {
+            // #TODO: Do something on Kappa
+            System.out.println("Kappa kappa kappa chameleon");
+        }
     }
 }
