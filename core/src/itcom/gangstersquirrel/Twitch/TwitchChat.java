@@ -14,6 +14,22 @@ public class TwitchChat extends PircBot {
     private FileHandle fileHandle;
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
+    private List<String> lastTenMessages = new ArrayList<String>();
+
+    public void logMessage(String message) {
+        if (lastTenMessages.size() < 10) {
+            lastTenMessages.add(message);
+        }
+        else {
+            lastTenMessages.remove(0);
+            lastTenMessages.add(message);
+        }
+    }
+
+    public List<String> getLog() {
+        return lastTenMessages;
+    }
+
     public TwitchCredentialsObject getTwitchCredentials() {
         // JSON file to store the twitch credentials
         fileHandle = Gdx.files.local("json/twitchcredentials.json");
@@ -68,6 +84,7 @@ public class TwitchChat extends PircBot {
     public void onMessage(String channel, String sender,
                           String login, String hostname, String message) {
         this.messageReceived(channel, sender, login, hostname, message);
+        this.logMessage(message);
     }
 
     public void messageReceived(String channel, String sender,
