@@ -32,9 +32,9 @@ public abstract class InteractiveMapTileObject {
         this.map = screen.getMap();
         this.bounds = bounds;
 
+        PolygonShape shape = new PolygonShape();
         BodyDef bodyDef = new BodyDef();
         FixtureDef fixtureDef = new FixtureDef();
-        PolygonShape shape = new PolygonShape();
 
         bodyDef.type = BodyDef.BodyType.StaticBody;
         bodyDef.position.set((bounds.getX() + bounds.getWidth() / 2) / MainGameClass.PPM, (bounds.getY() + bounds.getHeight() / 2) / MainGameClass.PPM);
