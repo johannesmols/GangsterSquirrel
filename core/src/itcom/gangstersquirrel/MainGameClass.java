@@ -97,7 +97,7 @@ public class MainGameClass extends Game {
 	 */
 	@Override
 	public void create () {
-	    twitchThread = new TwitchThread(USE_TWITCH);
+	    twitchThread = new TwitchThread(USE_TWITCH, this);
 
 		WIDTH = Gdx.graphics.getWidth();
 		HEIGHT = Gdx.graphics.getHeight();
