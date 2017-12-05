@@ -28,7 +28,7 @@ public class TwitchThread implements ChatListener {
         this.mainGameClass = mainGameClass;
 
         // Set up messages that can be used as an action in the game
-        receivableMessages.add("Kappa");
+        receivableMessages.add("Kreygasm");
     }
 
     private void twitchConnect() {
@@ -44,9 +44,6 @@ public class TwitchThread implements ChatListener {
 
             System.out.println("Joining Twitch channel " + twitch.getTwitchCredentials().getChannel());
             twitch.joinChannel(twitch.getTwitchCredentials().getChannel());
-            if (twitch.getChannels().length > 0) {
-                System.out.println("Joined Twitch channel successfully");
-            }
         } catch (IOException | IrcException e) {
             e.printStackTrace();
         }
@@ -65,7 +62,7 @@ public class TwitchThread implements ChatListener {
     @Override
     public void messageReceived(String channel, String sender, String login, String hostname, String message) {
         System.out.println(sender + ": " + message);
-        System.out.println(twitch.getLog().size());
+        System.out.println("Log size: " + twitch.getLog().size());
 
         for (String receivableMessage : receivableMessages) {
             if (getNumberOfThisMessagesInLog(twitch.getLog(), receivableMessage) >= 3) {

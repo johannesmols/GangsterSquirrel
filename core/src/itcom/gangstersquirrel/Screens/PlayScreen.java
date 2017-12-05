@@ -303,6 +303,10 @@ public class PlayScreen implements Screen {
             deltaTimeCount = 0f;
         }
 
+        // increase effect timer in the main game class (for twitch)
+        game.effectStateTime += deltaTime;
+        game.updateTwitchEffectTimer();
+
         // timeStep = amount of time the world simulates (https://github.com/libgdx/libgdx/wiki/Box2d)
         // velocity and position iterations = defines the precision of the calculations. Needs more calculation power, if higher. 6 and 2 are the recommended values
         world.step(1 / (float) MainGameClass.FPS, 6, 2);
@@ -606,7 +610,9 @@ public class PlayScreen implements Screen {
     }
 
     public void log(String message) {
-        Gdx.app.log(new SimpleDateFormat("HH:mm:ss").format(new Date()) + " @ timer " + String.valueOf(timer), message);
+        if (MainGameClass.USE_PLAYSCREEN_LOG) {
+            Gdx.app.log(new SimpleDateFormat("HH:mm:ss").format(new Date()) + " @ timer " + String.valueOf(timer), message);
+        }
     }
 
     /* ----- GETTERS AND SETTERS ------------------------------------------------------------------------------------ */

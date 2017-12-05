@@ -37,6 +37,7 @@ public class MainGameClass extends Game {
 	// Enables certain debugging features like collision box rendering
 	public static boolean DEBUG = false;
 	public static final boolean PLAY_SOUNDS = false;
+	public static final boolean USE_PLAYSCREEN_LOG = true;
 
 	// Configuration
 	public static final boolean FULLSCREEN = true;
@@ -93,6 +94,10 @@ public class MainGameClass extends Game {
 	// Twitch
 	public static final boolean USE_TWITCH = true;
 	public static TwitchThread twitchThread;
+	public float effectStateTime = 0f;
+	public String currentEffect = "";
+	private float maximumEffectTimeInSeconds = 15f;
+    private PlayScreen playScreen;
 
 	/**
 	 * The first method that is called in the entire application, sets up basic variables and loads the first screen
@@ -199,14 +204,32 @@ public class MainGameClass extends Game {
 	}
 
 	public void receiveActionFromTwitch(String action) {
-		System.out.println("Twitch chat has chosen an action: " + action.toUpperCase());
+		System.out.println("Twitch chat has chosen an action: " + action);
 
 		if (this.getScreen() instanceof PlayScreen) {
-			PlayScreen playScreen = (PlayScreen) this.getScreen();
+			playScreen = (PlayScreen) this.getScreen();
 
 			if (action.equalsIgnoreCase("Kreygasm")) {
-				playScreen.getWorld().setGravity(new Vector2(0, - GRAVITY / 2));
+			    if (playScreen != null) {
+			        effectStateTime = 0f;
+			        currentEffect = "Kreygasm";
+                    playScreen.getWorld().setGravity(new Vector2(0, - GRAVITY / 2));
+                }
 			}
 		}
 	}
+
+	public void updateTwitchEffectTimer() {
+        if (effectStateTime >= maximumEffectTimeInSeconds) {
+            effectStateTime = 0f;
+
+            switch (currentEffect) {
+                case "Kreygasm":
+                    playScreen.getWorld().setGravity(new Vector2(0, - GRAVITY));
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
 }
