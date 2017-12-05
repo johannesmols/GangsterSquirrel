@@ -11,8 +11,6 @@ import org.jibble.pircbot.*;
 
 public class TwitchChat extends PircBot {
 
-    // TODO: Add use twitch boolean
-
     private FileHandle fileHandle;
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
@@ -21,8 +19,7 @@ public class TwitchChat extends PircBot {
     public void logMessage(String message) {
         if (lastTenMessages.size() < 10) {
             lastTenMessages.add(message);
-        }
-        else {
+        } else {
             lastTenMessages.remove(0);
             lastTenMessages.add(message);
         }
