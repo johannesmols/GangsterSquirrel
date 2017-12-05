@@ -19,9 +19,11 @@ import com.badlogic.gdx.graphics.PixmapIO;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.BufferUtils;
 import com.badlogic.gdx.utils.ScreenUtils;
 import itcom.gangstersquirrel.GameProgress.GameProgress;
+import itcom.gangstersquirrel.Screens.PlayScreen;
 import itcom.gangstersquirrel.Screens.SplashScreen;
 import itcom.gangstersquirrel.Twitch.*;
 
@@ -194,5 +196,17 @@ public class MainGameClass extends Game {
 		assetManager.load("sprites/splashscreen/splashscreen.png", Texture.class);
 
 		assetManager.finishLoading();
+	}
+
+	public void receiveActionFromTwitch(String action) {
+		System.out.println("Twitch chat has chosen an action: " + action.toUpperCase());
+
+		if (this.getScreen() instanceof PlayScreen) {
+			PlayScreen playScreen = (PlayScreen) this.getScreen();
+
+			if (action.equalsIgnoreCase("Kreygasm")) {
+				playScreen.getWorld().setGravity(new Vector2(0, - GRAVITY / 2));
+			}
+		}
 	}
 }

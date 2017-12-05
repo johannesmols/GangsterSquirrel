@@ -55,7 +55,7 @@ public class TwitchThread implements ChatListener {
     private static int getNumberOfThisMessagesInLog(List<String> list, String message) {
         int amt = 0;
         for (String tmpMessage : list) {
-            if (tmpMessage.equalsIgnoreCase(message)) {
+            if (tmpMessage.trim().equalsIgnoreCase(message)) {
                 amt++;
             }
         }
@@ -70,6 +70,9 @@ public class TwitchThread implements ChatListener {
         for (String receivableMessage : receivableMessages) {
             if (getNumberOfThisMessagesInLog(twitch.getLog(), receivableMessage) >= 3) {
                 switch (receivableMessage) {
+                    case "Kreygasm":
+                        mainGameClass.receiveActionFromTwitch("Kreygasm");
+                        break;
                     default:
                         break;
                 }
