@@ -11,6 +11,8 @@ import org.jibble.pircbot.*;
 
 public class TwitchChat extends PircBot {
 
+    // TODO: Add use twitch boolean
+
     private FileHandle fileHandle;
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
 

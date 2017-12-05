@@ -596,8 +596,8 @@ public class PlayScreen implements Screen {
      */
     private void destroyQueuedBodies() {
         Iterator<Body> i = destroyBodiesQueue.iterator();
-        if(!world.isLocked()){
-            while(i.hasNext()){
+        if (!world.isLocked()) {
+            while (i.hasNext()) {
                 Body b = i.next();
                 world.destroyBody(b);
                 i.remove();
