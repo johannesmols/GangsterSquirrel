@@ -5,8 +5,7 @@ import com.badlogic.gdx.files.FileHandle;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import itcom.gangstersquirrel.MainGameClass;
-
-import java.io.IOException;
+import itcom.gangstersquirrel.Tools.JSONFileCreator;
 
 /**
  * This class loads and saves miscellaneous statistics about the player and his actions in the game
@@ -49,17 +48,10 @@ public class Statistics {
         String json = gson.toJson(statistics);
 
         // Creates a new JSON file, if it doesn't exist already
-        if (!fileHandle.exists()) {
-            try {
-                boolean successfull = fileHandle.file().createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        if (JSONFileCreator.createEmptyJSONFile(fileHandle)) {
+            fileHandle.writeString(json, false); // false = overwrite instead of append
+            this.statistics = deserializeStatistics(json);
         }
-
-        fileHandle.writeString(json, false); // false = overwrite instead of append
-
-        this.statistics = deserializeStatistics(json);
     }
 
     /**

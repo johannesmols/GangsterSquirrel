@@ -5,8 +5,8 @@ import com.badlogic.gdx.files.FileHandle;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import itcom.gangstersquirrel.Items.WeaponObject;
+import itcom.gangstersquirrel.Tools.JSONFileCreator;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -61,18 +61,7 @@ public class GameProgress {
         String json = gson.toJson(gameProgress);
 
         // Creates a new JSON file, if it doesn't exist already
-        boolean successful = false;
-        if (!fileHandle.exists()) {
-            try {
-                successful = fileHandle.file().createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else {
-            successful = true;
-        }
-
-        if (successful) {
+        if (JSONFileCreator.createEmptyJSONFile(fileHandle)) {
             fileHandle.writeString(json, false); // false = overwrite instead of append
             this.gameProgress = deserializeGameProgress(json);
         }

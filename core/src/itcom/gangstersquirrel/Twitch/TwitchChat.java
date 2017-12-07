@@ -1,12 +1,12 @@
 package itcom.gangstersquirrel.Twitch;
 
-import java.io.IOException;
 import java.util.*;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import itcom.gangstersquirrel.Tools.JSONFileCreator;
 import org.jibble.pircbot.*;
 
 public class TwitchChat extends PircBot {
@@ -59,15 +59,9 @@ public class TwitchChat extends PircBot {
         String json = gson.toJson(twitchCredentials);
 
         // Creates new JSON file, if it doesn't exist already
-        if (!fileHandle.exists()) {
-            try {
-                boolean successfull = fileHandle.file().createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        if (JSONFileCreator.createEmptyJSONFile(fileHandle)) {
+            fileHandle.writeString(json, false); // false = overwrite instead of append
         }
-
-        fileHandle.writeString(json, false); // false = overwrite instead of append
     }
 
     private TwitchCredentialsObject deserializeTwitchCredentials(String json) {
