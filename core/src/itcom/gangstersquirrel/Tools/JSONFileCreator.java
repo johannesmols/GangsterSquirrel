@@ -16,17 +16,15 @@ public class JSONFileCreator {
      */
     public static boolean createEmptyJSONFileIfItDoesntExist(FileHandle fileHandle) {
 
-        boolean successful = false;
         if (!fileHandle.exists()) {
             try {
-                successful = fileHandle.file().createNewFile();
+                return fileHandle.file().createNewFile();
             } catch (IOException e) {
                 e.printStackTrace();
+                return false;
             }
         } else {
-            successful = true;
+            return true;
         }
-
-        return successful;
     }
 }
