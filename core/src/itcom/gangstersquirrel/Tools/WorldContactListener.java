@@ -1,5 +1,6 @@
 package itcom.gangstersquirrel.Tools;
 
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import itcom.gangstersquirrel.Objects.Enemy;
 import itcom.gangstersquirrel.Objects.InteractiveMapTileObject;
@@ -64,11 +65,14 @@ public class WorldContactListener implements ContactListener {
             } else if (collidedObject.getUserData() instanceof HashMap && ((HashMap) collidedObject.getUserData()).containsKey("class") && ((HashMap) collidedObject.getUserData()).containsKey("type")) {
 
                 HashMap userData = (HashMap) collidedObject.getUserData();
-
                 if (userData.get("type").equals("enemy_head")) {
                     Enemy enemy = (Enemy) userData.get("class");
                     if (beginOrEndContact) {
                         enemy.setHealth(-1);
+
+                        // Make player jump automatically when hitting an enemies head
+                        playScreen.getPlayer().body.setLinearVelocity(new Vector2(playScreen.getPlayer().body.getLinearVelocity().x, 0f));
+                        playScreen.getPlayer().body.applyLinearImpulse(new Vector2(0, playScreen.getPlayer().getJumpImpulseVelocity()), playScreen.getPlayer().body.getWorldCenter(), true);
                     }
                 }
             }
