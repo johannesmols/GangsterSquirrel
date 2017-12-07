@@ -6,6 +6,8 @@ import itcom.gangstersquirrel.Objects.InteractiveMapTileObject;
 import itcom.gangstersquirrel.Objects.Player;
 import itcom.gangstersquirrel.Screens.PlayScreen;
 
+import java.util.HashMap;
+
 public class WorldContactListener implements ContactListener {
 
     PlayScreen playScreen;
@@ -58,6 +60,16 @@ public class WorldContactListener implements ContactListener {
                     ((Enemy) collidedObject.getUserData()).onPlayerBeginContact((Player) player.getUserData());
                 } else {
                     ((Enemy) collidedObject.getUserData()).onPlayerEndContact((Player) player.getUserData());
+                }
+            } else if (collidedObject.getUserData() instanceof HashMap && ((HashMap) collidedObject.getUserData()).containsKey("class") && ((HashMap) collidedObject.getUserData()).containsKey("type")) {
+
+                HashMap userData = (HashMap) collidedObject.getUserData();
+
+                if (userData.get("type").equals("enemy_head")) {
+                    Enemy enemy = (Enemy) userData.get("class");
+                    if (beginOrEndContact) {
+                        enemy.setHealth(-1);
+                    }
                 }
             }
         }
