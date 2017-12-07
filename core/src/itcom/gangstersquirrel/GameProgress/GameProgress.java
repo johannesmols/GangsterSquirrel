@@ -61,16 +61,18 @@ public class GameProgress {
         String json = gson.toJson(gameProgress);
 
         // Creates a new JSON file, if it doesn't exist already
-        boolean successfull = false;
+        boolean successful = false;
         if (!fileHandle.exists()) {
             try {
-                successfull = fileHandle.file().createNewFile();
+                successful = fileHandle.file().createNewFile();
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        } else {
+            successful = true;
         }
 
-        if (successfull) {
+        if (successful) {
             fileHandle.writeString(json, false); // false = overwrite instead of append
             this.gameProgress = deserializeGameProgress(json);
         }

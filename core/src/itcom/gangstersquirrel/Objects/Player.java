@@ -59,7 +59,7 @@ public class Player extends Sprite {
         this.world = screen.getWorld();
         this.spawnTileX = spawnPosition_X;
         this.spawnTileY = spawnPosition_Y;
-        this.weapons = new GameProgress().getPlayerWeaponList();
+        this.weapons = screen.getGameProgress().getPlayerWeaponList();
 
         definePlayer();
 

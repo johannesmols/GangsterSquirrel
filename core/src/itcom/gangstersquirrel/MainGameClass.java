@@ -180,7 +180,9 @@ public class MainGameClass extends Game {
 	 */
 	private void resetTimer() {
 		// Reset the game timer to zero, or when the game starts the next time, the timer will continue from the last saved point
-		new GameProgress().setCurrentTime(0);
+		if (this.getScreen() != null && this.getScreen() instanceof PlayScreen ) {
+			((PlayScreen) this.getScreen()).getGameProgress().setCurrentTime(0);
+		}
 	}
 
 	/**
@@ -188,8 +190,9 @@ public class MainGameClass extends Game {
 	 */
 	private void resetPlayerLifes() {
 		// Reset current lifes to the maximum
-		GameProgress gameProgress = new GameProgress();
-		gameProgress.setPlayerLifes(gameProgress.getPlayerMaximumLifes());
+		if (this.getScreen() != null && this.getScreen() instanceof PlayScreen ) {
+			((PlayScreen) this.getScreen()).getGameProgress().setPlayerLifes(((PlayScreen) this.getScreen()).getGameProgress().getPlayerMaximumLifes());
+		}
 	}
 
 	/**
