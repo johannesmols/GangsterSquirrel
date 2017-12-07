@@ -4,8 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import itcom.gangstersquirrel.Tools.JSONFileCreator;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -57,15 +57,9 @@ public class WeaponList {
         String json = gson.toJson(weaponList);
 
         // Creates new JSON file, if it doesn't exist already
-        if (!fileHandle.exists()) {
-            try {
-                boolean successfull = fileHandle.file().createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        if (JSONFileCreator.createEmptyJSONFileIfItDoesntExist(fileHandle)) {
+            fileHandle.writeString(json, false); // false = overwrite instead of append
         }
-
-        fileHandle.writeString(json, false); // false = overwrite instead of append
     }
 
     /**

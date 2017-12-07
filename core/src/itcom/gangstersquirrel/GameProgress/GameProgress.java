@@ -61,7 +61,7 @@ public class GameProgress {
         String json = gson.toJson(gameProgress);
 
         // Creates a new JSON file, if it doesn't exist already
-        if (JSONFileCreator.createEmptyJSONFile(fileHandle)) {
+        if (JSONFileCreator.createEmptyJSONFileIfItDoesntExist(fileHandle)) {
             fileHandle.writeString(json, false); // false = overwrite instead of append
             this.gameProgress = deserializeGameProgress(json);
         }

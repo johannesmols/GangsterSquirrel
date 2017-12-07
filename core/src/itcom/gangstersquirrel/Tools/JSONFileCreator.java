@@ -14,7 +14,7 @@ public class JSONFileCreator {
      * @param fileHandle defines file name, path and type
      * @return if the operation was successful
      */
-    public static boolean createEmptyJSONFile(FileHandle fileHandle) {
+    public static boolean createEmptyJSONFileIfItDoesntExist(FileHandle fileHandle) {
 
         boolean successful = false;
         if (!fileHandle.exists()) {
