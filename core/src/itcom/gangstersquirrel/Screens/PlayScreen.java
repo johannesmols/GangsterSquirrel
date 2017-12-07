@@ -244,6 +244,10 @@ public class PlayScreen implements Screen {
         player.setMaxClimbVelocity(gameProgress.getPlayerMaxClimbVelocity());
     }
 
+    /* -------------------------------------------------------------------------------------------------------------- */
+    /* -------- THIS COMMENT MARKS THE START OF THE ENTIRE RENDER LOGIC, EACH METHOD IS LINKED TO EACH OTHER -------- */
+    /* -------------------------------------------------------------------------------------------------------------- */
+
     /**
      * Will be executed once every frame
      * @param deltaTime deltaTime is the time passed between the last and the current frame in seconds. VERY IMPORTANT!
@@ -348,6 +352,20 @@ public class PlayScreen implements Screen {
             position = new Vector3(player.body.getPosition().x, player.body.getPosition().y, 0f);
         }
         camera.position.set(position);
+    }
+
+    /**
+     * Destroys all Box2D bodies that are in the queue for deleting
+     */
+    private void destroyQueuedBodies() {
+        Iterator<Body> i = destroyBodiesQueue.iterator();
+        if (!world.isLocked()) {
+            while (i.hasNext()) {
+                Body b = i.next();
+                world.destroyBody(b);
+                i.remove();
+            }
+        }
     }
 
     /**
@@ -465,6 +483,10 @@ public class PlayScreen implements Screen {
             }
         }
     }
+
+    /* -------------------------------------------------------------------------------------------------------------- */
+    /* -------- THIS COMMENT MARKS THE END OF THE ENTIRE RENDER LOG, EACH METHOD IS LINKED TO EACH OTHER ------------ */
+    /* -------------------------------------------------------------------------------------------------------------- */
 
     /**
      * Gets called when the application is shown for the first time
@@ -592,20 +614,6 @@ public class PlayScreen implements Screen {
             enemies.add(new FrogEnemy(this, spawnPositionX, spawnPositionY));
         } else if (type == MonkeyEnemy.class) {
             enemies.add(new MonkeyEnemy(this, spawnPositionX, spawnPositionY));
-        }
-    }
-
-    /**
-     * Destroys all Box2D bodies that are in the queue for deleting
-     */
-    private void destroyQueuedBodies() {
-        Iterator<Body> i = destroyBodiesQueue.iterator();
-        if (!world.isLocked()) {
-            while (i.hasNext()) {
-                Body b = i.next();
-                world.destroyBody(b);
-                i.remove();
-            }
         }
     }
 
