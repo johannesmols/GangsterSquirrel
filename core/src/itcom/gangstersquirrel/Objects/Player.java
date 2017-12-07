@@ -226,6 +226,10 @@ public class Player extends Sprite {
         body.createFixture(attackLeftFixtureDef).setUserData("player_attack_left");
     }
 
+    /**
+     * Create the shape of the player, which is half the width of the player texture because it is larger to include weapons
+     * @return the shape
+     */
     private PolygonShape getPlayerShape() {
 
         PolygonShape shape = new PolygonShape();

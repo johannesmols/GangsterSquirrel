@@ -77,6 +77,7 @@ public class MainGameClass extends Game {
 	public static final short CATEGORY_JUMPABLE 			= 0x0064;
 	public static final short CATEGORY_ENEMY_MOVE_BORDER 	= 0x0128;
 	public static final short CATEGORY_PLAYER_ATTACK        = 0x0256;
+	public static final short CATEGORY_ENEMY_HEAD           = 0x0512;
 
 	// Define masks for each object which define, with what objects this item can collide with
 	// This is done with the BITWISE OR operator (see example here: https://www.programiz.com/java-programming/bitwise-operators)
@@ -90,6 +91,7 @@ public class MainGameClass extends Game {
 	public static final short MASK_JUMPABLE = CATEGORY_PLAYER | CATEGORY_ENEMY;
 	public static final short MASK_ENEMY_MOVE_BORDER = CATEGORY_ENEMY;
 	public static final short MASK_PLAYER_ATTACK = CATEGORY_ENEMY;
+	public static final short MASK_ENEMY_HEAD = CATEGORY_PLAYER;
 
 	// Twitch
 	public static final boolean USE_TWITCH = true;

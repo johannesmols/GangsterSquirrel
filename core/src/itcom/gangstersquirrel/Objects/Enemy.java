@@ -6,6 +6,7 @@ import com.badlogic.gdx.physics.box2d.*;
 import itcom.gangstersquirrel.MainGameClass;
 import itcom.gangstersquirrel.Screens.PlayScreen;
 
+import java.util.HashMap;
 import java.util.Random;
 
 public abstract class Enemy extends Sprite {
@@ -43,8 +44,34 @@ public abstract class Enemy extends Sprite {
         CircleShape shape = new CircleShape();
         shape.setRadius(ENEMY_PIXEL_WIDTH / 4 / MainGameClass.PPM);
         fixtureDef.shape = shape;
-
         body.createFixture(fixtureDef).setUserData(this);
+
+        FixtureDef headFixtureDef = new FixtureDef();
+        headFixtureDef.shape = getHeadShape();
+        headFixtureDef.isSensor = true;
+        headFixtureDef.filter.categoryBits = MainGameClass.CATEGORY_ENEMY_HEAD;
+        headFixtureDef.filter.maskBits = MainGameClass.MASK_ENEMY_HEAD;
+        HashMap<String, Object> userData = new HashMap<>();
+        userData.put("class", this);
+        userData.put("type", "enemy_head");
+        body.createFixture(headFixtureDef).setUserData(userData);
+    }
+
+    /**
+     * Creates a shape that hovers over the head of enemies, so when the player collides with it, the enemy dies
+     * @return the shape
+     */
+    private PolygonShape getHeadShape() {
+
+        PolygonShape shape = new PolygonShape();
+        shape.setAsBox(
+                ENEMY_PIXEL_WIDTH / 6 / MainGameClass.PPM,
+                0,
+                new Vector2(0,ENEMY_PIXEL_HEIGHT / 2 / MainGameClass.PPM),
+                0f
+        );
+
+        return shape;
     }
 
     protected int randomDamageValueBetweenMinAndMax() {
