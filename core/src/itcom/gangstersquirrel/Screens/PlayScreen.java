@@ -523,7 +523,6 @@ public class PlayScreen implements Screen {
      * Resets the player to the start of the level and resets all attributes
      */
     public void respawnPlayer(boolean levelFinished) {
-        log("Game over, player died, respawning now...");
         level_1_backgroundMusic.stop();
         level_2_backgroundMusic.stop();
 
@@ -534,6 +533,7 @@ public class PlayScreen implements Screen {
         if (levelFinished) {
             gameProgress.setCurrentTime(0);
         } else {
+            log("Game over, player died, respawning now...");
             // If the player died, add one to the death counter in the statistics
             statistics.setDiedThisManyTimes(statistics.getDiedThisManyTimes() + 1);
 
