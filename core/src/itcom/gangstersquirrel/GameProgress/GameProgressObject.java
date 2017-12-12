@@ -9,6 +9,7 @@ import java.util.ArrayList;
  */
 public class GameProgressObject {
 
+    private String playerName;
     private int currentLevel;
     private long currentTime;
     private int playerMaxHealth;
@@ -23,6 +24,7 @@ public class GameProgressObject {
     private ArrayList<WeaponObject> playerWeaponList;
 
     /**
+     * @param playerName the player's name used for the scoreboard
      * @param currentLevel the current level which the player is in
      * @param currentTime the current time in seconds, will remain when the player dies and respawns
      * @param playerMaxHealth the maximum health that the player can have
@@ -36,10 +38,11 @@ public class GameProgressObject {
      * @param currentlyEquippedWeapon the index of the currently equipped weapon in the weapon list of the player
      * @param playerWeaponList the equipped weapons of the player
      */
-    public GameProgressObject(int currentLevel, long currentTime, int playerMaxHealth, int playerLifes, int playerMaximumLifes, float
+    public GameProgressObject(String playerName, int currentLevel, long currentTime, int playerMaxHealth, int playerLifes, int playerMaximumLifes, float
             playerJumpImpulseVelocity, float playerWalkImpulseVelocity, float playerClimbImpulseVelocity, float
             playerMaxWalkVelocity, float playerMaxClimbVelocity, int currentlyEquippedWeapon, ArrayList<WeaponObject> playerWeaponList) {
 
+        this.playerName = playerName;
         this.currentLevel = currentLevel;
         this.currentTime = currentTime;
         this.playerMaxHealth = playerMaxHealth;
@@ -52,6 +55,16 @@ public class GameProgressObject {
         this.playerMaxClimbVelocity = playerMaxClimbVelocity;
         this.currentlyEquippedWeapon = currentlyEquippedWeapon;
         this.playerWeaponList = playerWeaponList;
+    }
+
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    public void setPlayerName(String playerName) {
+        if (playerName != null && !playerName.trim().isEmpty()) {
+            this.playerName = playerName.trim();
+        }
     }
 
     public int getCurrentLevel() {
