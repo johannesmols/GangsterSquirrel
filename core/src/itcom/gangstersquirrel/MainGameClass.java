@@ -2,7 +2,7 @@
  * A simple 2D game created with the libGDX framework
  * This game was created during the P1 project in IT, Communication and New Media (1. Semester, 2017) at Aalborg University Copenhagen
  *
- * @author Johannes Mols, Alexander Ludvig Brüchmann, Boris Yordanov, Agata Surmacz, Muheb Khan, Rehan Mir, Martin Sander
+ * @author Johannes Mols, Ludvig Alexander Brüchmann, Boris Yordanov, Agata Surmacz, Muheb Khan, Rehan Mir, Martin Sander
  * @version 1.0
  * @since 2017-10-23
  */
