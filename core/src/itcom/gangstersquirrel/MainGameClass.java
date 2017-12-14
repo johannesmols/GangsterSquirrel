@@ -11,6 +11,7 @@ package itcom.gangstersquirrel;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
@@ -28,6 +29,7 @@ import itcom.gangstersquirrel.Screens.SplashScreen;
 import itcom.gangstersquirrel.Twitch.*;
 
 import java.util.HashMap;
+import java.util.Optional;
 
 /**
  * The main class of the game and entrance point
@@ -245,15 +247,11 @@ public class MainGameClass extends Game {
         }
     }
 
-	/**
-	 * Get the PlayScreen class, if the current screen is the play screen
-	 * @return the PlayScreen instance
-	 */
-	public PlayScreen getPlayScreen() {
-		if (this.getScreen() != null && this.getScreen() instanceof PlayScreen) {
-			return (PlayScreen) this.getScreen();
-		}
-
-		return null;
+    /**
+     * Gets the current screen as an Optional
+     * @return the optional screen
+     */
+	public Optional<? extends Screen> getPlayScreen() {
+        return Optional.of(this.getScreen());
 	}
 }
