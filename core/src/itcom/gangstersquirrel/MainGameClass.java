@@ -208,6 +208,10 @@ public class MainGameClass extends Game {
 		assetManager.finishLoading();
 	}
 
+	/**
+	 * Receive an action that the twitch chat has decided for and convert it into an actual effect in the game
+	 * @param action the name of the action
+	 */
 	public void receiveActionFromTwitch(String action) {
 		System.out.println("Twitch chat has chosen an action: " + action);
 
@@ -224,6 +228,9 @@ public class MainGameClass extends Game {
 		}
 	}
 
+	/**
+	 * Update the active twitch effect and it's timer
+	 */
 	public void updateTwitchEffectTimer() {
         if (effectStateTime >= maximumEffectTimeInSeconds) {
             effectStateTime = 0f;
@@ -237,4 +244,16 @@ public class MainGameClass extends Game {
             }
         }
     }
+
+	/**
+	 * Get the PlayScreen class, if the current screen is the play screen
+	 * @return the PlayScreen instance
+	 */
+	public PlayScreen getPlayScreen() {
+		if (this.getScreen() != null && this.getScreen() instanceof PlayScreen) {
+			return (PlayScreen) this.getScreen();
+		}
+
+		return null;
+	}
 }

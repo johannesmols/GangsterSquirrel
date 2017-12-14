@@ -1,5 +1,6 @@
 package itcom.gangstersquirrel.Twitch;
 
+import itcom.gangstersquirrel.GameProgress.GameProgress;
 import itcom.gangstersquirrel.MainGameClass;
 import org.jibble.pircbot.IrcException;
 
@@ -40,7 +41,7 @@ public class TwitchThread implements ChatListener {
                     twitchCredentials.getOauth()
             );
             System.out.println("Connected to Twitch");
-            twitch.sendMessage(twitch.getTwitchCredentials().getChannel(), "Connected");
+            twitch.sendMessage(twitch.getTwitchCredentials().getChannel(), new GameProgress().getPlayerName() + " connected");
 
             System.out.println("Joining Twitch channel " + twitch.getTwitchCredentials().getChannel());
             twitch.joinChannel(twitch.getTwitchCredentials().getChannel());
