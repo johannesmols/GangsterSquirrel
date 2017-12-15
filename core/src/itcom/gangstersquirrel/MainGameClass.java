@@ -23,7 +23,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.BufferUtils;
 import com.badlogic.gdx.utils.ScreenUtils;
-import itcom.gangstersquirrel.GameProgress.GameProgress;
 import itcom.gangstersquirrel.Screens.PlayScreen;
 import itcom.gangstersquirrel.Screens.SplashScreen;
 import itcom.gangstersquirrel.Twitch.*;
@@ -217,8 +216,8 @@ public class MainGameClass extends Game {
 	public void receiveActionFromTwitch(String action) {
 		System.out.println("Twitch chat has chosen an action: " + action);
 
-		if (this.getScreen() instanceof PlayScreen) {
-			playScreen = (PlayScreen) this.getScreen();
+		if (this.getCurrentScreen().isPresent() && this.getCurrentScreen().get() instanceof PlayScreen) {
+			playScreen = (PlayScreen) this.getCurrentScreen().get();
 
 			if (action.equalsIgnoreCase("Kreygasm")) {
 			    if (playScreen != null) {
@@ -248,10 +247,10 @@ public class MainGameClass extends Game {
     }
 
     /**
-     * Gets the current screen as an Optional
+     * Gets the current screen as an Optional. This is an unnecessary method, because there is the method getScreen(), but I wanted to test the Optional class
      * @return the optional screen
      */
-	public Optional<? extends Screen> getPlayScreen() {
+	public Optional<? extends Screen> getCurrentScreen() {
         return Optional.of(this.getScreen());
 	}
 }
