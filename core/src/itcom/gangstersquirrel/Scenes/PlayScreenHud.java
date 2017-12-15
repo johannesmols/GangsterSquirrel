@@ -27,6 +27,7 @@ public class PlayScreenHud {
     private ProgressBar healthBar;
     private ImageTextButton lifesImageTextButton;
     private ImageTextButton weaponStrengthImageTextButton;
+    private ImageTextButton twitchImageTextButton;
 
     public PlayScreenHud(PlayScreen playScreen) {
         this.playScreen = playScreen;
@@ -60,6 +61,9 @@ public class PlayScreenHud {
         weaponStrengthImageTextButton = new ImageTextButton(String.valueOf(playScreen.getGameProgress().getPlayerWeaponList().get(playScreen.getGameProgress().getCurrentlyEquippedWeapon()).getStrength()), skin, "weapon_strength");
         weaponStrengthImageTextButton.setStyle(changeImageTextButtonStyle(weaponStrengthImageTextButton.getStyle(), "fonts/PressStart2P.ttf", 48));
 
+        twitchImageTextButton = new ImageTextButton(String.format("%01d", 0), skin, "twitch");
+        twitchImageTextButton.setStyle(changeImageTextButtonStyle(twitchImageTextButton.getStyle(), "fonts/PressStart2P.ttf", 48));
+
         layoutTable.add(healthBar).expandX().growX().left().top().spaceBottom(25);
         layoutTable.add(new Actor()).expandX().fillX().center().top().spaceBottom(25);
         layoutTable.add(timerLabel).expandX().right().top().spaceBottom(25);
@@ -67,6 +71,8 @@ public class PlayScreenHud {
         layoutTable.add(lifesImageTextButton).expandX().left().top().spaceBottom(10);
         layoutTable.row();
         layoutTable.add(weaponStrengthImageTextButton).expandX().left().top().spaceBottom(10);
+        layoutTable.row();
+        layoutTable.add(twitchImageTextButton).expandX().left().top().spaceBottom(10);
 
         stage.addActor(layoutTable);
     }
@@ -76,6 +82,7 @@ public class PlayScreenHud {
         healthBar.setValue(playScreen.getPlayer().getHealth());
         lifesImageTextButton.setText(String.valueOf(playScreen.getGameProgress().getPlayerLifes()));
         weaponStrengthImageTextButton.setText(String.valueOf(playScreen.getGameProgress().getPlayerWeaponList().get(playScreen.getGameProgress().getCurrentlyEquippedWeapon()).getStrength()));
+        twitchImageTextButton.setText(playScreen.getGame().twitchEffectActive ? String.valueOf(Math.round(playScreen.getGame().maximumEffectTimeInSeconds - playScreen.getGame().effectStateTime)) : "0");
 
         // Toggle debug
         stage.setDebugAll(MainGameClass.DEBUG);

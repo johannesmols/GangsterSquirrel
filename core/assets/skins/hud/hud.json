@@ -27,6 +27,11 @@ com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton$ImageTextButtonStyle: {
 		font: PressStart2P
 		fontColor: white
 	}
+	twitch: {
+		imageUp: twitch
+		font: PressStart2P
+		fontColor: white
+	}
 }
 com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
 	default: {

@@ -33,7 +33,7 @@ health-knob-after
   index: -1
 health-knob-before
   rotate: false
-  xy: 515, 579
+  xy: 565, 613
   size: 3, 42
   orig: 3, 42
   offset: 0, 0
@@ -49,6 +49,13 @@ healthbar
 heart_icon
   rotate: false
   xy: 515, 623
+  size: 48, 32
+  orig: 48, 32
+  offset: 0, 0
+  index: -1
+twitch
+  rotate: false
+  xy: 515, 589
   size: 48, 32
   orig: 48, 32
   offset: 0, 0

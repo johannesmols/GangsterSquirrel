@@ -99,7 +99,8 @@ public class MainGameClass extends Game {
 	public static TwitchThread twitchThread;
 	public float effectStateTime = 0f;
 	public String currentEffect = "";
-	private float maximumEffectTimeInSeconds = 15f;
+	public float maximumEffectTimeInSeconds = 15f;
+	public boolean twitchEffectActive = false;
     private PlayScreen playScreen;
 
 	/**
@@ -223,6 +224,7 @@ public class MainGameClass extends Game {
 			    if (playScreen != null) {
 			        effectStateTime = 0f;
 			        currentEffect = "Kreygasm";
+			        twitchEffectActive = true;
                     playScreen.getWorld().setGravity(new Vector2(0, - GRAVITY / 2));
                 }
 			}
@@ -239,6 +241,7 @@ public class MainGameClass extends Game {
             switch (currentEffect) {
                 case "Kreygasm":
                     playScreen.getWorld().setGravity(new Vector2(0, - GRAVITY));
+                    twitchEffectActive = false;
                     break;
                 default:
                     break;
