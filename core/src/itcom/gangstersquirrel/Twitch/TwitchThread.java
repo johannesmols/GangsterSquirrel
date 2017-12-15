@@ -67,13 +67,7 @@ public class TwitchThread implements ChatListener {
 
         for (String receivableMessage : receivableMessages) {
             if (getNumberOfThisMessagesInLog(twitch.getLog(), receivableMessage) >= 3) {
-                switch (receivableMessage) {
-                    case "Kreygasm":
-                        mainGameClass.receiveActionFromTwitch("Kreygasm");
-                        break;
-                    default:
-                        break;
-                }
+                mainGameClass.receiveActionFromTwitch(receivableMessage);
             }
         }
     }
