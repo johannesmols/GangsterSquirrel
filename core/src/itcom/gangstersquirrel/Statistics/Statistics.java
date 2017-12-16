@@ -16,14 +16,14 @@ public class Statistics {
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private StatisticsObject statistics;
 
+    // Default statistics
+    private StatisticsObject defaultStatistics = new StatisticsObject(
+            0, 0, 0, 0, 0, 0, 0, 0, new long[MainGameClass.NUMBER_OF_LEVELS]
+    );
+
     public Statistics() {
         // JSON file to store the statistics
         fileHandle = Gdx.files.local("json/statistics.json");
-
-        // Default statistics
-        StatisticsObject defaultStatistics = new StatisticsObject(
-                0, 0, 0, 0, 0, 0, 0, 0, new long[MainGameClass.NUMBER_OF_LEVELS]
-        );
 
         if (fileHandle.exists()) {
             String json = fileHandle.readString();
@@ -38,6 +38,10 @@ public class Statistics {
             serializeStatistics(defaultStatistics);
             statistics = deserializeStatistics(fileHandle.readString());
         }
+    }
+
+    public void resetToDefault() {
+        serializeStatistics(defaultStatistics);
     }
 
     /**

@@ -1,6 +1,7 @@
 package itcom.gangstersquirrel.Scenes;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -93,12 +94,12 @@ public class PlayScreenHud {
     }
 
     private Label.LabelStyle changeLabelStyleFont(Label.LabelStyle original, String filePath, float densityIndependentPixels) {
-        original.font = BitmapFontGenerator.generateFont(filePath, densityIndependentPixels);
+        original.font = BitmapFontGenerator.generateFont(filePath, densityIndependentPixels, Color.WHITE);
         return original;
     }
 
     private ImageTextButton.ImageTextButtonStyle changeImageTextButtonStyle(ImageTextButton.ImageTextButtonStyle original, String filePath, float densityIndependentPixels) {
-        original.font = BitmapFontGenerator.generateFont(filePath, densityIndependentPixels);
+        original.font = BitmapFontGenerator.generateFont(filePath, densityIndependentPixels, Color.WHITE);
         return original;
     }
 }

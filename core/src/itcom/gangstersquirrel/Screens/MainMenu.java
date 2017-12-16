@@ -16,7 +16,6 @@ public class MainMenu implements Screen {
 
     private Skin skin;
     private Stage stage;
-    private Window window;
 
     private Label gameTitleLabel;
     private TextButton playButton;
@@ -96,7 +95,6 @@ public class MainMenu implements Screen {
     @Override
     public void resize(int width, int height) {
         stage.getViewport().update(width, height, true);
-        //window.setSize(MainGameClass.WIDTH, MainGameClass.HEIGHT);
     }
 
     @Override
@@ -145,6 +143,7 @@ public class MainMenu implements Screen {
         @Override
         public void clicked(InputEvent event, float x, float y) {
             super.clicked(event, x, y);
+            game.setScreen(new StatisticsMenu(game));
         }
     };
 

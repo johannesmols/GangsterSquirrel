@@ -1,6 +1,7 @@
 package itcom.gangstersquirrel.Tools;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 
@@ -13,11 +14,12 @@ public class BitmapFontGenerator {
      * @param densityIndependentPixels an abstract unit based on the physical density of the screen, determines the font size
      * @return the generated BitmapFont
      */
-    public static BitmapFont generateFont(String filePath, float densityIndependentPixels) {
+    public static BitmapFont generateFont(String filePath, float densityIndependentPixels, Color color) {
         FreeTypeFontGenerator fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal(filePath));
         FreeTypeFontGenerator.FreeTypeFontParameter fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 
         fontParameter.size = (int) (densityIndependentPixels * Gdx.graphics.getDensity());
+        fontParameter.color = color;
 
         return fontGenerator.generateFont(fontParameter);
     }
