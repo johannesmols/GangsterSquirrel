@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import itcom.gangstersquirrel.MainGameClass;
+import itcom.gangstersquirrel.Scenes.MainMenu;
 
 /**
  * Shows a splashscreen at the start of the application for a defined amount of time
@@ -34,12 +35,7 @@ public class SplashScreen implements Screen {
     public void show() {
         splashImage.setSize(stage.getWidth(), stage.getHeight());
         stage.addActor(splashImage);
-        splashImage.addAction(Actions.sequence(Actions.alpha(0), Actions.fadeIn(3.0f), Actions.delay(1), Actions.run(new Runnable() {
-            @Override
-            public void run() {
-                game.setScreen(new PlayScreen(game));
-            }
-        })));
+        splashImage.addAction(Actions.sequence(Actions.alpha(0), Actions.fadeIn(3.0f), Actions.delay(1), Actions.run(() -> game.setScreen(new MainMenu(game)))));
     }
 
     /**
@@ -56,7 +52,7 @@ public class SplashScreen implements Screen {
 
     private void handleInput(float deltaTime) {
         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE) || Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
-            game.setScreen(new PlayScreen(game));
+            game.setScreen(new MainMenu(game));
         }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
