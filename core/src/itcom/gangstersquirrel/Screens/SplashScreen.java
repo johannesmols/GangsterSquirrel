@@ -9,7 +9,6 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import itcom.gangstersquirrel.MainGameClass;
-import itcom.gangstersquirrel.Scenes.MainMenu;
 
 /**
  * Shows a splashscreen at the start of the application for a defined amount of time

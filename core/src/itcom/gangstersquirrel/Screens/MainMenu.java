@@ -1,4 +1,4 @@
-package itcom.gangstersquirrel.Scenes;
+package itcom.gangstersquirrel.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -9,7 +9,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TiledDrawable;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import itcom.gangstersquirrel.MainGameClass;
-import itcom.gangstersquirrel.Screens.PlayScreen;
 
 public class MainMenu implements Screen {
 
