@@ -11,6 +11,7 @@ package itcom.gangstersquirrel;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
@@ -25,6 +26,7 @@ import com.badlogic.gdx.utils.BufferUtils;
 import com.badlogic.gdx.utils.ScreenUtils;
 import itcom.gangstersquirrel.Screens.PlayScreen;
 import itcom.gangstersquirrel.Screens.SplashScreen;
+import itcom.gangstersquirrel.Settings.Settings;
 import itcom.gangstersquirrel.Twitch.*;
 
 import java.util.HashMap;
@@ -41,8 +43,8 @@ public class MainGameClass extends Game {
 	public static final boolean USE_PLAYSCREEN_LOG = true;
 
 	// Configuration
-	public static final boolean FULLSCREEN = true;
-	public static final boolean RESIZABLE = false;
+	public static boolean FULLSCREEN = true;
+	public static boolean RESIZABLE = false;
 	public static final int FPS = 60;
 	public static final String NAME = "Gangster Squirrel";
 	public static int WIDTH; // Game width
@@ -110,9 +112,20 @@ public class MainGameClass extends Game {
 	public void create () {
 	    twitchThread = new TwitchThread(USE_TWITCH, this);
 
-		WIDTH = Gdx.graphics.getWidth();
-		HEIGHT = Gdx.graphics.getHeight();
+	    Settings settings = new Settings();
+
+		// if values haven't been set yet
+	    if (settings.getGameWidth() == 0 && settings.getGameHeight() == 0) {
+	    	settings.setGameWidth(Gdx.graphics.getWidth());
+	    	settings.setGameHeight(Gdx.graphics.getHeight());
+		}
+
+	    FULLSCREEN = settings.getFullscreen();
+		WIDTH = settings.getGameWidth();
+		HEIGHT = settings.getGameHeight();
 		ASPECT_RATIO = (float) WIDTH / (float) HEIGHT;
+
+		changeGameResolution();
 
 		batch = new SpriteBatch();
 		assetManager = new AssetManager();
@@ -142,6 +155,18 @@ public class MainGameClass extends Game {
 	public void dispose () {
 		batch.dispose();
 		assetManager.dispose();
+	}
+
+	public void changeGameResolution() {
+		Settings settings = new Settings();
+		Graphics.DisplayMode mode = Gdx.graphics.getDisplayMode();
+
+		if (settings.getFullscreen()) {
+			Gdx.graphics.setWindowedMode(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+			Gdx.graphics.setFullscreenMode(mode);
+		} else if (!settings.getFullscreen()) {
+			Gdx.graphics.setWindowedMode(settings.getGameWidth(), settings.getGameHeight());
+		}
 	}
 
 	/**
