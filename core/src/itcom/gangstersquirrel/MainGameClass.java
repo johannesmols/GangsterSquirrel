@@ -27,8 +27,10 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import itcom.gangstersquirrel.Screens.PlayScreen;
 import itcom.gangstersquirrel.Screens.SplashScreen;
 import itcom.gangstersquirrel.Settings.Settings;
+import itcom.gangstersquirrel.Tools.ResolutionObject;
 import itcom.gangstersquirrel.Twitch.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Optional;
 
@@ -105,12 +107,17 @@ public class MainGameClass extends Game {
 	public boolean twitchEffectActive = false;
     private PlayScreen playScreen;
 
+    // Possible display resolutions
+	private static ArrayList<ResolutionObject> resolutions;
+
 	/**
 	 * The first method that is called in the entire application, sets up basic variables and loads the first screen
 	 */
 	@Override
 	public void create () {
 	    twitchThread = new TwitchThread(USE_TWITCH, this);
+
+	    setUpResolutions();
 
 	    Settings settings = new Settings();
 
@@ -283,5 +290,54 @@ public class MainGameClass extends Game {
      */
 	public Optional<? extends Screen> getCurrentScreen() {
         return Optional.of(this.getScreen());
+	}
+
+	/**
+	 * Sets up a list with common resolutions
+	 */
+	private void setUpResolutions() {
+		resolutions = new ArrayList<>();
+
+		resolutions.add(new ResolutionObject("4:3", 800, 600));
+		resolutions.add(new ResolutionObject("4:3", 1024, 768));
+		resolutions.add(new ResolutionObject("4:3", 1280, 960));
+		resolutions.add(new ResolutionObject("4:3", 1400, 1050));
+		resolutions.add(new ResolutionObject("4:3", 1600, 1200));
+		resolutions.add(new ResolutionObject("4:3", 2048, 1536));
+		resolutions.add(new ResolutionObject("4:3", 3200, 2400));
+		resolutions.add(new ResolutionObject("4:3", 4000, 3000));
+		resolutions.add(new ResolutionObject("4:3", 6400, 4800));
+
+		resolutions.add(new ResolutionObject("5:3", 800, 480));
+		resolutions.add(new ResolutionObject("5:3", 1280, 768));
+
+		resolutions.add(new ResolutionObject("5:4", 1280, 1024));
+		resolutions.add(new ResolutionObject("5:4", 2560, 2048));
+		resolutions.add(new ResolutionObject("5:4", 5120, 4096));
+
+		resolutions.add(new ResolutionObject("16:9", 852, 480));
+		resolutions.add(new ResolutionObject("16:9", 1280, 720));
+		resolutions.add(new ResolutionObject("16:9", 1365, 768));
+		resolutions.add(new ResolutionObject("16:9", 1600, 900));
+		resolutions.add(new ResolutionObject("16:9", 1920, 1080));
+
+		resolutions.add(new ResolutionObject("16:10", 640, 400));
+		resolutions.add(new ResolutionObject("16:10", 1280, 800));
+		resolutions.add(new ResolutionObject("16:10", 1440, 900));
+		resolutions.add(new ResolutionObject("16:10", 1680, 1050));
+		resolutions.add(new ResolutionObject("16:10", 1920, 1200));
+		resolutions.add(new ResolutionObject("16:10", 2560, 1600));
+		resolutions.add(new ResolutionObject("16:10", 3840, 2400));
+		resolutions.add(new ResolutionObject("16:10", 7680, 4800));
+
+		resolutions.add(new ResolutionObject("17:9", 2048, 1080));
+	}
+
+	/**
+	 * Get the list with common resolutions
+	 * @return
+	 */
+	public ArrayList<ResolutionObject> getResolutions() {
+		return resolutions;
 	}
 }
