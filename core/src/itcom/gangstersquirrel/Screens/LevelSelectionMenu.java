@@ -71,6 +71,11 @@ public class LevelSelectionMenu extends MenuScreen {
         backButton.addListener(backButtonClickListener);
     }
 
+    @Override
+    public void renderExtended(float delta) {
+
+    }
+
     /* ----- EVENT LISTENER ----- */
 
     private ClickListener level1ButtonClickListener = new ClickListener() {

@@ -1,27 +1,16 @@
 package itcom.gangstersquirrel.Screens;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.scenes.scene2d.utils.TiledDrawable;
 import com.badlogic.gdx.utils.Align;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import itcom.gangstersquirrel.MainGameClass;
 import itcom.gangstersquirrel.Statistics.Statistics;
 import itcom.gangstersquirrel.Tools.BitmapFontGenerator;
 
-public class StatisticsMenu implements Screen {
-
-    private MainGameClass game;
-
-    private Skin skin;
-    private Stage stage;
+public class StatisticsMenu extends MenuScreen {
 
     private Statistics statistics;
 
@@ -55,29 +44,8 @@ public class StatisticsMenu implements Screen {
     private final String itemsCollectedText = "Items collected:";
 
     public StatisticsMenu(MainGameClass game) {
-        this.game = game;
+        super(game);
         this.statistics = new Statistics();
-    }
-
-    @Override
-    public void show() {
-        stage = new Stage(new ScreenViewport());
-        Gdx.input.setInputProcessor(stage);
-
-        skin = new Skin(Gdx.files.internal("skins/Flat_Earth_UI_Skin/flatearthui/flat-earth-ui.json"));
-
-        ProgressBar.ProgressBarStyle progressBarStyle = skin.get("fancy", ProgressBar.ProgressBarStyle.class);
-        TiledDrawable tiledDrawable = skin.getTiledDrawable("slider-fancy-knob").tint(skin.getColor("selection"));
-        tiledDrawable.setMinWidth(0);
-        progressBarStyle.knobBefore = tiledDrawable;
-
-        Slider.SliderStyle sliderStyle = skin.get("fancy", Slider.SliderStyle.class);
-        sliderStyle.knobBefore = tiledDrawable;
-
-        Table layoutTable = new Table();
-        layoutTable.top();
-        layoutTable.setFillParent(true);
-        layoutTable.pad(getPixelSizeFromDensityIndependentPixels(50));
 
         titleLabel = new Label("Statistics", skin, "title");
         backButton = new TextButton("Back", skin, "default");
@@ -189,16 +157,7 @@ public class StatisticsMenu implements Screen {
     }
 
     @Override
-    public void render(float delta) {
-        Gdx.gl.glClearColor(244.0f / 255.0f, 200.0f / 255.0f, 117.0f / 255.0f, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-        stage.act(Gdx.graphics.getRawDeltaTime());
-        stage.draw();
-
-        // Toggle debug
-        stage.setDebugAll(MainGameClass.DEBUG);
-
+    public void renderExtended(float delta) {
         secondsPlayedValueLabel.setText(String.valueOf(statistics.getSecondsPlayed()));
         jumpsMadeValueLabel.setText(String.valueOf(statistics.getJumpsMade()));
         levelsFinishedValueLabel.setText(String.valueOf(statistics.getLevelsFinished()));
@@ -207,36 +166,6 @@ public class StatisticsMenu implements Screen {
         damageInflictedValueLabel.setText(String.valueOf(statistics.getDamageInflicted()));
         enemiesKilledValueLabel.setText(String.valueOf(statistics.getEnemiesKilled()));
         itemsCollectedValueLabel.setText(String.valueOf(statistics.getItemsCollected()));
-    }
-
-    @Override
-    public void resize(int width, int height) {
-        stage.getViewport().update(width, height, true);
-    }
-
-    @Override
-    public void pause() {
-
-    }
-
-    @Override
-    public void resume() {
-
-    }
-
-    @Override
-    public void hide() {
-
-    }
-
-    @Override
-    public void dispose() {
-        stage.dispose();
-        skin.dispose();
-    }
-
-    private int getPixelSizeFromDensityIndependentPixels(float dip) {
-        return (int) (dip * Gdx.graphics.getDensity());
     }
 
     private Label.LabelStyle changeLabelStyleFont(Label.LabelStyle original, String filePath, float densityIndependentPixels, Color color) {

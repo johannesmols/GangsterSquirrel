@@ -60,7 +60,11 @@ public abstract class MenuScreen implements Screen {
 
         // Toggle debug
         stage.setDebugAll(MainGameClass.DEBUG);
+
+        renderExtended(delta);
     }
+
+    public abstract void renderExtended(float delta);
 
     @Override
     public void resize(int width, int height) {
