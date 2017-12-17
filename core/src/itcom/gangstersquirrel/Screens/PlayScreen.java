@@ -383,6 +383,8 @@ public class PlayScreen implements Screen {
 
         // Exit
         if(isPressingExit) {
+            isPressingExit = false; // to prevent a bug, where the variable would still be true when switching to the main menu and the game would directly exit again when starting a new level from the main menu
+
             // Save current time
             statistics.setSecondsPlayed(statistics.getSecondsPlayed() + timer);
 
@@ -588,6 +590,12 @@ public class PlayScreen implements Screen {
             statistics.setHighscoreTimes(tmp);
         }
 
+        // Increase highest finished level
+        if (gameProgress.getUnlockedLevels() <= gameProgress.getCurrentLevel()) {
+            gameProgress.setUnlockedLevels(gameProgress.getCurrentLevel() + 1);
+        }
+
+        // Increase current level
         if (gameProgress.getCurrentLevel() < MainGameClass.NUMBER_OF_LEVELS) {
             gameProgress.setCurrentLevel(gameProgress.getCurrentLevel() + 1);
         } else {

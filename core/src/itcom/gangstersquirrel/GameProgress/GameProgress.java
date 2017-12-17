@@ -26,6 +26,7 @@ public class GameProgress {
         GameProgressObject defaultGameProgress = new GameProgressObject(
                 "default",
                 1,
+                1,
                 0,
                 100,
                 5,
@@ -102,6 +103,15 @@ public class GameProgress {
 
     public void setCurrentLevel(int currentLevel) {
         gameProgress.setCurrentLevel(currentLevel);
+        serializeGameProgress(gameProgress);
+    }
+
+    public int getUnlockedLevels() {
+        return gameProgress.getUnlockedLevels();
+    }
+
+    public void setUnlockedLevels(int unlockedLevels) {
+        gameProgress.setUnlockedLevels(unlockedLevels);
         serializeGameProgress(gameProgress);
     }
 

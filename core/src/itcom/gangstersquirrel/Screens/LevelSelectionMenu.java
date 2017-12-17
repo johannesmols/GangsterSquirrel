@@ -3,28 +3,34 @@ package itcom.gangstersquirrel.Screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.scenes.scene2d.*;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TiledDrawable;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import itcom.gangstersquirrel.GameProgress.GameProgress;
 import itcom.gangstersquirrel.MainGameClass;
 
-public class MainMenu implements Screen {
+public class LevelSelectionMenu implements Screen {
 
     private MainGameClass game;
 
     private Skin skin;
     private Stage stage;
 
-    private Label gameTitleLabel;
-    private TextButton playButton;
-    private TextButton settingsButton;
-    private TextButton statisticsButton;
-    private TextButton exitButton;
+    private GameProgress gameProgress;
 
-    public MainMenu(MainGameClass game) {
+    private Label titleLabel;
+    private TextButton level1Button;
+    private TextButton level2Button;
+    private TextButton level3Button;
+    private TextButton backButton;
+
+    public LevelSelectionMenu(MainGameClass game) {
         this.game = game;
+        gameProgress = new GameProgress();
     }
 
     @Override
@@ -47,37 +53,53 @@ public class MainMenu implements Screen {
         layoutTable.setFillParent(true);
         layoutTable.pad(getPixelSizeFromDensityIndependentPixels(50));
 
-        gameTitleLabel = new Label("Gangster Squirrel", skin, "title");
-        playButton = new TextButton("Play", skin, "default");
-        settingsButton = new TextButton("Settings", skin, "default");
-        statisticsButton = new TextButton("Statistics", skin, "default");
-        exitButton = new TextButton("Exit", skin, "default");
+        titleLabel = new Label("Level Selection", skin, "title");
+        level1Button = new TextButton("Level 1", skin, "default");
+        level2Button = new TextButton("Level 2", skin, "default");
+        level3Button = new TextButton("Level 3", skin, "default");
+        backButton = new TextButton("Back", skin, "default");
 
-        layoutTable.add(gameTitleLabel).top().center().expandX().colspan(3).spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
+        // TODO: Make disabled buttons actually look disabled
+
+        switch (gameProgress.getUnlockedLevels()) {
+            case 1:
+                level2Button.setDisabled(true);
+                level3Button.setDisabled(true);
+                break;
+            case 2:
+                level3Button.setDisabled(true);
+                break;
+            case 3:
+                break;
+            default:
+                break;
+        }
+
+        layoutTable.add(titleLabel).top().center().expandX().colspan(3).spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.row();
         layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
-        layoutTable.add(playButton).top().center().growX().expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
+        layoutTable.add(level1Button).top().center().growX().expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.row();
         layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
-        layoutTable.add(settingsButton).top().center().growX().expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
+        layoutTable.add(level2Button).top().center().growX().expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.row();
-        layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
-        layoutTable.add(statisticsButton).top().center().growX().expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
-        layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
+        layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(75f));
+        layoutTable.add(level3Button).top().center().growX().expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(75f));
+        layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(75f));
         layoutTable.row();
         layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
-        layoutTable.add(exitButton).top().center().growX().expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
+        layoutTable.add(backButton).top().center().growX().expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.row();
 
         stage.addActor(layoutTable);
 
-        playButton.addListener(playButtonClickListener);
-        settingsButton.addListener(settingsButtonClickListener);
-        statisticsButton.addListener(statisticsButtonClickListener);
-        exitButton.addListener(exitButtonClickListener);
+        level1Button.addListener(level1ButtonClickListener);
+        level2Button.addListener(level2ButtonClickListener);
+        level3Button.addListener(level3ButtonClickListener);
+        backButton.addListener(backButtonClickListener);
     }
 
     @Override
@@ -124,34 +146,47 @@ public class MainMenu implements Screen {
 
     /* ----- EVENT LISTENER ----- */
 
-    private ClickListener playButtonClickListener = new ClickListener() {
+    private ClickListener level1ButtonClickListener = new ClickListener() {
         @Override
         public void clicked(InputEvent event, float x, float y) {
             super.clicked(event, x, y);
-            game.setScreen(new LevelSelectionMenu(game));
+
+            if (!level1Button.isDisabled()) {
+                new GameProgress().setCurrentLevel(1);
+                game.setScreen(new PlayScreen(game));
+            }
         }
     };
 
-    private ClickListener settingsButtonClickListener = new ClickListener() {
+    private ClickListener level2ButtonClickListener = new ClickListener() {
         @Override
         public void clicked(InputEvent event, float x, float y) {
             super.clicked(event, x, y);
+
+            if (!level2Button.isDisabled()) {
+                new GameProgress().setCurrentLevel(2);
+                game.setScreen(new PlayScreen(game));
+            }
         }
     };
 
-    private ClickListener statisticsButtonClickListener = new ClickListener() {
+    private ClickListener level3ButtonClickListener = new ClickListener() {
         @Override
         public void clicked(InputEvent event, float x, float y) {
             super.clicked(event, x, y);
-            game.setScreen(new StatisticsMenu(game));
+
+            if (!level3Button.isDisabled()) {
+                new GameProgress().setCurrentLevel(3);
+                game.setScreen(new PlayScreen(game));
+            }
         }
     };
 
-    private ClickListener exitButtonClickListener = new ClickListener() {
+    private ClickListener backButtonClickListener = new ClickListener() {
         @Override
         public void clicked(InputEvent event, float x, float y) {
             super.clicked(event, x, y);
-            game.exitApplication("Exited from main menu");
+            game.setScreen(new MainMenu(game));
         }
     };
 }

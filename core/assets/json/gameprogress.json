@@ -1,6 +1,7 @@
 {
   "playerName": "default",
   "currentLevel": 1,
+  "unlockedLevels": 1,
   "currentTime": 0,
   "playerMaxHealth": 100,
   "playerLifes": 5,

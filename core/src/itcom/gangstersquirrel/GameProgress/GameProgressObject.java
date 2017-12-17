@@ -11,6 +11,7 @@ public class GameProgressObject {
 
     private String playerName;
     private int currentLevel;
+    private int unlockedLevels;
     private long currentTime;
     private int playerMaxHealth;
     private int playerLifes;
@@ -26,6 +27,7 @@ public class GameProgressObject {
     /**
      * @param playerName the player's name used for the scoreboard
      * @param currentLevel the current level which the player is in
+     * @param unlockedLevels the number of unlocked levels
      * @param currentTime the current time in seconds, will remain when the player dies and respawns
      * @param playerMaxHealth the maximum health that the player can have
      * @param playerLifes the current amount of player's lifes left
@@ -38,12 +40,13 @@ public class GameProgressObject {
      * @param currentlyEquippedWeapon the index of the currently equipped weapon in the weapon list of the player
      * @param playerWeaponList the equipped weapons of the player
      */
-    public GameProgressObject(String playerName, int currentLevel, long currentTime, int playerMaxHealth, int playerLifes, int playerMaximumLifes, float
+    public GameProgressObject(String playerName, int currentLevel, int unlockedLevels, long currentTime, int playerMaxHealth, int playerLifes, int playerMaximumLifes, float
             playerJumpImpulseVelocity, float playerWalkImpulseVelocity, float playerClimbImpulseVelocity, float
             playerMaxWalkVelocity, float playerMaxClimbVelocity, int currentlyEquippedWeapon, ArrayList<WeaponObject> playerWeaponList) {
 
         this.playerName = playerName;
         this.currentLevel = currentLevel;
+        this.unlockedLevels = unlockedLevels;
         this.currentTime = currentTime;
         this.playerMaxHealth = playerMaxHealth;
         this.playerLifes = playerLifes;
@@ -74,6 +77,16 @@ public class GameProgressObject {
     public void setCurrentLevel(int currentLevel) {
         if (currentLevel >= 1) {
             this.currentLevel = currentLevel;
+        }
+    }
+
+    public int getUnlockedLevels() {
+        return unlockedLevels;
+    }
+
+    public void setUnlockedLevels(int unlockedLevels) {
+        if (unlockedLevels >= 1) {
+            this.unlockedLevels = unlockedLevels;
         }
     }
 
