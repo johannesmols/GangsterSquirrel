@@ -19,7 +19,7 @@ public class MainMenu implements Screen {
 
     private Label gameTitleLabel;
     private TextButton playButton;
-    private TextButton optionsButton;
+    private TextButton settingsButton;
     private TextButton statisticsButton;
     private TextButton exitButton;
 
@@ -49,7 +49,7 @@ public class MainMenu implements Screen {
 
         gameTitleLabel = new Label("Gangster Squirrel", skin, "title");
         playButton = new TextButton("Play", skin, "default");
-        optionsButton = new TextButton("Options", skin, "default");
+        settingsButton = new TextButton("Settings", skin, "default");
         statisticsButton = new TextButton("Statistics", skin, "default");
         exitButton = new TextButton("Exit", skin, "default");
 
@@ -60,7 +60,7 @@ public class MainMenu implements Screen {
         layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.row();
         layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
-        layoutTable.add(optionsButton).top().center().growX().expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
+        layoutTable.add(settingsButton).top().center().growX().expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.row();
         layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
@@ -75,7 +75,7 @@ public class MainMenu implements Screen {
         stage.addActor(layoutTable);
 
         playButton.addListener(playButtonClickListener);
-        optionsButton.addListener(optionsButtonClickListener);
+        settingsButton.addListener(settingsButtonClickListener);
         statisticsButton.addListener(statisticsButtonClickListener);
         exitButton.addListener(exitButtonClickListener);
     }
@@ -132,7 +132,7 @@ public class MainMenu implements Screen {
         }
     };
 
-    private ClickListener optionsButtonClickListener = new ClickListener() {
+    private ClickListener settingsButtonClickListener = new ClickListener() {
         @Override
         public void clicked(InputEvent event, float x, float y) {
             super.clicked(event, x, y);
