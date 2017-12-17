@@ -381,12 +381,12 @@ public class PlayScreen implements Screen {
             }
         }
 
-        // Exit application
+        // Exit
         if(isPressingExit) {
             // Save current time
             statistics.setSecondsPlayed(statistics.getSecondsPlayed() + timer);
 
-            game.exitApplication();
+            game.setScreen(new MainMenu(game));
         }
 
         // Jumping: user is pressing jump key, player is on jumpable terrain and the vertical velocity is 0
