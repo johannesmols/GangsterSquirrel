@@ -17,10 +17,7 @@ public class MainMenu extends MenuScreen {
 
     public MainMenu(MainGameClass game) {
         super(game);
-    }
 
-    @Override
-    public void show() {
         gameTitleLabel = new Label("Gangster Squirrel", skin, "title");
         playButton = new TextButton("Play", skin, "default");
         settingsButton = new TextButton("Settings", skin, "default");
@@ -73,6 +70,7 @@ public class MainMenu extends MenuScreen {
         @Override
         public void clicked(InputEvent event, float x, float y) {
             super.clicked(event, x, y);
+            game.setScreen(new SettingsMenu(game));
         }
     };
 

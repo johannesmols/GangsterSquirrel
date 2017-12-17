@@ -157,6 +157,9 @@ public class MainGameClass extends Game {
 		assetManager.dispose();
 	}
 
+    /**
+     * Changes the window size of the game and switches between fullscreen and windowed mode depending on the settings
+     */
 	public void changeGameResolution() {
 		Settings settings = new Settings();
 		Graphics.DisplayMode mode = Gdx.graphics.getDisplayMode();
