@@ -42,6 +42,7 @@ public class SettingsMenu extends MenuScreen {
 
         resolutionSelectBox = new SelectBox(skin);
         resolutionSelectBox.setItems(getItemsForResolutionList());
+        setResolutionSelectionToCurrentResolution();
 
         layoutTable.add(titleLabel).top().center().expandX().colspan(3).spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.row();
@@ -130,6 +131,18 @@ public class SettingsMenu extends MenuScreen {
         }
 
         return possibleResolutions;
+    }
+
+    private void setResolutionSelectionToCurrentResolution() {
+        for (HashMap.Entry<String, ResolutionObject> item : items.entrySet()) {
+            if (item.getValue().getWidth() == settings.getGameWidth() && item.getValue().getHeight() == settings.getGameHeight()) {
+                try {
+                    resolutionSelectBox.setSelected(item.getKey());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     /* ----- EVENT LISTENER ----- */
