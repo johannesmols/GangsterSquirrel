@@ -215,7 +215,7 @@ public class MainGameClass extends Game {
 	/**
 	 * Resets the current time in the save file to zero
 	 */
-	private void resetTimer() {
+	public void resetTimer() {
 		// Reset the game timer to zero, or when the game starts the next time, the timer will continue from the last saved point
 		if (this.getScreen() != null && this.getScreen() instanceof PlayScreen ) {
 			((PlayScreen) this.getScreen()).getGameProgress().setCurrentTime(0);
@@ -225,7 +225,7 @@ public class MainGameClass extends Game {
 	/**
 	 * Resets the current player lifes in the save file to the maximum
 	 */
-	private void resetPlayerLifes() {
+	public void resetPlayerLifes() {
 		// Reset current lifes to the maximum
 		if (this.getScreen() != null && this.getScreen() instanceof PlayScreen ) {
 			((PlayScreen) this.getScreen()).getGameProgress().setPlayerLifes(((PlayScreen) this.getScreen()).getGameProgress().getPlayerMaximumLifes());

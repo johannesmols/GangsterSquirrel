@@ -748,6 +748,8 @@ public class PlayScreen implements Screen {
             if(gameProgress.getPlayerLifes() > 1) {
                 respawnPlayer(false);
             } else {
+                game.resetTimer();
+                game.resetPlayerLifes();
                 game.setScreen(new MainMenu(game));
             }
         }
