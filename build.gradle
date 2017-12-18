@@ -80,6 +80,8 @@ project(":core") {
         // compile group: 'pircbot', name: 'pircbot', version: '1.5.0'
         compile fileTree(dir: 'lib', include: '*.jar')
         compile "pircbot:pircbot:1.5.0"
+        // https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient
+        compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5'
 
     }
 }
