@@ -27,12 +27,21 @@ import itcom.gangstersquirrel.Objects.Player;
 import itcom.gangstersquirrel.Statistics.Statistics;
 import itcom.gangstersquirrel.Tools.Box2DWorldCreator;
 import itcom.gangstersquirrel.Tools.WorldContactListener;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 /**
  * The most important screen of the game, the game itself
@@ -114,6 +123,8 @@ public class PlayScreen implements Screen {
     private Music level_1_backgroundMusic;
     private Music level_2_backgroundMusic;
 
+    // HTTP Highscore post request
+    private String url = "http://api.ludvig.xyz/gangstersquirrel/";;
     /**
      * Set up all important things, can be considered as the create() method like in the MainGameClass
      * @param game The main game class
@@ -575,6 +586,36 @@ public class PlayScreen implements Screen {
      */
     public void levelFinished() {
         log("Level finished, saving and loading next level...");
+
+        HttpClient httpClient = new DefaultHttpClient();
+        HttpPost httpPost = new HttpPost(url);
+
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("level", String.valueOf(gameProgress.getCurrentLevel())));
+        params.add(new BasicNameValuePair("name", gameProgress.getPlayerName()));
+        params.add(new BasicNameValuePair("time", String.valueOf(timer)));
+        try {
+            httpPost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+            // writing error to Log
+            e.printStackTrace();
+        }
+
+        try {
+            HttpResponse response = httpClient.execute(httpPost);
+            HttpEntity respEntity = response.getEntity();
+
+            if (respEntity != null) {
+                // EntityUtils to get the response content
+                String content =  EntityUtils.toString(respEntity);
+            }
+        } catch (ClientProtocolException e) {
+            // writing exception to log
+            e.printStackTrace();
+        } catch (IOException e) {
+            // writing exception to log
+            e.printStackTrace();
+        }
 
         // If the old highscores is above zero, proceed. If not, this means there was no highscore set yet and there is no need to compare old time with new time
         if (statistics.getHighscoreTimes()[gameProgress.getCurrentLevel() - 1] > 0) {

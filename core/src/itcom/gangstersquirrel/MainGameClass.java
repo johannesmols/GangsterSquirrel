@@ -320,6 +320,7 @@ public class MainGameClass extends Game {
 		resolutions.add(new ResolutionObject("16:9", 1366, 768));
 		resolutions.add(new ResolutionObject("16:9", 1600, 900));
 		resolutions.add(new ResolutionObject("16:9", 1920, 1080));
+		resolutions.add(new ResolutionObject("16:9", 3200, 1800));
 
 		resolutions.add(new ResolutionObject("16:10", 640, 400));
 		resolutions.add(new ResolutionObject("16:10", 1280, 800));
