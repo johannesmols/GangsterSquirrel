@@ -49,7 +49,7 @@ public class Player extends Sprite {
     // Attack texture variables
     private boolean attackAnimationPlaying;
     private float attackTime = 0f;
-    private final float ATTACK_DURATION = 1f;
+    private final float ATTACK_DURATION = 0.1f;
 
     public Player(PlayScreen screen, int spawnPosition_X, int spawnPosition_Y) {
         // Get texture region out of the texture atlas for the squirrel
@@ -250,7 +250,8 @@ public class Player extends Sprite {
      */
     private PolygonShape getAttackShape(boolean leftOrRight) {
 
-        // Center of the shape needs to be shifted three fourths of the player center to the left, if it should be attached on the left side, because the origin of the shape is on the left side of the shape
+        // Center of the shape needs to be shifted three fourths of the player center to the left, if it should be attached on the left side,
+        // because the origin of the shape is on the left side of the shape
         int factor = leftOrRight ? -3 : 1;
 
         PolygonShape shape = new PolygonShape();
