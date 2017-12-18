@@ -250,8 +250,7 @@ public class Player extends Sprite {
      */
     private PolygonShape getAttackShape(boolean leftOrRight) {
 
-        // Center of the shape needs to be shifted three fourths of the player center to the left, if it should be attached on the left side,
-        // because the origin of the shape is on the left side of the shape
+        // Center of the shape needs to be shifted three fourths of the player center to the left, if it should be attached on the left side, because the origin of the shape is on the left side of the shape
         int factor = leftOrRight ? -3 : 1;
 
         PolygonShape shape = new PolygonShape();

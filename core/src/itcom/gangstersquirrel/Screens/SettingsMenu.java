@@ -166,6 +166,35 @@ public class SettingsMenu extends MenuScreen {
                 MainGameClass.WIDTH = selectedResolution.getWidth();
                 MainGameClass.HEIGHT = selectedResolution.getHeight();
 
+                switch (selectedResolution.getAspectRatio()) {
+                    case "4:3":
+                        MainGameClass.GAME_WORLD_WIDTH = MainGameClass.ZOOM * 16;
+                        MainGameClass.GAME_WORLD_HEIGHT = MainGameClass.ZOOM * 12;
+                        break;
+                    case "5:3":
+                        MainGameClass.GAME_WORLD_WIDTH = MainGameClass.ZOOM * 15;
+                        MainGameClass.GAME_WORLD_HEIGHT = MainGameClass.ZOOM * 9;
+                        break;
+                    case "5:4":
+                        MainGameClass.GAME_WORLD_WIDTH = MainGameClass.ZOOM * 15;
+                        MainGameClass.GAME_WORLD_HEIGHT = MainGameClass.ZOOM * 12;
+                        break;
+                    case "16:9":
+                        MainGameClass.GAME_WORLD_WIDTH = MainGameClass.ZOOM * 16;
+                        MainGameClass.GAME_WORLD_HEIGHT = MainGameClass.ZOOM * 9;
+                        break;
+                    case "16:10":
+                        MainGameClass.GAME_WORLD_WIDTH = MainGameClass.ZOOM * 16;
+                        MainGameClass.GAME_WORLD_HEIGHT = MainGameClass.ZOOM * 10;
+                        break;
+                    case "17:9":
+                        MainGameClass.GAME_WORLD_WIDTH = MainGameClass.ZOOM * 17;
+                        MainGameClass.GAME_WORLD_HEIGHT = MainGameClass.ZOOM * 9;
+                        break;
+                    default:
+                        break;
+                }
+
                 game.changeGameResolution();
             }
         }
