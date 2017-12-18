@@ -123,8 +123,6 @@ public class PlayScreen implements Screen {
     private Music level_1_backgroundMusic;
     private Music level_2_backgroundMusic;
 
-    // HTTP Highscore post request
-    private String url = "http://api.ludvig.xyz/gangstersquirrel/";;
     /**
      * Set up all important things, can be considered as the create() method like in the MainGameClass
      * @param game The main game class
@@ -588,7 +586,7 @@ public class PlayScreen implements Screen {
         log("Level finished, saving and loading next level...");
 
         HttpClient httpClient = new DefaultHttpClient();
-        HttpPost httpPost = new HttpPost(url);
+        HttpPost httpPost = new HttpPost("http://api.ludvig.xyz/gangstersquirrel/");
 
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("level", String.valueOf(gameProgress.getCurrentLevel())));
