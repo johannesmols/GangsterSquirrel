@@ -748,7 +748,7 @@ public class PlayScreen implements Screen {
             if(gameProgress.getPlayerLifes() > 1) {
                 respawnPlayer(false);
             } else {
-                game.exitApplication("Out of lifes");
+                game.setScreen(new MainMenu(game));
             }
         }
     }
