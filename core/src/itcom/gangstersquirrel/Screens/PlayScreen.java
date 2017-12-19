@@ -398,6 +398,8 @@ public class PlayScreen implements Screen {
 
             // Save current time
             statistics.setSecondsPlayed(statistics.getSecondsPlayed() + timer);
+            game.resetPlayerLifes();
+            game.resetTimer();
 
             game.setScreen(new MainMenu(game));
         }
@@ -586,6 +588,8 @@ public class PlayScreen implements Screen {
      */
     public void levelFinished() {
         log("Level finished, saving and loading next level...");
+
+        // Post time to online scoreboard
 
         HttpClient httpClient = new DefaultHttpClient();
         HttpPost httpPost = new HttpPost("http://api.ludvig.xyz/gangstersquirrel/");
