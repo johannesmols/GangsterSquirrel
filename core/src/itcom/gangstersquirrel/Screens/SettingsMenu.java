@@ -32,6 +32,10 @@ public class SettingsMenu extends MenuScreen {
     private Label resolutionLabel;
     private Label userNameLabel;
     private TextField userNameTextField;
+    private Label twitchChannelLabel;
+    private TextField twitchChannelTextField;
+    private Label twitchOAuthLabel;
+    private TextField twitchOAuthTextField;
 
     private HashMap<String, ResolutionObject> items = new HashMap<>();
 
@@ -50,6 +54,10 @@ public class SettingsMenu extends MenuScreen {
         resolutionLabel = new Label("Resolution: ", skin, "default");
         userNameLabel = new Label("Username: ", skin, "default");
         userNameTextField = new TextField("", skin, "default");
+        twitchChannelLabel = new Label("Twitch Channel: ", skin, "default");
+        twitchChannelTextField = new TextField("", skin, "default");
+        twitchOAuthLabel = new Label("Twitch OAuth: ", skin, "default");
+        twitchOAuthTextField = new TextField("", skin, "default");
 
         fullscreenCheckBox = new CheckBox(" Fullscreen", skin, "default");
         fullscreenCheckBox.setChecked(settings.getFullscreen());
@@ -60,7 +68,12 @@ public class SettingsMenu extends MenuScreen {
 
         resolutionLabel.setStyle(changeLabelStyleFont(resolutionLabel.getStyle(), "fonts/segoeui.ttf", 32, Color.WHITE));
         userNameLabel.setStyle(changeLabelStyleFont(userNameLabel.getStyle(), "fonts/segoeui.ttf", 32, Color.WHITE));
+        twitchChannelLabel.setStyle(changeLabelStyleFont(twitchChannelLabel.getStyle(), "fonts/segoeui.ttf", 32, Color.WHITE));
+        twitchOAuthLabel.setStyle(changeLabelStyleFont(twitchOAuthLabel.getStyle(), "fonts/segoeui.ttf", 32, Color.WHITE));
+
         userNameTextField.setText(settings.getPlayerName());
+        twitchChannelTextField.setText(game.getTwitchThread().getTwitchCredentials().getChannel());
+        twitchOAuthTextField.setText(game.getTwitchThread().getTwitchCredentials().getOauth());
 
         layoutTable.add(titleLabel).top().center().expandX().colspan(4).spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.row();
@@ -76,6 +89,16 @@ public class SettingsMenu extends MenuScreen {
         layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.add(userNameLabel).center().left().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.add(userNameTextField).top().center().growX().expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
+        layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
+        layoutTable.row();
+        layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
+        layoutTable.add(twitchChannelLabel).center().left().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
+        layoutTable.add(twitchChannelTextField).top().center().growX().expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
+        layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
+        layoutTable.row();
+        layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
+        layoutTable.add(twitchOAuthLabel).center().left().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
+        layoutTable.add(twitchOAuthTextField).top().center().growX().expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.row();
         layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
@@ -274,6 +297,17 @@ public class SettingsMenu extends MenuScreen {
                 settings.setPlayerName(userNameTextField.getText().trim());
             }
 
+            // Twitch channel
+            if (!twitchChannelTextField.getText().trim().isEmpty()) {
+                game.getTwitchThread().getTwitch().setTwitchChannel(twitchChannelTextField.getText().trim());
+            }
+
+            // Twitch OAuth
+            if (!twitchOAuthTextField.getText().trim().isEmpty()) {
+                game.getTwitchThread().getTwitch().setOAuth(twitchOAuthTextField.getText().trim());
+            }
+
+            game.newTwitchThread();
             game.setScreen(new MainMenu(game));
         }
     };

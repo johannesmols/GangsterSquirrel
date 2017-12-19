@@ -336,9 +336,22 @@ public class MainGameClass extends Game {
 
 	/**
 	 * Get the list with common resolutions
-	 * @return
 	 */
 	public ArrayList<ResolutionObject> getResolutions() {
 		return resolutions;
+	}
+
+	/**
+	 * Get the twitch thread
+	 */
+	public TwitchThread getTwitchThread() {
+		return twitchThread;
+	}
+
+	/**
+	 * Reinitializes the twitch thread. Useful for when the credentials change
+	 */
+	public void newTwitchThread() {
+		twitchThread = new TwitchThread(USE_TWITCH, this);
 	}
 }

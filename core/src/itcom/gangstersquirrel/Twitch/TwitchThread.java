@@ -71,4 +71,12 @@ public class TwitchThread implements ChatListener {
             }
         }
     }
+
+    public TwitchCredentialsObject getTwitchCredentials() {
+        return twitchCredentials;
+    }
+
+    public TwitchChat getTwitch() {
+        return twitch;
+    }
 }

@@ -87,4 +87,45 @@ public class TwitchChat extends PircBot {
         }
     }
 
+    /* ----- GETTERS AND SETTERS ----- */
+
+    public String getUrl() {
+        return getTwitchCredentials().getUrl();
+    }
+
+    public void setUrl(String url) {
+        TwitchCredentialsObject tmp = getTwitchCredentials();
+        tmp.setUrl(url);
+        serializeTwitchCredentials(tmp);
+    }
+
+    public int getTwitchPort() {
+        return getTwitchCredentials().getPort();
+    }
+
+    public void setPort(int port) {
+        TwitchCredentialsObject tmp = getTwitchCredentials();
+        tmp.setPort(port);
+        serializeTwitchCredentials(tmp);
+    }
+
+    public String getOAuth() {
+        return getTwitchCredentials().getOauth();
+    }
+
+    public void setOAuth(String oAuth) {
+        TwitchCredentialsObject tmp = getTwitchCredentials();
+        tmp.setOauth(oAuth);
+        serializeTwitchCredentials(tmp);
+    }
+
+    public String getTwitchChannel() {
+        return getTwitchCredentials().getChannel();
+    }
+
+    public void setTwitchChannel(String channel) {
+        TwitchCredentialsObject tmp = getTwitchCredentials();
+        tmp.setChannel(channel);
+        serializeTwitchCredentials(tmp);
+    }
 }
