@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="100" height="190" tilewidth="16" tileheight="16" nextobjectid="281">
+<map version="1.0" tiledversion="2017.12.07" orientation="orthogonal" renderorder="right-down" width="100" height="190" tilewidth="16" tileheight="16" infinite="0" nextobjectid="281">
  <tileset firstgid="1" source="sun.tsx"/>
  <tileset firstgid="589" source="background1.tsx"/>
  <tileset firstgid="1613" source="../level_1/weapons.tsx"/>
@@ -15,10 +15,10 @@
  </layer>
  <layer name="graphics" width="100" height="190">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
- <objectgroup name="enemies">
+ <objectgroup name="enemies" visible="0">
   <object id="258" x="624" y="2480" width="16" height="16">
    <properties>
     <property name="enemy_type" value="Monkey"/>
@@ -66,14 +66,18 @@
  </objectgroup>
  <objectgroup name="weapon">
   <properties>
-   <property name="weapon_name" value="Swichblade"/>
+   <property name="weapon_name" value="Katana"/>
   </properties>
-  <object id="66" x="1328" y="1344.67" width="16" height="16">
+  <object id="66" x="928" y="1344" width="16" height="16">
    <properties>
     <property name="weapon_name" value="Katana"/>
    </properties>
   </object>
-  <object id="280" x="1328" y="1936" width="16" height="16"/>
+  <object id="280" x="848" y="1936" width="16" height="16">
+   <properties>
+    <property name="weapon_name" value="Switchblade"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="ground">
   <object id="2" x="240" y="2624" width="1120" height="414"/>
