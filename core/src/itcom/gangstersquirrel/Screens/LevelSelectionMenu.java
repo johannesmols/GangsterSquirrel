@@ -28,15 +28,16 @@ public class LevelSelectionMenu extends MenuScreen {
         level3Button = new TextButton("Level 3", skin, "default");
         backButton = new TextButton("Back", skin, "default");
 
-        // TODO: Make disabled buttons actually look disabled
-
         switch (gameProgress.getUnlockedLevels()) {
             case 1:
                 level2Button.setDisabled(true);
                 level3Button.setDisabled(true);
+                level2Button.setText(level2Button.getText() + " (locked)");
+                level3Button.setText(level3Button.getText() + " (locked)");
                 break;
             case 2:
                 level3Button.setDisabled(true);
+                level3Button.setText(level3Button.getText() + " (locked)");
                 break;
             case 3:
                 break;
