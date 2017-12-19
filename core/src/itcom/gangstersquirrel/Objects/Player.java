@@ -254,7 +254,7 @@ public class Player extends Sprite {
 
         PolygonShape shape = new PolygonShape();
         shape.setAsBox(
-                PLAYER_PIXEL_WIDTH / 4 / MainGameClass.PPM,
+                PLAYER_PIXEL_WIDTH / 2 / MainGameClass.PPM,
                 0,
                 new Vector2( factor * PLAYER_PIXEL_WIDTH / 4 / MainGameClass.PPM, 0),
                 0f
