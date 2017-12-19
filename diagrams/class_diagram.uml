@@ -1,765 +1,1003 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Diagram>
   <ID>JAVA</ID>
-  <OriginalElement />
+  <OriginalElement>itcom.gangstersquirrel</OriginalElement>
   <nodes>
-    <node x="1377.727657865929" y="109.0">itcom.gangstersquirrel.Items.WeaponList</node>
-    <node x="164.8199999999997" y="636.0">itcom.gangstersquirrel.Tools.BitmapFontGenerator</node>
-    <node x="1912.4773239132314" y="1005.0">itcom.gangstersquirrel.KeyBindings.KeyBindings</node>
-    <node x="772.8018211476968" y="636.0">itcom.gangstersquirrel.Objects.MapObjects.Finish</node>
-    <node x="1132.1834878143632" y="1681.0">itcom.gangstersquirrel.desktop.DesktopLauncher</node>
-    <node x="2232.6863742690052" y="1344.0">itcom.gangstersquirrel.Twitch.TwitchChat</node>
-    <node x="320.0" y="1755.0">com.badlogic.gdx.backends.gwt.emu.java</node>
-    <node x="1897.4773239132314" y="636.0">itcom.gangstersquirrel.KeyBindings.KeyBindingObject</node>
-    <node x="603.8018211476968" y="636.0">itcom.gangstersquirrel.Objects.MapObjects.EnemyMoveBorder</node>
-    <node x="346.8199999999996" y="636.0">itcom.gangstersquirrel.Objects.MapObjects.Ground</node>
-    <node x="455.80182114769684" y="636.0">itcom.gangstersquirrel.Objects.MapObjects.WeaponPickup</node>
-    <node x="1717.4773239132314" y="636.0">itcom.gangstersquirrel.GameProgress.GameProgressObject</node>
-    <node x="1429.0665051997812" y="308.0">itcom.gangstersquirrel.Objects.Player</node>
-    <node x="1297.3234878143635" y="1433.0">itcom.gangstersquirrel.Screens.SplashScreen</node>
-    <node x="275.45817186644786" y="1005.0">itcom.gangstersquirrel.Scenes.PlayScreenHud</node>
-    <node x="1527.977657865929" y="0.0">itcom.gangstersquirrel.Items.WeaponObject</node>
-    <node x="126.95817186644763" y="1005.0">itcom.gangstersquirrel.Statistics.Statistics</node>
-    <node x="1213.8442829775588" y="1005.0">itcom.gangstersquirrel.Tools.WorldContactListener</node>
-    <node x="1484.727657865929" y="636.0">itcom.gangstersquirrel.Objects.EnemyObjects.MonkeyEnemy</node>
-    <node x="0.0" y="1755.0">com.google.gwt.emul.javaemul</node>
-    <node x="2233.740751591622" y="1433.0">itcom.gangstersquirrel.Twitch.TwitchThread</node>
-    <node x="2083.1173239132313" y="1005.0">itcom.gangstersquirrel.Twitch.TwitchCredentialsObject</node>
-    <node x="991.928333333333" y="636.0">itcom.gangstersquirrel.Objects.MapObjects.Jumpable</node>
-    <node x="1343.727657865929" y="636.0">itcom.gangstersquirrel.Objects.EnemyObjects.FrogEnemy</node>
-    <node x="172.0" y="1755.0">com.google.gwt.junit.translatable.junit</node>
-    <node x="15.819999999999709" y="636.0">itcom.gangstersquirrel.Statistics.StatisticsObject</node>
-    <node x="873.928333333333" y="636.0">itcom.gangstersquirrel.Objects.MapObjects.DeathTile</node>
-    <node x="748.3449999999996" y="1005.0">itcom.gangstersquirrel.Tools.Box2DWorldCreator</node>
-    <node x="1260.8434878143635" y="1344.0">itcom.gangstersquirrel.Screens.PlayScreen</node>
-    <node x="1209.6834878143632" y="1602.0">itcom.gangstersquirrel.MainGameClass</node>
-    <node x="1273.727657865929" y="109.0">itcom.gangstersquirrel.Objects.Enemy</node>
-    <node x="2281.1173239132313" y="1005.0">itcom.gangstersquirrel.Twitch.ChatListener</node>
-    <node x="1292.1834878143632" y="1681.0">itcom.gangstersquirrel.client.HtmlLauncher</node>
-    <node x="1761.4773239132314" y="1005.0">itcom.gangstersquirrel.GameProgress.GameProgress</node>
-    <node x="826.1193245325956" y="467.0">itcom.gangstersquirrel.Objects.InteractiveMapTileObject</node>
+    <node x="2250.340925418463" y="111.0">itcom.gangstersquirrel.Items.WeaponList</node>
+    <node x="2359.895394736842" y="0.0">itcom.gangstersquirrel.Tools.JSONFileCreator</node>
+    <node x="2610.8354429623228" y="423.0">itcom.gangstersquirrel.Tools.BitmapFontGenerator</node>
+    <node x="1403.254385964912" y="825.0">itcom.gangstersquirrel.KeyBindings.KeyBindings</node>
+    <node x="713.5307017543857" y="624.0">itcom.gangstersquirrel.Objects.MapObjects.Finish</node>
+    <node x="2306.479909361756" y="1508.0">itcom.gangstersquirrel.desktop.DesktopLauncher</node>
+    <node x="3324.3541979949878" y="825.0">itcom.gangstersquirrel.Twitch.TwitchChat</node>
+    <node x="1496.520336043422" y="624.0">itcom.gangstersquirrel.KeyBindings.KeyBindingObject</node>
+    <node x="337.78070175438575" y="624.0">itcom.gangstersquirrel.Objects.MapObjects.EnemyMoveBorder</node>
+    <node x="58.780701754385746" y="624.0">itcom.gangstersquirrel.Objects.MapObjects.Ground</node>
+    <node x="1750.643143060966" y="825.0">itcom.gangstersquirrel.Input.GameplayInputProcessor</node>
+    <node x="1313.520336043422" y="624.0">itcom.gangstersquirrel.Objects.MapObjects.WeaponPickup</node>
+    <node x="2647.5869269056157" y="624.0">itcom.gangstersquirrel.Screens.StatisticsMenu</node>
+    <node x="2030.9882426950894" y="282.0">itcom.gangstersquirrel.GameProgress.GameProgressObject</node>
+    <node x="1328.292519010879" y="282.0">itcom.gangstersquirrel.Objects.Player</node>
+    <node x="3425.310442962323" y="282.0">itcom.gangstersquirrel.Settings.SettingsObject</node>
+    <node x="2717.825160604826" y="1186.0">itcom.gangstersquirrel.Screens.SplashScreen</node>
+    <node x="2231.682894736842" y="825.0">itcom.gangstersquirrel.Scenes.PlayScreenHud</node>
+    <node x="1789.1214912280698" y="0.0">itcom.gangstersquirrel.Items.WeaponObject</node>
+    <node x="2951.0021096289893" y="624.0">itcom.gangstersquirrel.Screens.SettingsMenu</node>
+    <node x="2479.8354429623228" y="423.0">itcom.gangstersquirrel.Statistics.Statistics</node>
+    <node x="1081.6710526315787" y="825.0">itcom.gangstersquirrel.Tools.WorldContactListener</node>
+    <node x="3435.185442962323" y="423.0">itcom.gangstersquirrel.Settings.Settings</node>
+    <node x="968.5307017543857" y="624.0">itcom.gangstersquirrel.Objects.EnemyObjects.MonkeyEnemy</node>
+    <node x="2830.8354429623228" y="423.0">itcom.gangstersquirrel.Screens.MenuScreen</node>
+    <node x="3308.954197994987" y="1186.0">itcom.gangstersquirrel.Twitch.TwitchThread</node>
+    <node x="3124.6687762956562" y="624.0">itcom.gangstersquirrel.Twitch.TwitchCredentialsObject</node>
+    <node x="178.78070175438575" y="624.0">itcom.gangstersquirrel.Objects.MapObjects.Jumpable</node>
+    <node x="822.5307017543857" y="624.0">itcom.gangstersquirrel.Objects.EnemyObjects.FrogEnemy</node>
+    <node x="537.7807017543857" y="624.0">itcom.gangstersquirrel.Objects.MapObjects.DeathTile</node>
+    <node x="2470.7104429623228" y="282.0">itcom.gangstersquirrel.Statistics.StatisticsObject</node>
+    <node x="2726.825160604826" y="825.0">itcom.gangstersquirrel.Screens.MainMenu</node>
+    <node x="491.3807017543859" y="825.0">itcom.gangstersquirrel.Tools.Box2DWorldCreator</node>
+    <node x="2275.904909361756" y="624.0">itcom.gangstersquirrel.Screens.LevelSelectionMenu</node>
+    <node x="1038.779909361756" y="1186.0">itcom.gangstersquirrel.Screens.PlayScreen</node>
+    <node x="2313.479909361756" y="1427.0">itcom.gangstersquirrel.MainGameClass</node>
+    <node x="711.0307017543857" y="111.0">itcom.gangstersquirrel.Objects.Enemy</node>
+    <node x="3362.6687762956562" y="624.0">itcom.gangstersquirrel.Twitch.ChatListener</node>
+    <node x="2983.8354429623228" y="423.0">itcom.gangstersquirrel.Tools.ResolutionObject</node>
+    <node x="436.4807017543858" y="423.0">itcom.gangstersquirrel.Objects.InteractiveMapTileObject</node>
+    <node x="2053.9882426950894" y="423.0">itcom.gangstersquirrel.GameProgress.GameProgress</node>
   </nodes>
   <notes />
   <edges>
     <edge source="itcom.gangstersquirrel.Twitch.TwitchThread" target="itcom.gangstersquirrel.Twitch.ChatListener">
-      <point x="45.375" y="-14.5" />
-      <point x="2339.615751591622" y="1413.0" />
-      <point x="2352.1863742690052" y="1413.0" />
-      <point x="2352.1863742690052" y="1324.0" />
-      <point x="2380.8673239132313" y="1324.0" />
-      <point x="42.75" y="14.5" />
+      <point x="56.80000000000018" y="-15.5" />
+      <point x="3436.7541979949874" y="1166.0" />
+      <point x="3460.8541979949878" y="1166.0" />
+      <point x="3460.8541979949878" y="795.0" />
+      <point x="3481.6687762956562" y="795.0" />
+      <point x="51.0" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Screens.PlayScreen" target="itcom.gangstersquirrel.KeyBindings.KeyBindings">
-      <point x="47.638888888888914" y="-14.5" />
-      <point x="1360.9823767032522" y="1304.0" />
-      <point x="1940.7273239132314" y="1304.0" />
-      <point x="-28.25" y="14.5" />
+      <point x="10.701754385964932" y="-15.5" />
+      <point x="1110.4816637477209" y="926.0" />
+      <point x="1503.004385964912" y="926.0" />
+      <point x="33.25" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Screens.PlayScreen" target="itcom.gangstersquirrel.Scenes.PlayScreenHud">
-      <point x="-45.69444444444434" y="-14.5" />
-      <point x="1267.6490433699191" y="1284.0" />
-      <point x="313.85817186644783" y="1284.0" />
-      <point x="-25.600000000000023" y="14.5" />
+      <point x="53.50877192982466" y="-15.5" />
+      <point x="1153.2886812915806" y="1126.0" />
+      <point x="2276.9828947368424" y="1126.0" />
+      <point x="-30.199999999999818" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.Player" target="itcom.gangstersquirrel.Screens.PlayScreen">
-      <point x="17.5" y="14.5" />
-      <point x="1486.5665051997812" y="437.0" />
-      <point x="1622.227657865929" y="437.0" />
-      <point x="1622.227657865929" y="1174.0" />
-      <point x="1335.7045989254743" y="1174.0" />
-      <point x="22.361111111111086" y="-14.5" />
+      <point x="25.3125" y="15.5" />
+      <point x="1398.605019010879" y="363.0" />
+      <point x="1683.301037797808" y="363.0" />
+      <point x="1683.301037797808" y="976.0" />
+      <point x="1121.1834181336858" y="976.0" />
+      <point x="21.403508771929864" y="-15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Tools.Box2DWorldCreator" target="itcom.gangstersquirrel.Objects.MapObjects.Jumpable">
-      <point x="41.799999999999955" y="-14.5" />
-      <point x="866.1449999999995" y="945.0" />
-      <point x="1016.678333333333" y="945.0" />
-      <point x="-24.75" y="14.5" />
+      <point x="-42.30000000000007" y="-15.5" />
+      <point x="543.0807017543857" y="725.0" />
+      <point x="285.114035087719" y="725.0" />
+      <point x="48.333333333333314" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Statistics.Statistics" target="itcom.gangstersquirrel.Statistics.StatisticsObject">
-      <point x="-31.333333333333314" y="-14.5" />
-      <point x="142.62483853311437" y="845.0" />
-      <point x="37.31999999999971" y="845.0" />
-      <point x="-43.0" y="14.5" />
+      <point x="41.625" y="-15.5" />
+      <point x="2576.9604429623228" y="403.0" />
+      <point x="2601.5437762956562" y="403.0" />
+      <point x="52.333333333333485" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.MapObjects.Finish" target="itcom.gangstersquirrel.MainGameClass">
-      <point x="-32.91666666666663" y="14.5" />
-      <point x="779.3851544810302" y="885.0" />
-      <point x="248.20817186644808" y="885.0" />
-      <point x="248.20817186644808" y="1522.0" />
-      <point x="1244.2634878143635" y="1522.0" />
-      <point x="-31.919999999999845" y="-14.5" />
+      <point x="7.416666666666629" y="15.5" />
+      <point x="765.4473684210523" y="1347.0" />
+      <point x="2341.646576028423" y="1347.0" />
+      <point x="-49.83333333333303" y="-15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.MapObjects.DeathTile" target="itcom.gangstersquirrel.Objects.InteractiveMapTileObject">
-      <point x="-32.66666666666663" y="-14.5" />
-      <point x="890.2616666666663" y="596.0" />
-      <point x="925.6693245325955" y="596.0" />
-      <point x="9.049999999999955" y="14.5" />
+      <point x="0.0" y="-15.5" />
+      <point x="594.7807017543857" y="534.0" />
+      <point x="580.7807017543857" y="534.0" />
+      <point x="33.299999999999955" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Tools.Box2DWorldCreator" target="itcom.gangstersquirrel.Objects.MapObjects.EnemyMoveBorder">
-      <point x="-26.59999999999991" y="-14.5" />
-      <point x="797.7449999999997" y="785.0" />
-      <point x="665.8851544810302" y="785.0" />
-      <point x="-12.416666666666629" y="14.5" />
+      <point x="-23.5" y="-15.5" />
+      <point x="561.8807017543859" y="705.0" />
+      <point x="472.78070175438575" y="705.0" />
+      <point x="45.0" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.MapObjects.Finish" target="itcom.gangstersquirrel.Screens.PlayScreen">
-      <point x="32.91666666666663" y="14.5" />
-      <point x="845.2184878143635" y="705.0" />
-      <point x="969.5255555555551" y="705.0" />
-      <point x="969.5255555555551" y="1134.0" />
-      <point x="1296.8157100365856" y="1134.0" />
-      <point x="-16.52777777777783" y="-14.5" />
+      <point x="22.25" y="15.5" />
+      <point x="780.2807017543857" y="715.0" />
+      <point x="814.3545541187311" y="715.0" />
+      <point x="814.3545541187311" y="976.0" />
+      <point x="1078.376400589826" y="976.0" />
+      <point x="-21.403508771929864" y="-15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Tools.Box2DWorldCreator" target="itcom.gangstersquirrel.Objects.MapObjects.Ground">
-      <point x="-57.0" y="-14.5" />
-      <point x="767.3449999999996" y="825.0" />
-      <point x="426.0199999999995" y="825.0" />
-      <point x="35.19999999999999" y="14.5" />
+      <point x="-89.30000000000007" y="-15.5" />
+      <point x="496.0807017543857" y="775.0" />
+      <point x="108.78070175438575" y="775.0" />
+      <point x="0.0" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.MapObjects.Jumpable" target="itcom.gangstersquirrel.Screens.PlayScreen">
-      <point x="24.75" y="14.5" />
-      <point x="1066.1783333333328" y="965.0" />
-      <point x="1089.1366666666663" y="965.0" />
-      <point x="1089.1366666666663" y="1104.0" />
-      <point x="1302.6490433699191" y="1104.0" />
-      <point x="-10.694444444444343" y="-14.5" />
+      <point x="-29.0" y="15.5" />
+      <point x="207.78070175438575" y="785.0" />
+      <point x="200.37272366407706" y="785.0" />
+      <point x="200.37272366407706" y="1106.0" />
+      <point x="1050.5518391863172" y="1106.0" />
+      <point x="-49.22807017543869" y="-15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.MapObjects.DeathTile" target="itcom.gangstersquirrel.MainGameClass">
-      <point x="-40.83333333333337" y="14.5" />
-      <point x="882.0949999999996" y="895.0" />
-      <point x="253.5281718664479" y="895.0" />
-      <point x="253.5281718664479" y="1512.0" />
-      <point x="1249.5834878143633" y="1512.0" />
-      <point x="-26.59999999999991" y="-14.5" />
+      <point x="-47.5" y="15.5" />
+      <point x="547.2807017543857" y="805.0" />
+      <point x="316.28070175438575" y="805.0" />
+      <point x="316.28070175438575" y="1367.0" />
+      <point x="2332.979909361756" y="1367.0" />
+      <point x="-58.5" y="-15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Tools.WorldContactListener" target="itcom.gangstersquirrel.Objects.InteractiveMapTileObject">
-      <point x="-54.33333333333326" y="-14.5" />
-      <point x="1241.0109496442255" y="965.0" />
-      <point x="1238.5887689770398" y="965.0" />
-      <point x="1238.5887689770398" y="566.0" />
-      <point x="998.0693245325956" y="566.0" />
-      <point x="81.44999999999993" y="14.5" />
+      <point x="-66.66666666666674" y="-15.5" />
+      <point x="1115.0043859649118" y="735.0" />
+      <point x="1142.8377192982452" y="735.0" />
+      <point x="1142.8377192982452" y="524.0" />
+      <point x="625.1807017543857" y="524.0" />
+      <point x="77.69999999999993" y="15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.Screens.MainMenu" target="itcom.gangstersquirrel.MainGameClass">
+      <point x="40.333333333333485" y="15.5" />
+      <point x="2827.6584939381596" y="1166.0" />
+      <point x="2867.325160604826" y="1166.0" />
+      <point x="2867.325160604826" y="1287.0" />
+      <point x="2415.3132426950897" y="1287.0" />
+      <point x="23.833333333333485" y="-15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.Screens.LevelSelectionMenu" target="itcom.gangstersquirrel.GameProgress.GameProgress">
+      <point x="0.0" y="-15.5" />
+      <point x="2368.904909361756" y="564.0" />
+      <point x="2189.654909361756" y="564.0" />
+      <point x="61.666666666666515" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.Enemy" target="itcom.gangstersquirrel.Objects.Player">
-      <point x="13.263157894736878" y="14.5" />
-      <point x="1328.9908157606656" y="238.0" />
-      <point x="1453.0665051997812" y="238.0" />
-      <point x="-16.0" y="-14.5" />
+      <point x="44.52631578947364" y="15.5" />
+      <point x="802.5570175438594" y="162.0" />
+      <point x="1355.292519010879" y="162.0" />
+      <point x="-18.0" y="-15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.EnemyObjects.FrogEnemy" target="itcom.gangstersquirrel.Screens.PlayScreen">
-      <point x="-9.0" y="14.5" />
-      <point x="1388.727657865929" y="965.0" />
-      <point x="1396.7554356437067" y="965.0" />
-      <point x="1396.7554356437067" y="1094.0" />
-      <point x="1320.1490433699191" y="1094.0" />
-      <point x="6.805555555555657" y="-14.5" />
+      <point x="52.5" y="15.5" />
+      <point x="938.0307017543857" y="725.0" />
+      <point x="914.3589400836435" y="725.0" />
+      <point x="914.3589400836435" y="926.0" />
+      <point x="1089.078154975791" y="926.0" />
+      <point x="-10.701754385964932" y="-15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.Player" target="itcom.gangstersquirrel.MainGameClass">
-      <point x="37.5" y="14.5" />
-      <point x="1506.5665051997812" y="397.0" />
-      <point x="2072.6173239132313" y="397.0" />
-      <point x="2072.6173239132313" y="1542.0" />
-      <point x="1318.743487814363" y="1542.0" />
-      <point x="42.559999999999945" y="-14.5" />
+      <point x="42.1875" y="15.5" />
+      <point x="1415.480019010879" y="333.0" />
+      <point x="1981.143143060966" y="333.0" />
+      <point x="1981.143143060966" y="1257.0" />
+      <point x="2380.6465760284227" y="1257.0" />
+      <point x="-10.833333333333485" y="-15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.MapObjects.Ground" target="itcom.gangstersquirrel.Screens.PlayScreen">
-      <point x="-17.600000000000023" y="14.5" />
-      <point x="373.2199999999996" y="855.0" />
-      <point x="457.06654675481786" y="855.0" />
-      <point x="457.06654675481786" y="1244.0" />
-      <point x="1275.426821147697" y="1244.0" />
-      <point x="-37.916666666666515" y="-14.5" />
+      <point x="-20.0" y="15.5" />
+      <point x="88.78070175438575" y="795.0" />
+      <point x="141.1358815588137" y="795.0" />
+      <point x="141.1358815588137" y="1116.0" />
+      <point x="1048.4114883091243" y="1116.0" />
+      <point x="-51.368421052631675" y="-15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Items.WeaponList" target="itcom.gangstersquirrel.Items.WeaponObject">
-      <point x="27.5" y="-14.5" />
-      <point x="1460.227657865929" y="69.0" />
-      <point x="1559.727657865929" y="69.0" />
-      <point x="-31.75" y="14.5" />
+      <point x="-43.333333333333485" y="-15.5" />
+      <point x="2272.0075920851295" y="61.0" />
+      <point x="1917.4714912280697" y="61.0" />
+      <point x="52.84999999999991" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.MapObjects.Jumpable" target="itcom.gangstersquirrel.Objects.Player">
-      <point x="33.0" y="-14.5" />
-      <point x="1074.4283333333328" y="616.0" />
-      <point x="1117.6443245325954" y="616.0" />
-      <point x="1117.6443245325954" y="417.0" />
-      <point x="1461.5665051997812" y="417.0" />
-      <point x="-7.5" y="14.5" />
+      <point x="38.66666666666674" y="-15.5" />
+      <point x="275.4473684210525" y="554.0" />
+      <point x="1342.355019010879" y="554.0" />
+      <point x="-30.9375" y="15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.Screens.SettingsMenu" target="itcom.gangstersquirrel.MainGameClass">
+      <point x="48.0" y="15.5" />
+      <point x="3071.0021096289893" y="795.0" />
+      <point x="3034.598245614035" y="795.0" />
+      <point x="3034.598245614035" y="1317.0" />
+      <point x="2428.3132426950897" y="1317.0" />
+      <point x="36.833333333333485" y="-15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.EnemyObjects.FrogEnemy" target="itcom.gangstersquirrel.MainGameClass">
-      <point x="45.0" y="14.5" />
-      <point x="1442.727657865929" y="975.0" />
-      <point x="2061.9773239132314" y="975.0" />
-      <point x="2061.9773239132314" y="1522.0" />
-      <point x="1308.1034878143632" y="1522.0" />
-      <point x="31.920000000000073" y="-14.5" />
+      <point x="-31.5" y="15.5" />
+      <point x="854.0307017543857" y="725.0" />
+      <point x="855.2586885763582" y="725.0" />
+      <point x="855.2586885763582" y="1337.0" />
+      <point x="2345.979909361756" y="1337.0" />
+      <point x="-45.5" y="-15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Twitch.TwitchChat" target="itcom.gangstersquirrel.Twitch.TwitchCredentialsObject">
-      <point x="-43.59999999999991" y="-14.5" />
-      <point x="2243.5863742690053" y="1324.0" />
-      <point x="2172.1173239132313" y="1324.0" />
-      <point x="0.0" y="14.5" />
+      <point x="-52.5" y="-15.5" />
+      <point x="3334.8541979949878" y="805.0" />
+      <point x="3233.6687762956562" y="805.0" />
+      <point x="0.0" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.EnemyObjects.FrogEnemy" target="itcom.gangstersquirrel.Objects.Enemy">
-      <point x="0.0" y="-14.5" />
-      <point x="1397.727657865929" y="616.0" />
-      <point x="1376.727657865929" y="616.0" />
-      <point x="1376.727657865929" y="258.0" />
-      <point x="1320.1487104975076" y="258.0" />
-      <point x="4.421052631578959" y="14.5" />
+      <point x="0.0" y="-15.5" />
+      <point x="885.5307017543857" y="534.0" />
+      <point x="917.2133184995627" y="534.0" />
+      <point x="917.2133184995627" y="232.0" />
+      <point x="767.925438596491" y="232.0" />
+      <point x="9.894736842105203" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.InteractiveMapTileObject" target="itcom.gangstersquirrel.MainGameClass">
-      <point x="-81.44999999999999" y="14.5" />
-      <point x="835.1693245325956" y="546.0" />
-      <point x="5.319999999999709" y="546.0" />
-      <point x="5.319999999999709" y="1572.0" />
-      <point x="1217.6634878143632" y="1572.0" />
-      <point x="-58.51999999999998" y="-14.5" />
+      <point x="-99.90000000000009" y="15.5" />
+      <point x="447.5807017543857" y="484.0" />
+      <point x="48.280701754385746" y="484.0" />
+      <point x="48.280701754385746" y="795.0" />
+      <point x="0.0" y="795.0" />
+      <point x="0.0" y="1407.0" />
+      <point x="2315.6465760284227" y="1407.0" />
+      <point x="-75.83333333333348" y="-15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.Screens.MainMenu" target="itcom.gangstersquirrel.Screens.MenuScreen">
+      <point x="17.28571428571422" y="-15.5" />
+      <point x="2804.6108748905403" y="775.0" />
+      <point x="2878.3116334385136" y="775.0" />
+      <point x="2878.3116334385136" y="604.0" />
+      <point x="2886.2521096289893" y="604.0" />
+      <point x="-11.083333333333485" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Screens.PlayScreen" target="itcom.gangstersquirrel.Items.WeaponList">
-      <point x="37.91666666666674" y="-14.5" />
-      <point x="1351.26015448103" y="1254.0" />
-      <point x="1680.5884350243427" y="1254.0" />
-      <point x="1680.5884350243427" y="158.0" />
-      <point x="1469.3943245325954" y="158.0" />
-      <point x="36.66666666666674" y="14.5" />
+      <point x="38.526315789473756" y="-15.5" />
+      <point x="1138.3062251512297" y="1056.0" />
+      <point x="1740.143143060966" y="1056.0" />
+      <point x="1740.143143060966" y="725.0" />
+      <point x="2265.404909361756" y="725.0" />
+      <point x="2265.404909361756" y="262.0" />
+      <point x="2358.6742587517965" y="262.0" />
+      <point x="43.333333333333485" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.MapObjects.EnemyMoveBorder" target="itcom.gangstersquirrel.Objects.Player">
-      <point x="0.0" y="-14.5" />
-      <point x="677.3199999999996" y="377.0" />
-      <point x="1441.5665051997812" y="377.0" />
-      <point x="-27.5" y="14.5" />
+      <point x="60.0" y="-15.5" />
+      <point x="487.78070175438575" y="564.0" />
+      <point x="1347.980019010879" y="564.0" />
+      <point x="-25.3125" y="15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.Screens.MainMenu" target="itcom.gangstersquirrel.Screens.SettingsMenu">
+      <point x="34.57142857142844" y="-15.5" />
+      <point x="2821.8965891762546" y="785.0" />
+      <point x="2975.0021096289893" y="785.0" />
+      <point x="-48.0" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.MapObjects.WeaponPickup" target="itcom.gangstersquirrel.Items.WeaponList">
-      <point x="0.0" y="-14.5" />
-      <point x="519.8018211476968" y="536.0" />
-      <point x="526.1199999999995" y="536.0" />
-      <point x="526.1199999999995" y="288.0" />
-      <point x="1396.060991199262" y="288.0" />
-      <point x="-36.66666666666674" y="14.5" />
+      <point x="60.40000000000009" y="-15.5" />
+      <point x="1449.4203360434221" y="574.0" />
+      <point x="1698.581739552194" y="574.0" />
+      <point x="1698.581739552194" y="252.0" />
+      <point x="2315.340925418463" y="252.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.Screens.LevelSelectionMenu" target="itcom.gangstersquirrel.MainGameClass">
+      <point x="-23.25" y="15.5" />
+      <point x="2345.654909361756" y="745.0" />
+      <point x="2148.0271929824557" y="745.0" />
+      <point x="2148.0271929824557" y="1247.0" />
+      <point x="2384.979909361756" y="1247.0" />
+      <point x="-6.5" y="-15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.Screens.SplashScreen" target="itcom.gangstersquirrel.Screens.MainMenu">
+      <point x="0.0" y="-15.5" />
+      <point x="0.0" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.MapObjects.Jumpable" target="itcom.gangstersquirrel.Objects.InteractiveMapTileObject">
-      <point x="-33.0" y="-14.5" />
-      <point x="1008.428333333333" y="596.0" />
-      <point x="943.7693245325956" y="596.0" />
-      <point x="27.149999999999977" y="14.5" />
+      <point x="0.0" y="-15.5" />
+      <point x="236.78070175438575" y="504.0" />
+      <point x="491.9807017543858" y="504.0" />
+      <point x="-55.5" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Screens.PlayScreen" target="itcom.gangstersquirrel.Objects.Enemy">
-      <point x="34.02777777777783" y="-14.5" />
-      <point x="1347.3712655921413" y="1234.0" />
-      <point x="1633.8943245325954" y="1234.0" />
-      <point x="1633.8943245325954" y="178.0" />
-      <point x="1351.0960789185601" y="178.0" />
-      <point x="35.36842105263145" y="14.5" />
+      <point x="-59.92982456140362" y="-15.5" />
+      <point x="1039.8500848003523" y="1156.0" />
+      <point x="11.0" y="1156.0" />
+      <point x="11.0" y="182.0" />
+      <point x="713.5043859649121" y="182.0" />
+      <point x="-44.52631578947364" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.MapObjects.Ground" target="itcom.gangstersquirrel.Objects.InteractiveMapTileObject">
-      <point x="29.333333333333314" y="-14.5" />
-      <point x="420.15333333333297" y="556.0" />
-      <point x="853.2693245325956" y="556.0" />
-      <point x="-63.35000000000002" y="14.5" />
+      <point x="0.0" y="-15.5" />
+      <point x="108.78070175438575" y="494.0" />
+      <point x="469.78070175438575" y="494.0" />
+      <point x="-77.69999999999999" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Scenes.PlayScreenHud" target="itcom.gangstersquirrel.MainGameClass">
-      <point x="-51.200000000000045" y="14.5" />
-      <point x="288.2581718664478" y="1324.0" />
-      <point x="638.1511456802928" y="1324.0" />
-      <point x="638.1511456802928" y="1492.0" />
-      <point x="1260.2234878143631" y="1492.0" />
-      <point x="-15.960000000000036" y="-14.5" />
+      <point x="60.40000000000009" y="15.5" />
+      <point x="2367.582894736842" y="1156.0" />
+      <point x="2327.811758751797" y="1156.0" />
+      <point x="2327.811758751797" y="1237.0" />
+      <point x="2389.3132426950897" y="1237.0" />
+      <point x="-2.166666666666515" y="-15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.Twitch.TwitchThread" target="itcom.gangstersquirrel.GameProgress.GameProgress">
+      <point x="-56.80000000000018" y="-15.5" />
+      <point x="3323.154197994987" y="1156.0" />
+      <point x="2485.6010453468016" y="1156.0" />
+      <point x="2485.6010453468016" y="715.0" />
+      <point x="2140.321576028423" y="715.0" />
+      <point x="12.333333333333485" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Screens.PlayScreen" target="itcom.gangstersquirrel.Items.WeaponObject">
-      <point x="51.52777777777783" y="-14.5" />
-      <point x="1364.8712655921413" y="1324.0" />
-      <point x="2050.9773239132314" y="1324.0" />
-      <point x="2050.9773239132314" y="49.0" />
-      <point x="1648.627657865929" y="49.0" />
-      <point x="57.15000000000009" y="14.5" />
-    </edge>
-    <edge source="itcom.gangstersquirrel.Tools.Box2DWorldCreator" target="itcom.gangstersquirrel.Objects.MapObjects.DeathTile">
-      <point x="26.600000000000023" y="-14.5" />
-      <point x="850.9449999999996" y="915.0" />
-      <point x="914.7616666666663" y="915.0" />
-      <point x="-8.166666666666629" y="14.5" />
-    </edge>
-    <edge source="itcom.gangstersquirrel.Tools.Box2DWorldCreator" target="itcom.gangstersquirrel.Objects.MapObjects.WeaponPickup">
-      <point x="-41.799999999999955" y="-14.5" />
-      <point x="782.5449999999996" y="805.0" />
-      <point x="551.8018211476968" y="805.0" />
-      <point x="32.0" y="14.5" />
+      <point x="29.96491228070181" y="-15.5" />
+      <point x="1129.7448216424577" y="1016.0" />
+      <point x="1731.581739552194" y="1016.0" />
+      <point x="1731.581739552194" y="91.0" />
+      <point x="1857.07149122807" y="91.0" />
+      <point x="-7.5499999999999545" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.MapObjects.WeaponPickup" target="itcom.gangstersquirrel.Objects.Player">
-      <point x="25.600000000000023" y="-14.5" />
-      <point x="545.4018211476969" y="536.0" />
-      <point x="567.2943245325955" y="536.0" />
-      <point x="567.2943245325955" y="367.0" />
-      <point x="1436.5665051997812" y="367.0" />
-      <point x="-32.5" y="14.5" />
+      <point x="0.0" y="-15.5" />
+      <point x="1389.020336043422" y="604.0" />
+      <point x="1387.4750848003525" y="604.0" />
+      <point x="1387.4750848003525" y="403.0" />
+      <point x="1376.105019010879" y="403.0" />
+      <point x="2.8125" y="15.5" />
     </edge>
-    <edge source="itcom.gangstersquirrel.client.HtmlLauncher" target="itcom.gangstersquirrel.MainGameClass">
-      <point x="31.0" y="-14.5" />
-      <point x="1385.1834878143632" y="1651.0" />
-      <point x="1326.0584878143632" y="1651.0" />
-      <point x="49.875" y="14.5" />
+    <edge source="itcom.gangstersquirrel.Tools.Box2DWorldCreator" target="itcom.gangstersquirrel.Objects.MapObjects.WeaponPickup">
+      <point x="79.89999999999998" y="-15.5" />
+      <point x="665.2807017543859" y="755.0" />
+      <point x="1351.270336043422" y="755.0" />
+      <point x="-37.75" y="15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.Tools.Box2DWorldCreator" target="itcom.gangstersquirrel.Objects.MapObjects.DeathTile">
+      <point x="4.7000000000000455" y="-15.5" />
+      <point x="590.0807017543859" y="675.0" />
+      <point x="585.2807017543857" y="675.0" />
+      <point x="-9.5" y="15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.Screens.LevelSelectionMenu" target="itcom.gangstersquirrel.Screens.PlayScreen">
+      <point x="-69.75" y="15.5" />
+      <point x="2299.154909361756" y="735.0" />
+      <point x="2137.0271929824557" y="735.0" />
+      <point x="2137.0271929824557" y="1076.0" />
+      <point x="1142.5869269056157" y="1076.0" />
+      <point x="42.80701754385973" y="-15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Screens.PlayScreen" target="itcom.gangstersquirrel.Objects.EnemyObjects.FrogEnemy">
-      <point x="10.69444444444457" y="-14.5" />
-      <point x="1324.0379322588078" y="1114.0" />
-      <point x="1426.449880088151" y="1114.0" />
-      <point x="1426.449880088151" y="975.0" />
-      <point x="1424.727657865929" y="975.0" />
-      <point x="27.0" y="14.5" />
-    </edge>
-    <edge source="itcom.gangstersquirrel.Screens.PlayScreen" target="itcom.gangstersquirrel.Statistics.Statistics">
-      <point x="-49.58333333333326" y="-14.5" />
-      <point x="1263.76015448103" y="1304.0" />
-      <point x="185.70817186644763" y="1304.0" />
-      <point x="11.75" y="14.5" />
-    </edge>
-    <edge source="itcom.gangstersquirrel.Objects.InteractiveMapTileObject" target="itcom.gangstersquirrel.Screens.PlayScreen">
-      <point x="45.25" y="14.5" />
-      <point x="961.8693245325956" y="586.0" />
-      <point x="1201.3998385331145" y="586.0" />
-      <point x="1201.3998385331145" y="1084.0" />
-      <point x="1306.5379322588078" y="1084.0" />
-      <point x="-6.805555555555429" y="-14.5" />
+      <point x="-14.982456140350905" y="-15.5" />
+      <point x="1084.797453221405" y="946.0" />
+      <point x="886.6008771929822" y="946.0" />
+      <point x="886.6008771929822" y="725.0" />
+      <point x="896.0307017543857" y="725.0" />
+      <point x="10.5" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.MapObjects.WeaponPickup" target="itcom.gangstersquirrel.Screens.PlayScreen">
-      <point x="-10.666666666666629" y="14.5" />
-      <point x="509.8192829775588" y="1224.0" />
-      <point x="1279.3157100365856" y="1224.0" />
-      <point x="-34.02777777777783" y="-14.5" />
+      <point x="12.583333333333258" y="15.5" />
+      <point x="1401.6036693767555" y="765.0" />
+      <point x="1555.0212207853979" y="765.0" />
+      <point x="1555.0212207853979" y="936.0" />
+      <point x="1112.6220146249138" y="936.0" />
+      <point x="12.842105263157919" y="-15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.Screens.PlayScreen" target="itcom.gangstersquirrel.Statistics.Statistics">
+      <point x="44.947368421052715" y="-15.5" />
+      <point x="1144.7272777828086" y="1086.0" />
+      <point x="2216.9021929824557" y="1086.0" />
+      <point x="2216.9021929824557" y="755.0" />
+      <point x="2472.404909361756" y="755.0" />
+      <point x="2472.404909361756" y="564.0" />
+      <point x="2489.0854429623228" y="564.0" />
+      <point x="-46.25" y="15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.Objects.InteractiveMapTileObject" target="itcom.gangstersquirrel.Screens.PlayScreen">
+      <point x="-11.099999999999909" y="15.5" />
+      <point x="536.3807017543859" y="524.0" />
+      <point x="327.28070175438575" y="524.0" />
+      <point x="327.28070175438575" y="1076.0" />
+      <point x="1056.9728918178962" y="1076.0" />
+      <point x="-42.80701754385973" y="-15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.Screens.SettingsMenu" target="itcom.gangstersquirrel.Screens.MainMenu">
+      <point x="0.0" y="15.5" />
+      <point x="3023.0021096289893" y="795.0" />
+      <point x="2839.182303461969" y="795.0" />
+      <point x="51.85714285714266" y="-15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.GameProgress.GameProgress" target="itcom.gangstersquirrel.Items.WeaponObject">
-      <point x="46.5" y="-14.5" />
-      <point x="1869.9773239132314" y="985.0" />
-      <point x="1886.9773239132314" y="985.0" />
-      <point x="1886.9773239132314" y="59.0" />
-      <point x="1635.9276578659287" y="59.0" />
-      <point x="44.450000000000045" y="14.5" />
+      <point x="-59.19999999999982" y="-15.5" />
+      <point x="2068.7882426950896" y="403.0" />
+      <point x="1991.3880745412703" y="403.0" />
+      <point x="1991.3880745412703" y="91.0" />
+      <point x="1872.17149122807" y="91.0" />
+      <point x="7.5499999999999545" y="15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.Statistics.Statistics" target="itcom.gangstersquirrel.Tools.JSONFileCreator">
+      <point x="-41.625" y="-15.5" />
+      <point x="2493.7104429623228" y="403.0" />
+      <point x="2460.2104429623228" y="403.0" />
+      <point x="2460.2104429623228" y="91.0" />
+      <point x="2454.9787280701757" y="91.0" />
+      <point x="13.583333333333485" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.InteractiveMapTileObject" target="itcom.gangstersquirrel.Objects.Player">
-      <point x="45.25" y="-14.5" />
-      <point x="961.8693245325956" y="397.0" />
-      <point x="1451.5665051997812" y="397.0" />
-      <point x="-17.5" y="14.5" />
+      <point x="55.5" y="-15.5" />
+      <point x="602.9807017543858" y="403.0" />
+      <point x="1331.105019010879" y="403.0" />
+      <point x="-42.1875" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Screens.PlayScreen" target="itcom.gangstersquirrel.Objects.Player">
-      <point x="24.305555555555657" y="-14.5" />
-      <point x="1337.6490433699191" y="1184.0" />
-      <point x="1624.1721023103732" y="1184.0" />
-      <point x="1624.1721023103732" y="427.0" />
-      <point x="1491.5665051997812" y="427.0" />
-      <point x="22.5" y="14.5" />
+      <point x="25.684210526315837" y="-15.5" />
+      <point x="1125.4641198880718" y="996.0" />
+      <point x="1687.581739552194" y="996.0" />
+      <point x="1687.581739552194" y="343.0" />
+      <point x="1409.855019010879" y="343.0" />
+      <point x="36.5625" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.MapObjects.WeaponPickup" target="itcom.gangstersquirrel.Items.WeaponObject">
-      <point x="-51.19999999999993" y="-14.5" />
-      <point x="468.6018211476969" y="516.0" />
-      <point x="504.11999999999955" y="516.0" />
-      <point x="504.11999999999955" y="49.0" />
-      <point x="1534.3276578659288" y="49.0" />
-      <point x="-57.15000000000009" y="14.5" />
+      <point x="30.200000000000045" y="-15.5" />
+      <point x="1419.2203360434223" y="604.0" />
+      <point x="1439.948769010879" y="604.0" />
+      <point x="1439.948769010879" y="71.0" />
+      <point x="1826.8714912280698" y="71.0" />
+      <point x="-37.75" y="15.5" />
     </edge>
-    <edge source="itcom.gangstersquirrel.Objects.MapObjects.WeaponPickup" target="itcom.gangstersquirrel.MainGameClass">
-      <point x="-53.33333333333337" y="14.5" />
-      <point x="466.46848781436347" y="865.0" />
-      <point x="237.56817186644787" y="865.0" />
-      <point x="237.56817186644787" y="1542.0" />
-      <point x="1233.6234878143632" y="1542.0" />
-      <point x="-42.559999999999945" y="-14.5" />
+    <edge source="itcom.gangstersquirrel.MainGameClass" target="itcom.gangstersquirrel.Settings.Settings">
+      <point x="71.5" y="-15.5" />
+      <point x="2462.979909361756" y="1397.0" />
+      <point x="3511.768776295656" y="1397.0" />
+      <point x="3511.768776295656" y="604.0" />
+      <point x="3500.810442962323" y="604.0" />
+      <point x="13.125" y="15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.Twitch.TwitchChat" target="itcom.gangstersquirrel.Tools.JSONFileCreator">
+      <point x="52.5" y="-15.5" />
+      <point x="3439.8541979949878" y="805.0" />
+      <point x="3586.810442962323" y="805.0" />
+      <point x="3586.810442962323" y="81.0" />
+      <point x="2509.312061403509" y="81.0" />
+      <point x="67.91666666666652" y="15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.Items.WeaponList" target="itcom.gangstersquirrel.Tools.JSONFileCreator">
+      <point x="43.333333333333485" y="-15.5" />
+      <point x="2358.6742587517965" y="91.0" />
+      <point x="2373.4787280701757" y="91.0" />
+      <point x="-67.91666666666652" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.MapObjects.EnemyMoveBorder" target="itcom.gangstersquirrel.Objects.Enemy">
-      <point x="-49.66666666666663" y="-14.5" />
-      <point x="628.6351544810302" y="536.0" />
-      <point x="666.3199999999996" y="536.0" />
-      <point x="666.3199999999996" y="228.0" />
-      <point x="1289.2013420764551" y="228.0" />
-      <point x="-26.526315789473756" y="14.5" />
+      <point x="-60.0" y="-15.5" />
+      <point x="367.78070175438575" y="474.0" />
+      <point x="329.00701754385955" y="474.0" />
+      <point x="329.00701754385955" y="242.0" />
+      <point x="743.1885964912278" y="242.0" />
+      <point x="-14.842105263157919" y="15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.Objects.MapObjects.WeaponPickup" target="itcom.gangstersquirrel.MainGameClass">
+      <point x="62.91666666666674" y="15.5" />
+      <point x="1451.937002710089" y="745.0" />
+      <point x="1720.581739552194" y="745.0" />
+      <point x="1720.581739552194" y="1267.0" />
+      <point x="2376.3132426950897" y="1267.0" />
+      <point x="-15.166666666666515" y="-15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.MapObjects.WeaponPickup" target="itcom.gangstersquirrel.Objects.Enemy">
-      <point x="-25.600000000000023" y="-14.5" />
-      <point x="494.2018211476968" y="526.0" />
-      <point x="515.1199999999995" y="526.0" />
-      <point x="515.1199999999995" y="218.0" />
-      <point x="1284.780289444876" y="218.0" />
-      <point x="-30.947368421052715" y="14.5" />
+      <point x="-30.200000000000045" y="-15.5" />
+      <point x="1358.8203360434222" y="504.0" />
+      <point x="1317.792519010879" y="504.0" />
+      <point x="1317.792519010879" y="182.0" />
+      <point x="792.6622807017542" y="182.0" />
+      <point x="34.63157894736844" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.MapObjects.Finish" target="itcom.gangstersquirrel.Objects.InteractiveMapTileObject">
-      <point x="26.33333333333337" y="-14.5" />
-      <point x="838.6351544810302" y="586.0" />
-      <point x="907.5693245325956" y="586.0" />
-      <point x="-9.050000000000068" y="14.5" />
+      <point x="-29.66666666666663" y="-15.5" />
+      <point x="728.3640350877191" y="534.0" />
+      <point x="602.9807017543858" y="534.0" />
+      <point x="55.5" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.MapObjects.EnemyMoveBorder" target="itcom.gangstersquirrel.Screens.PlayScreen">
-      <point x="62.08333333333326" y="14.5" />
-      <point x="740.3851544810301" y="725.0" />
-      <point x="915.164444444444" y="725.0" />
-      <point x="915.164444444444" y="1154.0" />
-      <point x="1292.926821147697" y="1154.0" />
-      <point x="-20.416666666666515" y="-14.5" />
+      <point x="-45.0" y="15.5" />
+      <point x="382.78070175438575" y="795.0" />
+      <point x="405.8990394535508" y="795.0" />
+      <point x="405.8990394535508" y="1066.0" />
+      <point x="1059.1132426950892" y="1066.0" />
+      <point x="-40.66666666666674" y="-15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.MapObjects.EnemyMoveBorder" target="itcom.gangstersquirrel.MainGameClass">
-      <point x="-62.08333333333337" y="14.5" />
-      <point x="616.2184878143635" y="875.0" />
-      <point x="242.88817186644792" y="875.0" />
-      <point x="242.88817186644792" y="1532.0" />
-      <point x="1238.9434878143634" y="1532.0" />
-      <point x="-37.24000000000001" y="-14.5" />
+      <point x="-75.0" y="15.5" />
+      <point x="352.78070175438575" y="795.0" />
+      <point x="211.37272366407706" y="795.0" />
+      <point x="211.37272366407706" y="1377.0" />
+      <point x="2328.6465760284227" y="1377.0" />
+      <point x="-62.833333333333485" y="-15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.MapObjects.Ground" target="itcom.gangstersquirrel.Objects.Enemy">
-      <point x="-29.33333333333337" y="-14.5" />
-      <point x="361.4866666666662" y="536.0" />
-      <point x="379.8199999999996" y="536.0" />
-      <point x="379.8199999999996" y="208.0" />
-      <point x="1280.3592368132972" y="208.0" />
-      <point x="-35.368421052631675" y="14.5" />
+      <point x="-33.33333333333326" y="-15.5" />
+      <point x="75.44736842105249" y="474.0" />
+      <point x="117.07559920131689" y="474.0" />
+      <point x="117.07559920131689" y="222.0" />
+      <point x="733.2938596491226" y="222.0" />
+      <point x="-24.736842105263122" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.InteractiveMapTileObject" target="itcom.gangstersquirrel.Objects.Enemy">
-      <point x="-45.25" y="-14.5" />
-      <point x="871.3693245325956" y="248.0" />
-      <point x="1298.043447339613" y="248.0" />
-      <point x="-17.684210526315837" y="14.5" />
+      <point x="-55.5" y="-15.5" />
+      <point x="491.9807017543858" y="262.0" />
+      <point x="753.0833333333331" y="262.0" />
+      <point x="-4.947368421052602" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.MapObjects.WeaponPickup" target="itcom.gangstersquirrel.Objects.InteractiveMapTileObject">
-      <point x="51.200000000000045" y="-14.5" />
-      <point x="571.0018211476969" y="566.0" />
-      <point x="871.3693245325956" y="566.0" />
-      <point x="-45.25" y="14.5" />
+      <point x="-60.40000000000009" y="-15.5" />
+      <point x="1328.620336043422" y="514.0" />
+      <point x="647.3807017543857" y="514.0" />
+      <point x="99.89999999999986" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Tools.Box2DWorldCreator" target="itcom.gangstersquirrel.MainGameClass">
-      <point x="-63.33333333333337" y="14.5" />
-      <point x="761.0116666666662" y="1324.0" />
-      <point x="883.3018211476966" y="1324.0" />
-      <point x="883.3018211476966" y="1482.0" />
-      <point x="1265.5434878143633" y="1482.0" />
-      <point x="-10.6400000000001" y="-14.5" />
+      <point x="-78.33333333333326" y="15.5" />
+      <point x="507.0473684210526" y="1166.0" />
+      <point x="508.1430672564927" y="1166.0" />
+      <point x="508.1430672564927" y="1357.0" />
+      <point x="2337.3132426950897" y="1357.0" />
+      <point x="-54.166666666666515" y="-15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.Screens.SettingsMenu" target="itcom.gangstersquirrel.Settings.Settings">
+      <point x="41.14285714285734" y="-15.5" />
+      <point x="3064.1449667718466" y="594.0" />
+      <point x="3448.310442962323" y="594.0" />
+      <point x="-39.375" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.MainGameClass" target="itcom.gangstersquirrel.Screens.SplashScreen">
-      <point x="15.960000000000036" y="-14.5" />
-      <point x="1292.1434878143632" y="1492.0" />
-      <point x="1316.8234878143635" y="1492.0" />
-      <point x="-39.0" y="14.5" />
+      <point x="10.833333333333485" y="-15.5" />
+      <point x="2402.3132426950897" y="1257.0" />
+      <point x="2740.9918272714926" y="1257.0" />
+      <point x="-46.333333333333485" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Twitch.TwitchThread" target="itcom.gangstersquirrel.Twitch.TwitchChat">
-      <point x="15.125" y="-14.5" />
-      <point x="2309.365751591622" y="1413.0" />
-      <point x="2314.4363742690052" y="1413.0" />
-      <point x="27.25" y="14.5" />
+      <point x="0.0" y="-15.5" />
+      <point x="3379.954197994987" y="1136.0" />
+      <point x="3355.8541979949878" y="1136.0" />
+      <point x="-31.5" y="15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.Screens.LevelSelectionMenu" target="itcom.gangstersquirrel.Screens.MenuScreen">
+      <point x="62.0" y="-15.5" />
+      <point x="2430.904909361756" y="594.0" />
+      <point x="2841.9187762956562" y="594.0" />
+      <point x="-55.416666666666515" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Screens.PlayScreen" target="itcom.gangstersquirrel.MainGameClass">
-      <point x="-21.0" y="14.5" />
-      <point x="1292.3434878143635" y="1393.0" />
-      <point x="1276.1834878143632" y="1393.0" />
-      <point x="0.0" y="-14.5" />
+      <point x="15.25" y="15.5" />
+      <point x="1115.029909361756" y="1297.0" />
+      <point x="2363.3132426950897" y="1297.0" />
+      <point x="-28.166666666666515" y="-15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Twitch.TwitchThread" target="itcom.gangstersquirrel.MainGameClass">
-      <point x="45.375" y="14.5" />
-      <point x="2339.615751591622" y="1582.0" />
-      <point x="1340.0234878143633" y="1582.0" />
-      <point x="63.83999999999992" y="-14.5" />
+      <point x="17.75" y="15.5" />
+      <point x="3397.704197994987" y="1377.0" />
+      <point x="2454.3132426950897" y="1377.0" />
+      <point x="62.833333333333485" y="-15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Tools.Box2DWorldCreator" target="itcom.gangstersquirrel.Objects.EnemyObjects.MonkeyEnemy">
-      <point x="72.20000000000005" y="-14.5" />
-      <point x="896.5449999999996" y="985.0" />
-      <point x="1495.310991199262" y="985.0" />
-      <point x="-52.91666666666674" y="14.5" />
+      <point x="61.10000000000002" y="-15.5" />
+      <point x="646.4807017543859" y="735.0" />
+      <point x="980.8640350877191" y="735.0" />
+      <point x="-61.66666666666663" y="15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.Screens.SettingsMenu" target="itcom.gangstersquirrel.Tools.BitmapFontGenerator">
+      <point x="-61.71428571428578" y="-15.5" />
+      <point x="2961.2878239147035" y="584.0" />
+      <point x="2777.5021096289893" y="584.0" />
+      <point x="66.66666666666652" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Scenes.PlayScreenHud" target="itcom.gangstersquirrel.Screens.PlayScreen">
-      <point x="25.600000000000023" y="14.5" />
-      <point x="365.0581718664479" y="1264.0" />
-      <point x="1271.5379322588078" y="1264.0" />
-      <point x="-41.80555555555543" y="-14.5" />
-    </edge>
-    <edge source="itcom.gangstersquirrel.GameProgress.GameProgressObject" target="itcom.gangstersquirrel.Items.WeaponObject">
-      <point x="-39.75" y="-14.5" />
-      <point x="1757.2273239132314" y="616.0" />
-      <point x="1770.7817012358482" y="616.0" />
-      <point x="1770.7817012358482" y="79.0" />
-      <point x="1610.5276578659286" y="79.0" />
-      <point x="19.049999999999955" y="14.5" />
+      <point x="30.199999999999818" y="15.5" />
+      <point x="2337.382894736842" y="1146.0" />
+      <point x="1157.5693830459666" y="1146.0" />
+      <point x="57.789473684210634" y="-15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.MainGameClass" target="itcom.gangstersquirrel.Screens.PlayScreen">
-      <point x="5.319999999999936" y="-14.5" />
-      <point x="1281.5034878143633" y="1403.0" />
-      <point x="1313.3434878143635" y="1403.0" />
-      <point x="0.0" y="14.5" />
+      <point x="-32.5" y="-15.5" />
+      <point x="2358.979909361756" y="1307.0" />
+      <point x="1084.529909361756" y="1307.0" />
+      <point x="-15.25" y="15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.GameProgress.GameProgressObject" target="itcom.gangstersquirrel.Items.WeaponObject">
+      <point x="-48.5" y="-15.5" />
+      <point x="2079.4882426950894" y="232.0" />
+      <point x="2136.3880745412703" y="232.0" />
+      <point x="2136.3880745412703" y="81.0" />
+      <point x="1887.2714912280699" y="81.0" />
+      <point x="22.65000000000009" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.EnemyObjects.FrogEnemy" target="itcom.gangstersquirrel.Objects.Player">
-      <point x="36.0" y="-14.5" />
-      <point x="1433.727657865929" y="616.0" />
-      <point x="1457.477657865929" y="616.0" />
-      <point x="1457.477657865929" y="437.0" />
-      <point x="1471.5665051997812" y="437.0" />
-      <point x="2.5" y="14.5" />
+      <point x="42.0" y="-15.5" />
+      <point x="927.5307017543857" y="594.0" />
+      <point x="1364.855019010879" y="594.0" />
+      <point x="-8.4375" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Screens.PlayScreen" target="itcom.gangstersquirrel.Objects.EnemyObjects.MonkeyEnemy">
-      <point x="20.416666666666742" y="-14.5" />
-      <point x="1333.76015448103" y="1164.0" />
-      <point x="1580.9082134214846" y="1164.0" />
-      <point x="31.75" y="14.5" />
+      <point x="-4.280701754385973" y="-15.5" />
+      <point x="1095.49920760737" y="896.0" />
+      <point x="1045.741228070175" y="896.0" />
+      <point x="1045.741228070175" y="725.0" />
+      <point x="1079.5307017543857" y="725.0" />
+      <point x="37.0" y="15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.Screens.MenuScreen" target="itcom.gangstersquirrel.MainGameClass">
+      <point x="33.25" y="15.5" />
+      <point x="2930.5854429623228" y="604.0" />
+      <point x="2923.7104429623228" y="604.0" />
+      <point x="2923.7104429623228" y="1307.0" />
+      <point x="2423.979909361756" y="1307.0" />
+      <point x="32.5" y="-15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Screens.PlayScreen" target="itcom.gangstersquirrel.Tools.WorldContactListener">
-      <point x="-2.9166666666667425" y="-14.5" />
-      <point x="1310.4268211476965" y="1064.0" />
-      <point x="1234.2192829775588" y="1064.0" />
-      <point x="-61.125" y="14.5" />
+      <point x="2.1403508771929864" y="-15.5" />
+      <point x="1101.920260238949" y="886.0" />
+      <point x="1156.6710526315787" y="886.0" />
+      <point x="-25.0" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Tools.Box2DWorldCreator" target="itcom.gangstersquirrel.Screens.PlayScreen">
-      <point x="63.33333333333326" y="14.5" />
-      <point x="887.6783333333328" y="1164.0" />
-      <point x="1290.9823767032522" y="1164.0" />
-      <point x="-22.361111111111086" y="-14.5" />
+      <point x="78.33333333333326" y="15.5" />
+      <point x="663.7140350877191" y="1006.0" />
+      <point x="1071.955347958247" y="1006.0" />
+      <point x="-27.824561403508824" y="-15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Screens.PlayScreen" target="itcom.gangstersquirrel.GameProgress.GameProgress">
-      <point x="45.69444444444434" y="-14.5" />
-      <point x="1359.0379322588078" y="1294.0" />
-      <point x="1864.8106572465647" y="1294.0" />
-      <point x="41.33333333333326" y="14.5" />
+      <point x="32.1052631578948" y="-15.5" />
+      <point x="1131.8851725196507" y="1026.0" />
+      <point x="1733.7220904293872" y="1026.0" />
+      <point x="1733.7220904293872" y="554.0" />
+      <point x="2066.321576028423" y="554.0" />
+      <point x="-61.666666666666515" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.MapObjects.Jumpable" target="itcom.gangstersquirrel.Objects.Enemy">
-      <point x="0.0" y="-14.5" />
-      <point x="1041.4283333333328" y="606.0" />
-      <point x="1106.6443245325954" y="606.0" />
-      <point x="1106.6443245325954" y="268.0" />
-      <point x="1306.885552602771" y="268.0" />
-      <point x="-8.842105263157919" y="14.5" />
+      <point x="-38.66666666666674" y="-15.5" />
+      <point x="198.114035087719" y="232.0" />
+      <point x="738.2412280701752" y="232.0" />
+      <point x="-19.78947368421052" y="15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.Screens.SettingsMenu" target="itcom.gangstersquirrel.Tools.ResolutionObject">
+      <point x="20.57142857142844" y="-15.5" />
+      <point x="3043.5735382004177" y="604.0" />
+      <point x="3053.8354429623228" y="604.0" />
+      <point x="-14.0" y="15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.MainGameClass" target="itcom.gangstersquirrel.Tools.ResolutionObject">
+      <point x="45.5" y="-15.5" />
+      <point x="2436.979909361756" y="1337.0" />
+      <point x="3109.8354429623228" y="1337.0" />
+      <point x="42.0" y="15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.Screens.MainMenu" target="itcom.gangstersquirrel.Screens.LevelSelectionMenu">
+      <point x="-51.85714285714312" y="-15.5" />
+      <point x="2735.468017747683" y="705.0" />
+      <point x="2392.154909361756" y="705.0" />
+      <point x="23.25" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.MainGameClass" target="itcom.gangstersquirrel.Twitch.TwitchThread">
-      <point x="53.200000000000045" y="-14.5" />
-      <point x="1329.3834878143634" y="1562.0" />
-      <point x="2279.115751591622" y="1562.0" />
-      <point x="-15.125" y="14.5" />
+      <point x="54.166666666666515" y="-15.5" />
+      <point x="2445.6465760284227" y="1357.0" />
+      <point x="3326.704197994987" y="1357.0" />
+      <point x="-53.25" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Tools.WorldContactListener" target="itcom.gangstersquirrel.Objects.Player">
-      <point x="54.33333333333326" y="-14.5" />
-      <point x="1349.677616310892" y="955.0" />
-      <point x="1284.677616310892" y="955.0" />
-      <point x="1284.677616310892" y="427.0" />
-      <point x="1466.5665051997812" y="427.0" />
-      <point x="-2.5" y="14.5" />
+      <point x="66.66666666666674" y="-15.5" />
+      <point x="1248.3377192982452" y="775.0" />
+      <point x="1475.020336043422" y="775.0" />
+      <point x="1475.020336043422" y="393.0" />
+      <point x="1381.730019010879" y="393.0" />
+      <point x="8.4375" y="15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.Settings.Settings" target="itcom.gangstersquirrel.Settings.SettingsObject">
+      <point x="39.375" y="-15.5" />
+      <point x="3527.060442962323" y="403.0" />
+      <point x="3551.1437762956566" y="403.0" />
+      <point x="50.333333333333485" y="15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.Screens.SettingsMenu" target="itcom.gangstersquirrel.Screens.MenuScreen">
+      <point x="-41.14285714285734" y="-15.5" />
+      <point x="2981.859252486132" y="574.0" />
+      <point x="2952.7521096289893" y="574.0" />
+      <point x="55.416666666666515" y="15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.Screens.StatisticsMenu" target="itcom.gangstersquirrel.Screens.MainMenu">
+      <point x="50.0" y="15.5" />
+      <point x="2772.5869269056157" y="675.0" />
+      <point x="2787.325160604826" y="675.0" />
+      <point x="0.0" y="-15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Tools.Box2DWorldCreator" target="itcom.gangstersquirrel.Objects.MapObjects.Finish">
-      <point x="11.399999999999977" y="-14.5" />
-      <point x="835.7449999999995" y="735.0" />
-      <point x="818.8851544810302" y="735.0" />
-      <point x="6.583333333333371" y="14.5" />
+      <point x="42.299999999999955" y="-15.5" />
+      <point x="627.6807017543858" y="715.0" />
+      <point x="750.6140350877191" y="715.0" />
+      <point x="-7.416666666666629" y="15.5" />
     </edge>
-    <edge source="itcom.gangstersquirrel.Objects.Enemy" target="itcom.gangstersquirrel.MainGameClass">
-      <point x="-39.789473684210634" y="14.5" />
-      <point x="1275.938184181718" y="198.0" />
-      <point x="0.0" y="198.0" />
-      <point x="0.0" y="1582.0" />
-      <point x="1212.3434878143635" y="1582.0" />
-      <point x="-63.83999999999992" y="-14.5" />
+    <edge source="itcom.gangstersquirrel.Screens.StatisticsMenu" target="itcom.gangstersquirrel.Tools.BitmapFontGenerator">
+      <point x="18.75" y="-15.5" />
+      <point x="2741.3369269056157" y="584.0" />
+      <point x="2710.8354429623228" y="584.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.Screens.PlayScreen" target="itcom.gangstersquirrel.Screens.MainMenu">
+      <point x="59.92982456140362" y="-15.5" />
+      <point x="1159.7097339231595" y="1166.0" />
+      <point x="2746.9918272714926" y="1166.0" />
+      <point x="-40.333333333333485" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.MapObjects.Ground" target="itcom.gangstersquirrel.MainGameClass">
-      <point x="-35.19999999999993" y="14.5" />
-      <point x="355.61999999999966" y="855.0" />
-      <point x="110.36817186644771" y="855.0" />
-      <point x="110.36817186644771" y="1562.0" />
-      <point x="1222.9834878143633" y="1562.0" />
-      <point x="-53.200000000000045" y="-14.5" />
+      <point x="-40.0" y="15.5" />
+      <point x="68.78070175438575" y="805.0" />
+      <point x="26.280701754385746" y="805.0" />
+      <point x="26.280701754385746" y="1397.0" />
+      <point x="2319.979909361756" y="1397.0" />
+      <point x="-71.5" y="-15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.Objects.Enemy" target="itcom.gangstersquirrel.MainGameClass">
+      <point x="29.684210526315724" y="15.5" />
+      <point x="787.7149122807015" y="192.0" />
+      <point x="1292.1710526315787" y="192.0" />
+      <point x="1292.1710526315787" y="1277.0" />
+      <point x="2371.979909361756" y="1277.0" />
+      <point x="-19.5" y="-15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.Screens.LevelSelectionMenu" target="itcom.gangstersquirrel.Screens.MainMenu">
+      <point x="69.75" y="15.5" />
+      <point x="2438.654909361756" y="695.0" />
+      <point x="2752.7537320333977" y="695.0" />
+      <point x="-34.57142857142844" y="-15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.desktop.DesktopLauncher" target="itcom.gangstersquirrel.MainGameClass">
-      <point x="35.0" y="-14.5" />
-      <point x="1237.1834878143632" y="1661.0" />
-      <point x="1259.5584878143632" y="1661.0" />
-      <point x="-16.625" y="14.5" />
+      <point x="42.5" y="-15.5" />
+      <point x="2433.979909361756" y="1483.0" />
+      <point x="2430.479909361756" y="1483.0" />
+      <point x="39.0" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.GameProgress.GameProgress" target="itcom.gangstersquirrel.GameProgress.GameProgressObject">
-      <point x="-46.5" y="-14.5" />
-      <point x="1776.9773239132314" y="985.0" />
-      <point x="1743.9773239132314" y="985.0" />
-      <point x="-53.0" y="14.5" />
+      <point x="-29.59999999999991" y="-15.5" />
+      <point x="2098.3882426950895" y="393.0" />
+      <point x="2063.321576028423" y="393.0" />
+      <point x="-64.66666666666652" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Scenes.PlayScreenHud" target="itcom.gangstersquirrel.Tools.BitmapFontGenerator">
-      <point x="0.0" y="-14.5" />
-      <point x="339.45817186644786" y="845.0" />
-      <point x="245.8199999999997" y="845.0" />
-      <point x="0.0" y="14.5" />
+      <point x="0.0" y="-15.5" />
+      <point x="2307.182894736842" y="785.0" />
+      <point x="2557.5869269056157" y="785.0" />
+      <point x="2557.5869269056157" y="584.0" />
+      <point x="2644.1687762956562" y="584.0" />
+      <point x="-66.66666666666652" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Statistics.Statistics" target="itcom.gangstersquirrel.MainGameClass">
-      <point x="-35.25" y="14.5" />
-      <point x="138.70817186644763" y="1324.0" />
-      <point x="125.11432453259613" y="1324.0" />
-      <point x="125.11432453259613" y="1552.0" />
-      <point x="1228.3034878143635" y="1552.0" />
-      <point x="-47.87999999999988" y="-14.5" />
+      <point x="9.25" y="15.5" />
+      <point x="2544.5854429623228" y="574.0" />
+      <point x="2606.0869269056157" y="574.0" />
+      <point x="2606.0869269056157" y="795.0" />
+      <point x="2393.182894736842" y="795.0" />
+      <point x="2.166666666666515" y="-15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.GameProgress.GameProgress" target="itcom.gangstersquirrel.Tools.JSONFileCreator">
+      <point x="59.19999999999982" y="-15.5" />
+      <point x="2187.1882426950892" y="403.0" />
+      <point x="2424.895394736842" y="403.0" />
+      <point x="2424.895394736842" y="91.0" />
+      <point x="2400.645394736842" y="91.0" />
+      <point x="-40.75" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.MapObjects.DeathTile" target="itcom.gangstersquirrel.Objects.Enemy">
-      <point x="0.0" y="-14.5" />
-      <point x="922.928333333333" y="606.0" />
-      <point x="1017.6193245325956" y="606.0" />
-      <point x="1017.6193245325956" y="258.0" />
-      <point x="1302.4644999711918" y="258.0" />
-      <point x="-13.263157894736878" y="14.5" />
+      <point x="-38.0" y="-15.5" />
+      <point x="556.7807017543857" y="474.0" />
+      <point x="425.9807017543858" y="474.0" />
+      <point x="425.9807017543858" y="252.0" />
+      <point x="748.1359649122804" y="252.0" />
+      <point x="-9.894736842105317" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.MapObjects.Finish" target="itcom.gangstersquirrel.Objects.Player">
-      <point x="0.0" y="-14.5" />
-      <point x="812.3018211476968" y="526.0" />
-      <point x="778.5116666666663" y="526.0" />
-      <point x="778.5116666666663" y="387.0" />
-      <point x="1446.5665051997812" y="387.0" />
-      <point x="-22.5" y="14.5" />
+      <point x="29.66666666666663" y="-15.5" />
+      <point x="787.6973684210524" y="584.0" />
+      <point x="1359.230019010879" y="584.0" />
+      <point x="-14.0625" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.MapObjects.Finish" target="itcom.gangstersquirrel.Objects.Enemy">
-      <point x="-26.33333333333337" y="-14.5" />
-      <point x="785.9684878143635" y="536.0" />
-      <point x="767.5116666666663" y="536.0" />
-      <point x="767.5116666666663" y="238.0" />
-      <point x="1293.6223947080339" y="238.0" />
-      <point x="-22.105263157894797" y="14.5" />
-    </edge>
-    <edge source="itcom.gangstersquirrel.Tools.Box2DWorldCreator" target="itcom.gangstersquirrel.Objects.EnemyObjects.FrogEnemy">
-      <point x="64.60000000000002" y="-14.5" />
-      <point x="888.9449999999996" y="975.0" />
-      <point x="1352.727657865929" y="975.0" />
-      <point x="-45.0" y="14.5" />
+      <point x="0.0" y="-15.5" />
+      <point x="758.0307017543857" y="534.0" />
+      <point x="795.9378874520645" y="534.0" />
+      <point x="795.9378874520645" y="252.0" />
+      <point x="758.0307017543857" y="252.0" />
+      <point x="0.0" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.Player" target="itcom.gangstersquirrel.Items.WeaponObject">
-      <point x="16.0" y="-14.5" />
-      <point x="1485.0665051997812" y="278.0" />
-      <point x="1498.227657865929" y="278.0" />
-      <point x="1498.227657865929" y="79.0" />
-      <point x="1572.4276578659287" y="79.0" />
-      <point x="-19.049999999999955" y="14.5" />
+      <point x="18.0" y="-15.5" />
+      <point x="1391.292519010879" y="232.0" />
+      <point x="1412.198769010879" y="232.0" />
+      <point x="1412.198769010879" y="61.0" />
+      <point x="1811.7714912280699" y="61.0" />
+      <point x="-52.84999999999991" y="15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.Tools.Box2DWorldCreator" target="itcom.gangstersquirrel.Objects.EnemyObjects.FrogEnemy">
+      <point x="51.700000000000045" y="-15.5" />
+      <point x="637.0807017543859" y="725.0" />
+      <point x="833.0307017543857" y="725.0" />
+      <point x="-52.5" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Twitch.TwitchChat" target="itcom.gangstersquirrel.Twitch.ChatListener">
-      <point x="0.0" y="-14.5" />
-      <point x="2287.1863742690052" y="1324.0" />
-      <point x="2295.3673239132313" y="1324.0" />
-      <point x="-42.75" y="14.5" />
+      <point x="-10.5" y="-15.5" />
+      <point x="3376.8541979949878" y="805.0" />
+      <point x="3379.6687762956562" y="805.0" />
+      <point x="-51.0" y="15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.Screens.StatisticsMenu" target="itcom.gangstersquirrel.MainGameClass">
+      <point x="-50.0" y="15.5" />
+      <point x="2672.5869269056157" y="805.0" />
+      <point x="2474.6010453468016" y="805.0" />
+      <point x="2474.6010453468016" y="1247.0" />
+      <point x="2397.979909361756" y="1247.0" />
+      <point x="6.5" y="-15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Tools.WorldContactListener" target="itcom.gangstersquirrel.Screens.PlayScreen">
-      <point x="61.125" y="14.5" />
-      <point x="1356.4692829775588" y="1074.0" />
-      <point x="1316.26015448103" y="1074.0" />
-      <point x="2.9166666666667425" y="-14.5" />
+      <point x="25.0" y="15.5" />
+      <point x="1206.6710526315787" y="896.0" />
+      <point x="1104.060611116142" y="896.0" />
+      <point x="4.280701754385973" y="-15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.MapObjects.Jumpable" target="itcom.gangstersquirrel.MainGameClass">
-      <point x="-41.25" y="14.5" />
-      <point x="1000.178333333333" y="935.0" />
-      <point x="258.84817186644773" y="935.0" />
-      <point x="258.84817186644773" y="1502.0" />
-      <point x="1254.9034878143634" y="1502.0" />
-      <point x="-21.279999999999973" y="-14.5" />
+      <point x="-48.33333333333326" y="15.5" />
+      <point x="188.4473684210525" y="805.0" />
+      <point x="130.1358815588137" y="805.0" />
+      <point x="130.1358815588137" y="1387.0" />
+      <point x="2324.3132426950897" y="1387.0" />
+      <point x="-67.16666666666652" y="-15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.KeyBindings.KeyBindings" target="itcom.gangstersquirrel.Tools.JSONFileCreator">
+      <point x="-44.33333333333326" y="-15.5" />
+      <point x="1425.4210526315787" y="785.0" />
+      <point x="1486.020336043422" y="785.0" />
+      <point x="1486.020336043422" y="584.0" />
+      <point x="2435.895394736842" y="584.0" />
+      <point x="2435.895394736842" y="81.0" />
+      <point x="2427.812061403509" y="81.0" />
+      <point x="-13.583333333333485" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.EnemyObjects.MonkeyEnemy" target="itcom.gangstersquirrel.Objects.Player">
-      <point x="-42.33333333333326" y="-14.5" />
-      <point x="1505.8943245325954" y="616.0" />
-      <point x="1537.227657865929" y="616.0" />
-      <point x="1537.227657865929" y="447.0" />
-      <point x="1481.5665051997812" y="447.0" />
-      <point x="12.5" y="14.5" />
+      <point x="49.33333333333326" y="-15.5" />
+      <point x="1091.864035087719" y="604.0" />
+      <point x="1370.480019010879" y="604.0" />
+      <point x="-2.8125" y="15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.Settings.Settings" target="itcom.gangstersquirrel.Tools.JSONFileCreator">
+      <point x="-39.375" y="-15.5" />
+      <point x="3448.310442962323" y="403.0" />
+      <point x="3414.810442962323" y="403.0" />
+      <point x="3414.810442962323" y="91.0" />
+      <point x="2482.145394736842" y="91.0" />
+      <point x="40.75" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.Player" target="itcom.gangstersquirrel.Objects.Enemy">
-      <point x="-32.0" y="-14.5" />
-      <point x="1437.0665051997812" y="248.0" />
-      <point x="1324.5697631290868" y="248.0" />
-      <point x="8.842105263157919" y="14.5" />
+      <point x="-36.0" y="-15.5" />
+      <point x="1337.292519010879" y="172.0" />
+      <point x="797.6096491228068" y="172.0" />
+      <point x="39.57894736842104" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Tools.WorldContactListener" target="itcom.gangstersquirrel.Objects.Enemy">
-      <point x="0.0" y="-14.5" />
-      <point x="1295.3442829775588" y="965.0" />
-      <point x="1273.677616310892" y="965.0" />
-      <point x="1273.677616310892" y="278.0" />
-      <point x="1311.3066052343497" y="278.0" />
-      <point x="-4.421052631578959" y="14.5" />
+      <point x="0.0" y="-15.5" />
+      <point x="1181.6710526315787" y="735.0" />
+      <point x="1153.8377192982452" y="735.0" />
+      <point x="1153.8377192982452" y="202.0" />
+      <point x="782.7675438596489" y="202.0" />
+      <point x="24.736842105263122" y="15.5" />
     </edge>
-    <edge source="itcom.gangstersquirrel.KeyBindings.KeyBindings" target="itcom.gangstersquirrel.KeyBindings.KeyBindingObject">
-      <point x="-28.25" y="-14.5" />
-      <point x="1940.7273239132314" y="985.0" />
-      <point x="1933.2273239132314" y="985.0" />
-      <point x="-35.75" y="14.5" />
+    <edge source="itcom.gangstersquirrel.Screens.PlayScreen" target="itcom.gangstersquirrel.Input.GameplayInputProcessor">
+      <point x="40.66666666666674" y="-15.5" />
+      <point x="1140.4465760284227" y="1066.0" />
+      <point x="1860.643143060966" y="1066.0" />
+      <point x="0.0" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.MapObjects.DeathTile" target="itcom.gangstersquirrel.Objects.Player">
-      <point x="32.66666666666663" y="-14.5" />
-      <point x="955.5949999999996" y="616.0" />
-      <point x="1028.6193245325956" y="616.0" />
-      <point x="1028.6193245325956" y="407.0" />
-      <point x="1456.5665051997812" y="407.0" />
-      <point x="-12.5" y="14.5" />
+      <point x="38.0" y="-15.5" />
+      <point x="632.7807017543857" y="574.0" />
+      <point x="1353.605019010879" y="574.0" />
+      <point x="-19.6875" y="15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.KeyBindings.KeyBindings" target="itcom.gangstersquirrel.KeyBindings.KeyBindingObject">
+      <point x="44.33333333333326" y="-15.5" />
+      <point x="1514.0877192982452" y="805.0" />
+      <point x="1625.520336043422" y="805.0" />
+      <point x="43.0" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.MapObjects.DeathTile" target="itcom.gangstersquirrel.Screens.PlayScreen">
-      <point x="40.83333333333337" y="14.5" />
-      <point x="963.7616666666663" y="685.0" />
-      <point x="1029.6783333333328" y="685.0" />
-      <point x="1029.6783333333328" y="1114.0" />
-      <point x="1300.7045989254743" y="1114.0" />
-      <point x="-12.638888888888914" y="-14.5" />
+      <point x="28.5" y="15.5" />
+      <point x="623.2807017543857" y="685.0" />
+      <point x="697.8188596491224" y="685.0" />
+      <point x="697.8188596491224" y="996.0" />
+      <point x="1074.09569883544" y="996.0" />
+      <point x="-25.684210526315837" y="-15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.Screens.StatisticsMenu" target="itcom.gangstersquirrel.Statistics.Statistics">
+      <point x="-18.75" y="-15.5" />
+      <point x="2703.8369269056157" y="554.0" />
+      <point x="2581.5854429623228" y="554.0" />
+      <point x="46.25" y="15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.Screens.StatisticsMenu" target="itcom.gangstersquirrel.Screens.MenuScreen">
+      <point x="56.25" y="-15.5" />
+      <point x="2778.8369269056157" y="604.0" />
+      <point x="2864.0854429623228" y="604.0" />
+      <point x="-33.25" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.MapObjects.EnemyMoveBorder" target="itcom.gangstersquirrel.Objects.InteractiveMapTileObject">
-      <point x="49.66666666666663" y="-14.5" />
-      <point x="727.9684878143635" y="576.0" />
-      <point x="889.4693245325957" y="576.0" />
-      <point x="-27.149999999999977" y="14.5" />
+      <point x="0.0" y="-15.5" />
+      <point x="427.78070175438575" y="534.0" />
+      <point x="558.5807017543857" y="534.0" />
+      <point x="11.099999999999909" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.Player" target="itcom.gangstersquirrel.Items.WeaponList">
-      <point x="0.0" y="-14.5" />
-      <point x="1469.0665051997812" y="228.0" />
-      <point x="1432.727657865929" y="228.0" />
-      <point x="0.0" y="14.5" />
+      <point x="36.0" y="-15.5" />
+      <point x="1409.292519010879" y="242.0" />
+      <point x="2272.0075920851295" y="242.0" />
+      <point x="-43.333333333333485" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Screens.PlayScreen" target="itcom.gangstersquirrel.Tools.Box2DWorldCreator">
-      <point x="-30.138888888888914" y="-14.5" />
-      <point x="1283.2045989254743" y="1204.0" />
-      <point x="786.3449999999996" y="1204.0" />
-      <point x="-38.0" y="14.5" />
-    </edge>
-    <edge source="itcom.gangstersquirrel.Objects.EnemyObjects.MonkeyEnemy" target="itcom.gangstersquirrel.Screens.PlayScreen">
-      <point x="10.583333333333258" y="14.5" />
-      <point x="1558.810991199262" y="985.0" />
-      <point x="1549.199880088151" y="985.0" />
-      <point x="1549.199880088151" y="1154.0" />
-      <point x="1331.8157100365856" y="1154.0" />
-      <point x="18.47222222222217" y="-14.5" />
+      <point x="-32.1052631578948" y="-15.5" />
+      <point x="1067.6746462038611" y="1026.0" />
+      <point x="601.0473684210524" y="1026.0" />
+      <point x="15.666666666666629" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Twitch.TwitchThread" target="itcom.gangstersquirrel.Twitch.TwitchCredentialsObject">
-      <point x="-45.375" y="-14.5" />
-      <point x="2248.865751591622" y="1413.0" />
-      <point x="2126.81097319448" y="1413.0" />
-      <point x="2126.81097319448" y="1324.0" />
-      <point x="2112.783990579898" y="1324.0" />
-      <point x="-59.333333333333485" y="14.5" />
+      <point x="-28.40000000000009" y="-15.5" />
+      <point x="3351.5541979949876" y="1146.0" />
+      <point x="2881.7827694235584" y="1146.0" />
+      <point x="2881.7827694235584" y="805.0" />
+      <point x="3161.0021096289897" y="805.0" />
+      <point x="-72.66666666666652" y="15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.Objects.EnemyObjects.MonkeyEnemy" target="itcom.gangstersquirrel.Screens.PlayScreen">
+      <point x="-12.333333333333258" y="15.5" />
+      <point x="1030.1973684210525" y="735.0" />
+      <point x="1041.4605263157891" y="735.0" />
+      <point x="1041.4605263157891" y="916.0" />
+      <point x="1091.218505852984" y="916.0" />
+      <point x="-8.561403508771946" y="-15.5" />
+    </edge>
+    <edge source="itcom.gangstersquirrel.Screens.MainMenu" target="itcom.gangstersquirrel.Screens.StatisticsMenu">
+      <point x="-17.28571428571422" y="-15.5" />
+      <point x="2770.039446319112" y="685.0" />
+      <point x="2722.5869269056157" y="685.0" />
+      <point x="0.0" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.MapObjects.Ground" target="itcom.gangstersquirrel.Objects.Player">
-      <point x="0.0" y="-14.5" />
-      <point x="390.8199999999996" y="357.0" />
-      <point x="1431.5665051997812" y="357.0" />
-      <point x="-37.5" y="14.5" />
+      <point x="33.33333333333326" y="-15.5" />
+      <point x="142.114035087719" y="544.0" />
+      <point x="1336.730019010879" y="544.0" />
+      <point x="-36.5625" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.EnemyObjects.MonkeyEnemy" target="itcom.gangstersquirrel.MainGameClass">
-      <point x="52.91666666666674" y="14.5" />
-      <point x="1601.1443245325954" y="965.0" />
-      <point x="2067.2973239132316" y="965.0" />
-      <point x="2067.2973239132316" y="1532.0" />
-      <point x="1313.4234878143634" y="1532.0" />
-      <point x="37.24000000000001" y="-14.5" />
+      <point x="-37.0" y="15.5" />
+      <point x="1005.5307017543857" y="735.0" />
+      <point x="1008.4692148921473" y="735.0" />
+      <point x="1008.4692148921473" y="1327.0" />
+      <point x="2350.3132426950897" y="1327.0" />
+      <point x="-41.166666666666515" y="-15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.EnemyObjects.MonkeyEnemy" target="itcom.gangstersquirrel.Objects.Enemy">
-      <point x="0.0" y="-14.5" />
-      <point x="1548.3943245325954" y="218.0" />
-      <point x="1333.4118683922447" y="218.0" />
-      <point x="17.684210526315837" y="14.5" />
+      <point x="0.0" y="-15.5" />
+      <point x="1042.5307017543857" y="534.0" />
+      <point x="1074.2133184995628" y="534.0" />
+      <point x="1074.2133184995628" y="212.0" />
+      <point x="777.8201754385963" y="212.0" />
+      <point x="19.78947368421052" y="15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Objects.Enemy" target="itcom.gangstersquirrel.Screens.PlayScreen">
-      <point x="26.526315789473756" y="14.5" />
-      <point x="1342.2539736554027" y="198.0" />
-      <point x="1630.0054356437067" y="198.0" />
-      <point x="1630.0054356437067" y="1214.0" />
-      <point x="1343.4823767032522" y="1214.0" />
-      <point x="30.138888888888914" y="-14.5" />
-    </edge>
-    <edge source="itcom.gangstersquirrel.Screens.SplashScreen" target="itcom.gangstersquirrel.Screens.PlayScreen">
-      <point x="0.0" y="-14.5" />
-      <point x="42.0" y="14.5" />
+      <point x="-29.684210526315837" y="15.5" />
+      <point x="728.3464912280699" y="212.0" />
+      <point x="37.280701754385746" y="212.0" />
+      <point x="37.280701754385746" y="1126.0" />
+      <point x="1046.2711374319313" y="1126.0" />
+      <point x="-53.50877192982466" y="-15.5" />
     </edge>
     <edge source="itcom.gangstersquirrel.Screens.SplashScreen" target="itcom.gangstersquirrel.MainGameClass">
-      <point x="39.0" y="14.5" />
-      <point x="1394.8234878143635" y="1512.0" />
-      <point x="1302.783487814363" y="1512.0" />
-      <point x="26.59999999999991" y="-14.5" />
+      <point x="46.333333333333485" y="15.5" />
+      <point x="2833.6584939381596" y="1277.0" />
+      <point x="2410.979909361756" y="1277.0" />
+      <point x="19.5" y="-15.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="1.115028901734104" x="926.9642301710732" y="1404.5412130637637" />
+  <settings layout="Hierarchic Group" zoom="0.2869420571111727" x="1793.5" y="769.5" />
   <SelectedNodes />
   <Categories />
   <SCOPE>All</SCOPE>
-  <VISIBILITY>packageLocal</VISIBILITY>
+  <VISIBILITY>private</VISIBILITY>
 </Diagram>
 
