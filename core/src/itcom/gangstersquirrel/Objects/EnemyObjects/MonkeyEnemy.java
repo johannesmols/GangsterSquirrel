@@ -26,7 +26,7 @@ public class MonkeyEnemy extends Enemy {
 
         // Set gameplay variables of super class for this specific type of enemy
         damageMinMax = new int[] { 10, 20 };
-        health = 25;
+        health = 20;
         horizontalMoveImpulseVelocity = 0.1f;
         horizontalMaxMovementVelocity = 1f;
 

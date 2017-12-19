@@ -27,7 +27,7 @@ public class FrogEnemy extends Enemy {
 
         // Set gameplay variables of super class for this specific type of enemy
         damageMinMax = new int[] { 5, 15 };
-        health = 15;
+        health = 10;
         horizontalMoveImpulseVelocity = 0.1f;
         horizontalMaxMovementVelocity = 0.5f;
 
