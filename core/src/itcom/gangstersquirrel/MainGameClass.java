@@ -132,6 +132,39 @@ public class MainGameClass extends Game {
 		HEIGHT = settings.getGameHeight();
 		ASPECT_RATIO = (float) WIDTH / (float) HEIGHT;
 
+		for (ResolutionObject resolution : resolutions) {
+			if (resolution.getWidth() == WIDTH && resolution.getHeight() == HEIGHT) {
+				switch (resolution.getAspectRatio()) {
+					case "4:3":
+						GAME_WORLD_WIDTH = ZOOM * 16;
+						GAME_WORLD_HEIGHT = ZOOM * 12;
+						break;
+					case "5:3":
+						GAME_WORLD_WIDTH = ZOOM * 15;
+						GAME_WORLD_HEIGHT = ZOOM * 9;
+						break;
+					case "5:4":
+						GAME_WORLD_WIDTH = ZOOM * 15;
+						GAME_WORLD_HEIGHT = ZOOM * 12;
+						break;
+					case "16:9":
+						GAME_WORLD_WIDTH = ZOOM * 16;
+						GAME_WORLD_HEIGHT = ZOOM * 9;
+						break;
+					case "16:10":
+						GAME_WORLD_WIDTH = ZOOM * 16;
+						GAME_WORLD_HEIGHT = ZOOM * 10;
+						break;
+					case "17:9":
+						GAME_WORLD_WIDTH = ZOOM * 17;
+						GAME_WORLD_HEIGHT = ZOOM * 9;
+						break;
+					default:
+						break;
+				}
+			}
+		}
+
 		changeGameResolution();
 
 		batch = new SpriteBatch();
