@@ -19,6 +19,7 @@ import itcom.gangstersquirrel.Items.WeaponObject;
 import itcom.gangstersquirrel.Items.WeaponList;
 import itcom.gangstersquirrel.KeyBindings.KeyBindings;
 import itcom.gangstersquirrel.MainGameClass;
+import itcom.gangstersquirrel.Objects.EnemyObjects.BossEnemy;
 import itcom.gangstersquirrel.Objects.EnemyObjects.MonkeyEnemy;
 import itcom.gangstersquirrel.Scenes.PlayScreenHud;
 import itcom.gangstersquirrel.Objects.Enemy;
@@ -89,6 +90,7 @@ public class PlayScreen implements Screen {
     private TextureAtlas playerTextureAtlas;
     private TextureAtlas enemyFrogTextureAtlas;
     private TextureAtlas enemyMonkeyTextureAtlas;
+    private TextureAtlas enemyBossTextureAtlas;
 
     // Player variables
     private Player player;
@@ -143,6 +145,7 @@ public class PlayScreen implements Screen {
         playerTextureAtlas = new TextureAtlas("sprites/player/squirrel.atlas");
         enemyFrogTextureAtlas = new TextureAtlas("sprites/enemies/frog/frog.atlas");
         enemyMonkeyTextureAtlas = new TextureAtlas("sprites/enemies/monkey/monkey.atlas");
+        enemyBossTextureAtlas = new TextureAtlas("sprites/enemies/boss/bird.atlas");
 
         // Set up camera and viewport
         camera = new OrthographicCamera();
@@ -667,6 +670,8 @@ public class PlayScreen implements Screen {
             enemies.add(new FrogEnemy(this, spawnPositionX, spawnPositionY));
         } else if (type == MonkeyEnemy.class) {
             enemies.add(new MonkeyEnemy(this, spawnPositionX, spawnPositionY));
+        } else if (type == BossEnemy.class) {
+            enemies.add(new BossEnemy(this, spawnPositionX, spawnPositionY));
         }
     }
 
@@ -698,6 +703,13 @@ public class PlayScreen implements Screen {
      */
     public TextureAtlas getEnemyMonkeyTextureAtlas() {
         return enemyMonkeyTextureAtlas;
+    }
+
+    /**
+     * Returns the texture atlas for the boss enemy sprite
+     */
+    public TextureAtlas getEnemyBossTextureAtlas() {
+        return enemyBossTextureAtlas;
     }
 
 

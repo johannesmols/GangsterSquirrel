@@ -8,6 +8,7 @@ import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
 import itcom.gangstersquirrel.MainGameClass;
+import itcom.gangstersquirrel.Objects.EnemyObjects.BossEnemy;
 import itcom.gangstersquirrel.Objects.EnemyObjects.FrogEnemy;
 import itcom.gangstersquirrel.Objects.EnemyObjects.MonkeyEnemy;
 import itcom.gangstersquirrel.Objects.MapObjects.*;
@@ -100,6 +101,9 @@ public class Box2DWorldCreator {
                     break;
                 case "Monkey":
                     playScreen.spawnEnemy(MonkeyEnemy.class, (int) (rectangle.getX() / MainGameClass.TILE_PIXEL_SIZE), (int) (rectangle.getY() / MainGameClass.TILE_PIXEL_SIZE));
+                    break;
+                case "Boss":
+                    playScreen.spawnEnemy(BossEnemy.class, (int) (rectangle.getX() / MainGameClass.TILE_PIXEL_SIZE), (int) (rectangle.getY() / MainGameClass.TILE_PIXEL_SIZE));
                     break;
                 default:
                     break;
