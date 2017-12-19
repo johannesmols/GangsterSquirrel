@@ -24,7 +24,6 @@ public class GameProgress {
 
         // Default game progress
         GameProgressObject defaultGameProgress = new GameProgressObject(
-                "default",
                 1,
                 1,
                 0,
@@ -85,15 +84,6 @@ public class GameProgress {
     }
 
     public void setGameProgress(GameProgressObject gameProgress) {
-        serializeGameProgress(gameProgress);
-    }
-
-    public String getPlayerName() {
-        return gameProgress.getPlayerName();
-    }
-
-    public void setPlayerName(String playerName) {
-        gameProgress.setPlayerName(playerName);
         serializeGameProgress(gameProgress);
     }
 

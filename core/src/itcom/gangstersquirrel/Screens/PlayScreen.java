@@ -24,6 +24,7 @@ import itcom.gangstersquirrel.Scenes.PlayScreenHud;
 import itcom.gangstersquirrel.Objects.Enemy;
 import itcom.gangstersquirrel.Objects.EnemyObjects.FrogEnemy;
 import itcom.gangstersquirrel.Objects.Player;
+import itcom.gangstersquirrel.Settings.Settings;
 import itcom.gangstersquirrel.Statistics.Statistics;
 import itcom.gangstersquirrel.Tools.Box2DWorldCreator;
 import itcom.gangstersquirrel.Tools.WorldContactListener;
@@ -99,9 +100,10 @@ public class PlayScreen implements Screen {
     // Enemy variables
     private ArrayList<Enemy> enemies = new ArrayList<>();
 
-    // Game Progress and Statistics
+    // Game Progress, Statistics and Settings
     private GameProgress gameProgress = new GameProgress();
     private Statistics statistics = new Statistics();
+    private Settings settings = new Settings();
 
     // Timer
     private float deltaTimeCount = 0f;
@@ -590,7 +592,7 @@ public class PlayScreen implements Screen {
 
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("level", String.valueOf(gameProgress.getCurrentLevel())));
-        params.add(new BasicNameValuePair("name", gameProgress.getPlayerName()));
+        params.add(new BasicNameValuePair("name", settings.getPlayerName()));
         params.add(new BasicNameValuePair("time", String.valueOf(timer)));
         try {
             httpPost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));

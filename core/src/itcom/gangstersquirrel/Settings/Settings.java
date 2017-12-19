@@ -19,7 +19,8 @@ public class Settings {
         SettingsObject defaultSettings = new SettingsObject(
                 true,
                 Gdx.graphics.getWidth(),
-                Gdx.graphics.getHeight()
+                Gdx.graphics.getHeight(),
+                "player"
         );
 
         if (fileHandle.exists()) {
@@ -94,6 +95,15 @@ public class Settings {
 
     public void setGameHeight(int gameHeight) {
         settings.setGameHeight(gameHeight);
+        serializeSettings(settings);
+    }
+
+    public String getPlayerName() {
+        return settings.getPlayerName();
+    }
+
+    public void setPlayerName(String playerName) {
+        settings.setPlayerName(playerName);
         serializeSettings(settings);
     }
 }
