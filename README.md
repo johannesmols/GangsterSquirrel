@@ -8,7 +8,7 @@ Made by:
 + [Ludvig Alexander Brüchmann](https://github.com/ludvigbruchmann)
 + [Boris Yordanov](https://github.com/borisyordanov)
 + [Agata Surmacz](https://github.com/guvno)
-+ Muheb Khan
++ [Muheb Khan](https://github.com/mmoshf17)
 + Rehan Mir
 + [Martin Sander](https://github.com/Masa003)
 
