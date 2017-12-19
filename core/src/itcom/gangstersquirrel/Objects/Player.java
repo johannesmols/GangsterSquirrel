@@ -4,7 +4,6 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
-import itcom.gangstersquirrel.GameProgress.GameProgress;
 import itcom.gangstersquirrel.Items.WeaponList;
 import itcom.gangstersquirrel.Items.WeaponObject;
 import itcom.gangstersquirrel.MainGameClass;
@@ -38,7 +37,7 @@ public class Player extends Sprite {
 
     // Gameplay relevant variables
     private boolean isOnJumpableGround;
-    private boolean isFacingLeftOrRight;
+    private boolean isFacingLeft;
 
     // Texture variables
     private final int PLAYER_PIXEL_WIDTH = 48;
@@ -85,7 +84,7 @@ public class Player extends Sprite {
             screen.getGameProgress().setCurrentlyEquippedWeapon(indexInWeaponList);
         }
 
-        flipPlayerDirection(isFacingLeftOrRight);
+        flipPlayerDirection(isFacingLeft);
     }
 
     /**
@@ -102,7 +101,7 @@ public class Player extends Sprite {
             }
         }
 
-        flipPlayerDirection(isFacingLeftOrRight);
+        flipPlayerDirection(isFacingLeft);
     }
 
     /**
@@ -111,7 +110,7 @@ public class Player extends Sprite {
      */
     public void update(float deltaTime) {
         // Make the sprite stay in the same position when switching directions
-        if (isFacingLeftOrRight) {
+        if (isFacingLeft) {
             setPosition(body.getPosition().x - getWidth(), body.getPosition().y - getHeight() / 2);
         } else {
             setPosition(body.getPosition().x - getWidth() / 2, body.getPosition().y - getHeight() / 2);
@@ -128,19 +127,19 @@ public class Player extends Sprite {
                         break;
                     case "Branch":
                         setRegion(textureRegions.get("branch_attack"));
-                        flipPlayerDirection(isFacingLeftOrRight);
+                        flipPlayerDirection(isFacingLeft);
                         break;
                     case "Swiss Army Knife":
                         setRegion(textureRegions.get("swiss_army_knife_attack"));
-                        flipPlayerDirection(isFacingLeftOrRight);
+                        flipPlayerDirection(isFacingLeft);
                         break;
                     case "Switchblade":
                         setRegion(textureRegions.get("switchblade_attack"));
-                        flipPlayerDirection(isFacingLeftOrRight);
+                        flipPlayerDirection(isFacingLeft);
                         break;
                     case "Katana":
                         setRegion(textureRegions.get("katana_attack"));
-                        flipPlayerDirection(isFacingLeftOrRight);
+                        flipPlayerDirection(isFacingLeft);
                         break;
                     case "Tommy Gun":
                         // No attack texture yet
@@ -161,11 +160,11 @@ public class Player extends Sprite {
 
     /**
      * Flip the player's texture horizontally
-     * @param leftOrRight if true, the player now faces the left side
+     * @param left if true, the player now faces the left side
      */
-    public void flipPlayerDirection(boolean leftOrRight) {
-        setFlip(leftOrRight, false);
-        isFacingLeftOrRight = leftOrRight;
+    public void flipPlayerDirection(boolean left) {
+        setFlip(left, false);
+        isFacingLeft = left;
     }
 
     /**
@@ -176,7 +175,7 @@ public class Player extends Sprite {
             attackAnimationPlaying = true;
 
             // Deal damage to all enemies in range
-            if (isFacingLeftOrRight) {
+            if (isFacingLeft) {
                 for (Enemy enemy : screen.getEnemiesCurrentlyInLeftAttackRange()) {
                     enemy.setHealth(enemy.getHealth() - screen.getGameProgress().getPlayerWeaponList().get(screen.getGameProgress().getCurrentlyEquippedWeapon()).getStrength());
                 }
@@ -245,13 +244,13 @@ public class Player extends Sprite {
 
     /**
      * Create a shape that attaches to the right or left side of the player to check collisions with enemies when attacking
-     * @param leftOrRight if the shape should be created on the left or right side of the player (true = left; false = right)
+     * @param left if the shape should be created on the left or right side of the player (true = left; false = right)
      * @return the shape
      */
-    private PolygonShape getAttackShape(boolean leftOrRight) {
+    private PolygonShape getAttackShape(boolean left) {
 
         // Center of the shape needs to be shifted three fourths of the player center to the left, if it should be attached on the left side, because the origin of the shape is on the left side of the shape
-        int factor = leftOrRight ? -3 : 1;
+        int factor = left ? -3 : 1;
 
         PolygonShape shape = new PolygonShape();
         shape.setAsBox(
