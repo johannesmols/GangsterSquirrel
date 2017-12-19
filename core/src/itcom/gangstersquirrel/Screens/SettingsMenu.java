@@ -4,13 +4,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import itcom.gangstersquirrel.GameProgress.GameProgress;
 import itcom.gangstersquirrel.MainGameClass;
 import itcom.gangstersquirrel.Settings.Settings;
 import itcom.gangstersquirrel.Tools.BitmapFontGenerator;
@@ -22,12 +21,15 @@ import java.util.*;
 public class SettingsMenu extends MenuScreen {
 
     private Settings settings;
+    private GameProgress gameProgress;
 
     private Label titleLabel;
     private TextButton cancelButton;
     private TextButton applyButton;
+    private TextButton resetGameProgress;
     private CheckBox fullscreenCheckBox;
     private SelectBox resolutionSelectBox;
+    private Label resolutionLabel;
     private Label userNameLabel;
     private TextField userNameTextField;
 
@@ -39,10 +41,13 @@ public class SettingsMenu extends MenuScreen {
     public SettingsMenu(MainGameClass game) {
         super(game);
         this.settings = new Settings();
+        this.gameProgress = new GameProgress();
 
         titleLabel = new Label("Settings", skin, "title");
         cancelButton = new TextButton("Cancel", skin, "default");
         applyButton = new TextButton("Apply", skin, "default");
+        resetGameProgress = new TextButton("Reset Game Progress", skin, "default");
+        resolutionLabel = new Label("Resolution: ", skin, "default");
         userNameLabel = new Label("Username: ", skin, "default");
         userNameTextField = new TextField("", skin, "default");
 
@@ -53,6 +58,7 @@ public class SettingsMenu extends MenuScreen {
         resolutionSelectBox.setItems(getItemsForResolutionList());
         setResolutionSelectionToCurrentResolution();
 
+        resolutionLabel.setStyle(changeLabelStyleFont(resolutionLabel.getStyle(), "fonts/segoeui.ttf", 32, Color.WHITE));
         userNameLabel.setStyle(changeLabelStyleFont(userNameLabel.getStyle(), "fonts/segoeui.ttf", 32, Color.WHITE));
         userNameTextField.setText(settings.getPlayerName());
 
@@ -63,12 +69,17 @@ public class SettingsMenu extends MenuScreen {
         layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.row();
         layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
-        layoutTable.add(resolutionSelectBox).top().center().growX().expandX().colspan(2).spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
+        layoutTable.add(resolutionLabel).center().left().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
+        layoutTable.add(resolutionSelectBox).top().center().growX().expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.row();
         layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.add(userNameLabel).center().left().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.add(userNameTextField).top().center().growX().expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
+        layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
+        layoutTable.row();
+        layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
+        layoutTable.add(resetGameProgress).top().center().growX().expandX().colspan(2).spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.row();
         layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
@@ -86,6 +97,7 @@ public class SettingsMenu extends MenuScreen {
         resolutionSelectBox.addListener(resolutionSelectBoxChangeListener);
         cancelButton.addListener(cancelButtonClickListener);
         applyButton.addListener(applyButtonClickListener);
+        resetGameProgress.addListener(resetGameProgressButtonClickListener);
     }
 
     @Override
@@ -263,6 +275,14 @@ public class SettingsMenu extends MenuScreen {
             }
 
             game.setScreen(new MainMenu(game));
+        }
+    };
+
+    private ClickListener resetGameProgressButtonClickListener = new ClickListener() {
+        @Override
+        public void clicked(InputEvent event, float x, float y) {
+            super.clicked(event, x, y);
+            gameProgress.resetToDefault();
         }
     };
 }

@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import itcom.gangstersquirrel.Items.WeaponList;
 import itcom.gangstersquirrel.Items.WeaponObject;
 import itcom.gangstersquirrel.Tools.JSONFileCreator;
 
@@ -18,26 +19,28 @@ public class GameProgress {
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private GameProgressObject gameProgress;
 
+    // Default game progress
+    private GameProgressObject defaultGameProgress = new GameProgressObject(
+            1,
+            1,
+            0,
+            100,
+            5,
+            5,
+            4f,
+            0.1f,
+            1f,
+            2f,
+            1f,
+            0,
+            new ArrayList<WeaponObject>()
+    );
+
     public GameProgress() {
+        defaultGameProgress.getPlayerWeaponList().add(new WeaponList().getAllWeapons().get(0));
+
         // JSON file to store the game progress
         fileHandle = Gdx.files.local("json/gameprogress.json");
-
-        // Default game progress
-        GameProgressObject defaultGameProgress = new GameProgressObject(
-                1,
-                1,
-                0,
-                100,
-                5,
-                5,
-                4f,
-                0.1f,
-                1f,
-                2f,
-                1f,
-                0,
-                new ArrayList<WeaponObject>()
-        );
 
         if (fileHandle.exists()) {
             String json = fileHandle.readString();
@@ -75,6 +78,10 @@ public class GameProgress {
      */
     private GameProgressObject deserializeGameProgress(String json) {
         return gson.fromJson(json, GameProgressObject.class);
+    }
+
+    public void resetToDefault() {
+        serializeGameProgress(defaultGameProgress);
     }
 
     /* ----- GETTERS AND SETTERS ----- */
