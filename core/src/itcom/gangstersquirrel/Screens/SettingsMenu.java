@@ -30,6 +30,9 @@ public class SettingsMenu extends MenuScreen {
 
     private HashMap<String, ResolutionObject> items = new HashMap<>();
 
+    private int screenWidth;
+    private int screenHeight;
+
     public SettingsMenu(MainGameClass game) {
         super(game);
         this.settings = new Settings();
@@ -120,12 +123,12 @@ public class SettingsMenu extends MenuScreen {
         ArrayList<ResolutionObject> possibleResolutions = new ArrayList<>();
 
         GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-        int width = gd.getDisplayMode().getWidth();
-        int height = gd.getDisplayMode().getHeight();
+        screenWidth = gd.getDisplayMode().getWidth();
+        screenHeight = gd.getDisplayMode().getHeight();
 
         ArrayList<ResolutionObject> allResolutions = game.getResolutions();
         for (ResolutionObject resolution : allResolutions) {
-            if (resolution.getWidth() <= width && resolution.getHeight() <= height) {
+            if (resolution.getWidth() <= screenWidth && resolution.getHeight() <= screenHeight) {
                 possibleResolutions.add(resolution);
             }
         }
@@ -137,7 +140,10 @@ public class SettingsMenu extends MenuScreen {
         for (HashMap.Entry<String, ResolutionObject> item : items.entrySet()) {
             if (item.getValue().getWidth() == settings.getGameWidth() && item.getValue().getHeight() == settings.getGameHeight()) {
                 try {
+                    // To prevent the event listener from triggering
+                    resolutionSelectBox.removeListener(resolutionSelectBoxChangeListener);
                     resolutionSelectBox.setSelected(item.getKey());
+                    resolutionSelectBox.addListener(resolutionSelectBoxChangeListener);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -151,6 +157,15 @@ public class SettingsMenu extends MenuScreen {
         @Override
         public void changed(ChangeEvent event, Actor actor) {
             settings.setFullscreen(fullscreenCheckBox.isChecked());
+
+            // Set resolution to maximum when switching to fullscreen
+            if (settings.getGameWidth() != screenWidth && settings.getGameHeight() != screenHeight) {
+                settings.setGameWidth(screenWidth);
+                settings.setGameHeight(screenHeight);
+
+                setResolutionSelectionToCurrentResolution();
+            }
+
             game.changeGameResolution();
         }
     };
@@ -193,6 +208,16 @@ public class SettingsMenu extends MenuScreen {
                         break;
                     default:
                         break;
+                }
+
+                // If the selected resolution is lower, don't allow fullscreen
+                if (selectedResolution.getWidth() <= screenWidth && selectedResolution.getHeight() <= screenHeight && screenWidth > 0 && screenHeight > 0) {
+                    settings.setFullscreen(false);
+
+                    // To prevent the event handler from triggering
+                    fullscreenCheckBox.removeListener(fullscreenCheckBoxChangeListener);
+                    fullscreenCheckBox.setChecked(false);
+                    fullscreenCheckBox.addListener(fullscreenCheckBoxChangeListener);
                 }
 
                 game.changeGameResolution();
