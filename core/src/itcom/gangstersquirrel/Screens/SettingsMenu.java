@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import itcom.gangstersquirrel.MainGameClass;
@@ -24,9 +25,11 @@ public class SettingsMenu extends MenuScreen {
 
     private Label titleLabel;
     private TextButton backButton;
-
+    private TextButton applyButton;
     private CheckBox fullscreenCheckBox;
     private SelectBox resolutionSelectBox;
+    private Label userNameLabel;
+    private TextField userNameTextField;
 
     private HashMap<String, ResolutionObject> items = new HashMap<>();
 
@@ -39,6 +42,9 @@ public class SettingsMenu extends MenuScreen {
 
         titleLabel = new Label("Settings", skin, "title");
         backButton = new TextButton("Back", skin, "default");
+        applyButton = new TextButton("Apply", skin, "default");
+        userNameLabel = new Label("Username: ", skin, "default");
+        userNameTextField = new TextField("", skin, "default");
 
         fullscreenCheckBox = new CheckBox(" Fullscreen", skin, "default");
         fullscreenCheckBox.setChecked(settings.getFullscreen());
@@ -47,18 +53,30 @@ public class SettingsMenu extends MenuScreen {
         resolutionSelectBox.setItems(getItemsForResolutionList());
         setResolutionSelectionToCurrentResolution();
 
-        layoutTable.add(titleLabel).top().center().expandX().colspan(3).spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
+        userNameLabel.setStyle(changeLabelStyleFont(userNameLabel.getStyle(), "fonts/segoeui.ttf", 32, Color.WHITE));
+        userNameTextField.setText(settings.getPlayerName());
+
+        layoutTable.add(titleLabel).top().center().expandX().colspan(4).spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.row();
         layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
-        layoutTable.add(fullscreenCheckBox).top().center().growX().expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
+        layoutTable.add(fullscreenCheckBox).top().center().growX().expandX().colspan(2).spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.row();
         layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
-        layoutTable.add(resolutionSelectBox).top().center().growX().expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
+        layoutTable.add(resolutionSelectBox).top().center().growX().expandX().colspan(2).spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.row();
         layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
-        layoutTable.add(backButton).top().center().growX().expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
+        layoutTable.add(userNameLabel).center().left().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
+        layoutTable.add(userNameTextField).top().center().growX().expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
+        layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
+        layoutTable.row();
+        layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
+        layoutTable.add(backButton).top().center().growX().expandX().colspan(2).spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
+        layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
+        layoutTable.row();
+        layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
+        layoutTable.add(applyButton).top().center().growX().expandX().colspan(2).spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.row();
 
@@ -67,6 +85,7 @@ public class SettingsMenu extends MenuScreen {
         fullscreenCheckBox.addListener(fullscreenCheckBoxChangeListener);
         resolutionSelectBox.addListener(resolutionSelectBoxChangeListener);
         backButton.addListener(backButtonClickListener);
+        applyButton.addListener(applyButtonClickListener);
     }
 
     @Override
@@ -229,6 +248,20 @@ public class SettingsMenu extends MenuScreen {
         @Override
         public void clicked(InputEvent event, float x, float y) {
             super.clicked(event, x, y);
+            game.setScreen(new MainMenu(game));
+        }
+    };
+
+    private ClickListener applyButtonClickListener = new ClickListener() {
+        @Override
+        public void clicked(InputEvent event, float x, float y) {
+            super.clicked(event, x, y);
+
+            // Username
+            if (!userNameTextField.getText().trim().isEmpty()) {
+                settings.setPlayerName(userNameTextField.getText().trim());
+            }
+
             game.setScreen(new MainMenu(game));
         }
     };
