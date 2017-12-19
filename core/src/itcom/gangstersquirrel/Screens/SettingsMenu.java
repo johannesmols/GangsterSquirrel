@@ -24,7 +24,7 @@ public class SettingsMenu extends MenuScreen {
     private Settings settings;
 
     private Label titleLabel;
-    private TextButton backButton;
+    private TextButton cancelButton;
     private TextButton applyButton;
     private CheckBox fullscreenCheckBox;
     private SelectBox resolutionSelectBox;
@@ -41,7 +41,7 @@ public class SettingsMenu extends MenuScreen {
         this.settings = new Settings();
 
         titleLabel = new Label("Settings", skin, "title");
-        backButton = new TextButton("Back", skin, "default");
+        cancelButton = new TextButton("Cancel", skin, "default");
         applyButton = new TextButton("Apply", skin, "default");
         userNameLabel = new Label("Username: ", skin, "default");
         userNameTextField = new TextField("", skin, "default");
@@ -72,7 +72,7 @@ public class SettingsMenu extends MenuScreen {
         layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.row();
         layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
-        layoutTable.add(backButton).top().center().growX().expandX().colspan(2).spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
+        layoutTable.add(cancelButton).top().center().growX().expandX().colspan(2).spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.row();
         layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
@@ -84,7 +84,7 @@ public class SettingsMenu extends MenuScreen {
 
         fullscreenCheckBox.addListener(fullscreenCheckBoxChangeListener);
         resolutionSelectBox.addListener(resolutionSelectBoxChangeListener);
-        backButton.addListener(backButtonClickListener);
+        cancelButton.addListener(cancelButtonClickListener);
         applyButton.addListener(applyButtonClickListener);
     }
 
@@ -244,7 +244,7 @@ public class SettingsMenu extends MenuScreen {
         }
     };
 
-    private ClickListener backButtonClickListener = new ClickListener() {
+    private ClickListener cancelButtonClickListener = new ClickListener() {
         @Override
         public void clicked(InputEvent event, float x, float y) {
             super.clicked(event, x, y);
