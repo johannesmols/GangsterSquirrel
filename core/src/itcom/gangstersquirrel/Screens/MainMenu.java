@@ -1,11 +1,13 @@
 package itcom.gangstersquirrel.Screens;
 
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import itcom.gangstersquirrel.MainGameClass;
+import itcom.gangstersquirrel.Settings.Settings;
 
 /**
  * The main menu of the game
@@ -63,6 +65,8 @@ public class MainMenu extends MenuScreen {
         statisticsButton.addListener(statisticsButtonClickListener);
         leaderbordButton.addListener(leaderboardButtonClickListener);
         exitButton.addListener(exitButtonClickListener);
+
+        setUsernameToComputerName();
     }
 
     /**
@@ -72,6 +76,22 @@ public class MainMenu extends MenuScreen {
     @Override
     public void renderExtended(float delta) {
 
+    }
+
+    /**
+     * Changes the user name to be the computer name if the name hasn't been changed yet
+     */
+    private void setUsernameToComputerName() {
+        Settings settings = new Settings();
+        if (settings.getPlayerName().equals("player")) {
+            if (Gdx.app.getType() == Application.ApplicationType.Desktop) {
+                try {
+                    settings.setPlayerName(System.getProperty("user.name"));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     /* ----- EVENT LISTENER ----- */
