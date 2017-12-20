@@ -1,5 +1,6 @@
 package itcom.gangstersquirrel.Screens;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -15,6 +16,7 @@ public class MainMenu extends MenuScreen {
     private TextButton playButton;
     private TextButton settingsButton;
     private TextButton statisticsButton;
+    private TextButton leaderbordButton;
     private TextButton exitButton;
 
     /**
@@ -28,6 +30,7 @@ public class MainMenu extends MenuScreen {
         playButton = new TextButton("Play", skin, "default");
         settingsButton = new TextButton("Settings", skin, "default");
         statisticsButton = new TextButton("Statistics", skin, "default");
+        leaderbordButton = new TextButton("Leaderboard", skin, "default");
         exitButton = new TextButton("Exit", skin, "default");
 
         layoutTable.add(gameTitleLabel).top().center().expandX().colspan(3).spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
@@ -45,6 +48,10 @@ public class MainMenu extends MenuScreen {
         layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.row();
         layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
+        layoutTable.add(leaderbordButton).top().center().growX().expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
+        layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
+        layoutTable.row();
+        layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.add(exitButton).top().center().growX().expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.row();
@@ -54,6 +61,7 @@ public class MainMenu extends MenuScreen {
         playButton.addListener(playButtonClickListener);
         settingsButton.addListener(settingsButtonClickListener);
         statisticsButton.addListener(statisticsButtonClickListener);
+        leaderbordButton.addListener(leaderboardButtonClickListener);
         exitButton.addListener(exitButtonClickListener);
     }
 
@@ -89,6 +97,14 @@ public class MainMenu extends MenuScreen {
         public void clicked(InputEvent event, float x, float y) {
             super.clicked(event, x, y);
             game.setScreen(new StatisticsMenu(game));
+        }
+    };
+
+    private ClickListener leaderboardButtonClickListener = new ClickListener() {
+        @Override
+        public void clicked(InputEvent event, float x, float y) {
+            super.clicked(event, x, y);
+            Gdx.net.openURI("http://resources.ludvig.xyz/gangstersquirrel/");
         }
     };
 
