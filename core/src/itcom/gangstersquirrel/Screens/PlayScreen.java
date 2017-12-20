@@ -565,7 +565,7 @@ public class PlayScreen implements Screen {
     /**
      * Resets the player to the start of the level and resets all attributes
      */
-    public void respawnPlayer(boolean levelFinished) {
+    public void respawnPlayer(boolean levelFinished, boolean gameFinished) {
         level_1_backgroundMusic.stop();
         level_2_backgroundMusic.stop();
 
@@ -586,7 +586,11 @@ public class PlayScreen implements Screen {
             gameProgress.setCurrentTime(timer);
         }
 
-        game.setScreen(new PlayScreen(game));
+        if (!gameFinished) {
+            game.setScreen(new PlayScreen(game));
+        } else {
+            game.setScreen(new StatisticsMenu(game));
+        }
     }
 
     /**
@@ -643,14 +647,17 @@ public class PlayScreen implements Screen {
 
         // Increase highest finished level
         if (gameProgress.getUnlockedLevels() <= gameProgress.getCurrentLevel()) {
-            gameProgress.setUnlockedLevels(gameProgress.getCurrentLevel() + 1);
+            if (gameProgress.getCurrentLevel() < MainGameClass.NUMBER_OF_LEVELS) {
+                gameProgress.setUnlockedLevels(gameProgress.getCurrentLevel() + 1);
+            }
         }
 
         // Increase current level
+        boolean gameFinished = false;
         if (gameProgress.getCurrentLevel() < MainGameClass.NUMBER_OF_LEVELS) {
             gameProgress.setCurrentLevel(gameProgress.getCurrentLevel() + 1);
         } else {
-            log("Game finished, no more levels to play");
+            gameFinished = true;
         }
 
         // Save finished level to statistics
@@ -659,7 +666,7 @@ public class PlayScreen implements Screen {
         // Reset current lifes to the maximum
         gameProgress.setPlayerLifes(gameProgress.getPlayerMaximumLifes());
 
-        respawnPlayer(true);
+        respawnPlayer(true, gameFinished);
     }
 
     /**
@@ -771,7 +778,7 @@ public class PlayScreen implements Screen {
 
         if (player.getHealth() <= 0) {
             if(gameProgress.getPlayerLifes() > 1) {
-                respawnPlayer(false);
+                respawnPlayer(false, false);
             } else {
                 game.resetTimer();
                 game.resetPlayerLifes();

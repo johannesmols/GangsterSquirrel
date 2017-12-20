@@ -137,6 +137,11 @@ public class BossEnemy extends Enemy {
 
             // Remove from play screen
             playScreen.getEnemies().remove(this);
+
+            // Finish the level if this is the boss enemy in the last level
+            if (screen.getGameProgress().getCurrentLevel() == 3) {
+                screen.levelFinished();
+            }
         }
     }
 
