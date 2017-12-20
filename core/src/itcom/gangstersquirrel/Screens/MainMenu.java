@@ -116,7 +116,7 @@ public class MainMenu extends MenuScreen {
         @Override
         public void clicked(InputEvent event, float x, float y) {
             super.clicked(event, x, y);
-            game.setScreen(new StatisticsMenu(game));
+            game.setScreen(new StatisticsMenu(game, false));
         }
     };
 

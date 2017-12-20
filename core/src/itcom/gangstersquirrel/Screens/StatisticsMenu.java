@@ -1,5 +1,7 @@
 package itcom.gangstersquirrel.Screens;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -50,7 +52,7 @@ public class StatisticsMenu extends MenuScreen {
      * Sets up all widgets and defines the layout of the menu
      * @param game the main game class
      */
-    public StatisticsMenu(MainGameClass game) {
+    public StatisticsMenu(MainGameClass game, boolean comingFromTheLastLevel) {
         super(game);
         this.statistics = new Statistics();
 
@@ -161,6 +163,27 @@ public class StatisticsMenu extends MenuScreen {
 
         backButton.addListener(backButtonClickListener);
         resetToDefaultButton.addListener(resetButtonClickListener);
+
+        // Show pop up if the user finished the game
+        if (comingFromTheLastLevel) {
+            /*Window window = new Window("Flat Earth UI", skin);
+            window.setSize(300f, 300f);
+            window.setPosition(Gdx.graphics.getWidth() / 2.0f, Gdx.graphics.getHeight() / 2.0f, Align.center);
+            window.getTitleTable().getCells().first().padLeft(15.0f);
+            stage.addActor(window);*/
+
+            Skin defaultSkin = new Skin(Gdx.files.internal("skins/default/skin/uiskin.json"));
+
+            Dialog dialog = new Dialog("Game finished", defaultSkin, "dialog") {
+                public void result(Object obj) {
+                    System.out.println("result " + obj);
+                }
+            };
+            dialog.text("Congratulations, you finished the game!\nWe prepared some statistics in the following screen.\nThanks for playing!");
+            dialog.button("Okay", true); //sends "true" as the result
+            dialog.key(Input.Keys.ENTER, true); //sends "true" when the ENTER key is pressed
+            dialog.show(stage);
+        }
     }
 
     /**

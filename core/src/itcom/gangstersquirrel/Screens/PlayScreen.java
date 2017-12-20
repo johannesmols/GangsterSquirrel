@@ -589,7 +589,7 @@ public class PlayScreen implements Screen {
         if (!gameFinished) {
             game.setScreen(new PlayScreen(game));
         } else {
-            game.setScreen(new StatisticsMenu(game));
+            game.setScreen(new StatisticsMenu(game, true));
         }
     }
 
