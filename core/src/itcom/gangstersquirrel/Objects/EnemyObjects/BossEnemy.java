@@ -34,7 +34,7 @@ public class BossEnemy extends Enemy {
 
         // Set gameplay variables of super class for this specific type of enemy
         damageMinMax = new int[] { 10, 20 };
-        health = 40;
+        health = 50;
         horizontalMoveImpulseVelocity = 0.1f;
         horizontalMaxMovementVelocity = 0.5f;
 
