@@ -166,12 +166,6 @@ public class StatisticsMenu extends MenuScreen {
 
         // Show pop up if the user finished the game
         if (comingFromTheLastLevel) {
-            /*Window window = new Window("Flat Earth UI", skin);
-            window.setSize(300f, 300f);
-            window.setPosition(Gdx.graphics.getWidth() / 2.0f, Gdx.graphics.getHeight() / 2.0f, Align.center);
-            window.getTitleTable().getCells().first().padLeft(15.0f);
-            stage.addActor(window);*/
-
             Skin defaultSkin = new Skin(Gdx.files.internal("skins/default/skin/uiskin.json"));
 
             Dialog dialog = new Dialog("Game finished", defaultSkin, "dialog") {
