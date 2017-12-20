@@ -1,7 +1,8 @@
 # GangsterSquirrel
 
-
 A simple 2D game created with the libGDX framework. This game was created during the P1 project in IT, Communication and New Media (1. Semester, 2017) at Aalborg University Copenhagen.
+
+[Online leaderboard](http://resources.ludvig.xyz/gangstersquirrel/)
 
 Made by:
 + [Johannes Mols](https://github.com/johannesmols)
