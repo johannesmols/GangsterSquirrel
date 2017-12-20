@@ -12,6 +12,9 @@ public class Settings {
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private SettingsObject settings;
 
+    /**
+     * The constructor reads the file to a local variable and creates a new file if necessary
+     */
     public Settings() {
         // JSON file to store the game progress
         fileHandle = Gdx.files.local("json/settings.json");

@@ -9,6 +9,9 @@ import itcom.gangstersquirrel.Tools.JSONFileCreator;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * A class that reads and writes to a JSON file that stores all available weapons in the game
+ */
 public class WeaponList {
 
     private FileHandle fileHandle;

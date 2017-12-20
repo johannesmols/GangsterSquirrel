@@ -46,7 +46,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
- * The most important screen of the game, the game itself
+ * The most important screen of the game, the game screen itself
  */
 public class PlayScreen implements Screen {
 
@@ -236,6 +236,9 @@ public class PlayScreen implements Screen {
         timer = gameProgress.getCurrentTime();
     }
 
+    /**
+     * Sets up all player related variables
+     */
     private void setUpPlayer() {
 
         // Player health
@@ -755,6 +758,10 @@ public class PlayScreen implements Screen {
         return statistics;
     }
 
+    /**
+     * Set the current health of the player
+     * @param newHealth the new health
+     */
     public void setPlayerCurrentHealth(int newHealth) {
         // Save lost health to statistics
         statistics.setHealthLost(statistics.getHealthLost() + (player.getHealth() - newHealth));
@@ -773,22 +780,30 @@ public class PlayScreen implements Screen {
         }
     }
 
+    /**
+     * @return the current time
+     */
     public long getTimer() {
         return timer;
     }
 
-    public Box2DWorldCreator getBox2DWorldCreator() {
-        return box2DWorldCreator;
-    }
-
+    /**
+     * @return the enemy list of the current level
+     */
     public ArrayList<Enemy> getEnemies() {
         return enemies;
     }
 
+    /**
+     * @return all enemies that are currently in range to be attacked by the player on the right side
+     */
     public ArrayList<Enemy> getEnemiesCurrentlyInRightAttackRange() {
         return enemiesCurrentlyInRightAttackRange;
     }
 
+    /**
+     * @return all enemies that are currently in range to be attacked by the player on the left side
+     */
     public ArrayList<Enemy> getEnemiesCurrentlyInLeftAttackRange() {
         return enemiesCurrentlyInLeftAttackRange;
     }

@@ -8,6 +8,9 @@ import itcom.gangstersquirrel.Objects.Enemy;
 import itcom.gangstersquirrel.Objects.Player;
 import itcom.gangstersquirrel.Screens.PlayScreen;
 
+/**
+ * An enemy of the type boss, extends the abstract Enemy class
+ */
 public class BossEnemy extends Enemy {
 
     private PlayScreen playScreen;
@@ -18,6 +21,12 @@ public class BossEnemy extends Enemy {
     private Array<TextureRegion> flyFrames;
     private String currentAnimation;
 
+    /**
+     * Sets up the enemy in the game
+     * @param screen the play screen
+     * @param spawnPositionX the spawn position as tile index on the x axis
+     * @param spawnPositionY the spawn position as tile index on the y axis
+     */
     public BossEnemy(PlayScreen screen, float spawnPositionX, float spawnPositionY) {
         super(screen, spawnPositionX, spawnPositionY);
 
@@ -44,6 +53,10 @@ public class BossEnemy extends Enemy {
         setBounds(getX(), getY(), ENEMY_PIXEL_WIDTH / MainGameClass.PPM, ENEMY_PIXEL_HEIGHT / MainGameClass.PPM + getHeight() / 2);
     }
 
+    /**
+     * Gets called once per frame and updates the enemy's texture and moves it
+     * @param deltaTime the time between the current and the last frame
+     */
     @Override
     public void update(float deltaTime) {
         stateTime += deltaTime;

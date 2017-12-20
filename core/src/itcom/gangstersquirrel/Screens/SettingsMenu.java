@@ -18,6 +18,9 @@ import itcom.gangstersquirrel.Tools.ResolutionObject;
 import java.awt.*;
 import java.util.*;
 
+/**
+ * The settings menu of the game
+ */
 public class SettingsMenu extends MenuScreen {
 
     private Settings settings;
@@ -42,6 +45,10 @@ public class SettingsMenu extends MenuScreen {
     private int screenWidth;
     private int screenHeight;
 
+    /**
+     * Sets up all widgets and defines the layout of the menu
+     * @param game the main game class
+     */
     public SettingsMenu(MainGameClass game) {
         super(game);
         this.settings = new Settings();
@@ -123,11 +130,22 @@ public class SettingsMenu extends MenuScreen {
         resetGameProgress.addListener(resetGameProgressButtonClickListener);
     }
 
+    /**
+     * An extended method from the render method of the super class to have the chance to add something specific to this class
+     * @param delta the time between the current and the last frame
+     */
     @Override
     public void renderExtended(float delta) {
 
     }
 
+    /**
+     * Changes the font style of a label to use a true type font that gets converted to a Bitmap font in an appropriate scale
+     * @param original the original label style
+     * @param filePath the file path of the true type font
+     * @param densityIndependentPixels the density independent pixel size of the font
+     * @return the new style with the scaled bitmap font
+     */
     private Label.LabelStyle changeLabelStyleFont(Label.LabelStyle original, String filePath, float densityIndependentPixels, Color color) {
         original.font = BitmapFontGenerator.generateFont(filePath, densityIndependentPixels, color);
         return original;
@@ -190,6 +208,9 @@ public class SettingsMenu extends MenuScreen {
         return possibleResolutions;
     }
 
+    /**
+     * Set the currently selected item in the list of resolutions to be the current resolution
+     */
     private void setResolutionSelectionToCurrentResolution() {
         for (HashMap.Entry<String, ResolutionObject> item : items.entrySet()) {
             if (item.getValue().getWidth() == settings.getGameWidth() && item.getValue().getHeight() == settings.getGameHeight()) {
@@ -207,6 +228,9 @@ public class SettingsMenu extends MenuScreen {
 
     /* ----- EVENT LISTENER ----- */
 
+    /**
+     * Gets called when the fullscreen check box gets toggled
+     */
     private ChangeListener fullscreenCheckBoxChangeListener = new ChangeListener() {
         @Override
         public void changed(ChangeEvent event, Actor actor) {
@@ -224,6 +248,9 @@ public class SettingsMenu extends MenuScreen {
         }
     };
 
+    /**
+     * Gets called when the selected resolution in the dropdown list is changed
+     */
     private ChangeListener resolutionSelectBoxChangeListener = new ChangeListener() {
         @Override
         public void changed(ChangeEvent event, Actor actor) {
@@ -279,6 +306,9 @@ public class SettingsMenu extends MenuScreen {
         }
     };
 
+    /**
+     * Gets called when the cancel button is clicked
+     */
     private ClickListener cancelButtonClickListener = new ClickListener() {
         @Override
         public void clicked(InputEvent event, float x, float y) {
@@ -287,6 +317,9 @@ public class SettingsMenu extends MenuScreen {
         }
     };
 
+    /**
+     * Gets called when the apply button is clicked
+     */
     private ClickListener applyButtonClickListener = new ClickListener() {
         @Override
         public void clicked(InputEvent event, float x, float y) {
@@ -312,6 +345,9 @@ public class SettingsMenu extends MenuScreen {
         }
     };
 
+    /**
+     * Gets called when the reset button is clicked
+     */
     private ClickListener resetGameProgressButtonClickListener = new ClickListener() {
         @Override
         public void clicked(InputEvent event, float x, float y) {

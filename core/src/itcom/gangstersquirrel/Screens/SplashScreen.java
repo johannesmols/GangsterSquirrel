@@ -49,6 +49,10 @@ public class SplashScreen implements Screen {
         handleInput(deltaTime);
     }
 
+    /**
+     * Handle the input
+     * @param deltaTime the time between the current and the last frame
+     */
     private void handleInput(float deltaTime) {
         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE) || Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
             game.setScreen(new MainMenu(game));

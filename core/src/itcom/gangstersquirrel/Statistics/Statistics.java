@@ -21,6 +21,9 @@ public class Statistics {
             0, 0, 0, 0, 0, 0, 0, 0, new long[MainGameClass.NUMBER_OF_LEVELS]
     );
 
+    /**
+     * The constructor reads the file to a local variable and creates a new file if necessary
+     */
     public Statistics() {
         // JSON file to store the statistics
         fileHandle = Gdx.files.local("json/statistics.json");

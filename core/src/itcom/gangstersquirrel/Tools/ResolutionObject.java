@@ -1,5 +1,8 @@
 package itcom.gangstersquirrel.Tools;
 
+/**
+ * This class defines the structure of a resolution object
+ */
 public class ResolutionObject {
 
     private String aspectRatio;

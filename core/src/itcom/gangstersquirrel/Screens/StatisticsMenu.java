@@ -10,6 +10,9 @@ import itcom.gangstersquirrel.MainGameClass;
 import itcom.gangstersquirrel.Statistics.Statistics;
 import itcom.gangstersquirrel.Tools.BitmapFontGenerator;
 
+/**
+ * The statistics menu of the game
+ */
 public class StatisticsMenu extends MenuScreen {
 
     private Statistics statistics;
@@ -43,6 +46,10 @@ public class StatisticsMenu extends MenuScreen {
     private final String enemiesKilledText = "Enemies killed:";
     private final String itemsCollectedText = "Items collected:";
 
+    /**
+     * Sets up all widgets and defines the layout of the menu
+     * @param game the main game class
+     */
     public StatisticsMenu(MainGameClass game) {
         super(game);
         this.statistics = new Statistics();
@@ -156,6 +163,10 @@ public class StatisticsMenu extends MenuScreen {
         resetToDefaultButton.addListener(resetButtonClickListener);
     }
 
+    /**
+     * An extended method from the render method of the super class to have the chance to add something specific to this class
+     * @param delta the time between the current and the last frame
+     */
     @Override
     public void renderExtended(float delta) {
         secondsPlayedValueLabel.setText(String.valueOf(statistics.getSecondsPlayed()));
@@ -168,6 +179,13 @@ public class StatisticsMenu extends MenuScreen {
         itemsCollectedValueLabel.setText(String.valueOf(statistics.getItemsCollected()));
     }
 
+    /**
+     * Changes the font style of a label to use a true type font that gets converted to a Bitmap font in an appropriate scale
+     * @param original the original label style
+     * @param filePath the file path of the true type font
+     * @param densityIndependentPixels the density independent pixel size of the font
+     * @return the new style with the scaled bitmap font
+     */
     private Label.LabelStyle changeLabelStyleFont(Label.LabelStyle original, String filePath, float densityIndependentPixels, Color color) {
         original.font = BitmapFontGenerator.generateFont(filePath, densityIndependentPixels, color);
         return original;
@@ -175,6 +193,9 @@ public class StatisticsMenu extends MenuScreen {
 
     /* ----- EVENT LISTENER ----- */
 
+    /**
+     * Gets called when the back button is clicked
+     */
     private ClickListener backButtonClickListener = new ClickListener() {
         @Override
         public void clicked(InputEvent event, float x, float y) {
@@ -183,6 +204,9 @@ public class StatisticsMenu extends MenuScreen {
         }
     };
 
+    /**
+     * Gets called when the reset button is clicked
+     */
     private ClickListener resetButtonClickListener = new ClickListener() {
         @Override
         public void clicked(InputEvent event, float x, float y) {

@@ -8,6 +8,11 @@ public class KeyBindingObject {
     private String action;
     private int[] keys;
 
+    /**
+     * Assigns the parameters to the local field variables
+     * @param action the action in the game
+     * @param keys the relevant keys for this action
+     */
     public KeyBindingObject(String action, int[] keys) {
         this.action = action;
         this.keys = keys;

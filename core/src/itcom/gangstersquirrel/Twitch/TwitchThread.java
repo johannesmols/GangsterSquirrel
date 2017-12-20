@@ -8,6 +8,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A separate thread to handle the Twitch connectivity
+ */
 public class TwitchThread implements ChatListener {
 
     private TwitchChat twitch = new TwitchChat();
@@ -16,6 +19,11 @@ public class TwitchThread implements ChatListener {
 
     private ArrayList<String> receivableMessages = new ArrayList<>();
 
+    /**
+     * Starts the new thread
+     * @param enabled if Twitch is enabled
+     * @param mainGameClass the main game class
+     */
     public TwitchThread(boolean enabled, MainGameClass mainGameClass)
     {
         if (enabled) {
@@ -32,6 +40,9 @@ public class TwitchThread implements ChatListener {
         receivableMessages.add("Kreygasm");
     }
 
+    /**
+     * Connect with the twitch channel
+     */
     private void twitchConnect() {
         twitch.addListener(this);
         try {
@@ -50,6 +61,12 @@ public class TwitchThread implements ChatListener {
         }
     }
 
+    /**
+     * Get the number of messages in a list that contains a specific message
+     * @param list the list
+     * @param message the message
+     * @return the number of messages
+     */
     private static int getNumberOfThisMessagesInLog(List<String> list, String message) {
         int amt = 0;
         for (String tmpMessage : list) {
@@ -60,6 +77,14 @@ public class TwitchThread implements ChatListener {
         return amt;
     }
 
+    /**
+     * Handles receiving a message
+     * @param channel the channel where the message came from
+     * @param sender the user that sent the message
+     * @param login the login
+     * @param hostname the hostname of the channel
+     * @param message the actual message
+     */
     @Override
     public void messageReceived(String channel, String sender, String login, String hostname, String message) {
         System.out.println(sender + ": " + message);
@@ -72,10 +97,16 @@ public class TwitchThread implements ChatListener {
         }
     }
 
+    /**
+     * @return the twitch credentials
+     */
     public TwitchCredentialsObject getTwitchCredentials() {
         return twitchCredentials;
     }
 
+    /**
+     * @return the twitch chat instance
+     */
     public TwitchChat getTwitch() {
         return twitch;
     }

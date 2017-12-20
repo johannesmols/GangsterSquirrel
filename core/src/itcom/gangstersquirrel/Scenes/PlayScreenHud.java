@@ -30,6 +30,10 @@ public class PlayScreenHud {
     private ImageTextButton weaponStrengthImageTextButton;
     private ImageTextButton twitchImageTextButton;
 
+    /**
+     * Sets up all widgets and defines the layout of the HUD
+     * @param playScreen the play screen
+     */
     public PlayScreenHud(PlayScreen playScreen) {
         this.playScreen = playScreen;
 
@@ -78,6 +82,10 @@ public class PlayScreenHud {
         stage.addActor(layoutTable);
     }
 
+    /**
+     * Gets called once per frame and updates the widgets
+     * @param deltaTime the time between the current and the last frame
+     */
     public void update(float deltaTime) {
         timerLabel.setText(String.format("%04d", playScreen.getTimer()));
         healthBar.setValue(playScreen.getPlayer().getHealth());
@@ -89,15 +97,34 @@ public class PlayScreenHud {
         stage.setDebugAll(MainGameClass.DEBUG);
     }
 
+    /**
+     * Get a pixel size that is adjusted to the display density and therefore takes scaling into consideration
+     * @param dip density independent pixels
+     * @return the density independent size
+     */
     private int getPixelSizeFromDensityIndependentPixels(float dip) {
         return (int) (dip * Gdx.graphics.getDensity());
     }
 
+    /**
+     * Changes the font style of a label to use a true type font that gets converted to a Bitmap font in an appropriate scale
+     * @param original the original label style
+     * @param filePath the file path of the true type font
+     * @param densityIndependentPixels the density independent pixel size of the font
+     * @return the new style with the scaled bitmap font
+     */
     private Label.LabelStyle changeLabelStyleFont(Label.LabelStyle original, String filePath, float densityIndependentPixels) {
         original.font = BitmapFontGenerator.generateFont(filePath, densityIndependentPixels, Color.WHITE);
         return original;
     }
 
+    /**
+     * Changes the font style of a text button to use a true type font that gets converted to a Bitmap font in an appropriate scale
+     * @param original the original text button style
+     * @param filePath the file path of the true type font
+     * @param densityIndependentPixels the density independent pixel size of the font
+     * @return the new style with the scaled bitmap font
+     */
     private ImageTextButton.ImageTextButtonStyle changeImageTextButtonStyle(ImageTextButton.ImageTextButtonStyle original, String filePath, float densityIndependentPixels) {
         original.font = BitmapFontGenerator.generateFont(filePath, densityIndependentPixels, Color.WHITE);
         return original;

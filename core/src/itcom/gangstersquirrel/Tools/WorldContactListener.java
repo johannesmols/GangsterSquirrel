@@ -9,6 +9,9 @@ import itcom.gangstersquirrel.Screens.PlayScreen;
 
 import java.util.HashMap;
 
+/**
+ * This class listens to all collisions happening in the physics simulation and calls the respective methods
+ */
 public class WorldContactListener implements ContactListener {
 
     PlayScreen playScreen;
@@ -37,6 +40,11 @@ public class WorldContactListener implements ContactListener {
 
     }
 
+    /**
+     * Process contacts of all kinds and
+     * @param contact the contact object containing information about both collided objects
+     * @param beginOrEndContact if the contact started or ended
+     */
     private void processContact(Contact contact, boolean beginOrEndContact) {
 
         Fixture fixtureA = contact.getFixtureA();

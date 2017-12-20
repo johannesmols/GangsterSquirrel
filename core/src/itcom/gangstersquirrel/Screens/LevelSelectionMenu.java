@@ -7,6 +7,9 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import itcom.gangstersquirrel.GameProgress.GameProgress;
 import itcom.gangstersquirrel.MainGameClass;
 
+/**
+ * A menu to select which level the user wants to play
+ */
 public class LevelSelectionMenu extends MenuScreen {
 
     private GameProgress gameProgress;
@@ -17,6 +20,10 @@ public class LevelSelectionMenu extends MenuScreen {
     private TextButton level3Button;
     private TextButton backButton;
 
+    /**
+     * Sets up all widgets and defines the layout of the menu
+     * @param game the main game class
+     */
     public LevelSelectionMenu(MainGameClass game) {
         super(game);
 
@@ -72,6 +79,10 @@ public class LevelSelectionMenu extends MenuScreen {
         backButton.addListener(backButtonClickListener);
     }
 
+    /**
+     * An extended method from the render method of the super class to have the chance to add something specific to this class
+     * @param delta the time between the current and the last frame
+     */
     @Override
     public void renderExtended(float delta) {
 

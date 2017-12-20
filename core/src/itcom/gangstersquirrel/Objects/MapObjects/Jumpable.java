@@ -8,6 +8,9 @@ import itcom.gangstersquirrel.Objects.InteractiveMapTileObject;
 import itcom.gangstersquirrel.Objects.Player;
 import itcom.gangstersquirrel.Screens.PlayScreen;
 
+/**
+ * A subclass of the InteractiveMapTileObject class
+ */
 public class Jumpable extends InteractiveMapTileObject {
 
     private PlayScreen playScreen;
@@ -42,6 +45,9 @@ public class Jumpable extends InteractiveMapTileObject {
 
     }
 
+    /**
+     * Creates and sets the collision filter mask and category of this object
+     */
     @Override
     public void createFilterMask() {
         Filter filter = new Filter();

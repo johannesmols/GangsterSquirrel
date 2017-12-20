@@ -1,6 +1,5 @@
 package itcom.gangstersquirrel.Objects.MapObjects;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.Filter;
 import itcom.gangstersquirrel.MainGameClass;
@@ -48,6 +47,9 @@ public class DeathTile extends InteractiveMapTileObject {
 
     }
 
+    /**
+     * Creates and sets the collision filter mask and category of this object
+     */
     @Override
     public void createFilterMask() {
         Filter filter = new Filter();

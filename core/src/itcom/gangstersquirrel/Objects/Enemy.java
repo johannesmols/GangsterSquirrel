@@ -9,6 +9,9 @@ import itcom.gangstersquirrel.Screens.PlayScreen;
 import java.util.HashMap;
 import java.util.Random;
 
+/**
+ * An abstract class that defines enemies
+ */
 public abstract class Enemy extends Sprite {
 
     protected World world;
@@ -28,6 +31,12 @@ public abstract class Enemy extends Sprite {
     // Moving
     protected boolean isMovingLeftOrRight;
 
+    /**
+     * Sets up the body and fixtures of an enemy and spawns it in the map
+     * @param screen the play screen
+     * @param spawnPositionX the spawn position as tile index on the x axis
+     * @param spawnPositionY the spawn position as tile index on the y axis
+     */
     public Enemy(PlayScreen screen, float spawnPositionX, float spawnPositionY){
         this.world = screen.getWorld();
         this.screen = screen;
@@ -74,10 +83,18 @@ public abstract class Enemy extends Sprite {
         return shape;
     }
 
+    /**
+     * Returns a random value between the minimum and maximum possible damage of the enemy
+     * @return the random value
+     */
     protected int randomDamageValueBetweenMinAndMax() {
         return new Random().nextInt((damageMinMax[1] - damageMinMax[0]) + 1) + damageMinMax[0]; // ((max - min) + 1) + min
     }
 
+    /**
+     * Automatically moves the enemy around the map
+     * @param deltaTime the time between the current and the last frame
+     */
     protected void moveEnemy(float deltaTime) {
         if (isMovingLeftOrRight) {
             if (body.getLinearVelocity().x >= - horizontalMaxMovementVelocity) {

@@ -50,6 +50,12 @@ public class Player extends Sprite {
     private float attackTime = 0f;
     private final float ATTACK_DURATION = 0.1f;
 
+    /**
+     * Sets up and defines the player in the map and physics simulation
+     * @param screen the play screen
+     * @param spawnPosition_X the spawn position as tile index on the x axis
+     * @param spawnPosition_Y the spawn position as tile index on the y axis
+     */
     public Player(PlayScreen screen, int spawnPosition_X, int spawnPosition_Y) {
         // Get texture region out of the texture atlas for the squirrel
         super(screen.getPlayerTextureAtlas().findRegion("squirrel_default"));
@@ -202,6 +208,9 @@ public class Player extends Sprite {
         createNewFixtures();
     }
 
+    /**
+     * Create necessary fixtures for the player, including the body and the attack fixtures
+     */
     private void createNewFixtures() {
 
         FixtureDef playerFixtureDef = new FixtureDef();
@@ -263,6 +272,9 @@ public class Player extends Sprite {
         return shape;
     }
 
+    /**
+     * Sets up a HashMap of the display names of each weapon as the key and the related texture as the value to grant easy access to the different textures
+     */
     private void setUpTextureRegions() {
         // Add weapon display names as key and their texture region names as values in the HashMap for texture region names
         List<WeaponObject> weaponList = new WeaponList().getAllWeapons();

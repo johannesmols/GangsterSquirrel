@@ -1,5 +1,8 @@
 package itcom.gangstersquirrel.Settings;
 
+/**
+ * A data structure class to define the settings
+ */
 public class SettingsObject {
 
     private boolean fullscreen;

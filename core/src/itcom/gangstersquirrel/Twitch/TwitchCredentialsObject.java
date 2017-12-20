@@ -1,5 +1,8 @@
 package itcom.gangstersquirrel.Twitch;
 
+/**
+ * A class to define the data structure of an object that contains certain twitch credentials
+ */
 public class TwitchCredentialsObject {
 
     private String url;

@@ -6,7 +6,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import itcom.gangstersquirrel.MainGameClass;
 
-
+/**
+ * The main menu of the game
+ */
 public class MainMenu extends MenuScreen {
 
     private Label gameTitleLabel;
@@ -15,6 +17,10 @@ public class MainMenu extends MenuScreen {
     private TextButton statisticsButton;
     private TextButton exitButton;
 
+    /**
+     * Sets up all widgets and defines the layout of the menu
+     * @param game the main game class
+     */
     public MainMenu(MainGameClass game) {
         super(game);
 
@@ -51,6 +57,10 @@ public class MainMenu extends MenuScreen {
         exitButton.addListener(exitButtonClickListener);
     }
 
+    /**
+     * An extended method from the render method of the super class to have the chance to add something specific to this class
+     * @param delta the time between the current and the last frame
+     */
     @Override
     public void renderExtended(float delta) {
 

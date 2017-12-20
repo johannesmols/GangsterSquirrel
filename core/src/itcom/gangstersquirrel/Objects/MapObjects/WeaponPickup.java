@@ -1,6 +1,5 @@
 package itcom.gangstersquirrel.Objects.MapObjects;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.Filter;
@@ -14,6 +13,9 @@ import itcom.gangstersquirrel.Screens.PlayScreen;
 
 import java.util.ArrayList;
 
+/**
+ * A subclass of the InteractiveMapTileObject class
+ */
 public class WeaponPickup extends InteractiveMapTileObject {
 
     private PlayScreen playScreen;
@@ -26,6 +28,10 @@ public class WeaponPickup extends InteractiveMapTileObject {
         createFilterMask();
     }
 
+    /**
+     * Gets called when the player collides with the object and wants to pick up the weapon
+     * @param player the player object
+     */
     @Override
     public void onPlayerBeginContact(Player player) {
 
@@ -121,6 +127,11 @@ public class WeaponPickup extends InteractiveMapTileObject {
 
     }
 
+    /**
+     * Gets the weapon object with a specific name
+     * @param name the name of the weapon
+     * @return the weapon object
+     */
     private WeaponObject getWeaponObjectByName(String name) {
         for (WeaponObject weapon : new WeaponList().getAllWeapons()) {
             if (weapon.getName().equals(name)) {
@@ -130,6 +141,11 @@ public class WeaponPickup extends InteractiveMapTileObject {
         return null;
     }
 
+    /**
+     * Determines if the picked up weapon is already in the inventory of the player
+     * @param weapon the picked up weapon
+     * @return the result
+     */
     private boolean weaponAlreadyInList(WeaponObject weapon) {
         for (WeaponObject weaponName : playScreen.getPlayer().getWeapons()) {
             if (weaponName.getName().equals(weapon.getName())) {
@@ -141,6 +157,9 @@ public class WeaponPickup extends InteractiveMapTileObject {
         return false;
     }
 
+    /**
+     * Creates and sets the collision filter mask and category of this object
+     */
     @Override
     public void createFilterMask() {
         Filter filter = new Filter();

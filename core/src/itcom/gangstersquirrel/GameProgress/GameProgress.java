@@ -36,6 +36,9 @@ public class GameProgress {
             new ArrayList<WeaponObject>()
     );
 
+    /**
+     * The constructor reads the file to a local variable and creates a new file if necessary
+     */
     public GameProgress() {
         defaultGameProgress.getPlayerWeaponList().add(new WeaponList().getAllWeapons().get(0));
 

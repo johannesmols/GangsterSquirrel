@@ -9,6 +9,9 @@ import itcom.gangstersquirrel.Tools.JSONFileCreator;
 
 import java.util.ArrayList;
 
+/**
+ * Reads and writes to a JSON file that maintains all key bindings and associated actions to it
+ */
 public class KeyBindings {
 
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();

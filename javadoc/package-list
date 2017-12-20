@@ -8,6 +8,7 @@ itcom.gangstersquirrel.Objects.EnemyObjects
 itcom.gangstersquirrel.Objects.MapObjects
 itcom.gangstersquirrel.Scenes
 itcom.gangstersquirrel.Screens
+itcom.gangstersquirrel.Settings
 itcom.gangstersquirrel.Statistics
 itcom.gangstersquirrel.Tools
 itcom.gangstersquirrel.Twitch
