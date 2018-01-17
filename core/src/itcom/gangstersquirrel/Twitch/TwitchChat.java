@@ -45,10 +45,11 @@ public class TwitchChat extends PircBot {
         fileHandle = Gdx.files.local("json/twitchcredentials.json");
 
         TwitchCredentialsObject defaultCredentials = new TwitchCredentialsObject(
+                false,
                 "irc.chat.twitch.tv",
                 6667,
-                "OAUTH",
-                "#aalborguniversity"
+                "",
+                ""
         );
 
         if (fileHandle.exists()) {

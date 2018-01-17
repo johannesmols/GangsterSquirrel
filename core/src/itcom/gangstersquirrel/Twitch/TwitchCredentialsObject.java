@@ -5,16 +5,26 @@ package itcom.gangstersquirrel.Twitch;
  */
 public class TwitchCredentialsObject {
 
+    private boolean enabled;
     private String url;
     private int port;
     private String oauth;
     private String channel;
 
-    public TwitchCredentialsObject(String url, int port, String oauth, String channel) {
+    public TwitchCredentialsObject(boolean enabled, String url, int port, String oauth, String channel) {
+        this.enabled = enabled;
         this.url = url;
         this.port = port;
         this.oauth = oauth;
         this.channel = channel;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public String getUrl() {

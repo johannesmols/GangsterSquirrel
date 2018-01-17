@@ -115,7 +115,7 @@ public class MainGameClass extends Game {
 	 */
 	@Override
 	public void create () {
-	    twitchThread = new TwitchThread(USE_TWITCH, this);
+	    twitchThread = new TwitchThread(this);
 
 	    setUpResolutions();
 
@@ -385,6 +385,6 @@ public class MainGameClass extends Game {
 	 * Reinitializes the twitch thread. Useful for when the credentials change
 	 */
 	public void newTwitchThread() {
-		twitchThread = new TwitchThread(USE_TWITCH, this);
+		twitchThread = new TwitchThread(this);
 	}
 }

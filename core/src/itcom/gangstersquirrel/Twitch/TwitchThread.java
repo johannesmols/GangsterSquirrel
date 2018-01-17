@@ -24,9 +24,9 @@ public class TwitchThread implements ChatListener {
      * @param enabled if Twitch is enabled
      * @param mainGameClass the main game class
      */
-    public TwitchThread(boolean enabled, MainGameClass mainGameClass)
+    public TwitchThread(MainGameClass mainGameClass)
     {
-        if (enabled) {
+        if (twitchCredentials.isEnabled()) {
             System.out.println("Connecting to Twitch ...");
             new Thread(new Runnable() {
                 public void run(){
