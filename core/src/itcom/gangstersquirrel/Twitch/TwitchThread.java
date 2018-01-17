@@ -52,7 +52,6 @@ public class TwitchThread implements ChatListener {
                     twitchCredentials.getOauth()
             );
             System.out.println("Connected to Twitch");
-            twitch.sendMessage(twitch.getTwitchCredentials().getChannel(), new Settings().getPlayerName() + " connected");
 
             System.out.println("Joining Twitch channel " + twitch.getTwitchCredentials().getChannel());
             twitch.joinChannel(twitch.getTwitchCredentials().getChannel());
