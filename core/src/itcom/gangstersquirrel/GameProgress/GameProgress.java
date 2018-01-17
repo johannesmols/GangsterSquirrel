@@ -80,7 +80,7 @@ public class GameProgress {
      * @return the GameProgressObject
      */
     private GameProgressObject deserializeGameProgress(String json) {
-        return gson.fromJson(json, GameProgressObject.class);
+        return new GameProgressObject(gson.fromJson(json, GameProgressObject.class));
     }
 
     public void resetToDefault() {

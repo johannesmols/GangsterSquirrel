@@ -42,19 +42,36 @@ public class GameProgressObject {
             playerJumpImpulseVelocity, float playerWalkImpulseVelocity, float playerClimbImpulseVelocity, float
             playerMaxWalkVelocity, float playerMaxClimbVelocity, int currentlyEquippedWeapon, ArrayList<WeaponObject> playerWeaponList) {
 
-        this.currentLevel = currentLevel;
-        this.unlockedLevels = unlockedLevels;
-        this.currentTime = currentTime;
-        this.playerMaxHealth = playerMaxHealth;
-        this.playerLifes = playerLifes;
-        this.playerMaximumLifes = playerMaximumLifes;
-        this.playerJumpImpulseVelocity = playerJumpImpulseVelocity;
-        this.playerWalkImpulseVelocity = playerWalkImpulseVelocity;
-        this.playerClimbImpulseVelocity = playerClimbImpulseVelocity;
-        this.playerMaxWalkVelocity = playerMaxWalkVelocity;
-        this.playerMaxClimbVelocity = playerMaxClimbVelocity;
-        this.currentlyEquippedWeapon = currentlyEquippedWeapon;
-        this.playerWeaponList = playerWeaponList;
+        this.setCurrentLevel(currentLevel);
+        this.setUnlockedLevels(unlockedLevels);
+        this.setCurrentTime(currentTime);
+        this.setPlayerMaxHealth(playerMaxHealth);
+        this.setPlayerLifes(playerLifes);
+        this.setPlayerMaximumLifes(playerMaximumLifes);
+        this.setPlayerJumpImpulseVelocity(playerJumpImpulseVelocity);
+        this.setPlayerWalkImpulseVelocity(playerWalkImpulseVelocity);
+        this.setPlayerClimbImpulseVelocity(playerClimbImpulseVelocity);
+        this.setPlayerMaxWalkVelocity(playerMaxWalkVelocity);
+        this.setPlayerMaxClimbVelocity(playerMaxClimbVelocity);
+        this.setCurrentlyEquippedWeapon(currentlyEquippedWeapon);
+        this.setPlayerWeaponList(playerWeaponList);
+    }
+
+    public GameProgressObject(GameProgressObject gameProgressObject) {
+
+        this.setCurrentLevel(gameProgressObject.currentLevel);
+        this.setUnlockedLevels(gameProgressObject.unlockedLevels);
+        this.setCurrentTime(gameProgressObject.currentTime);
+        this.setPlayerMaxHealth(gameProgressObject.playerMaxHealth);
+        this.setPlayerLifes(gameProgressObject.playerLifes);
+        this.setPlayerMaximumLifes(gameProgressObject.playerMaximumLifes);
+        this.setPlayerJumpImpulseVelocity(gameProgressObject.playerJumpImpulseVelocity);
+        this.setPlayerWalkImpulseVelocity(gameProgressObject.playerWalkImpulseVelocity);
+        this.setPlayerClimbImpulseVelocity(gameProgressObject.playerClimbImpulseVelocity);
+        this.setPlayerMaxWalkVelocity(gameProgressObject.playerMaxWalkVelocity);
+        this.setPlayerMaxClimbVelocity(gameProgressObject.playerMaxClimbVelocity);
+        this.setCurrentlyEquippedWeapon(gameProgressObject.currentlyEquippedWeapon);
+        this.setPlayerWeaponList(gameProgressObject.playerWeaponList);
     }
 
     public int getCurrentLevel() {
