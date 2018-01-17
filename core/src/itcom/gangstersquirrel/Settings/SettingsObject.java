@@ -5,6 +5,7 @@ package itcom.gangstersquirrel.Settings;
  */
 public class SettingsObject {
 
+    private boolean playSounds;
     private boolean fullscreen;
     private int gameWidth;
     private int gameHeight;
@@ -16,11 +17,20 @@ public class SettingsObject {
      * @param gameHeight the window height
      * @param playerName the name of the player that will appear on the scoreboard
      */
-    public SettingsObject(boolean fullscreen, int gameWidth, int gameHeight, String playerName) {
+    public SettingsObject(boolean playSounds, boolean fullscreen, int gameWidth, int gameHeight, String playerName) {
+        this.playSounds = playSounds;
         this.fullscreen = fullscreen;
         this.gameWidth = gameWidth;
         this.gameHeight = gameHeight;
         this.playerName = playerName;
+    }
+
+    public boolean isPlaySounds() {
+        return playSounds;
+    }
+
+    public void setPlaySounds(boolean playSounds) {
+        this.playSounds = playSounds;
     }
 
     public boolean getFullscreen() {

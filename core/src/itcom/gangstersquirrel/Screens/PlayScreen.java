@@ -219,7 +219,7 @@ public class PlayScreen implements Screen {
         level_2_backgroundMusic = game.assetManager.get("audio/level_2_music.mp3", Music.class);
         level_2_backgroundMusic.setLooping(true);
 
-        if (MainGameClass.PLAY_SOUNDS) {
+        if (settings.isPlaySounds()) {
             switch (gameProgress.getCurrentLevel()) {
                 case 1:
                     level_1_backgroundMusic.play();
@@ -414,7 +414,7 @@ public class PlayScreen implements Screen {
         if (isPressingJump && player.getIsOnJumpableGround() && player.body.getLinearVelocity().y == 0) {
             player.body.applyLinearImpulse(new Vector2(0, player.getJumpImpulseVelocity()), player.body.getWorldCenter(), true);
 
-            if (MainGameClass.PLAY_SOUNDS) {
+            if (settings.isPlaySounds()) {
                 jumpSound.play();
             }
 

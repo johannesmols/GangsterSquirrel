@@ -21,6 +21,7 @@ public class Settings {
 
         SettingsObject defaultSettings = new SettingsObject(
                 true,
+                true,
                 Gdx.graphics.getWidth(),
                 Gdx.graphics.getHeight(),
                 "player"
@@ -72,6 +73,14 @@ public class Settings {
 
     public void setSettings(SettingsObject settings) {
         serializeSettings(settings);
+    }
+
+    public boolean isPlaySounds() {
+        return settings.isPlaySounds();
+    }
+
+    public void setPlaySounds(boolean playSounds){
+        settings.setPlaySounds(playSounds);
     }
 
     public boolean getFullscreen() {

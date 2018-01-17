@@ -3,4 +3,5 @@
   "gameWidth": 0,
   "gameHeight": 0,
   "playerName": "player"
+  "playSounds": true,
 }

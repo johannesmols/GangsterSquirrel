@@ -31,6 +31,7 @@ public class SettingsMenu extends MenuScreen {
     private TextButton applyButton;
     private TextButton resetGameProgress;
     private CheckBox fullscreenCheckBox;
+    private CheckBox audioCheckBox;
     private SelectBox resolutionSelectBox;
     private Label resolutionLabel;
     private Label userNameLabel;
@@ -69,6 +70,9 @@ public class SettingsMenu extends MenuScreen {
         fullscreenCheckBox = new CheckBox(" Fullscreen", skin, "default");
         fullscreenCheckBox.setChecked(settings.getFullscreen());
 
+        audioCheckBox = new CheckBox(" Audio", skin, "default");
+        audioCheckBox.setChecked(settings.isPlaySounds());
+
         resolutionSelectBox = new SelectBox(skin);
         resolutionSelectBox.setItems(getItemsForResolutionList());
         setResolutionSelectionToCurrentResolution();
@@ -83,6 +87,10 @@ public class SettingsMenu extends MenuScreen {
         twitchOAuthTextField.setText(game.getTwitchThread().getTwitchCredentials().getOauth());
 
         layoutTable.add(titleLabel).top().center().expandX().colspan(4).spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
+        layoutTable.row();
+        layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
+        layoutTable.add(audioCheckBox).top().center().growX().expandX().colspan(2).spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
+        layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.row();
         layoutTable.add(new Actor()).expandX().spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
         layoutTable.add(fullscreenCheckBox).top().center().growX().expandX().colspan(2).spaceBottom(getPixelSizeFromDensityIndependentPixels(25f));
@@ -124,6 +132,7 @@ public class SettingsMenu extends MenuScreen {
         stage.addActor(layoutTable);
 
         fullscreenCheckBox.addListener(fullscreenCheckBoxChangeListener);
+        audioCheckBox.addListener(audioCheckBoxChangeListener);
         resolutionSelectBox.addListener(resolutionSelectBoxChangeListener);
         cancelButton.addListener(cancelButtonClickListener);
         applyButton.addListener(applyButtonClickListener);
@@ -251,6 +260,13 @@ public class SettingsMenu extends MenuScreen {
             }
 
             game.changeGameResolution();
+        }
+    };
+
+    private ChangeListener audioCheckBoxChangeListener = new ChangeListener() {
+        @Override
+        public void changed(ChangeEvent event, Actor actor) {
+            settings.setPlaySounds(audioCheckBox.isChecked());
         }
     };
 
