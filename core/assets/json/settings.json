@@ -1,7 +1,7 @@
 {
-  "fullscreen": true,
-  "gameWidth": 0,
-  "gameHeight": 0,
-  "playerName": "player"
   "playSounds": true,
+  "fullscreen": true,
+  "gameWidth": 1920,
+  "gameHeight": 1080,
+  "playerName": "player"
 }
