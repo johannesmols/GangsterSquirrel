@@ -407,6 +407,10 @@ public class PlayScreen implements Screen {
             game.resetPlayerLifes();
             game.resetTimer();
 
+            // Stop sounds
+            level_1_backgroundMusic.stop();
+            level_2_backgroundMusic.stop();
+
             game.setScreen(new MainMenu(game));
         }
 
@@ -599,37 +603,7 @@ public class PlayScreen implements Screen {
     public void levelFinished() {
         log("Level finished, saving and loading next level...");
 
-        // Post time to online scoreboard
-
-        HttpClient httpClient = new DefaultHttpClient();
-        HttpPost httpPost = new HttpPost("http://api.ludvig.xyz/gangstersquirrel/");
-
-        List<NameValuePair> params = new ArrayList<NameValuePair>();
-        params.add(new BasicNameValuePair("level", String.valueOf(gameProgress.getCurrentLevel())));
-        params.add(new BasicNameValuePair("name", settings.getPlayerName()));
-        params.add(new BasicNameValuePair("time", String.valueOf(timer)));
-        try {
-            httpPost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
-        } catch (UnsupportedEncodingException e) {
-            // writing error to Log
-            e.printStackTrace();
-        }
-
-        try {
-            HttpResponse response = httpClient.execute(httpPost);
-            HttpEntity respEntity = response.getEntity();
-
-            if (respEntity != null) {
-                // EntityUtils to get the response content
-                String content =  EntityUtils.toString(respEntity);
-            }
-        } catch (ClientProtocolException e) {
-            // writing exception to log
-            e.printStackTrace();
-        } catch (IOException e) {
-            // writing exception to log
-            e.printStackTrace();
-        }
+        postTimeToLeaderboard();
 
         // If the old highscores is above zero, proceed. If not, this means there was no highscore set yet and there is no need to compare old time with new time
         if (statistics.getHighscoreTimes()[gameProgress.getCurrentLevel() - 1] > 0) {
@@ -667,6 +641,39 @@ public class PlayScreen implements Screen {
         gameProgress.setPlayerLifes(gameProgress.getPlayerMaximumLifes());
 
         respawnPlayer(true, gameFinished);
+    }
+
+    /**
+     * Make a HTTP post request to the online scoreboard
+     */
+    private void postTimeToLeaderboard() {
+        HttpClient httpClient = new DefaultHttpClient();
+        HttpPost httpPost = new HttpPost("http://api.ludvig.xyz/gangstersquirrel/");
+
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("level", String.valueOf(gameProgress.getCurrentLevel())));
+        params.add(new BasicNameValuePair("name", settings.getPlayerName()));
+        params.add(new BasicNameValuePair("time", String.valueOf(timer)));
+
+        try {
+            httpPost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+            // writing error to Log
+            e.printStackTrace();
+        }
+
+        try {
+            HttpResponse response = httpClient.execute(httpPost);
+            HttpEntity respEntity = response.getEntity();
+
+            if (respEntity != null) {
+                // EntityUtils to get the response content
+                String content =  EntityUtils.toString(respEntity);
+            }
+        } catch (IOException e) {
+            // writing exception to log
+            e.printStackTrace();
+        }
     }
 
     /**
